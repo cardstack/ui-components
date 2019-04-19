@@ -16,6 +16,9 @@ module.exports = {
   },
   rules: {
   },
+  globals: {
+    percySnapshot: true
+  },
   overrides: [
     // node files
     {

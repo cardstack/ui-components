@@ -47,6 +47,18 @@ or
 <ComponentName />
 ```
 
+Styles for this addon are opt-in. If you want to use our default styles, import them in your app's css:
+
+```css
+@import url("@cardstack/some-css-file");
+```
+
+or scss:
+
+```css
+@import '@cardstack/some-css-file'
+```
+
 Contributing
 ------------------------------------------------------------------------------
 
