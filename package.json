@@ -1,13 +1,13 @@
 {
-  "name": "ui-components-library",
+  "name": "@cardstack/ui-components-library",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Reusable UI elements for Cardstack projects and Ember apps.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": "https://github.com/cardstack/ui-components-library",
   "license": "MIT",
-  "author": "",
+  "author": "Jen Weber <j@jenweber.dev>",
   "directories": {
     "doc": "doc",
     "test": "tests"
