@@ -1,4 +1,4 @@
-ui-components-library
+ui-components
 ==============================================================================
 
 This is a work-in-progress addon that will contain reusable UI elements like form inputs, buttons, navbars, and more. The components can be used in regular Ember apps as well as Cardstack projects.
@@ -16,13 +16,13 @@ Local installation
 ------------------------------------------------------------------------------
 
 * `git clone <repository-url>`
-* `cd ui-components-library`
+* `cd ui-components`
 * `npm install`
 * `npm link`
 
 Then navigate into the app you want to use the addon in, and run the following command:
 
-* `npm link @cardstack/ui-components-library`
+* `npm link @cardstack/ui-components`
 * Start your app with `ember serve`. As you make changes to the addon, if everything is working properly, your Ember app will rebuild to reflect the changes.
 
 Remote installation
@@ -31,7 +31,7 @@ Remote installation
 During early greenfield development, you can install this addon from GitHub by adding the following to your project's `package.json`:
 
 ```json
-"@cardstack/ui-components-library": "github:cardstack/ui-components-library#master"
+"@cardstack/ui-components": "github:cardstack/ui-components#master"
 ```
 
 Whatever comes after the `#` can be a tag, commit hash, or branch name.

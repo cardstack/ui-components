@@ -1,11 +1,11 @@
 {
-  "name": "@cardstack/ui-components-library",
+  "name": "@cardstack/ui-components",
   "version": "0.0.0",
   "description": "Reusable UI elements for Cardstack projects and Ember apps.",
   "keywords": [
     "ember-addon"
   ],
-  "repository": "https://github.com/cardstack/ui-components-library",
+  "repository": "https://github.com/cardstack/ui-components",
   "license": "MIT",
   "author": "Jen Weber <j@jenweber.dev>",
   "directories": {
