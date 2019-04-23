@@ -1,0 +1,27 @@
+$btn-primary: #1a1a1a;
+$btn-primary--hover: #5d5d5d;
+$btn-secondary: #a3a3a3;
+
+.cta-button {
+  padding: 8px 20px;
+  transition: .5s;
+  cursor: pointer;
+
+  &, &--primary {
+    background-color: $btn-primary;
+    color: white;
+
+    &:hover {
+      background-color: $btn-primary--hover;
+    }
+  }
+
+  &--secondary {
+    background-color: white;
+    color: $btn-secondary;
+
+    &:hover {
+      background-color: $btn-primary;
+    }
+  }
+}

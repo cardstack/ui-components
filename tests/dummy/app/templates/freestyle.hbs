@@ -31,4 +31,21 @@
 
   {{/freestyle-section}}
 
+  {{#freestyle-section name="CTA"}}
+    {{#freestyle-usage "primary-cta" title="Primary CTA"}}
+      <Cta @type="primary">Primary Call to Action</Cta>
+    {{/freestyle-usage}}
+
+    {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
+      <Cta @type="secondary">Secondary Call to Action</Cta>
+    {{/freestyle-usage}}
+
+    {{#freestyle-usage "default-cta" title="Default CTA"}}
+      <Cta>Call to Action</Cta>
+    {{/freestyle-usage}}
+    {{#freestyle-note "default-cta--notes"}}
+      <p>By default, <code>Cta</code> will render a primary type</p>
+    {{/freestyle-note}}
+  {{/freestyle-section}}
+
 {{/freestyle-guide}}
