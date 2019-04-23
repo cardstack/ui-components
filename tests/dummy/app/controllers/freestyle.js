@@ -36,7 +36,7 @@ export default Ember.Component.extend({
 ```
   END-FREESTYLE-USAGE */
 
-  colorPalette: {
+  colorPalette: Object.freeze({
     'primary': {
       'name': 'cyan',
       'base': '#00bcd4'
@@ -57,5 +57,5 @@ export default Ember.Component.extend({
       'name': 'white',
       'base': '#ffffff'
     }
-  }
+  })
 });
