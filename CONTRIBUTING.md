@@ -18,9 +18,13 @@
 * `ember test --server` – Runs the test suite in "watch mode"
 * `ember try:each` – Runs the test suite against multiple Ember versions
 
+This addon uses [ember-a11y-testing](https://github.com/ember-a11y/ember-a11y-testing) to check for accessibility issues. Read the full testing error message and check the console for instructions to resolve any issues.
+
 ## Running the dummy application
 
 * `ember serve`
 * Visit the dummy application at [http://localhost:4200](http://localhost:4200).
+
+Whenever you create a new component, add it to the styleguide at `index.hbs`.
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
