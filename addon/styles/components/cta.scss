@@ -19,6 +19,7 @@ $btn-secondary: #a3a3a3;
   &--secondary {
     background-color: white;
     color: $btn-secondary;
+    border-color: $btn-secondary;
 
     &:hover {
       background-color: $btn-primary;
