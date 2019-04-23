@@ -45,6 +45,6 @@ To add styles, create a file in `addon/styles/my-component-name.scss`, and impor
 }
 ```
 
-Try to use what is already in `main.scss` and `variables.scss` before declaring new styles.
+Try to use what is already in `main.scss` and `variables.scss` before declaring new styles. We loosely follow [BEM](http://getbem.com/) for class naming, such as `.cardboard-top-header--title`.
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
