@@ -32,20 +32,25 @@
   {{/freestyle-section}}
 
   {{#freestyle-section name="CTA"}}
-    {{#freestyle-usage "primary-cta" title="Primary CTA"}}
-      <Cta @type="primary">Primary Call to Action</Cta>
-    {{/freestyle-usage}}
 
-    {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
-      <Cta @type="secondary">Secondary Call to Action</Cta>
-    {{/freestyle-usage}}
+    {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
+      {{#collection.variant key="primary"}}
+        {{#freestyle-usage "primary-cta" title="Primary CTA"}}
+          <Cta @type="primary">Primary Call to Action</Cta>
+        {{/freestyle-usage}}
 
-    {{#freestyle-usage "default-cta" title="Default CTA"}}
-      <Cta>Call to Action</Cta>
-    {{/freestyle-usage}}
-    {{#freestyle-note "default-cta--notes"}}
-      <p>By default, <code>Cta</code> will render a primary type</p>
-    {{/freestyle-note}}
+      {{/collection.variant}}
+      {{#freestyle-note "primary-cta--notes"}}
+        By default, `Cta` will render a primary type
+      {{/freestyle-note}}
+
+      {{#collection.variant key="secondary"}}
+        {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
+          <Cta @type="secondary">Secondary Call to Action</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
+
   {{/freestyle-section}}
 
 {{/freestyle-guide}}
