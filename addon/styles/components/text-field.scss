@@ -52,33 +52,6 @@
     transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
   }
 
-  input[type="submit"] {
-    -webkit-transition: opacity 0.2s ease, background 0.2s ease;
-    transition: opacity 0.2s ease, background 0.2s ease;
-    display: block;
-    opacity: 0;
-    margin: 10px 0 0 0;
-    padding: 10px;
-    cursor: pointer;
-  }
-
-  input[type="submit"]:hover {
-    background: #EEE;
-  }
-
-  input[type="submit"]:active {
-    background: #999;
-  }
-
-  input.text-field__input:valid ~ input[type="submit"] {
-    -webkit-animation: appear 1s forwards;
-    animation: appear 1s forwards;
-  }
-
-  input.text-field__input:invalid ~ input[type="submit"] {
-    display: none;
-  }
-
   @-webkit-keyframes appear {
     100% {
       opacity: 1;
