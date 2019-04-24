@@ -1,6 +1,9 @@
-$btn-primary: #1a1a1a;
-$btn-primary--hover: #5d5d5d;
-$btn-secondary: #a3a3a3;
+$gray: #5d5d5d;
+$light-gray: #a3a3a3;
+$dark-gray: #1a1a1a;
+$btn-primary: $dark-gray;
+$btn-primary-hover: $gray;
+$btn-secondary: $light-gray;
 
 .cta-button {
   padding: 8px 20px;
@@ -12,7 +15,7 @@ $btn-secondary: #a3a3a3;
     color: white;
 
     &:hover {
-      background-color: $btn-primary--hover;
+      background-color: $btn-primary-hover;
     }
   }
 
