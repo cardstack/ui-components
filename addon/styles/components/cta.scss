@@ -1,0 +1,31 @@
+$gray: #5d5d5d;
+$light-gray: #a3a3a3;
+$dark-gray: #1a1a1a;
+$btn-primary: $dark-gray;
+$btn-primary-hover: $gray;
+$btn-secondary: $light-gray;
+
+.cta-button {
+  padding: 8px 20px;
+  transition: .5s;
+  cursor: pointer;
+
+  &, &--primary {
+    background-color: $btn-primary;
+    color: white;
+
+    &:hover {
+      background-color: $btn-primary-hover;
+    }
+  }
+
+  &--secondary {
+    background-color: white;
+    color: $btn-secondary;
+    border-color: $btn-secondary;
+
+    &:hover {
+      background-color: $btn-primary;
+    }
+  }
+}
