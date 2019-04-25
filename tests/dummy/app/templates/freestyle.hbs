@@ -52,10 +52,16 @@
   {{/freestyle-section}}
 
   {{#freestyle-section name="TextField"}}
-    {{#freestyle-collection title="TextField" defaultKey="with-label" inline=true as |collection|}}
-      {{#collection.variant key="with-label"}}
-        {{#freestyle-usage "text-field-default" title="Default Text Field"}}
+    {{#freestyle-collection title="TextField" defaultKey="optional" inline=true as |collection|}}
+      {{#collection.variant key="optional"}}
+        {{#freestyle-usage "text-field-optional" title="Optional Text Field"}}
           <TextField @label="What's your name?" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+
+      {{#collection.variant key="required"}}
+        {{#freestyle-usage "text-field-required" title="Required Text Field"}}
+          <TextField @label="What's your name?" @required=true />
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
