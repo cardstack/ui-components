@@ -61,7 +61,7 @@
 
       {{#collection.variant key="required"}}
         {{#freestyle-usage "text-field-required" title="Required Text Field"}}
-          <TextField @label="What's your name?" @required=true />
+          <TextField @label="What's your name?" @required={{true}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
