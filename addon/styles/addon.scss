@@ -1,4 +1,7 @@
-@import 'typography';
 @import 'variables';
 @import 'main';
 @import 'components/cta';
+
+html {
+  font-family: 'Open Sans';
+}
