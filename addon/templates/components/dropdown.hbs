@@ -1,0 +1,9 @@
+<label for={{concat elementId '-dropdown'}}>dropdown</label>
+{{#power-select
+  options=countries
+  selected=destination
+  onchange=(action "foo")
+  id=(concat elementId '-dropdown')
+  as |country|}}
+  <strong>{{country.name}}</strong>
+{{/power-select}}

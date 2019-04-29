@@ -25,4 +25,14 @@
 
   {{/freestyle-section}}
 
+  {{#freestyle-section name="dropdown"}}
+    {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "dropdown" title="dropdown"}}
+          <Dropdown @options={{[1,2,3]}} @selected={{1}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
+  {{/freestyle-section}}
+
 {{/freestyle-guide}}
