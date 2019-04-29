@@ -3,7 +3,7 @@ ui-components
 
 This is a work-in-progress addon that will contain reusable UI elements like form inputs, buttons, navbars, and more. The components can be used in regular Ember apps as well as Cardstack projects.
 
-View the live docs by running `ember serve` in this repository. They are built using [ember-freestyle](https://github.com/chrislopresto/ember-freestyle).
+View the live docs by running `ember serve` in this repository and going to http://localhost:4200/freestyle. They are built using [ember-freestyle](https://github.com/chrislopresto/ember-freestyle).
 
 Compatibility
 ------------------------------------------------------------------------------
