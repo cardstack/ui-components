@@ -1,0 +1,15 @@
+{{#each choices as |choice|}}
+  {{#with (hash
+            value=(if choice.value choice.value choice)
+            name=(if choice.name choice.name choice)
+          ) as |item|}}
+    {{#radio-button
+      value=item.value
+      groupValue=selectedItem
+      classNames="cs-component--choose-one--label"
+      changed=(action performActions)
+    }}
+      <span class="cs-component--choose-one--name" data-test-choice-value={{item.value}}>{{item.name}}</span>
+    {{/radio-button}}
+  {{/with}}
+{{/each}}

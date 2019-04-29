@@ -1,0 +1,11 @@
+{{#multiselect-checkboxes
+    options=choices
+    selection=selectedItems
+    tagName=""
+    onchange=(action performActions)
+    as |item isSelected|}}
+  <label class="cs-component--choose-many--label {{if isSelected "checked"}}">
+    {{input type="checkbox" checked=isSelected}}
+    <span class="cs-component--choose-many--name" data-test-choice-value={{if item.value item.value item}}>{{if item.name item.name item}}</span>
+  </label>
+{{/multiselect-checkboxes}}
