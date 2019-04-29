@@ -1,9 +1,5 @@
-.text-field {
-  input:focus {
-    outline: 0;
-  }
-
-  input.text-field__input {
+.cs-component-text-field {
+  &__input {
     font-size: 18px;
     font-weight: 300;
     border-radius: 2px;
@@ -19,7 +15,7 @@
     box-sizing: border-box;
   }
 
-  input.text-field__input + label {
+  &__input + label {
     display: block;
     position: relative;
     white-space: nowrap;
@@ -29,23 +25,23 @@
     border-bottom: 1px solid $border-gray;
   }
 
-  input.text-field__input:valid + label > span {
+  &__input:valid + label > span {
     top: -45px;
     font-size: 12px;
     color: $gray;
   }
 
-  input.text-field__input:focus + label > span {
+  &__input:focus + label > span {
     top: -45px;
     font-size: 12px;
     color: $purple;
   }
 
-  input.text-field__input:invalid {
+  &__input:invalid {
     box-shadow: none;
   }
 
-  input.text-field__input + label > span {
+  &__input + label > span {
     font-weight: 300;
     margin: 0;
     position: absolute;

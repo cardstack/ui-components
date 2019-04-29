@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   layout,
-  classNames: 'text-field',
+  classNames: 'cs-component-text-field',
   required: false,
   inputId: computed('elementId', function() {
     return `${this.elementId}-input`;
