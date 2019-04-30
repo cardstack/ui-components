@@ -1,0 +1,76 @@
+.cs-component-text-field {
+  &__input {
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 300;
+    border-radius: 2px;
+    margin: 0;
+    padding-left: 15px;
+    padding-top: 20px;
+    width: 100%;
+    background: $lighter-gray;
+    transition: padding-top 0.2s ease, margin-top 0.2s ease;
+    overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
+    height: 60px;
+    border: 1px solid $border-gray;
+    box-sizing: border-box;
+  }
+
+  &__input + label {
+    display: block;
+    position: relative;
+    white-space: nowrap;
+    padding: 0;
+    margin: -10px 15px 0 15px;
+    height: 0px;
+    border-bottom: 1px solid $border-gray;
+  }
+
+  &__input:valid + label > span {
+    top: -45px;
+    font-size: 12px;
+    color: $gray;
+  }
+
+  &__input:focus + label > span {
+    top: -45px;
+    font-size: 12px;
+    color: $purple;
+  }
+
+  &__input:invalid {
+    box-shadow: none;
+  }
+
+  &__input + label > span {
+    font-weight: 300;
+    margin: 0;
+    position: absolute;
+    color: $gray;
+    font-size: 18px;
+    top: -25px;
+    left: 0;
+    -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  }
+
+  &__optional {
+    float: right;
+    text-transform: uppercase;
+    color: $gray;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  @-webkit-keyframes appear {
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes appear {
+    100% {
+      opacity: 1;
+    }
+  }
+}
