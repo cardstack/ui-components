@@ -3,6 +3,29 @@
   subtitle="Living Style Guide"
   }}
 
+  {{#freestyle-section name="dropdown"}}
+    {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-note "dropdown--notes"}}
+          ```
+          countries = [
+            { name: 'United States' },
+            { name: 'Spain' },
+            { name: 'Portugal' },
+            { name: 'Russia' },
+            { name: 'Latvia' },
+            { name: 'Brazil' },
+            { name: 'United Kingdom' }
+          ];
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown" title="dropdown"}}
+          <Dropdown @options={{countries}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
+  {{/freestyle-section}}
+
   {{#freestyle-section name="CTA"}}
     {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
       {{#collection.variant key="primary"}}
@@ -38,15 +61,4 @@
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
-
-  {{#freestyle-section name="dropdown"}}
-    {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
-      {{#collection.variant key="default"}}
-        {{#freestyle-usage "dropdown" title="dropdown"}}
-          <Dropdown @options={{[1,2,3]}} @selected={{1}} />
-        {{/freestyle-usage}}
-      {{/collection.variant}}
-    {{/freestyle-collection}}
-  {{/freestyle-section}}
-
 {{/freestyle-guide}}

@@ -3,8 +3,19 @@ import FreestyleController from 'ember-freestyle/controllers/freestyle';
 
 const { inject } = Ember;
 
+const countries = [
+  { name: 'United States' },
+  { name: 'Spain' },
+  { name: 'Portugal' },
+  { name: 'Russia' },
+  { name: 'Latvia' },
+  { name: 'Brazil' },
+  { name: 'United Kingdom' }
+];
+
 export default FreestyleController.extend({
   emberFreestyle: inject.service(),
+  countries,
 
   /* BEGIN-FREESTYLE-USAGE fp--notes
 ### A few notes regarding freestyle-palette

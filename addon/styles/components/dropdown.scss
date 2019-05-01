@@ -1,0 +1,94 @@
+.cs-component-dropdown {
+  background: $lighter-gray;
+  position: relative;
+  height: 60px;
+  border: 1px solid $border-gray;
+
+  &__container {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+  }
+
+  label {
+    color: $gray;
+    z-index: 1;
+    position: absolute;
+    bottom: -1px;
+    left: 20px;
+    right: 20px;
+    border-bottom: 1px solid $border-gray;
+    pointer-events: none;
+    -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+
+    &.with-option-selected {
+      top: -20px;
+      left: 20px;
+      font-size: 12px;
+    }
+  }
+
+  .ember-power-select-trigger {
+    border: none;
+    background: $lighter-gray;
+    transition: padding-top 0.2s ease, margin-top 0.2s ease;
+
+    &[aria-expanded="true"] ~ label {
+      color: $purple;
+      top: -20px;
+      left: 20px;
+      font-size: 12px;
+    }
+  }
+
+  .ember-power-select-status-icon {
+    right: 25px;
+  }
+
+  .ember-power-select-selected-item, .ember-power-select-placeholder {
+    margin-left: 20px;
+  }
+}
+
+#ember-basic-dropdown-wormhole {
+  .ember-power-select-search {
+    padding: 0 20px;
+  }
+
+  .ember-power-select-search-input {
+    border: none;
+    background: #e2e2e2; // TODO Put in variable
+    padding: 4px;
+    height: 32px;
+  }
+
+  .ember-power-select-dropdown {
+    border: none;
+  }
+
+  .ember-power-select-options {
+    margin-top: 11px;
+    background: $lighter-gray;
+    border: 1px solid $border-gray;
+    border-top: none;
+    border-radius: 0;
+  }
+
+  .ember-power-select-option {
+    padding: 6px 20px;
+    border-bottom: 1px solid $border-gray;
+    font-size: 13px;
+
+    &[aria-current=true] {
+      background: $gray;
+    }
+  }
+
+  .ember-basic-dropdown-content {
+    margin-top: -32px;
+    background: transparent;
+  }
+
+}

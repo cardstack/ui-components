@@ -1,9 +1,12 @@
-<label for={{concat elementId '-dropdown'}}>dropdown</label>
-{{#power-select
-  options=countries
-  selected=destination
-  onchange=(action "foo")
-  id=(concat elementId '-dropdown')
-  as |country|}}
-  <strong>{{country.name}}</strong>
-{{/power-select}}
+<div class="cs-component-dropdown__container">
+  {{#power-select
+    options=options
+    onchange=(action (mut selectedOption))
+    selected=selectedOption
+    searchField="name"
+    id=(concat elementId '-dropdown')
+    as |option|}}
+    {{option.name}}
+  {{/power-select}}
+  <label class={{if selectedOption 'with-option-selected'}} for={{concat elementId '-dropdown'}}>Select Your Favorite Pizza Topping</label>
+</div>
