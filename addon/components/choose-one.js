@@ -3,7 +3,7 @@ import layout from '../templates/components/choose-one';
 
 export default Component.extend({
   layout,
-  classNames: ['cs-component--choose-one'],
+  classNames: ['cs-component-choose-one'],
   classNameBindings: ['checked:checked'],
   attributeBindings: ['dataTestName:data-test-cs-component-choose-one'],
   dataTestName: true,

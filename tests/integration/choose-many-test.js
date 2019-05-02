@@ -18,7 +18,7 @@ module('Integration | Component | choose-many', function(hooks) {
     await render(hbs`{{choose-many choices=choices}}`);
 
     assert.dom('[data-test-cs-component-choose-many]').exists();
-    assert.dom('.cs-component--choose-many--label').exists({ count: 4 });
+    assert.dom('.cs-component-choose-many--label').exists({ count: 4 });
     assert.dom('[data-test-choice-value="red"]').hasText('red');
     assert.dom('[data-test-choice-value="yellow"]').hasText('yellow');
     assert.dom('[data-test-choice-value="green"]').hasText('green');
@@ -35,7 +35,7 @@ module('Integration | Component | choose-many', function(hooks) {
     await render(hbs`{{choose-many choices=choices}}`);
 
     assert.dom('[data-test-cs-component-choose-many]').exists();
-    assert.dom('.cs-component--choose-many--label').exists({ count: 4 });
+    assert.dom('.cs-component-choose-many--label').exists({ count: 4 });
     assert.dom('[data-test-choice-value="red"]').hasText('Red');
     assert.dom('[data-test-choice-value="yellow"]').hasText('Yellow');
     assert.dom('[data-test-choice-value="green"]').hasText('Green');
@@ -46,19 +46,19 @@ module('Integration | Component | choose-many', function(hooks) {
     this.set('choices', ['red', 'yellow', 'green', 'blue']);
     await render(hbs`{{choose-many choices=choices}}`);
 
-    assert.dom('.cs-component--choose-many--label.checked').doesNotExist();
+    assert.dom('.cs-component-choose-many--label.checked').doesNotExist();
     assert.dom('[data-test-cs-component-choose-many].checked').doesNotExist();
 
     await click('[data-test-choice-value="red"]');
 
-    assert.dom('.cs-component--choose-many--label.checked').exists({ count: 1 });
-    assert.dom('.cs-component--choose-many--label.checked').hasText('red');
+    assert.dom('.cs-component-choose-many--label.checked').exists({ count: 1 });
+    assert.dom('.cs-component-choose-many--label.checked').hasText('red');
     assert.dom('[data-test-cs-component-choose-many].checked').exists();
 
     await click('[data-test-choice-value="blue"]');
 
-    assert.dom('.cs-component--choose-many--label.checked').exists({ count: 2 });
-    assert.dom('.cs-component--choose-many--label.checked [data-test-choice-value="blue"]').hasText('blue');
+    assert.dom('.cs-component-choose-many--label.checked').exists({ count: 2 });
+    assert.dom('.cs-component-choose-many--label.checked [data-test-choice-value="blue"]').hasText('blue');
   });
 
   test('can trigger an action when selection changes', async function(assert) {

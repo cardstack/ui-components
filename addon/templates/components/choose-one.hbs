@@ -6,10 +6,10 @@
     {{#radio-button
       value=item.value
       groupValue=selectedItem
-      classNames="cs-component--choose-one--label"
+      classNames="cs-component-choose-one--label"
       changed=(action performActions)
     }}
-      <span class="cs-component--choose-one--name" data-test-choice-value={{item.value}}>{{item.name}}</span>
+      <span class="cs-component-choose-one--name" data-test-choice-value={{item.value}}>{{item.name}}</span>
     {{/radio-button}}
   {{/with}}
 {{/each}}

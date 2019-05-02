@@ -1,4 +1,4 @@
-.cs-component--choose-many {
+.cs-component-choose-many {
   display: inline-grid;
   grid-auto-flow: column;
   background-color: $dark-gray;
@@ -6,53 +6,51 @@
   grid-gap: 1px;
   align-items: center;
   border: solid 1px $dark-gray;
+}
 
-  &.checked {
-    .cs-component--choose-many--label:not(.checked) {
-      color: rgba($dark-gray, 0.6);
-    }
+.cs-component-choose-many.checked .cs-component-choose-many--label:not(.checked) {
+  color: rgba($dark-gray, 0.6);
+}
+
+.cs-component-choose-many--label {
+  width: 150px;
+  height: 50px;
+  padding: 15px;
+  box-sizing: border-box;
+  align-self: center;
+  background-color: $lighter-gray;
+  color: $dark-gray;
+  text-align: center;
+
+  &:hover {
+    background-color: $light-gray;
   }
 
-  .cs-component--choose-many--label {
-    width: 150px;
-    height: 50px;
-    padding: 15px;
-    box-sizing: border-box;
-    align-self: center;
-    background-color: $lighter-gray;
-    color: $dark-gray;
-    text-align: center;
-
-    &:hover {
-      background-color: $light-gray;
-    }
-
-    &.checked {
-      background-color: $gray;
-      color: white;
-
-      .cs-component--choose-many--name:after {
-        display: inline-block;
-        position: absolute;
-        top: 4px;
-        content: ' ';
-        width: 12px;
-        height: 12px;
-        margin-left: 5px;
-        background-image: url("/@cardstack/ui-components/images/icon-checked.svg");
-        background-size: 12px 12px;
-        background-repeat: no-repeat;
-      }
-    }
-
-    input[type="checkbox"] {
-      display: none;
-    }
+  input[type="checkbox"] {
+    display: none;
   }
+}
 
-  .cs-component--choose-many--name {
-    position: relative;
-    font-size: 14px;
-    line-height: 19px;
+.cs-component-choose-many--label.checked {
+  background-color: $gray;
+  color: white;
+
+  .cs-component-choose-many--name:after {
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    content: ' ';
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+    background-image: url("/@cardstack/ui-components/images/icon-checked.svg");
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
   }
+}
+
+.cs-component-choose-many--name {
+  position: relative;
+  font-size: 14px;
+  line-height: 19px;
 }
