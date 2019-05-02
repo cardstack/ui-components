@@ -1,10 +1,9 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import { A } from '@ember/array';
 import FreestyleController from 'ember-freestyle/controllers/freestyle';
 
-const { inject } = Ember;
-
 export default FreestyleController.extend({
-  emberFreestyle: inject.service(),
+  emberFreestyle: service(),
 
   /* BEGIN-FREESTYLE-USAGE fp--notes
 ### A few notes regarding freestyle-palette
@@ -57,5 +56,14 @@ export default Ember.Component.extend({
       'name': 'white',
       'base': '#ffffff'
     }
-  })
+  }),
+
+  selectItemOptions: A([
+    { name: 'Red', value: 'red' },
+    { name: 'Yellow', value: 'yellow' },
+    { name: 'Green', value: 'green' },
+    { name: 'Blue', value: 'blue' }
+  ]),
+  
+  doSomething: () => {}
 });
