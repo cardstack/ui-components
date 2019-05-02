@@ -79,4 +79,23 @@
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
+
+  {{#freestyle-section name="Choose Items"}}
+    {{#freestyle-usage "text-cta" title="Choose One (Text)"}}
+      <ChooseOne @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
+    {{/freestyle-usage}}
+
+    {{#freestyle-note "text-choose-one--notes"}}
+      Takes an array of primitives or objects, and an optional action to be called when selecting an item.
+    {{/freestyle-note}}
+
+    {{#freestyle-usage "text-cta" title="Choose Many (Text)"}}
+      <ChooseMany @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
+    {{/freestyle-usage}}
+
+    {{#freestyle-note "text-choose-many--notes"}}
+      Takes an array of primitives or objects, and an optional action to be called when selecting an item.
+    {{/freestyle-note}}
+  {{/freestyle-section}}
+
 {{/freestyle-guide}}
