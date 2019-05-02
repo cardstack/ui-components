@@ -2,8 +2,6 @@ import { inject as service } from '@ember/service';
 import { A } from '@ember/array';
 import FreestyleController from 'ember-freestyle/controllers/freestyle';
 
-const { inject } = Ember;
-
 const countries = [
   { name: 'United States' },
   { name: 'Spain' },
@@ -15,7 +13,7 @@ const countries = [
 ];
 
 export default FreestyleController.extend({
-  emberFreestyle: inject.service(),
+  emberFreestyle: service(),
   countries,
   selected: countries[1],
 
