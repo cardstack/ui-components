@@ -1,0 +1,42 @@
+{{#freestyle-guide
+  title="Ember Freestyle"
+  subtitle="Living Style Guide"
+  }}
+
+  {{#freestyle-section name="CTA"}}
+    {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
+      {{#collection.variant key="primary"}}
+        {{#freestyle-usage "primary-cta" title="Primary CTA"}}
+          <Cta @type="primary">Primary Call to Action</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+
+      {{#freestyle-note "primary-cta--notes"}}
+        By default, `Cta` will render a primary type
+      {{/freestyle-note}}
+
+      {{#collection.variant key="secondary"}}
+        {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
+          <Cta @type="secondary">Secondary Call to Action</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
+  {{/freestyle-section}}
+
+  {{#freestyle-section name="TextField"}}
+    {{#freestyle-collection title="TextField" defaultKey="optional" inline=true as |collection|}}
+      {{#collection.variant key="optional"}}
+        {{#freestyle-usage "text-field-optional" title="Optional Text Field"}}
+          <TextField @label="What's your name?" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+
+      {{#collection.variant key="required"}}
+        {{#freestyle-usage "text-field-required" title="Required Text Field"}}
+          <TextField @label="What's your name?" @required={{true}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
+  {{/freestyle-section}}
+
+{{/freestyle-guide}}
