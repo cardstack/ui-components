@@ -19,8 +19,26 @@
           ];
           ```
         {{/freestyle-note}}
-        {{#freestyle-usage "dropdown" title="dropdown"}}
-          <Dropdown @options={{countries}} />
+        {{#freestyle-usage "dropdown" title="Dropdown"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="with-default-selected"}}
+        {{#freestyle-note "dropdown-with-default-selected--notes"}}
+          ```
+          export default Component.extend({
+            // ...
+            selected: { name: "Spain" }
+          });
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-with-default-selected" title="Dropdown"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" @selected={{selected}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="multiple"}}
+        {{#freestyle-usage "dropdown-multiple" title="Multiple Select Dropdown"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" @multiple={{true}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}

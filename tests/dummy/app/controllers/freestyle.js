@@ -16,6 +16,7 @@ const countries = [
 export default FreestyleController.extend({
   emberFreestyle: inject.service(),
   countries,
+  selected: countries[1],
 
   /* BEGIN-FREESTYLE-USAGE fp--notes
 ### A few notes regarding freestyle-palette

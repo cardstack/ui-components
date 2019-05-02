@@ -1,3 +1,10 @@
+@mixin pill() {
+  border: 1px solid $border-gray;
+  padding: 0 10px;
+  border-radius: 20px;
+  background: transparent;
+}
+
 .cs-component-dropdown {
   background: $lighter-gray;
   position: relative;
@@ -43,12 +50,21 @@
     }
   }
 
+  .ember-power-select-multiple-options {
+    margin-left: 20px;
+  }
+
   .ember-power-select-status-icon {
     right: 25px;
   }
 
   .ember-power-select-selected-item, .ember-power-select-placeholder {
     margin-left: 20px;
+    @include pill();
+  }
+
+  .ember-power-select-multiple-option {
+    @include pill();
   }
 }
 
@@ -87,7 +103,6 @@
   }
 
   .ember-basic-dropdown-content {
-    margin-top: -32px;
     background: transparent;
   }
 
