@@ -4,7 +4,7 @@ import calculatePosition from 'ember-basic-dropdown/utils/calculate-position';
 
 export default Component.extend({
   layout,
-  classNames: 'cs-component-dropdown',
+  classNameBindings: ['multiple:cs-component-dropdown--multiple:cs-component-dropdown'],
   selected: null,
   multiple: false,
   labelText: 'Select an option',

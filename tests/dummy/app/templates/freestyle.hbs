@@ -36,7 +36,7 @@
           <Dropdown @options={{countries}} @labelText="Select a country" @selected={{selected}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="multiple"}}
+      {{#collection.variant key="multi-select"}}
         {{#freestyle-usage "dropdown-multiple" title="Multiple Select Dropdown"}}
           <Dropdown @options={{countries}} @labelText="Select a country" @multiple={{true}} />
         {{/freestyle-usage}}
