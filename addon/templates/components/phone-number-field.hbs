@@ -1,5 +1,8 @@
 {{#unless required}}
   <span class="cs-component-text-field__optional">Optional</span>
 {{/unless}}
-<input type={{type}} name="name" value={{value}} class="cs-component-text-field__input" id={{inputId}} required autocomplete="off">
+{{phone-number-field/input
+  class="cs-component-text-field__input"
+  required=required
+}}
 <label for={{inputId}}><span>{{label}}</span></label>

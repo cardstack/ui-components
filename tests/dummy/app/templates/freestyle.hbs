@@ -39,6 +39,12 @@
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+  {{#freestyle-section name="Phone Number Field"}}
+    {{#freestyle-usage "phone-number-field-default" title="Phone Number Field"}}
+      <PhoneNumberField />
+    {{/freestyle-usage}}
+  {{/freestyle-section}}
+
   {{#freestyle-section name="Choose Items"}}
     {{#freestyle-usage "text-cta" title="Choose One (Text)"}}
       <ChooseOne @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />

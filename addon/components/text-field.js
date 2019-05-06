@@ -6,6 +6,7 @@ export default Component.extend({
   layout,
   classNames: 'cs-component-text-field',
   required: false,
+  type: 'text',
   inputId: computed('elementId', function() {
     return `${this.elementId}-input`;
   })
