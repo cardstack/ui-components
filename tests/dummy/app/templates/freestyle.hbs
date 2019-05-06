@@ -81,7 +81,7 @@
   {{/freestyle-section}}
 
   {{#freestyle-section name="Choose Items"}}
-    {{#freestyle-usage "text-cta" title="Choose One (Text)"}}
+    {{#freestyle-usage "choose-one" title="Choose One (Text)"}}
       <ChooseOne @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
 
@@ -89,7 +89,7 @@
       Takes an array of primitives or objects, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
 
-    {{#freestyle-usage "text-cta" title="Choose Many (Text)"}}
+    {{#freestyle-usage "choose-many" title="Choose Many (Text)"}}
       <ChooseMany @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
 
@@ -107,4 +107,15 @@
       <Email @label="Email Address" @required={{true}} />
     {{/freestyle-usage}}
   {{/freestyle-section}}
+
+  {{#freestyle-section name="Street Address"}}
+    {{#freestyle-usage "street-address" title="Street Address"}}
+      <StreetAddress @labelText="Enter your address"/>
+    {{/freestyle-usage}}
+
+    {{#freestyle-note "street-address--notes"}}
+      Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API enabled. Takes an optional `labelText` property (defaults to "Enter a street address").
+    {{/freestyle-note}}
+  {{/freestyle-section}}
+
 {{/freestyle-guide}}

@@ -4203,6 +4203,7 @@ ember-maybe-in-element@^0.2.0:
   integrity sha512-R5e6N8yDbfNbA/3lMZsFs2KEzv/jt80TsATiKMCqdqKuSG82KrD25cRdU5VkaE8dTQbziyBeuJs90bBiqOnakQ==
   dependencies:
     ember-cli-babel "^7.1.0"
+
 ember-multiselect-checkboxes@^0.11.1:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/ember-multiselect-checkboxes/-/ember-multiselect-checkboxes-0.11.1.tgz#cf560e40e431959c00b13b702aa5d15751349f6e"
@@ -4222,6 +4223,14 @@ ember-percy@^1.5.0:
     es6-promise-pool "^2.4.1"
     percy-client "^3.0.0"
     walk "^2.3.9"
+
+ember-place-autocomplete@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ember-place-autocomplete/-/ember-place-autocomplete-2.0.0.tgz#ad560a8d6bbb3b95f72513df63d64ba3aaf379c9"
+  integrity sha512-p7qyGQRunM3e2XJXAoUL4kfKpCECElpIYMANPjn/TusPOyrGi6hAvpGTsOLvpmnm5YS5f6WP9nVuWqxILsOwew==
+  dependencies:
+    ember-cli-babel "^7.1.2"
+    ember-cli-htmlbars "^3.0.0"
 
 ember-power-select@^2.3.1:
   version "2.3.1"
