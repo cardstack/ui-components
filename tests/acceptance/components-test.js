@@ -90,4 +90,17 @@ module('Acceptance | components', function(hooks) {
     await click('.ember-power-select-option');
     assert.dom('.ember-power-select-multiple-option').exists({ count: 2 });
   });
+
+  test('email component', async function (assert) {
+    await visit('/freestyle');
+    assert.equal(currentURL(), '/freestyle');
+
+    assert.dom('[data-test-cs-component-email]').exists({ count: 2 });
+    assert.dom('[data-test-cs-component-email] .required').exists({ count: 1 });
+    assert.dom('[data-test-cs-component-email-optional]').exists({ count: 1 });
+    assert.dom('[data-test-cs-component-email-optional]').hasText('Optional');
+    assert.dom('[data-test-cs-component-email] label').hasText('Email Address');
+    assert.dom('[data-test-cs-component-email-validation]').hasText('');
+    assert.dom('[data-test-cs-component-email-validation].hidden').exists({ count: 2 });
+  });
 });
