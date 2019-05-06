@@ -1,0 +1,28 @@
+<div class="cs-component-dropdown__container">
+  {{#if multiple}}
+    {{#power-select-multiple
+      options=options
+      calculatePosition=calculatePosition
+      onchange=(action (mut selected))
+      selected=selected
+      searchField="name"
+      triggerRole="none"
+      id=(concat elementId "-dropdown")
+      as |option|}}
+      {{option.name}}
+    {{/power-select-multiple}}
+  {{else}}
+    {{#power-select
+      options=options
+      calculatePosition=calculatePosition
+      onchange=(action (mut selected))
+      selected=selected
+      searchField="name"
+      triggerRole="none"
+      id=(concat elementId "-dropdown")
+      as |option|}}
+      {{option.name}}
+    {{/power-select}}
+  {{/if}}
+  <label class={{if selected "with-option-selected"}} for={{concat elementId "-dropdown"}}>{{labelText}}</label>
+</div>
