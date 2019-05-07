@@ -3,6 +3,47 @@
   subtitle="Living Style Guide"
   }}
 
+  {{#freestyle-section name="dropdown"}}
+    {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-note "dropdown--notes"}}
+          ```
+          countries = [
+            { name: 'United States' },
+            { name: 'Spain' },
+            { name: 'Portugal' },
+            { name: 'Russia' },
+            { name: 'Latvia' },
+            { name: 'Brazil' },
+            { name: 'United Kingdom' }
+          ];
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown" title="Dropdown"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="with-default-selected"}}
+        {{#freestyle-note "dropdown-with-default-selected--notes"}}
+          ```
+          export default Component.extend({
+            // ...
+            selected: { name: "Spain" }
+          });
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-with-default-selected" title="Dropdown"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" @selected={{selected}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="multi-select"}}
+        {{#freestyle-usage "dropdown-multiple" title="Multiple Select Dropdown"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" @multiple={{true}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
+  {{/freestyle-section}}
+
   {{#freestyle-section name="CTA"}}
     {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
       {{#collection.variant key="primary"}}
@@ -63,4 +104,13 @@
     {{/freestyle-note}}
   {{/freestyle-section}}
 
+  {{#freestyle-section name="Email Input"}}
+    {{#freestyle-usage "email-input-optional" title="Optional"}}
+      <Email @label="Email Address" />
+    {{/freestyle-usage}}
+
+    {{#freestyle-usage "email-input-required" title="Required"}}
+      <Email @label="Email Address" @required={{true}} />
+    {{/freestyle-usage}}
+  {{/freestyle-section}}
 {{/freestyle-guide}}
