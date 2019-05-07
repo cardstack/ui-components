@@ -98,4 +98,13 @@
     {{/freestyle-note}}
   {{/freestyle-section}}
 
+  {{#freestyle-section name="Email Input"}}
+    {{#freestyle-usage "email-input-optional" title="Optional"}}
+      <Email @label="Email Address" />
+    {{/freestyle-usage}}
+
+    {{#freestyle-usage "email-input-required" title="Required"}}
+      <Email @label="Email Address" @required={{true}} />
+    {{/freestyle-usage}}
+  {{/freestyle-section}}
 {{/freestyle-guide}}
