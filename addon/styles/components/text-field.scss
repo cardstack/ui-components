@@ -1,77 +1,122 @@
 .cs-component-text-field {
-  &__input {
-    font-family: inherit;
-    font-size: 18px;
-    font-weight: 300;
-    border-radius: 2px;
-    margin: 0;
-    padding-left: 15px;
-    padding-top: 20px;
-    width: 100%;
-    background: $lighter-gray;
-    transition: padding-top 0.2s ease, margin-top 0.2s ease;
-    overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
-    height: 60px;
-    border: 1px solid $border-gray;
-    box-sizing: border-box;
+  // local variables
+  --cs-component-text-field-border-radius: var(--cs-input-border-radius);
+  --cs-component-text-field-label: var(--cs-input-label);
+  --cs-component-text-field-validation: var(--cs-input-valid);
+  --cs-component-text-field-validation-icon: url('/@cardstack/ui-components/images/check-icon.svg');
+  --cs-component-text-field-validation-icon-size: 1em;
+
+  position: relative;
+  padding-bottom: 3em;
+  font-size: var(--cs-input-font-size);
+}
+
+.cs-component-text-field--input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  padding-left: 15px;
+  padding-top: 20px;
+
+  border: 1px solid var(--cs-input-border);
+  border-radius: var(--cs-component-text-field-border-radius);
+  background-color: var(--cs-input-background);
+  color: var(--cs-input-copy);
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 22px;
+
+  overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
+  -webkit-transition: padding-top 0.2s ease, margin-top 0.2s ease;
+  transition: padding-top 0.2s ease, margin-top 0.2s ease;
+}
+
+.cs-component-text-field--label {
+  display: block;
+  position: relative;
+  height: 0;
+  margin: -10px 15px 0 15px;
+  padding: 0;
+  white-space: nowrap;
+
+  border-bottom: 1px solid var(--cs-input-border);
+}
+
+.cs-component-text-field--label > span {
+  position: absolute;
+  top: -25px;
+  left: 0;
+  margin: 0;
+
+  color: var(--cs-component-text-field-label);
+  line-height: 20px;
+
+  -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+
+.cs-component-text-field--label.active > span {
+  top: -45px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cs-component-text-field--input:focus +
+.cs-component-text-field--label > span {
+  --cs-component-text-field-label: var(--cs-input-label-focus);
+
+  top: -45px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cs-component-text-field--optional {
+  --cs-component-text-field-label: var(--cs-input-label-optional);
+
+  float: right;
+  padding-bottom: 0.3em;
+  color: var(--cs-component-text-field-label);
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  line-height: 14px;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.cs-component-text-field--validation {
+  visibility: visible;
+  position: absolute;
+  max-width: 100%;
+  margin-top: 10px;
+  padding-top: 1em;
+  padding-left: calc(var(--cs-component-text-field-validation-icon-size) + 0.5em);
+
+  background: var(--cs-component-text-field-validation-icon) no-repeat;
+  background-position: top 1.2em left;
+  background-size: var(--cs-component-text-field-validation-icon-size);
+  color: var(--cs-component-text-field-validation);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 14px;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  -webkit-transition: visibility 0.2s ease, background-image 0.2s ease;
+  transition: visibility 0.2s ease, background-image 0.2s ease;
+
+  &.invalid {
+    --cs-component-text-field-validation: var(--cs-input-invalid);
+    --cs-component-text-field-validation-icon: url('/@cardstack/ui-components/images/x-icon.svg');
+
+    visibility: visible;
   }
 
-  &__input + label {
-    display: block;
-    position: relative;
-    white-space: nowrap;
-    padding: 0;
-    margin: -10px 15px 0 15px;
-    height: 0px;
-    border-bottom: 1px solid $border-gray;
-  }
-
-  &__input:valid + label > span {
-    top: -45px;
-    font-size: 12px;
-    color: $gray;
-  }
-
-  &__input:focus + label > span {
-    top: -45px;
-    font-size: 12px;
-    color: $purple;
-  }
-
-  &__input:invalid {
-    box-shadow: none;
-  }
-
-  &__input + label > span {
-    font-weight: 300;
-    margin: 0;
-    position: absolute;
-    color: $gray;
-    font-size: 18px;
-    top: -25px;
-    left: 0;
-    -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-    pointer-events: none;
-  }
-
-  &__optional {
-    float: right;
-    text-transform: uppercase;
-    color: $gray;
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-
-  @-webkit-keyframes appear {
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes appear {
-    100% {
-      opacity: 1;
-    }
+  &.hidden {
+    visibility: collapse;
+    background-image: none;
   }
 }
