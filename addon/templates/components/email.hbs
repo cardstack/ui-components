@@ -6,22 +6,23 @@
 <input
   type="email"
   name="email"
-  id="{{this.elementId}}-input"
+  value={{value}}
+  id="{{elementId}}-input"
   class="cs-component-email--input {{if @required "required"}}"
   required={{@required}}
   autocomplete="off"
   onchange={{action handleInput}}
 >
 <label
-  for="{{this.elementId}}-input"
-  class="cs-component-email--label {{if this.value "active"}}"
+  for="{{elementId}}-input"
+  class="cs-component-email--label {{if value "active"}}"
 >
   <span>{{@label}}</span>
 </label>
 
 <div
-  class="cs-component-email--validation {{if (not this.validationMessage) "hidden"}} {{if invalid "invalid"}}"
+  class="cs-component-email--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}}"
   data-test-cs-component-email-validation
 >
-  {{this.validationMessage}}
+  {{validationMessage}}
 </div>
