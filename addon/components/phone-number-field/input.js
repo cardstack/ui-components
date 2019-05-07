@@ -1,4 +1,5 @@
 import OneWayPhoneMask from 'ember-inputmask/components/one-way-phone-mask';
+import { computed } from '@ember/object';
 
 export default OneWayPhoneMask.extend({
   attributeBindings: [
@@ -6,7 +7,9 @@ export default OneWayPhoneMask.extend({
     '_value:value',
     'required'
   ],
-  options: {
-    showMaskOnHover: false
-  }
+  options: computed(function() {
+    return {
+      showMaskOnHover: false
+    }
+  })
 });
