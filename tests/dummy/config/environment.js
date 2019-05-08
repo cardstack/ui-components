@@ -23,6 +23,10 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['place-autocomplete'] = {
+    key: 'AIzaSyAlsoiNAUx4erqxV5RYkcn30sHSG0K-5n0'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

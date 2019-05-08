@@ -1,11 +1,4 @@
-@mixin pill() {
-  border: 1px solid $border-gray;
-  padding: 0 10px;
-  border-radius: 20px;
-  background: transparent;
-}
-
-.cs-component-dropdown, .cs-component-dropdown--multiple {
+.cs-component-street-address {
   background: $lighter-gray;
   position: relative;
   height: 60px;
@@ -16,6 +9,11 @@
     bottom: 10px;
     left: 0;
     right: 0;
+  }
+
+  &.is-open &__container {
+    left: -1px;
+    right: -1px;
   }
 
   label {
@@ -37,33 +35,38 @@
     }
   }
 
+  &.is-open label {
+    color: $purple;
+    top: -20px;
+    left: 21px;
+    font-size: 12px;
+  }
   .ember-power-select-trigger {
     border: none;
+    outline: none;
     background: $lighter-gray;
     transition: padding-top 0.2s ease, margin-top 0.2s ease;
 
-    &[aria-expanded="true"] ~ label {
-      color: $purple;
-      top: -20px;
-      left: 20px;
-      font-size: 12px;
-    }
+  }
+
+  .ember-power-select-trigger:focus, .ember-power-select-trigger--active {
+    border: none;
+    outline: none;
   }
 
   .ember-power-select-multiple-options {
-    margin-left: 20px;
+    margin-left: 21px;
   }
 
   .ember-power-select-status-icon {
     right: 25px;
   }
 
-  .ember-power-select-selected-item, .ember-power-select-placeholder {
-    margin-left: 20px;
-    @include pill();
+  .ember-power-select-selected-item {
+    margin-left: 21px;
   }
 
-  .ember-power-select-multiple-option {
-    @include pill();
+  .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
+    border-color: $border-gray;
   }
 }
