@@ -3,13 +3,13 @@ import { A } from '@ember/array';
 import FreestyleController from 'ember-freestyle/controllers/freestyle';
 
 const countries = [
-  { name: 'United States' },
-  { name: 'Spain' },
-  { name: 'Portugal' },
-  { name: 'Russia' },
-  { name: 'Latvia' },
-  { name: 'Brazil' },
-  { name: 'United Kingdom' }
+  { name: 'United States', formalName: 'United States of America' },
+  { name: 'Spain', formalName: 'Kingdom of Spain' },
+  { name: 'Portugal', formalName: 'Portuguese Republic' },
+  { name: 'Russia', formalName: 'Russian Federation' },
+  { name: 'Latvia', formalName: 'Republic of Latvia' },
+  { name: 'Brazil', formalName: 'Federative Republic of Brazil' },
+  { name: 'United Kingdom', formalName: 'United Kingdom of Great Britain and Northern Ireland' }
 ];
 
 export default FreestyleController.extend({
@@ -76,6 +76,7 @@ export default Ember.Component.extend({
     { name: 'Green', value: 'green' },
     { name: 'Blue', value: 'blue' }
   ]),
-  
-  doSomething: () => {}
+
+  doSomething: () => {},
+  searchByLengthOfCountryName: async num => Promise.resolve(countries.filter(item => item.name.length === parseInt(num)))
 });

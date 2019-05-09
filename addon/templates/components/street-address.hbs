@@ -1,19 +1,8 @@
 <div class="cs-component-street-address__container">
-  {{#power-select
-    options=predictions
-    onchange=(action (mut selectedPlace))
-    selected=selectedPlace
-    search=(action "requestPredictions")
-    allowClear=true
-    renderInPlace=true
-    ariaLabel=labelText
-    onopen=(action (mut isOpen) true)
-    onclose=(action (mut isOpen) false)
-    id=(concat elementId "-street-address")
-    as |prediction|
-  }}
-
-    {{prediction.description}}
-  {{/power-select}}
-  <label class={{if selectedPlace "with-option-selected"}} for={{concat elementId "-street-address"}}>{{labelText}}</label>
+  <Dropdown
+    @options={{predictions}}
+    @searchAction={{action "requestPredictions"}}
+    @searchField="description"
+    @labelText="Enter a Street Address"
+  />
 </div>

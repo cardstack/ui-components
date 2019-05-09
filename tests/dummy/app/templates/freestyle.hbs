@@ -23,6 +23,24 @@
           <Dropdown @options={{countries}} @labelText="Select a country" />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="custom-search-field"}}
+        {{#freestyle-note "dropdown-custom-search-field--notes"}}
+          ```
+          countries = [
+            { formalName: 'United States of America' },
+            { formalName: 'Kingdom of Spain' },
+            { formalName: 'Portuguese Republic' },
+            { formalName: 'Russian Federation' },
+            { formalName: 'Republic of Latvia' },
+            { formalName: 'Federative Republic of Brazil' },
+            { formalName: 'United Kingdom of Great Britain and Northern Ireland' }
+          ];
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-custom-search-field" title="Dropdown with custom search field"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" @searchField="formalName" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
       {{#collection.variant key="with-default-selected"}}
         {{#freestyle-note "dropdown-with-default-selected--notes"}}
           ```
@@ -32,8 +50,33 @@
           });
           ```
         {{/freestyle-note}}
-        {{#freestyle-usage "dropdown-with-default-selected" title="Dropdown"}}
+        {{#freestyle-usage "dropdown-with-default-selected" title="Dropdown with default selected"}}
           <Dropdown @options={{countries}} @labelText="Select a country" @selected={{selected}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="with-custom-search-action"}}
+        {{#freestyle-note "dropdown-with-custom-search-action--notes"}}
+          ```
+          countries = [
+            { name: 'United States' },
+            { name: 'Spain' },
+            { name: 'Portugal' },
+            { name: 'Russia' },
+            { name: 'Latvia' },
+            { name: 'Brazil' },
+            { name: 'United Kingdom' }
+          ];
+
+          searchByLengthOfCountryName = async num => {
+            return Promise.resolve(countries.filter(item => {
+              return item.name.length === parseInt(num);
+            }));
+          };
+          ```
+          `@searchAction` must be an `async` function that returns an array of items.
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-with-custom-search-action" title="Dropdown with custom search action"}}
+          <Dropdown @searchAction={{action searchByLengthOfCountryName}} @labelText="Enter number of letters" />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multi-select"}}
