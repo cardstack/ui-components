@@ -17,6 +17,25 @@
   }
 }
 
+.application-nav ul {
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.application-nav ul li {
+  display: inline-block;
+}
+
+.application-nav ul li a {
+  text-decoration: none;
+  padding: 10px 20px;
+
+  &.active {
+    background-color: #eee;
+    border-bottom: solid 1px black;
+  }
+}
+
 /* visual testing for theme changes */
 // :root {
 //   --theme-input-font-size: 18px;
