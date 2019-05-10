@@ -8,7 +8,7 @@ export default Component.extend({
   classNames: ['cs-component-street-address'],
   classNameBindings: ['isOpen:is-open'],
   googlePlaceAutocompleteService: service('google-place-autocomplete'),
-  labelText: 'Enter a street address',
+  label: 'Enter a street address',
 
   actions: {
     async requestPredictions(placeServiceInput) {

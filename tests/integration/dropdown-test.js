@@ -22,7 +22,7 @@ module('Integration | Component | dropdown', function(hooks) {
 
   test('it renders the component with custom label text', async function(assert) {
     this.options = [];
-    await render(hbs`<Dropdown @options={{options}} @labelText="Select a Country" />`);
+    await render(hbs`<Dropdown @options={{options}} @label="Select a Country" />`);
 
     assert.dom('[data-test-cs-component-dropdown]').exists();
     assert.dom('.cs-component-dropdown label').hasText('Select a Country');

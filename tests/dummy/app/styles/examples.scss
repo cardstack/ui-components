@@ -1,0 +1,7 @@
+.registration-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  grid-auto-flow: row;
+  max-width: 500px;
+}

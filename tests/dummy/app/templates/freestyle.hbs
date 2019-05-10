@@ -20,7 +20,7 @@
           ```
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown" title="Dropdown"}}
-          <Dropdown @options={{countries}} @labelText="Select a country" />
+          <Dropdown @options={{countries}} @label="Select a country" />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="custom-search-field"}}
@@ -38,7 +38,7 @@
           ```
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-custom-search-field" title="Dropdown with custom search field"}}
-          <Dropdown @options={{countries}} @labelText="Select a country" @searchField="formalName" />
+          <Dropdown @options={{countries}} @label="Select a country" @searchField="formalName" />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="with-default-selected"}}
@@ -51,7 +51,7 @@
           ```
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-with-default-selected" title="Dropdown with default selected"}}
-          <Dropdown @options={{countries}} @labelText="Select a country" @selected={{selected}} />
+          <Dropdown @options={{countries}} @label="Select a country" @selected={{selected}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="with-custom-search-action"}}
@@ -76,12 +76,12 @@
           `@searchAction` must be an `async` function that returns an array of items.
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-with-custom-search-action" title="Dropdown with custom search action"}}
-          <Dropdown @searchAction={{action searchByLengthOfCountryName}} @labelText="Enter number of letters" />
+          <Dropdown @searchAction={{action searchByLengthOfCountryName}} @label="Enter number of letters" />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multi-select"}}
         {{#freestyle-usage "dropdown-multiple" title="Multiple Select Dropdown"}}
-          <Dropdown @options={{countries}} @labelText="Select a country" @multiple={{true}} />
+          <Dropdown @options={{countries}} @label="Select a country" @multiple={{true}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
@@ -153,11 +153,11 @@
 
   {{#freestyle-section name="Street Address"}}
     {{#freestyle-usage "street-address" title="Street Address"}}
-      <StreetAddress @labelText="Enter your address"/>
+      <StreetAddress @label="Enter your address"/>
     {{/freestyle-usage}}
 
     {{#freestyle-note "street-address--notes"}}
-      Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API enabled. Takes an optional `labelText` property (defaults to "Enter a street address").
+      Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API enabled. Takes an optional `label` property (defaults to "Enter a street address").
     {{/freestyle-note}}
   {{/freestyle-section}}
 
