@@ -3,6 +3,90 @@
   subtitle="Living Style Guide"
   }}
 
+  {{#freestyle-section name="dropdown"}}
+    {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-note "dropdown--notes"}}
+          ```
+          countries = [
+            { name: 'United States' },
+            { name: 'Spain' },
+            { name: 'Portugal' },
+            { name: 'Russia' },
+            { name: 'Latvia' },
+            { name: 'Brazil' },
+            { name: 'United Kingdom' }
+          ];
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown" title="Dropdown"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="custom-search-field"}}
+        {{#freestyle-note "dropdown-custom-search-field--notes"}}
+          ```
+          countries = [
+            { formalName: 'United States of America' },
+            { formalName: 'Kingdom of Spain' },
+            { formalName: 'Portuguese Republic' },
+            { formalName: 'Russian Federation' },
+            { formalName: 'Republic of Latvia' },
+            { formalName: 'Federative Republic of Brazil' },
+            { formalName: 'United Kingdom of Great Britain and Northern Ireland' }
+          ];
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-custom-search-field" title="Dropdown with custom search field"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" @searchField="formalName" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="with-default-selected"}}
+        {{#freestyle-note "dropdown-with-default-selected--notes"}}
+          ```
+          export default Component.extend({
+            // ...
+            selected: { name: "Spain" }
+          });
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-with-default-selected" title="Dropdown with default selected"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" @selected={{selected}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="with-custom-search-action"}}
+        {{#freestyle-note "dropdown-with-custom-search-action--notes"}}
+          ```
+          countries = [
+            { name: 'United States' },
+            { name: 'Spain' },
+            { name: 'Portugal' },
+            { name: 'Russia' },
+            { name: 'Latvia' },
+            { name: 'Brazil' },
+            { name: 'United Kingdom' }
+          ];
+
+          searchByLengthOfCountryName = async num => {
+            return Promise.resolve(countries.filter(item => {
+              return item.name.length === parseInt(num);
+            }));
+          };
+          ```
+          `@searchAction` must be an `async` function that returns an array of items.
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-with-custom-search-action" title="Dropdown with custom search action"}}
+          <Dropdown @searchAction={{action searchByLengthOfCountryName}} @labelText="Enter number of letters" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="multi-select"}}
+        {{#freestyle-usage "dropdown-multiple" title="Multiple Select Dropdown"}}
+          <Dropdown @options={{countries}} @labelText="Select a country" @multiple={{true}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
+  {{/freestyle-section}}
+
   {{#freestyle-section name="CTA"}}
     {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
       {{#collection.variant key="primary"}}
@@ -37,6 +121,44 @@
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
+  {{/freestyle-section}}
+
+  {{#freestyle-section name="Choose Items"}}
+    {{#freestyle-usage "choose-one" title="Choose One (Text)"}}
+      <ChooseOne @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
+    {{/freestyle-usage}}
+
+    {{#freestyle-note "text-choose-one--notes"}}
+      Takes an array of primitives or objects, and an optional action to be called when selecting an item.
+    {{/freestyle-note}}
+
+    {{#freestyle-usage "choose-many" title="Choose Many (Text)"}}
+      <ChooseMany @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
+    {{/freestyle-usage}}
+
+    {{#freestyle-note "text-choose-many--notes"}}
+      Takes an array of primitives or objects, and an optional action to be called when selecting an item.
+    {{/freestyle-note}}
+  {{/freestyle-section}}
+
+  {{#freestyle-section name="Email Input"}}
+    {{#freestyle-usage "email-input-optional" title="Optional"}}
+      <Email @label="Email Address" />
+    {{/freestyle-usage}}
+
+    {{#freestyle-usage "email-input-required" title="Required"}}
+      <Email @label="Email Address" @required={{true}} />
+    {{/freestyle-usage}}
+  {{/freestyle-section}}
+
+  {{#freestyle-section name="Street Address"}}
+    {{#freestyle-usage "street-address" title="Street Address"}}
+      <StreetAddress @labelText="Enter your address"/>
+    {{/freestyle-usage}}
+
+    {{#freestyle-note "street-address--notes"}}
+      Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API enabled. Takes an optional `labelText` property (defaults to "Enter a street address").
+    {{/freestyle-note}}
   {{/freestyle-section}}
 
 {{/freestyle-guide}}

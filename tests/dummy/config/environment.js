@@ -23,12 +23,21 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['place-autocomplete'] = {
+    key: 'AIzaSyAlsoiNAUx4erqxV5RYkcn30sHSG0K-5n0'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV['ember-a11y-testing'] = {
+      componentOptions: {
+        turnAuditOff: true
+      }
+    }
   }
 
   if (environment === 'test') {

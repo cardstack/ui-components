@@ -8,8 +8,8 @@ module('Acceptance | accessibility', function(hooks) {
   setupApplicationTest(hooks);
 
   test('accessibility checks', async function(assert) {
-    await visit('/');
-    assert.equal(currentURL(), '/');
+    await visit('/freestyle');
+    assert.equal(currentURL(), '/freestyle');
     await a11yAudit();
     assert.ok(true, 'no a11y errors found!');
   });
