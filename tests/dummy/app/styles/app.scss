@@ -1,6 +1,8 @@
 // TODO This should be imported somewhere in the addon
 @import "ember-power-select";
 
+@import "examples";
+
 .FreestyleGuide {
   .hljs-deletion, .hljs-string, .hljs-built_in, .hljs-builtin-name {
     color: white;

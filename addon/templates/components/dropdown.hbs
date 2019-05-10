@@ -10,7 +10,7 @@
         triggerRole="none"
         allowClear=true
         renderInPlace=true
-        ariaLabel=labelText
+        ariaLabel=label
         onopen=(action (mut isOpen) true)
         onclose=(action (mut isOpen) false)
         id=(concat elementId "-dropdown")
@@ -27,7 +27,7 @@
         triggerRole="none"
         allowClear=true
         renderInPlace=true
-        ariaLabel=labelText
+        ariaLabel=label
         onopen=(action (mut isOpen) true)
         onclose=(action (mut isOpen) false)
         id=(concat elementId "-dropdown")
@@ -45,7 +45,7 @@
         triggerRole="none"
         allowClear=true
         renderInPlace=true
-        ariaLabel=labelText
+        ariaLabel=label
         onopen=(action (mut isOpen) true)
         onclose=(action (mut isOpen) false)
         id=(concat elementId "-dropdown")
@@ -61,7 +61,7 @@
         triggerRole="none"
         allowClear=true
         renderInPlace=true
-        ariaLabel=labelText
+        ariaLabel=label
         onopen=(action (mut isOpen) true)
         onclose=(action (mut isOpen) false)
         id=(concat elementId "-dropdown")
@@ -70,5 +70,5 @@
       {{/power-select}}
     {{/if}}
   {{/if}}
-  <label class={{if selected "with-option-selected"}} for={{concat elementId "-dropdown"}}>{{labelText}}</label>
+  <label class={{if selected "with-option-selected"}} for={{concat elementId "-dropdown"}}>{{label}}</label>
 </div>

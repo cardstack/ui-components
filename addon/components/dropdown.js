@@ -8,6 +8,6 @@ export default Component.extend({
   dataTestName: true,
   selected: null,
   multiple: false,
-  labelText: 'Select an option',
+  label: 'Select an option',
   searchField: 'name'
 });

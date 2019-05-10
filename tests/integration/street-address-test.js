@@ -14,7 +14,7 @@ module('Integration | Component | email', function(hooks) {
   });
 
   test('street address component shows dropdown of address when searching', async function(assert) {
-    await render(hbs`<StreetAddress @labelText="Enter your address" />`);
+    await render(hbs`<StreetAddress @label="Enter your address" />`);
     await clickTrigger('.cs-component-street-address');
     await fillIn('.ember-power-select-search-input', 'abc');
 
@@ -26,7 +26,7 @@ module('Integration | Component | email', function(hooks) {
   });
 
   test('street address component shows no results if no results', async function(assert) {
-    await render(hbs`<StreetAddress @labelText="Enter your address" />`);
+    await render(hbs`<StreetAddress @label="Enter your address" />`);
     await clickTrigger('.cs-component-street-address');
     await fillIn('.ember-power-select-search-input', 'xyz');
 
