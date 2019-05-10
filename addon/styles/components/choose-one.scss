@@ -1,26 +1,26 @@
-.cs-component-choose-one__container {
-  display: inline-grid;
-  grid-auto-flow: column;
-  background-color: $dark-gray;
-  justify-content: start;
-  grid-gap: 1px;
-  align-items: center;
-  border: solid 1px $dark-gray;
-}
-
 .cs-component-choose-one fieldset {
   border: none;
   padding: 0;
 }
 
+.cs-component-choose-one__container {
+  display: inline-grid;
+  grid-auto-flow: column;
+  background-color: var(--cs-input-border);
+  justify-content: start;
+  grid-gap: 1px;
+  align-items: center;
+  border: solid 1px var(--cs-input-border);
+}
+
 .cs-component-choose-one--legend {
-  font-size: 20px;
+  font-size: var(--cs-input-legend-font-size);
   font-weight: 600;
   margin-bottom: 10px;
 }
 
 .cs-component-choose-one.checked .cs-component-choose-one--label:not(.checked) {
-  color: rgba($dark-gray, 0.6);
+  color: var(--cs-input-copy-op60);
 }
 
 .cs-component-choose-one--label {
@@ -29,12 +29,12 @@
   padding: 15px;
   box-sizing: border-box;
   align-self: center;
-  background-color: $lighter-gray;
-  color: $dark-gray;
+  background-color: var(--cs-input-background);
+  color: var(--cs-input-copy);
   text-align: center;
 
   &:hover {
-    background-color: $light-gray;
+    background-color: var(--cs-input-background-hover);
   }
 
   input[type="radio"] {
@@ -43,7 +43,7 @@
 }
 
 .cs-component-choose-one--label.checked {
-  background-color: $gray;
+  background-color: var(--cs-input-selected);
   color: white;
 
   .cs-component-choose-one--name:after {
