@@ -55,6 +55,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
     ENV.rootURL = '/ui-components';
+    ENV.locationType = 'hash';
   }
 
   return ENV;
