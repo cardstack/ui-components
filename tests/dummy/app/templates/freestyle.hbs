@@ -125,19 +125,19 @@
 
   {{#freestyle-section name="Choose Items"}}
     {{#freestyle-usage "choose-one" title="Choose One (Text)"}}
-      <ChooseOne @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
+      <ChooseOne @legend="What is your Favorite Color?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
 
     {{#freestyle-note "text-choose-one--notes"}}
-      Takes an array of primitives or objects, and an optional action to be called when selecting an item.
+      Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
 
     {{#freestyle-usage "choose-many" title="Choose Many (Text)"}}
-      <ChooseMany @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
+      <ChooseMany @legend="What combination makes Purple?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
 
     {{#freestyle-note "text-choose-many--notes"}}
-      Takes an array of primitives or objects, and an optional action to be called when selecting an item.
+      Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
   {{/freestyle-section}}
 
