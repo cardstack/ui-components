@@ -7,7 +7,7 @@ module('Integration | Component | choose-one', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders the component with no choices', async function(assert) {
-    await render(hbs`{{choose-one}}`);
+    await render(hbs`<ChooseOne />`);
 
     assert.dom('[data-test-cs-component-choose-one]').exists();
     assert.dom('[data-test-choose-item]').doesNotExist();
@@ -15,7 +15,7 @@ module('Integration | Component | choose-one', function(hooks) {
 
   test('it renders the component with an array of strings', async function(assert) {
     this.set('choices', ['red', 'yellow', 'green', 'blue']);
-    await render(hbs`{{choose-one choices=choices}}`);
+    await render(hbs`<ChooseOne @choices={{choices}} />`);
 
     assert.dom('[data-test-cs-component-choose-one]').exists();
     assert.dom('.cs-component-choose-one--label').exists({ count: 4 });
@@ -32,7 +32,7 @@ module('Integration | Component | choose-one', function(hooks) {
       { name: 'Green', value: 'green' },
       { name: 'Blue', value: 'blue' }
     ]);
-    await render(hbs`{{choose-one choices=choices}}`);
+    await render(hbs`<ChooseOne @choices={{choices}} />`);
 
     assert.dom('[data-test-cs-component-choose-one]').exists();
     assert.dom('.cs-component-choose-one--label').exists({ count: 4 });
@@ -42,9 +42,18 @@ module('Integration | Component | choose-one', function(hooks) {
     assert.dom('[data-test-choice-value="blue"]').hasText('Blue');
   });
 
+  test('it displays a legend', async function(assert) {
+    this.set('choices', ['red', 'yellow', 'green', 'blue']);
+    await render(hbs`<ChooseOne @choices={{choices}} @legend="Favorite Color" />`);
+
+    assert.dom('[data-test-cs-component-choose-one]').exists();
+    assert.dom('.cs-component-choose-one--label').exists({ count: 4 });
+    assert.dom('.cs-component-choose-one--legend').hasText('Favorite Color');
+  });
+
   test('clicking on an item marks it as checked', async function(assert) {
     this.set('choices', ['red', 'yellow', 'green', 'blue']);
-    await render(hbs`{{choose-one choices=choices}}`);
+    await render(hbs`<ChooseOne @choices={{choices}} />`);
 
     assert.dom('.cs-component-choose-one--label.checked').doesNotExist();
     assert.dom('[data-test-cs-component-choose-one].checked').doesNotExist();
@@ -68,7 +77,7 @@ module('Integration | Component | choose-one', function(hooks) {
     this.set('selectionChanged', (choice) => {
       assert.equal(choice, 'green');
     });
-    await render(hbs`{{choose-one choices=choices selectionChanged=selectionChanged}}`);
+    await render(hbs`<ChooseOne @choices={{choices}} @selectionChanged={{selectionChanged}} />`);
 
     await click('[data-test-choice-value="green"]');
   });

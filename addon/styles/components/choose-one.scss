@@ -1,4 +1,4 @@
-.cs-component-choose-one {
+.cs-component-choose-one__container {
   display: inline-grid;
   grid-auto-flow: column;
   background-color: $dark-gray;
@@ -6,7 +6,17 @@
   grid-gap: 1px;
   align-items: center;
   border: solid 1px $dark-gray;
+}
 
+.cs-component-choose-one fieldset {
+  border: none;
+  padding: 0;
+}
+
+.cs-component-choose-one--legend {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .cs-component-choose-one.checked .cs-component-choose-one--label:not(.checked) {
