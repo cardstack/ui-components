@@ -1,15 +1,15 @@
 @mixin pill() {
-  border: 1px solid $border-gray;
+  border: 1px solid var(--cs-input-border);
   padding: 0 10px;
   border-radius: 20px;
   background: transparent;
 }
 
 .cs-component-dropdown, .cs-component-dropdown--multiple {
-  background: $lighter-gray;
+  background-color: var(--cs-input-background);
   position: relative;
   height: 60px;
-  border: 1px solid $border-gray;
+  border: 1px solid var(--cs-input-border);
 
   &__container {
     position: absolute;
@@ -23,42 +23,44 @@
     right: -1px;
   }
 
-  label {
-    color: $gray;
+  .cs-component-dropdown--label {
+    color: var(--cs-input-label);
     z-index: 1;
     position: absolute;
     bottom: -1px;
-    left: 20px;
-    right: 20px;
-    border-bottom: 1px solid $border-gray;
+    left: var(--cs-input-padding-horizontal);
+    right: var(--cs-input-padding-horizontal);
+    border-bottom: 1px solid var(--cs-input-border);
     pointer-events: none;
     -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
     transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
 
     &.with-option-selected {
-      top: -20px;
-      left: 20px;
+      top: calc(0px - var(--cs-input-padding-vertical));
+      left: var(--cs-input-padding-horizontal);
       font-size: 12px;
+      font-weight: 600;
     }
   }
 
-  &.is-open label {
-    color: $purple;
-    top: -20px;
-    left: 21px;
+  &.is-open .cs-component-dropdown--label {
+    color: var(--cs-input-label-focus);
+    top: calc(0px - var(--cs-input-padding-vertical));
+    left: calc(var(--cs-input-padding-horizontal) + 1px);
     font-size: 12px;
+    font-weight: 600;
   }
 
   .ember-power-select-trigger {
     border: none;
     outline: none;
-    background: $lighter-gray;
+    background-color: var(--cs-input-background);
     transition: padding-top 0.2s ease, margin-top 0.2s ease;
   }
 
   &.is-open .ember-power-select-multiple-trigger {
-    border-left: 1px solid #c3c3c3;
-    border-right: 1px solid #c3c3c3;
+    border-left: 1px solid var(--cs-input-border);
+    border-right: 1px solid var(--cs-input-border);
     border-radius: 0;
   }
 
@@ -68,11 +70,7 @@
   }
 
   .ember-power-select-multiple-options {
-    margin-left: 20px;
-  }
-
-  &.is-open .ember-power-select-multiple-options {
-    margin-left: 21px;
+    margin-left: var(--cs-input-padding-horizontal);
   }
 
   .ember-power-select-status-icon {
@@ -80,11 +78,11 @@
   }
 
   .ember-power-select-selected-item {
-    margin-left: 21px;
+    margin-left: calc(var(--cs-input-padding-horizontal) + 1px);
   }
 
   .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
-    border-color: $border-gray;
+    border-color: var(--cs-input-border);
   }
 
   .ember-power-select-multiple-option {
@@ -94,7 +92,7 @@
 
 #ember-basic-dropdown-wormhole, .ember-basic-dropdown-content--in-place {
   .ember-power-select-search {
-    padding: 0 20px;
+    padding: 0 var(--cs-input-padding-horizontal);
   }
 
   .ember-power-select-option--search-message {
@@ -104,7 +102,7 @@
   .ember-power-select-search-input {
     border: none;
     outline: none;
-    background: $lighter-gray;
+    background: var(--cs-input-background);
     padding: 4px;
     height: 32px;
   }
@@ -114,19 +112,19 @@
   }
 
   .ember-power-select-options {
-    background: $lighter-gray;
+    background: var(--cs-input-background);
     border: none;
     margin-top: 6px;
     border-radius: 0;
   }
 
   .ember-power-select-option {
-    padding: 6px 20px;
-    border-bottom: 1px solid $border-gray;
+    padding: 6px var(--cs-input-padding-horizontal);
+    border-bottom: 1px solid var(--cs-input-border);
     font-size: 13px;
 
     &[aria-current=true] {
-      background: $gray;
+      background: var(--cs-input-selected);
     }
   }
 
@@ -135,6 +133,6 @@
   }
 }
 
-.cs-component-dropdown   .ember-power-select-dropdown {
+.cs-component-dropdown .ember-power-select-dropdown {
   top: 0;
 }
