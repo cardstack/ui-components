@@ -1,0 +1,17 @@
+.registration-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  grid-auto-flow: row;
+  max-width: 600px;
+  padding: 20px;
+  border: solid 1px black;
+}
+
+.registration-form .cs-component-choose-one--label {
+  width: 130px;
+}
+
+.ui-components-example {
+  margin-left: 60px;
+}

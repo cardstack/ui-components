@@ -18,6 +18,11 @@
     right: 0;
   }
 
+  &.is-open &__container {
+    left: -1px;
+    right: -1px;
+  }
+
   label {
     color: $gray;
     z-index: 1;
@@ -37,30 +42,49 @@
     }
   }
 
+  &.is-open label {
+    color: $purple;
+    top: -20px;
+    left: 21px;
+    font-size: 12px;
+  }
+
   .ember-power-select-trigger {
     border: none;
+    outline: none;
     background: $lighter-gray;
     transition: padding-top 0.2s ease, margin-top 0.2s ease;
+  }
 
-    &[aria-expanded="true"] ~ label {
-      color: $purple;
-      top: -20px;
-      left: 20px;
-      font-size: 12px;
-    }
+  &.is-open .ember-power-select-multiple-trigger {
+    border-left: 1px solid #c3c3c3;
+    border-right: 1px solid #c3c3c3;
+    border-radius: 0;
+  }
+
+  .ember-power-select-trigger:focus, .ember-power-select-trigger--active {
+    border: none;
+    outline: none;
   }
 
   .ember-power-select-multiple-options {
     margin-left: 20px;
   }
 
+  &.is-open .ember-power-select-multiple-options {
+    margin-left: 21px;
+  }
+
   .ember-power-select-status-icon {
     right: 25px;
   }
 
-  .ember-power-select-selected-item, .ember-power-select-placeholder {
-    margin-left: 20px;
-    @include pill();
+  .ember-power-select-selected-item {
+    margin-left: 21px;
+  }
+
+  .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
+    border-color: $border-gray;
   }
 
   .ember-power-select-multiple-option {
@@ -68,14 +92,19 @@
   }
 }
 
-#ember-basic-dropdown-wormhole {
+#ember-basic-dropdown-wormhole, .ember-basic-dropdown-content--in-place {
   .ember-power-select-search {
     padding: 0 20px;
   }
 
+  .ember-power-select-option--search-message {
+    display: none;
+  }
+
   .ember-power-select-search-input {
     border: none;
-    background: #e2e2e2; // TODO Put in variable
+    outline: none;
+    background: $lighter-gray;
     padding: 4px;
     height: 32px;
   }
@@ -85,10 +114,9 @@
   }
 
   .ember-power-select-options {
-    margin-top: 11px;
     background: $lighter-gray;
-    border: 1px solid $border-gray;
-    border-top: none;
+    border: none;
+    margin-top: 6px;
     border-radius: 0;
   }
 
@@ -102,8 +130,11 @@
     }
   }
 
-  .ember-basic-dropdown-content {
+  .ember-basic-dropdown-content, &.ember-basic-dropdown-content {
     background: transparent;
   }
+}
 
+.cs-component-dropdown   .ember-power-select-dropdown {
+  top: 0;
 }

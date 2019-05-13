@@ -1,28 +1,74 @@
 <div class="cs-component-dropdown__container">
-  {{#if multiple}}
-    {{#power-select-multiple
-      options=options
-      calculatePosition=calculatePosition
-      onchange=(action (mut selected))
-      selected=selected
-      searchField="name"
-      triggerRole="none"
-      id=(concat elementId "-dropdown")
-      as |option|}}
-      {{option.name}}
-    {{/power-select-multiple}}
+  {{#if searchAction}}
+    {{#if multiple}}
+      {{#power-select-multiple
+        options=options
+        onchange=(action (mut selected))
+        selected=selected
+        search=(action searchAction)
+        searchField=searchField
+        triggerRole="none"
+        allowClear=true
+        renderInPlace=true
+        ariaLabel=label
+        onopen=(action (mut isOpen) true)
+        onclose=(action (mut isOpen) false)
+        id=(concat elementId "-dropdown")
+        as |option|}}
+        {{get option searchField}}
+      {{/power-select-multiple}}
+    {{else}}
+      {{#power-select
+        options=options
+        onchange=(action (mut selected))
+        selected=selected
+        search=(action searchAction)
+        searchField=searchField
+        triggerRole="none"
+        allowClear=true
+        renderInPlace=true
+        ariaLabel=label
+        onopen=(action (mut isOpen) true)
+        onclose=(action (mut isOpen) false)
+        id=(concat elementId "-dropdown")
+        as |option|}}
+        {{get option searchField}}
+      {{/power-select}}
+    {{/if}}
   {{else}}
-    {{#power-select
-      options=options
-      calculatePosition=calculatePosition
-      onchange=(action (mut selected))
-      selected=selected
-      searchField="name"
-      triggerRole="none"
-      id=(concat elementId "-dropdown")
-      as |option|}}
-      {{option.name}}
-    {{/power-select}}
+    {{#if multiple}}
+      {{#power-select-multiple
+        options=options
+        onchange=(action (mut selected))
+        selected=selected
+        searchField=searchField
+        triggerRole="none"
+        allowClear=true
+        renderInPlace=true
+        ariaLabel=label
+        onopen=(action (mut isOpen) true)
+        onclose=(action (mut isOpen) false)
+        id=(concat elementId "-dropdown")
+        as |option|}}
+        {{get option searchField}}
+      {{/power-select-multiple}}
+    {{else}}
+      {{#power-select
+        options=options
+        onchange=(action (mut selected))
+        selected=selected
+        searchField=searchField
+        triggerRole="none"
+        allowClear=true
+        renderInPlace=true
+        ariaLabel=label
+        onopen=(action (mut isOpen) true)
+        onclose=(action (mut isOpen) false)
+        id=(concat elementId "-dropdown")
+        as |option|}}
+        {{get option searchField}}
+      {{/power-select}}
+    {{/if}}
   {{/if}}
-  <label class={{if selected "with-option-selected"}} for={{concat elementId "-dropdown"}}>{{labelText}}</label>
+  <label class={{if selected "with-option-selected"}} for={{concat elementId "-dropdown"}}>{{label}}</label>
 </div>

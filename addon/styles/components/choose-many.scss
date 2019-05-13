@@ -1,4 +1,4 @@
-.cs-component-choose-many {
+.cs-component-choose-many__container {
   display: inline-grid;
   grid-auto-flow: column;
   background-color: $dark-gray;
@@ -8,8 +8,15 @@
   border: solid 1px $dark-gray;
 }
 
-.cs-component-choose-many.checked .cs-component-choose-many--label:not(.checked) {
-  color: rgba($dark-gray, 0.6);
+.cs-component-choose-many fieldset {
+  border: none;
+  padding: 0;
+}
+
+.cs-component-choose-many--legend {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .cs-component-choose-many--label {

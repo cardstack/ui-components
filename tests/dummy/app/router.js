@@ -8,6 +8,9 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('freestyle');
+  this.route('examples', function() {
+    this.route('registration');
+  });
 });
 
 export default Router;
