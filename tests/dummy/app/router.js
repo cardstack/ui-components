@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('freestyle');
   this.route('examples', function() {
     this.route('registration');
+    this.route('contact-info');
   });
 });
 

@@ -1,11 +1,15 @@
-<h2>Cardstack Registration</h2>
+<section class="ui-components-example-group">
+  <h2 class="ui-components-example-group--title">Cardstack Registration</h2>
 
-<h3>Please fill out this simple form to register for Cardstack</h3>
+  <div class="ui-components-example-group--prompt">
+    <h3>Please fill out this simple form to register for Cardstack</h3>
+  </div>
 
-<div class="registration-form">
-  <TextField @label="Full Name" @required={{true}} />
-  <StreetAddress @label="Street Address" />
-  <Email @label="Email" @required={{true}} />
-  <ChooseOne @choices={{sourceOptions}} @legend="How did you hear about Cardstack?" />
-  <Cta>Submit</Cta>
-</div>
+  <div class="ui-components-example-form registration">
+    <TextField @label="Full Name" @required={{true}} />
+    <StreetAddress @label="Street Address" />
+    <Email @label="Email" @required={{true}} />
+    <ChooseOne @choices={{sourceOptions}} @legend="How did you hear about Cardstack?" />
+    <Cta>Submit</Cta>
+  </div>
+</section>
