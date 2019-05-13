@@ -1,5 +1,39 @@
 {{#unless required}}
-  <span class="cs-component-text-field__optional">Optional</span>
+  <span class="cs-component-text-field-optional" data-test-cs-component-text-field-optional>Optional</span>
 {{/unless}}
-<input type="text" name="name" class="cs-component-text-field__input" id={{inputId}} required autocomplete="off">
-<label for={{inputId}}><span>{{label}}</span></label>
+
+{{#if inputComponent}}
+  {{component inputComponent
+    class="cs-component-text-field--input"
+    required=required
+    _value=value
+    focusOut=(action "handleInput")
+    update=(action (mut value))
+    id=inputId
+  }}
+{{else}}
+  <input
+    type={{type}}
+    name="name"
+    value={{value}}
+    class="cs-component-text-field--input {{if required "required"}}"
+    id={{inputId}}
+    required={{required}}
+    autocomplete="off"
+    onchange={{action "handleInput"}}
+  >
+{{/if}}
+
+<label
+  for={{inputId}}
+  class="cs-component-text-field--label {{if value "active"}}"
+>
+  <span>{{label}}</span>
+</label>
+
+<div
+  class="cs-component-text-field--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}}"
+  data-test-cs-component-text-field-validation
+>
+  {{validationMessage}}
+</div>
