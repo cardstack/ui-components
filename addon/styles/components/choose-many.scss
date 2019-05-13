@@ -1,3 +1,13 @@
+.cs-component-choose-many {
+  --cs-component-choose-many-background: var(--cs-input-background);
+  --cs-component-choose-many-copy: var(--cs-input-copy);
+}
+
+.cs-component-choose-many fieldset {
+  border: none;
+  padding: 0;
+}
+
 .cs-component-choose-many__container {
   display: inline-grid;
   grid-auto-flow: column;
@@ -6,11 +16,6 @@
   grid-gap: 1px;
   align-items: center;
   border: solid 1px var(--cs-input-border);
-}
-
-.cs-component-choose-many fieldset {
-  border: none;
-  padding: 0;
 }
 
 .cs-component-choose-many--legend {
@@ -25,12 +30,12 @@
   padding: 15px;
   box-sizing: border-box;
   align-self: center;
-  background-color: var(--cs-input-background);
-  color: var(--cs-input-copy);
+  background-color: var(--cs-component-choose-many-background);
+  color: var(--cs-component-choose-many-copy);
   text-align: center;
 
   &:hover {
-    background-color: var(--cs-input-background-hover);
+    --cs-component-choose-many-background: var(--cs-input-background-hover);
   }
 
   input[type="checkbox"] {
@@ -39,8 +44,8 @@
 }
 
 .cs-component-choose-many--label.checked {
-  background-color: var(--cs-input-selected);
-  color: white;
+  --cs-component-choose-many-background: var(--cs-input-selected);
+  --cs-component-choose-many-copy: white;
 
   .cs-component-choose-many--name:after {
     display: inline-block;

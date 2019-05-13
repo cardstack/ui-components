@@ -1,3 +1,8 @@
+.cs-component-choose-one {
+  --cs-component-choose-one-background: var(--cs-input-background);
+  --cs-component-choose-one-copy: var(--cs-input-copy);
+}
+
 .cs-component-choose-one fieldset {
   border: none;
   padding: 0;
@@ -20,7 +25,7 @@
 }
 
 .cs-component-choose-one.checked .cs-component-choose-one--label:not(.checked) {
-  color: var(--cs-input-copy-op60);
+  --cs-component-choose-one-copy: var(--cs-input-copy-op60);
 }
 
 .cs-component-choose-one--label {
@@ -29,12 +34,12 @@
   padding: 15px;
   box-sizing: border-box;
   align-self: center;
-  background-color: var(--cs-input-background);
-  color: var(--cs-input-copy);
+  background-color: var(--cs-component-choose-one-background);
+  color: var(--cs-component-choose-one-copy);
   text-align: center;
 
   &:hover {
-    background-color: var(--cs-input-background-hover);
+    --cs-component-choose-one-background: var(--cs-input-background-hover);
   }
 
   input[type="radio"] {
@@ -43,8 +48,8 @@
 }
 
 .cs-component-choose-one--label.checked {
-  background-color: var(--cs-input-selected);
-  color: white;
+  --cs-component-choose-one-background: var(--cs-input-selected);
+  --cs-component-choose-one-copy: white;
 
   .cs-component-choose-one--name:after {
     display: inline-block;
