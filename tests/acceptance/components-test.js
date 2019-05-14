@@ -1,9 +1,10 @@
 import { module, test } from 'qunit';
-import { visit, currentURL, click } from '@ember/test-helpers';
+import { visit, currentURL, click, fillIn } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
 import a11yAudit from 'ember-a11y-testing/test-support/audit';
 import { selectChoose, typeInSearch, clickTrigger } from 'ember-power-select/test-support/helpers'
+import moment from 'moment';
 
 module('Acceptance | components', function(hooks) {
   setupApplicationTest(hooks);
@@ -102,5 +103,43 @@ module('Acceptance | components', function(hooks) {
     assert.dom('[data-test-cs-component-email] label').hasText('Email Address');
     assert.dom('[data-test-cs-component-email] [data-test-cs-component-text-field-validation]').hasText('');
     assert.dom('[data-test-cs-component-email] [data-test-cs-component-text-field-validation].hidden').exists({ count: 2 });
+  });
+
+  test('date picker component', async function (assert) {
+    let month = moment().format('MMMM');
+    let year = moment().format('YYYY');
+
+    await visit('/freestyle?s=date-picker');
+    assert.equal(currentURL(), '/freestyle?s=date-picker');
+
+    assert.dom('[data-test-cs-component-date]').exists();
+    assert.dom('[data-test-cs-component-date] label').hasText('Date');
+    assert.dom('[data-test-cs-component-date] input').hasAttribute('placeholder', 'mm-dd-yyyy');
+    assert.dom('.cs-component-calendar').doesNotExist();
+
+    await click('[data-test-cs-component-date] input');
+
+    assert.dom('.cs-component-calendar').exists();
+    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText(month);
+    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText(year);
+    assert.dom('.ember-power-calendar-day--selected').doesNotExist();
+
+    await clickTrigger('[data-test-cs-component-calendar-nav-months]');
+    await click('[data-option-index="1"]');
+    await clickTrigger('[data-test-cs-component-calendar-nav-years]');
+    await click('[data-option-index="77"]');
+
+    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText('February');
+    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText('2017');
+
+    await click('[data-date="2017-02-07"]');
+
+    assert.dom('.cs-component-calendar').doesNotExist();
+    assert.dom('[data-test-cs-component-date] input').hasValue('02-07-2017');
+
+    await fillIn('[data-test-cs-component-date] input', '4-10-1990');
+    await click('[data-test-cs-component-date] input');
+
+    assert.dom('[data-date="1990-04-10"].ember-power-calendar-day--selected').exists();
   });
 });

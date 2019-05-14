@@ -1,0 +1,23 @@
+.cs-component-calendar.ember-basic-dropdown-content {
+  top: 25px;
+  background: #fff;
+  border: 1px solid var(--cs-input-border);
+  border-radius: var(--cs-input-border-radius);
+
+  .ember-power-calendar-day {
+    padding: 1em;
+  }
+}
+
+.cs-component-calendar--nav-title {
+  display: flex;
+}
+
+.cs-component-calendar--nav-dropdown {
+  flex: 1;
+
+  > .ember-power-select-trigger {
+    background: transparent;
+    border: none;
+  }
+}
