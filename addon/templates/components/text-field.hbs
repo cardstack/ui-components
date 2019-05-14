@@ -24,6 +24,10 @@
   >
 {{/if}}
 
+{{#if icon}}
+  <i onclick={{action "handleIconClick"}}>t</i>
+{{/if}}
+
 <label
   for={{inputId}}
   class="cs-component-text-field--label {{if value "active"}}"

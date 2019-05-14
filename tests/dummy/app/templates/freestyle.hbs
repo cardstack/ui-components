@@ -129,6 +129,12 @@
     {{/freestyle-usage}}
   {{/freestyle-section}}
 
+  {{#freestyle-section name="Password Field"}}
+    {{#freestyle-usage "password-field-default" title="Password Field"}}
+      <PasswordField />
+    {{/freestyle-usage}}
+  {{/freestyle-section}}
+
   {{#freestyle-section name="Choose Items"}}
     {{#freestyle-usage "choose-one" title="Choose One (Text)"}}
       <ChooseOne @legend="What is your Favorite Color?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
