@@ -3,7 +3,7 @@
   --cs-component-text-field-border-radius: var(--cs-input-border-radius);
   --cs-component-text-field-label: var(--cs-input-label);
   --cs-component-text-field-validation: var(--cs-input-valid);
-  --cs-component-text-field-validation-icon: url('/images/check-icon.svg');
+  --cs-component-text-field-validation-icon: url('images/check-icon.svg');
   --cs-component-text-field-validation-icon-size: 1em;
 
   position: relative;
@@ -110,7 +110,7 @@
 
   &.invalid {
     --cs-component-text-field-validation: var(--cs-input-invalid);
-    --cs-component-text-field-validation-icon: url('/images/x-icon.svg');
+    --cs-component-text-field-validation-icon: url('images/x-icon.svg');
 
     visibility: visible;
   }

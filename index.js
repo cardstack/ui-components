@@ -1,6 +1,7 @@
 'use strict';
 const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
+const join = require('path').join;
 
 module.exports = {
   name: require('./package').name,
@@ -10,10 +11,13 @@ module.exports = {
   included: function(/* app */) {
     this._super.included.apply(this, arguments);
   },
-  treeForPublic: function(tree) {
-    const assetsTree = new Funnel('public');
-    return mergeTrees([tree, assetsTree], {
-      overwrite: true,
+
+  treeForPublic: function() {
+    const imagesDir = new Funnel(join(this.root, 'public'), {
+      include: ['**/*'],
+      destDir: '/assets'
     });
+
+    return mergeTrees([imagesDir]);
   }
 };
