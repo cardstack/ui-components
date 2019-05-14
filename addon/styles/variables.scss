@@ -8,6 +8,7 @@ $border-gray: #707070;
 $purple: #6a3ca3;
 $green: #58c949;
 $pink: #ff5c5c;
+$light-blue: rgb(59, 153, 252);
 
 
 // global properties
@@ -29,6 +30,7 @@ $pink: #ff5c5c;
   --cs-input-label: var(--theme-input-label, #{$gray});
   --cs-input-label-focus: var(--theme-input-label-focus, #{$purple});
   --cs-input-label-optional: var(--theme-input-label-optional, #{$gray});
+  --cs-input-outline-color: var(--theme-input-outline-color, #{$light-blue});
 
   // spacing
   --cs-input-padding-horizontal: var(--theme-input-padding-horizontal, 15px);

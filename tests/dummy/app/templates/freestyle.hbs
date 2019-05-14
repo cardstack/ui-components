@@ -157,6 +157,20 @@
     {{/freestyle-usage}}
   {{/freestyle-section}}
 
+  {{#freestyle-section name="Checkbox (boolean)"}}
+    {{#freestyle-usage "checkbox-optional" title="Optional"}}
+      <Checkbox @label="Include a free gift in my order" />
+    {{/freestyle-usage}}
+
+    {{#freestyle-usage "checkbox-required" title="Required"}}
+      <Checkbox @label="I accept the Cardstack Terms of Service" @required={{true}} />
+    {{/freestyle-usage}}
+
+    {{#freestyle-usage "checkbox-default-checked" title="Default Checked"}}
+      <Checkbox @label="I would like to subscribe to your newsletter" @checked={{true}} />
+    {{/freestyle-usage}}
+  {{/freestyle-section}}
+
   {{#freestyle-section name="Street Address"}}
     {{#freestyle-usage "street-address" title="Street Address"}}
       <StreetAddress @label="Enter your address"/>
