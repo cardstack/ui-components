@@ -5,7 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 import { clickTrigger, selectChoose } from 'ember-power-select/test-support/helpers';
 import MockAddressService from '../helpers/mock-address-service';
 
-module('Integration | Component | email', function(hooks) {
+module('Integration | Component | street address', function(hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(async function() {
