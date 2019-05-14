@@ -58,11 +58,16 @@ before_install:
 
 script:
   - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
+  - npm run build -- -prod # build app and prepare dist folder
 
+
+# deploy master branch to GitHub pages
 deploy:
-  # deploy app to gh pages when pushing to master
-  - provider: script
-    skip_cleanup: true
-    script: ember deploy production
-    on:
-      branch: master
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
+  local-dir: dist
+  verbose: true
