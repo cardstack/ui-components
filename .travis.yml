@@ -40,6 +40,7 @@ jobs:
         - npm run lint:hbs
         - npm run lint:js
         - npm test
+        - npm run build -- -prod # build app and prepare dist folder
 
     # we recommend new addons test the current and previous LTS
     # as well as latest stable release (bonus points to beta/canary)
@@ -58,8 +59,6 @@ before_install:
 
 script:
   - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
-  - npm run build -- -prod # build app and prepare dist folder
-
 
 # deploy master branch to GitHub pages
 deploy:
