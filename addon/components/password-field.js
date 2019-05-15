@@ -8,10 +8,12 @@ export default TextField.extend({
   classNames: ['cs-component-password-field'],
   type: 'password',
   iconComponent: 'password-field/visibility-toggle',
+  successMessage: 'Thank you.',
   minLength: 6,
   mustIncludeUppercase: false,
   mustIncludeLowercase: false,
   mustIncludeNumber: false,
+  mustIncludeSpecialCharacter: false,
 
   actions: {
     handleInput(ev) {
@@ -23,34 +25,45 @@ export default TextField.extend({
       }
 
       if (typeof this.validate === 'function') {
-        let val = this.validate(value);
-        this.set('invalid', !val);
-        if (this.invalid) {
-          this.set('validationMessage', 'Password must pass validations from the custom validate function.');
-        } else {
-          this.set('validationMessage', 'Thank you.');
-        }
-        return;
+        let { valid, message } = this.validate(value);
+        let validationMessage;
+
+        this.set('invalid', !valid);
+        validationMessage = this.invalid ? message : this.successMessage;
+
+        return this.set('validationMessage', validationMessage);
       }
 
       if (value.length < this.minLength) {
-        this.set('invalid', true);
-        this.set('validationMessage', `Password must be at least ${this.minLength} characters`);
+        this.setProperties({
+          invalid: true,
+          validationMessage: `Password must be at least ${this.minLength} characters`
+        });
       } else if (this.mustIncludeUppercase && !UPPERCASE_REGEX.test(value)) {
-        this.set('invalid', true);
-        this.set('validationMessage', 'Password must include at least one uppercase character.');
+        this.setProperties({
+          invalid: true,
+          validationMessage: 'Password must include at least one uppercase character.'
+        });
       } else if (this.mustIncludeLowercase && !LOWERCASE_REGEX.test(value)) {
-        this.set('invalid', true);
-        this.set('validationMessage', 'Password must include at least one lowercase character.');
+        this.setProperties({
+          invalid: true,
+          validationMessage: 'Password must include at least one lowercase character.'
+        });
       } else if (this.mustIncludeNumber && !/\d/.test(value)) {
-        this.set('invalid', true);
-        this.set('validationMessage', 'Password must include at least one number.');
+        this.setProperties({
+          invalid: true,
+          validationMessage: 'Password must include at least one number.'
+        });
       } else if (this.mustIncludeSpecialCharacter && !SPECIAL_CHARACTER_REGEX.test(value)) {
-        this.set('invalid', true);
-        this.set('validationMessage', 'Password must include at least one special character.');
+        this.setProperties({
+          invalid: true,
+          validationMessage: 'Password must include at least one special character.'
+        });
       } else {
-        this.set('invalid', false);
-        this.set('validationMessage', 'Thank you.');
+        this.setProperties({
+          invalid: false,
+          validationMessage: this.successMessage
+        });
       }
     }
   }

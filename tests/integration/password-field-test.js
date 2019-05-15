@@ -104,14 +104,17 @@ module('Integration | Component | password-field', function(hooks) {
 
   test('it accepts a custom validate function', async function (assert) {
     this.set('validate', function(value) {
-      return value === 'c4rdst4ck';
+      return {
+        valid: value === 'c4rdst4ck',
+        message: 'Password must be c4rdst4ck'
+      };
     });
     await render(hbs`<PasswordField @validate={{validate}} />`);
     await fillIn('[data-test-cs-component-text-field] input', 'XYZSFA');
 
     assert.dom('[data-test-cs-component-text-field-validation]').hasClass('invalid');
     assert.dom('[data-test-cs-component-text-field-validation]').doesNotHaveClass('hidden');
-    assert.dom('[data-test-cs-component-text-field-validation]').containsText('must pass validations from the custom validate function')
+    assert.dom('[data-test-cs-component-text-field-validation]').containsText('must be c4rdst4ck')
 
     await fillIn('[data-test-cs-component-text-field] input', 'c4rdst4ck');
 
