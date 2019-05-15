@@ -41,6 +41,16 @@ jobs:
         - npm run lint:js
         - npm test
         - npm run build -- -prod # build app and prepare dist folder
+      # deploy master branch to GitHub pages
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        keep-history: true
+        on:
+          branch: master
+        local-dir: dist
+        verbose: true
 
     # we recommend new addons test the current and previous LTS
     # as well as latest stable release (bonus points to beta/canary)
@@ -59,15 +69,3 @@ before_install:
 
 script:
   - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
-
-# deploy master branch to GitHub pages
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  keep-history: true
-  on:
-    branch: master
-    condition: ! $EMBER_TRY_SCENARIO =~ ^ember.*$
-  local-dir: dist
-  verbose: true
