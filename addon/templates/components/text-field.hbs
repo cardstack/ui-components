@@ -2,6 +2,14 @@
   <span class="cs-component-text-field-optional" data-test-cs-component-text-field-optional>Optional</span>
 {{/unless}}
 
+{{#if iconComponent}}
+  {{component iconComponent
+    class="cs-component-text-field--icon"
+    type=type
+    changeType=(action (mut type))
+  }}
+{{/if}}
+
 {{#if inputComponent}}
   {{component inputComponent
     class="cs-component-text-field--input"
@@ -22,14 +30,6 @@
     autocomplete="off"
     onchange={{action "handleInput"}}
   >
-{{/if}}
-
-{{#if iconComponent}}
-  {{component iconComponent
-    class="cs-component-text-field--icon"
-    type=type
-    changeType=(action (mut type))
-  }}
 {{/if}}
 
 <label

@@ -9,6 +9,7 @@ export default TextField.extend({
   type: 'password',
   iconComponent: 'password-field/visibility-toggle',
   successMessage: 'Thank you.',
+  label: 'Enter your password',
   minLength: 6,
   mustIncludeUppercase: false,
   mustIncludeLowercase: false,
@@ -18,6 +19,7 @@ export default TextField.extend({
   actions: {
     handleInput(ev) {
       let value = ev.target.value;
+      this.set('value', value);
 
       if (!value && !this.required) {
         this.set('invalid', false);
