@@ -24,7 +24,7 @@ module.exports = function(environment) {
   };
 
   ENV['place-autocomplete'] = {
-    key: 'AIzaSyAlsoiNAUx4erqxV5RYkcn30sHSG0K-5n0'
+    key: 'AIzaSyBk-6RGlOIcBhmobNk_6nRgaDWl-qBHQ30'
   };
 
   if (environment === 'development') {
