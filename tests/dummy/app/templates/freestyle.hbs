@@ -87,11 +87,11 @@
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
-  {{#freestyle-section name="CTA"}}
-    {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
+  {{#freestyle-section name="cta"}}
+    {{#freestyle-collection title="CTA" inline=true as |collection|}}
       {{#collection.variant key="primary"}}
         {{#freestyle-usage "primary-cta" title="Primary CTA"}}
-          <Cta @type="primary">Primary Call to Action</Cta>
+          <Cta>Primary Call to Action</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
 
@@ -101,7 +101,19 @@
 
       {{#collection.variant key="secondary"}}
         {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
-          <Cta @type="secondary">Secondary Call to Action</Cta>
+          <Cta @variant="secondary">Secondary Call to Action</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+
+      {{#collection.variant key="disabled"}}
+        {{#freestyle-usage "disabled-cta" title="Disabled CTA" inline=true}}
+          <Cta @disabled="true">Disabled</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+
+      {{#collection.variant key="secondary-disabled"}}
+        {{#freestyle-usage "secondary-disabled-cta" title="Secondary Disabled CTA" inline=true}}
+          <Cta @variant="secondary" @disabled="true">Secondary Disabled</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}

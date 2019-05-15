@@ -3,5 +3,7 @@ import layout from '../templates/components/cta';
 
 export default Component.extend({
   layout,
-  type: 'primary'
+  tagName: '',
+  variant: 'primary',
+  disabled: false
 });

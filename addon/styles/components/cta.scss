@@ -1,28 +1,39 @@
-$btn-primary: $dark-gray;
-$btn-primary-hover: $gray;
-$btn-secondary: $light-gray;
+.cs-component-cta {
+  --cs-button-copy: white;
+  --cs-button-background: #{$dark-gray};
 
-.cta-button {
-  padding: 8px 20px;
-  transition: .5s;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: var(--cs-button-background);
+  color: var(--cs-button-copy);
   cursor: pointer;
+  user-select: none;
 
-  &, &--primary {
-    background-color: $btn-primary;
-    color: white;
-
-    &:hover {
-      background-color: $btn-primary-hover;
-    }
+  &:not(:disabled):hover {
+    --cs-button-background: #{$dark-gray-op60};
   }
 
-  &--secondary {
-    background-color: white;
-    color: $btn-secondary;
-    border-color: $btn-secondary;
+  &:disabled {
+    --cs-button-background: #{$light-gray};
+    --cs-button-copy: #{$gray};
 
-    &:hover {
-      background-color: $btn-primary;
-    }
+    cursor: not-allowed;
+  }
+}
+
+.cs-component-cta--secondary {
+  --cs-button-background: #{$lighter-gray};
+  --cs-button-copy: #{$dark-gray};
+
+  border: 1px solid var(--cs-button-copy);
+
+  &:not(:disabled):hover {
+    --cs-button-background: #{$dark-gray-op30};
+  }
+
+  &:disabled {
+    --cs-button-background: #{$lighter-gray};
+    --cs-button-copy: #{$light-gray};
   }
 }

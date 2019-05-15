@@ -92,7 +92,17 @@ module('Acceptance | components', function(hooks) {
     assert.dom('.ember-power-select-multiple-option').exists({ count: 2 });
   });
 
-  test('email component', async function (assert) {
+  test('cta button component', async function(assert) {
+    await visit('/freestyle?=cta');
+    assert.equal(currentURL(), '/freestyle?=cta');
+
+    assert.dom('[data-test-cs-component-cta="primary"]').exists();
+    assert.dom('[data-test-cs-component-cta="secondary"]').exists();
+    assert.dom('[data-test-cs-component-cta="primary"]:disabled').exists();
+    assert.dom('[data-test-cs-component-cta="secondary"]:disabled').exists();
+  });
+
+  test('email component', async function(assert) {
     await visit('/freestyle');
     assert.equal(currentURL(), '/freestyle');
 
@@ -105,7 +115,7 @@ module('Acceptance | components', function(hooks) {
     assert.dom('[data-test-cs-component-email] [data-test-cs-component-text-field-validation].hidden').exists({ count: 2 });
   });
 
-  test('date picker component', async function (assert) {
+  test('date picker component', async function(assert) {
     let month = moment().format('MMMM');
     let year = moment().format('YYYY');
 
