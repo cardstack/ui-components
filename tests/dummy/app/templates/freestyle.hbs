@@ -141,6 +141,60 @@
     {{/freestyle-usage}}
   {{/freestyle-section}}
 
+  {{#freestyle-section name="Password Field"}}
+    {{#freestyle-collection title="password" defaultKey="default" inline=true as |collection|}}
+      {{#freestyle-annotation}}
+        <code>PasswordField</code> can take in a few options that enforce security requirements
+
+        <ul>
+          <li><code>minLength</code> - (integer) minimum characters</li>
+          <li><code>mustIncludeUppercase</code> - (boolean) must include at least one uppercase character</li>
+          <li><code>mustIncludeLowercase</code> - (boolean) must include at least one lowercase character</li>
+          <li><code>mustIncludeNumber</code> - (boolean) must include at least one number</li>
+          <li><code>mustIncludeSpecialCharacter</code> - (boolean) must include at least one special character</li>
+          <li><code>successMessage</code> - (string) message to display when the password is valid</li>
+        </ul>
+      {{/freestyle-annotation}}
+      {{#freestyle-note "password-field-default--notes"}}
+        By default, `PasswordField` will render without any of the password requirements except for needing a minimum length of 6.
+      {{/freestyle-note}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "password-field-default" title="Password Field"}}
+          <PasswordField />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="with-requirements"}}
+        {{#freestyle-usage "password-field-with-requirements" title="Password Field with requirements"}}
+          <PasswordField
+            @minLength={{8}}
+            @mustIncludeUppercase={{true}}
+            @mustIncludeLowercase={{true}}
+            @mustIncludeNumber={{true}}
+            @mustIncludeSpecialCharacter={{true}}
+            @successMessage="Nice password ;-)"
+          />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="custom-validator"}}
+        {{#freestyle-note "password-field-with-custom-validator--notes"}}
+          You can define a custom function to validate the password and pass a custom validation message.
+
+          ```
+            validator(value) {
+              return {
+                valid: value === 'cardstack',
+                message: 'Password must be "cardstack"'
+              };
+            }
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "password-field-with-custom-validator" title="Password Field with custom validator function"}}
+          <PasswordField @validate={{validator}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
+  {{/freestyle-section}}
+
   {{#freestyle-section name="Choose Items"}}
     {{#freestyle-usage "choose-one" title="Choose One (Text)"}}
       <ChooseOne @legend="What is your Favorite Color?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />

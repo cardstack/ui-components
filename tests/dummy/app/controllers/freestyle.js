@@ -78,5 +78,11 @@ export default Ember.Component.extend({
   ]),
 
   doSomething: () => {},
-  searchByLengthOfCountryName: async num => Promise.resolve(countries.filter(item => item.name.length === parseInt(num)))
+  searchByLengthOfCountryName: async num => Promise.resolve(countries.filter(item => item.name.length === parseInt(num))),
+  validator(value) {
+    return {
+      valid: value === 'cardstack',
+      message: 'Password must be "cardstack"'
+    };
+  }
 });
