@@ -40,17 +40,6 @@ jobs:
         - npm run lint:hbs
         - npm run lint:js
         - npm test
-        - npm run build -- -prod # build app and prepare dist folder
-      # deploy master branch to GitHub pages
-      deploy:
-        provider: pages
-        skip-cleanup: true
-        github-token: $GITHUB_TOKEN
-        keep-history: true
-        on:
-          branch: master
-        local-dir: dist
-        verbose: true
 
     # we recommend new addons test the current and previous LTS
     # as well as latest stable release (bonus points to beta/canary)
@@ -61,6 +50,20 @@ jobs:
     - env: EMBER_TRY_SCENARIO=ember-beta
     - env: EMBER_TRY_SCENARIO=ember-canary
     - env: EMBER_TRY_SCENARIO=ember-default-with-jquery
+
+    - stage: deploy-gh-pages
+      name: "Deploy to Github Pages"
+      script:
+        - npm run build -- -prod # build app and prepare dist folder
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        keep-history: true
+        on:
+          branch: master
+        local-dir: dist
+        verbose: true
 
 before_install:
   - npm config set spin false
