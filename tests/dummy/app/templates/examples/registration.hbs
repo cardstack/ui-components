@@ -2,15 +2,13 @@
   <h2 class="ui-components-example-group--title">Cardstack Registration</h2>
 
   <div class="ui-components-example-group--prompt">
-    <h3>Please fill out this simple form to register for Cardstack</h3>
+    <h3>Enter your email and choose a password</h3>
   </div>
 
   <div class="ui-components-example-form registration">
-    <TextField @label="Full Name" @required={{true}} />
-    <StreetAddress @label="Street Address" />
-    <Email @label="Email" @required={{true}} />
-    <ChooseOne @choices={{sourceOptions}} @legend="How did you hear about Cardstack?" />
-    <Checkbox @label="I accept the Cardstack Terms &amp; Conditions" @required={{true}} />
-    <Cta>Submit</Cta>
+    <Email @label="Email" @required={{true}} @value={{emailValue}} @invalid={{isEmailInvalid}}/>
+    <PasswordField @required={{true}} @value={{passwordValue}} @invalid={{isPasswordInvalid}} />
+    <Checkbox @label="I accept the Cardstack Terms &amp; Conditions" @required={{true}} @checked={{isCheckboxChecked}} />
+    <Cta @disabled={{isSubmitDisabled}}>Submit</Cta>
   </div>
 </section>
