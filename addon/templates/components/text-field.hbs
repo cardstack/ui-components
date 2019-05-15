@@ -24,8 +24,12 @@
   >
 {{/if}}
 
-{{#if icon}}
-  <i onclick={{action "handleIconClick"}}>t</i>
+{{#if iconComponent}}
+  {{component iconComponent
+    class="cs-component-text-field--icon"
+    type=type
+    changeType=(action (mut type))
+  }}
 {{/if}}
 
 <label
