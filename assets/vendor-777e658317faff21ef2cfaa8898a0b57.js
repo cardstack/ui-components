@@ -5013,7 +5013,7 @@ return Boolean(t[n])}),"function"!=typeof e.closest&&(e.closest=function(e){for(
 t=t.parentNode}return null})}(window.Element.prototype),define("@cardstack/ui-components/components/checkbox",["exports","@cardstack/ui-components/templates/components/checkbox"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var n=Ember.Component.extend({layout:t.default,classNames:["cs-component-checkbox"],requiredMessage:"You must check this box!",value:"on",actions:{handleInput:function(e){var t=e.target.value,n=e.target.checked
-return this.set("value",t),n&&!this.required?(this.set("invalid",!1),this.set("validationMessage","")):!n&&this.required?(this.set("invalid",!0),this.set("validationMessage",this.requiredMessage)):n&&this.required?(this.set("invalid",!1),this.set("validationMessage","Thank you.")):void 0}}})
+return this.set("value",t),this.set("checked",n),n&&!this.required?(this.set("invalid",!1),this.set("validationMessage","")):!n&&this.required?(this.set("invalid",!0),this.set("validationMessage",this.requiredMessage)):n&&this.required?(this.set("invalid",!1),this.set("validationMessage","Thank you.")):void 0}}})
 e.default=n}),define("@cardstack/ui-components/components/choose-many",["exports","@cardstack/ui-components/templates/components/choose-many"],function(e,t){"use strict"
 Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
 var n=Ember.Component.extend({layout:t.default,classNames:["cs-component-choose-many"],classNameBindings:["checked:checked"],attributeBindings:["dataTestName:data-test-cs-component-choose-many"],dataTestName:!0,performActions:function(e){this.set("checked",!!e.length),this.selectionChanged(e)},selectionChanged:function(){}})
