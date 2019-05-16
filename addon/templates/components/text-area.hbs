@@ -2,43 +2,28 @@
   <span class="cs-component-text-field-optional" data-test-cs-component-text-field-optional>Optional</span>
 {{/unless}}
 
-{{#if iconComponent}}
-  {{component iconComponent
-    class="cs-component-text-field--icon"
-    type=type
-    changeType=(action (mut type))
-  }}
-{{/if}}
-
-{{#if inputComponent}}
-  {{component inputComponent
+<div class="cs-component-text-area--input-container">
+  {{textarea
+    rows=rows
+    value=value
     class="cs-component-text-field--input"
-    required=required
-    _value=value
-    focusOut=(action "handleInput")
-    update=(action (mut value))
     id=inputId
-  }}
-{{else}}
-  <input
-    type={{type}}
-    name="name"
-    value={{value}}
-    class="cs-component-text-field--input {{if required "required"}}"
-    id={{inputId}}
-    required={{required}}
+    required=required
     autocomplete="off"
-    onchange={{action "handleInput"}}
-  >
-{{/if}}
+    maxlength=characterLimit
+    focusOut=(action "handleInput")
+  }}
 
-<div style="position: absolute;">
   <label
     for={{inputId}}
     class="cs-component-text-field--label {{if value "active"}}"
   >
     <span>{{label}}</span>
   </label>
+
+  {{#if characterLimit}}
+    <span class="cs-component-text-area--char-counter" data-test-cs-component-text-area-char-counter>{{value.length}}/{{characterLimit}}</span>
+  {{/if}}
 </div>
 
 <div

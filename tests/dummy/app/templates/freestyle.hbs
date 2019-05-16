@@ -141,6 +141,21 @@
     {{/freestyle-usage}}
   {{/freestyle-section}}
 
+  {{#freestyle-section name="Text Area"}}
+    {{#freestyle-collection title="TextArea" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "text-area-default" title="Text Area"}}
+          <TextArea @label="What's on your mind?" @rows={{5}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="with-max-length"}}
+        {{#freestyle-usage "text-area-with-max-length" title="Text Area with Max Length"}}
+          <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
+  {{/freestyle-section}}
+
   {{#freestyle-section name="Password Field"}}
     {{#freestyle-collection title="password" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-annotation}}
