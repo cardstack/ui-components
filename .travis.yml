@@ -53,6 +53,7 @@ jobs:
 
     - stage: deploy-gh-pages
       name: "Deploy to Github Pages"
+      if: branch = master
       script:
         - npm run build -- -prod # build app and prepare dist folder
       deploy:
