@@ -7,11 +7,21 @@ import a11yAudit from 'ember-a11y-testing/test-support/audit';
 module('Acceptance | examples', function(hooks) {
   setupApplicationTest(hooks);
 
-  test('examples visual check', async function(assert) {
+  test('registration visual check', async function(assert) {
     await visit('/examples/registration');
     assert.equal(currentURL(), '/examples/registration');
 
     percySnapshot('Sample Registration Form');
+
+    await a11yAudit();
+    assert.ok(true, 'no a11y errors found!');
+  });
+
+  test('contact form visual check', async function(assert) {
+    await visit('/examples/contact-info');
+    assert.equal(currentURL(), '/examples/contact-info');
+
+    percySnapshot('Sample Contact Info Form');
 
     await a11yAudit();
     assert.ok(true, 'no a11y errors found!');

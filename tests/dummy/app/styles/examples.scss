@@ -56,5 +56,31 @@
 }
 
 .ui-components-example {
-  margin-left: 60px;
+  padding-top: 60px;
+  padding-left: 60px;
+  border-left: 1px solid var(--dummy-border-color);
+}
+
+.ui-components-examples {
+  display: flex;
+  direction: row;
+  margin-top: 30px;
+  border-top: 1px solid var(--dummy-border-color);
+}
+
+.ui-components-examples nav {
+  padding-top: 60px;
+  padding-right: 60px;
+  padding-left: 30px;
+  height: 100vh;
+}
+
+.ui-components-examples nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ui-components-examples nav ul li {
+  line-height: 30px;
 }

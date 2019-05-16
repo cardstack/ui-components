@@ -13,6 +13,7 @@ export default Component.extend({
       let checked = ev.target.checked;
 
       this.set('value', value);
+      this.set('checked', checked);
 
       if (checked && !this.required) {
         this.set('invalid', false);

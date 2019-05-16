@@ -1,8 +1,13 @@
-// TODO This should be imported somewhere in the addon
-@import "ember-power-select";
-@import "ember-power-datepicker";
+@import 'ui-components';
+
+$border-gray: #707070;
+
+:root {
+  --dummy-border-color: var(--theme-border-color, #{$border-gray});
+}
 
 @import "examples";
+
 
 .FreestyleGuide {
   .hljs-deletion, .hljs-string, .hljs-built_in, .hljs-builtin-name {
