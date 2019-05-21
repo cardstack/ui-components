@@ -18,3 +18,20 @@
     font-weight: 600;
   }
 }
+
+.cs-component-phone-number-fields__wrapper {
+  position: relative;
+}
+
+.cs-component-phone-number-fields__wrapper .cs-component-phone-number-fields--add {
+  position: absolute;
+  top: 20px;
+  right: -25px;
+  border: none;
+  text-indent: -9999px;
+  background: url(/assets/images/icon-plus.svg) no-repeat center center;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  outline: none;
+}

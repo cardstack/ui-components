@@ -7,5 +7,8 @@ export default Component.extend({
   selected: null,
   multiple: false,
   label: 'Select an option',
-  searchField: 'name'
+  searchField: 'name',
+  changeAction(item) {
+    this.set('selected', item);
+  }
 });

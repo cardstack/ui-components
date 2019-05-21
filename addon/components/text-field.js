@@ -23,6 +23,10 @@ export default Component.extend({
 
       this.set('value', value);
 
+      if (this.changeAction) {
+        this.changeAction(value);
+      }
+
       if (!value && !this.required) {
         this.set('invalid', false);
         return this.set('validationMessage', '');

@@ -104,10 +104,12 @@ module('Acceptance | components', function(hooks) {
     await visit('/freestyle');
     assert.equal(currentURL(), '/freestyle');
 
-    assert.dom('[data-test-cs-component="email"]').exists();
+    assert.dom('[data-test-cs-component="email"]').exists({ count: 3 });
+    assert.dom('[data-test-cs-component-label="email"] .optional').exists({ count: 2 });
     assert.dom('[data-test-cs-component-label="email"] .optional').hasText('Optional');
     assert.dom('[data-test-cs-component-label="email"] .label').hasText('Email Address');
     assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
+    assert.dom('[data-test-cs-component="email"] input[required]').exists({ count: 1 });
   });
 
   test('date picker component', async function(assert) {
