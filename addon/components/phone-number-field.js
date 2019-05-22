@@ -9,13 +9,12 @@ export default TextField.extend({
   attributeBindings: ['dataTestName:data-test-cs-component-phone-number-field'],
   dataTestName: true,
   label: 'Phone Number',
-  inputComponent: 'phone-number-field/input',
-  isComponentLibraryLoaded: false,
+  inputComponent: '',
 
   init() {
     this._super(...arguments);
     this.phoneInput.load().then(() => {
-      this.set('isComponentLibraryLoaded', true);
+      this.set('inputComponent', 'phone-number-field/input');
     });
   },
 
