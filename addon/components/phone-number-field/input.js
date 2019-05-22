@@ -1,48 +1,43 @@
 import PhoneInput from 'ember-phone-input/components/phone-input';
-import { inject as service } from '@ember/service';
 
 export default PhoneInput.extend({
-  phoneInput: service(),
   autoPlaceholder: 'aggressive',
 
-  async didInsertElement() {
-    await this.phoneInput.load();
-    const { intlTelInput } = window;
+    // const { intlTelInput } = window;
 
-    // XXX For some reason calling this._super doesn't work
-    const {
-      autoPlaceholder,
-      initialCountry,
-      onlyCountries,
-      preferredCountries
-    } = this
+    // // XXX For some reason calling this._super doesn't work
+    // const {
+    //   autoPlaceholder,
+    //   initialCountry,
+    //   onlyCountries,
+    //   preferredCountries
+    // } = this
 
-    var input = document.getElementById(this.elementId)
-    var _iti = intlTelInput(input, {
-      autoHideDialCode: true,
-      nationalMode: true,
-      autoPlaceholder,
-      initialCountry,
-      onlyCountries,
-      preferredCountries
-    })
+    // var input = document.getElementById(this.elementId)
+    // var _iti = intlTelInput(input, {
+    //   autoHideDialCode: true,
+    //   nationalMode: true,
+    //   autoPlaceholder,
+    //   initialCountry,
+    //   onlyCountries,
+    //   preferredCountries
+    // })
 
-    const number = this.number
-    if (number) {
-      _iti.setNumber(number)
-    }
-    this._iti = _iti
+    // const number = this.number
+    // if (number) {
+    //   _iti.setNumber(number)
+    // }
+    // this._iti = _iti
 
-    if (this.initialCountry) {
-      this._iti.setCountry(this.initialCountry)
-    }
+    // if (this.initialCountry) {
+    //   this._iti.setCountry(this.initialCountry)
+    // }
 
-    this.update(number, this._metaData(_iti))
-    this.element.addEventListener(
-      'countrychange',
-      this.onCountryChange.bind(this)
-    )
-  },
+    // this.update(number, this._metaData(_iti))
+    // this.element.addEventListener(
+    //   'countrychange',
+    //   this.onCountryChange.bind(this)
+    // )
 
   update(internationalPhoneNumber) {
     if (!internationalPhoneNumber) {

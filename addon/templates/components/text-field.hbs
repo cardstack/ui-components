@@ -11,14 +11,16 @@
 {{/if}}
 
 {{#if inputComponent}}
-  {{component inputComponent
-    class="cs-component-text-field--input"
-    required=required
-    setValidationMessage=(action (mut validationMessage))
-    setInvalid=(action (mut invalid))
-    setValue=(action (mut value))
-    id=inputId
-  }}
+  {{#if isComponentLibraryLoaded}}
+    {{component inputComponent
+      class="cs-component-text-field--input"
+      required=required
+      setValidationMessage=(action (mut validationMessage))
+      setInvalid=(action (mut invalid))
+      setValue=(action (mut value))
+      id=inputId
+    }}
+  {{/if}}
 {{else}}
   <input
     type={{type}}

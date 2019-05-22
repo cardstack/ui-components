@@ -12,6 +12,7 @@ export default Component.extend({
   type: 'text',
   value: '',
   invalid: false,
+  isComponentLibraryLoaded: true,
   inputId: computed('elementId', function() {
     return `${this.elementId}-input`;
   }),
