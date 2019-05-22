@@ -14,9 +14,9 @@
   {{component inputComponent
     class="cs-component-text-field--input"
     required=required
-    _value=value
-    focusOut=(action "handleInput")
-    update=(action (mut value))
+    setValidationMessage=(action (mut validationMessage))
+    setInvalid=(action (mut invalid))
+    setValue=(action (mut value))
     id=inputId
   }}
 {{else}}

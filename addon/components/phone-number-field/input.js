@@ -1,15 +1,64 @@
-import OneWayPhoneMask from 'ember-inputmask/components/one-way-phone-mask';
-import { computed } from '@ember/object';
+import PhoneInput from 'ember-phone-input/components/phone-input';
+import { inject as service } from '@ember/service';
 
-export default OneWayPhoneMask.extend({
-  attributeBindings: [
-    'type',
-    '_value:value',
-    'required'
-  ],
-  options: computed(function() {
-    return {
-      showMaskOnHover: false
+export default PhoneInput.extend({
+  phoneInput: service(),
+  autoPlaceholder: 'aggressive',
+
+  async didInsertElement() {
+    await this.phoneInput.load();
+    const { intlTelInput } = window;
+
+    // XXX For some reason calling this._super doesn't work
+    const {
+      autoPlaceholder,
+      initialCountry,
+      onlyCountries,
+      preferredCountries
+    } = this
+
+    var input = document.getElementById(this.elementId)
+    var _iti = intlTelInput(input, {
+      autoHideDialCode: true,
+      nationalMode: true,
+      autoPlaceholder,
+      initialCountry,
+      onlyCountries,
+      preferredCountries
+    })
+
+    const number = this.number
+    if (number) {
+      _iti.setNumber(number)
     }
-  })
+    this._iti = _iti
+
+    if (this.initialCountry) {
+      this._iti.setCountry(this.initialCountry)
+    }
+
+    this.update(number, this._metaData(_iti))
+    this.element.addEventListener(
+      'countrychange',
+      this.onCountryChange.bind(this)
+    )
+  },
+
+  update(internationalPhoneNumber) {
+    if (!internationalPhoneNumber) {
+      return;
+    }
+
+    this.set('number', internationalPhoneNumber);
+  },
+
+  change() {
+    const internationalPhoneNumber = this.number;
+    this.setValue(internationalPhoneNumber);
+    this._iti.setNumber(internationalPhoneNumber);
+    const isValid = this._iti.isValidNumber();
+    const validationMessage = isValid ? 'Thank you.' : 'Please enter a valid phone number.';
+    this.setInvalid(!isValid);
+    this.setValidationMessage(validationMessage);
+  },
 });

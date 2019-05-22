@@ -3,6 +3,9 @@ import TextField from './text-field';
 const PHONE_REGEX = /^((([0-9]{1})*[- .(]*([0-9]{3})[- .)]*[0-9]{3}[- .]*[0-9]{4})+)*$/;
 
 export default TextField.extend({
+  classNames: ['cs-component-phone-number-field'],
+  attributeBindings: ['dataTestName:data-test-cs-component-phone-number-field'],
+  dataTestName: true,
   label: 'Phone Number',
   inputComponent: 'phone-number-field/input',
 
