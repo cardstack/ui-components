@@ -3,6 +3,7 @@ import { visit, currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { percySnapshot } from 'ember-percy';
 import a11yAudit from 'ember-a11y-testing/test-support/audit';
+import axeConfiguration from '../helpers/axe-configuration';
 
 module('Acceptance | examples', function(hooks) {
   setupApplicationTest(hooks);
@@ -23,7 +24,7 @@ module('Acceptance | examples', function(hooks) {
 
     percySnapshot('Sample Contact Info Form');
 
-    await a11yAudit();
+    await a11yAudit(axeConfiguration);
     assert.ok(true, 'no a11y errors found!');
   });
 });
