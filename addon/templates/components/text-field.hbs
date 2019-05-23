@@ -19,6 +19,17 @@
     setValue=(action (mut value))
     id=inputId
   }}
+{{else if dateComponent}}
+  {{component dateComponent
+    type=type
+    class="cs-component-text-field--input"
+    required=required
+    _value=value
+    onblur=onblur
+    onchange=onchange
+    oninput=oninput
+    id=inputId
+  }}
 {{else}}
   <input
     type={{type}}
