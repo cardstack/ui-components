@@ -248,8 +248,46 @@
   {{/freestyle-section}}
 
   {{#freestyle-section name="date-picker"}}
-    {{#freestyle-usage "date-picker" title="Date Picker"}}
-      <DatePicker @label="Date" @placeholder="mm-dd-yyyy" />
-    {{/freestyle-usage}}
+    {{#freestyle-collection title="date picker" inline=true as |collection|}}
+      {{#freestyle-annotation}}
+        <p>
+          Allows user to select a date from calendar view or enter their own input.
+          User can navigate the calendar using arrows or the month and year dropdowns.
+        </p>
+        <p>
+          Default validation for date input:
+          <ul>
+            <li>Valid for years as of 1900.</li>
+            <li>Accounts for leap years.</li>
+            <li>MM and DD can be 1 or 2 digits.</li>
+          </ul>
+        </p>
+        <p>
+          Default year range offered in the dropdown is from 1920 to 2070.
+          However, this can be changed using <code>startYear</code> and <code>yearRange</code> attributes.
+        </p>
+      {{/freestyle-annotation}}
+
+      {{#collection.variant key="optional"}}
+        {{#freestyle-usage "date-picker-optional" title="Optional"}}
+          <DatePicker @label="Date (MM/DD/YYYY)" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+
+      {{#collection.variant key="required"}}
+        {{#freestyle-usage "date-picker-required" title="Required"}}
+          <DatePicker @label="Date (MM/DD/YYYY)" @required="true" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+
+      {{#collection.variant key="custom-years"}}
+        {{#freestyle-note "date-picker-custom-years--notes"}}
+          Using `startYear` and `yearRange` attributes to change the dropdown year range.
+        {{/freestyle-note}}
+        {{#freestyle-usage "date-picker-custom-years" title="Custom Years"}}
+          <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
   {{/freestyle-section}}
 {{/freestyle-guide}}

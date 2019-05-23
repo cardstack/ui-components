@@ -5,21 +5,22 @@
   @center={{center}}
   @onCenterChange={{action (mut center) value="date"}} as |calendar|>
   {{#calendar.trigger tabindex="-1"}}
-    {{#if label}}
-      <label for="{{elementId}}-date-input">{{label}}</label>
-    {{/if}}
-    {{!-- User can pick a date from the calendar view or type it in.
-          Calendar view is closed when input is manually being typed in. --}}
-    <input
-      type="text"
-      id="{{elementId}}-date-input"
-      class="cs-component-date--input"
-      value={{if selected (moment-format selected "MM-DD-YYYY")}}
-      oninput={{action calendar.actions.close}}
-      onchange={{action "changeSelected"}}
-      placeholder={{placeholder}}
-      autocomplete="off"
-      aria-label="Date">
+    {{!-- User can pick a date from the calendar view or type it in. --}}
+    <TextField
+      @dateComponent="date-field/input"
+      @type="text"
+      @label={{label}}
+      @id="{{elementId}}-date-input"
+      @class="cs-component-date--input"
+      @value={{if selected selectedDate inputValue}}
+      @onblur={{action "handleInput"}}
+      @onchange={{action "handleInput"}}
+      @oninput={{action "handleInput"}}
+      @required={{required}}
+      @autocomplete="off"
+      @validationMessage={{errorMessage}}
+      @invalid={{invalid}}
+    />
   {{/calendar.trigger}}
 
   {{#calendar.content class="cs-component-calendar"}}
@@ -29,12 +30,14 @@
       <button
         class="ember-power-calendar-nav-control"
         onclick={{action calendar.actions.moveCenter -12 "month"}}
+        aria-label="Previous year"
         data-test-nav-arrow="year-backwards">
         «
       </button>
       <button
         class="ember-power-calendar-nav-control"
         onclick={{action calendar.actions.moveCenter -1 "month"}}
+        aria-label="Previous month"
         data-test-nav-arrow="month-backwards">
         ‹
       </button>
@@ -42,6 +45,7 @@
       <div class="cs-component-calendar--nav-title ember-power-calendar-nav-title">
         <div id="{{elementId}}-months-nav" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-months>
           <PowerSelect
+            @ariaLabel="Month dropdown"
             @options={{months}}
             @selected={{moment-format calendar.center "MMMM"}}
             @onchange={{action "changeCenter" "month" calendar}} as |month|>
@@ -50,6 +54,7 @@
         </div>
         <div id="{{elementId}}-years-nav" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-years>
           <PowerSelect
+            @ariaLabel="Year dropdown"
             @options={{years}}
             @selected={{moment-format calendar.center "YYYY"}}
             @onchange={{action "changeCenter" "year" calendar}} as |year|>
@@ -61,12 +66,14 @@
       <button
         class="ember-power-calendar-nav-control"
         onclick={{action calendar.actions.moveCenter 1 "month"}}
+        aria-label="Next month"
         data-test-nav-arrow="month-forwards">
         ›
       </button>
       <button
         class="ember-power-calendar-nav-control"
         onclick={{action calendar.actions.moveCenter 12 "month"}}
+        aria-label="Next year"
         data-test-nav-arrow="year-forwards">
         »
       </button>

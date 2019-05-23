@@ -107,7 +107,7 @@ module('Acceptance | components', function(hooks) {
     assert.equal(currentURL(), '/freestyle');
 
     assert.dom('[data-test-cs-component-email]').exists({ count: 2 });
-    assert.dom('[data-test-cs-component-email] .required').exists({ count: 1 });
+    assert.dom('[data-test-cs-component-email] input[required]').exists({ count: 1 });
     assert.dom('[data-test-cs-component-email] [data-test-cs-component-text-field-optional]').exists({ count: 1 });
     assert.dom('[data-test-cs-component-email] [data-test-cs-component-text-field-optional]').hasText('Optional');
     assert.dom('[data-test-cs-component-email] label').hasText('Email Address');
@@ -122,9 +122,9 @@ module('Acceptance | components', function(hooks) {
     await visit('/freestyle?s=date-picker');
     assert.equal(currentURL(), '/freestyle?s=date-picker');
 
-    assert.dom('[data-test-cs-component-date]').exists();
-    assert.dom('[data-test-cs-component-date] label').hasText('Date');
-    assert.dom('[data-test-cs-component-date] input').hasAttribute('placeholder', 'mm-dd-yyyy');
+    assert.dom('[data-test-cs-component-date]').exists({ count: 3 });
+    assert.dom('[data-test-cs-component-date] input[required]').exists({ count: 1 });
+    assert.dom('[data-test-cs-component-date] label').hasText('Date (MM/DD/YYYY)');
     assert.dom('.cs-component-calendar').doesNotExist();
 
     await click('[data-test-cs-component-date] input');
@@ -137,7 +137,7 @@ module('Acceptance | components', function(hooks) {
     await clickTrigger('[data-test-cs-component-calendar-nav-months]');
     await click('[data-option-index="1"]');
     await clickTrigger('[data-test-cs-component-calendar-nav-years]');
-    await click('[data-option-index="77"]');
+    await click('[data-option-index="97"]');
 
     assert.dom('[data-test-cs-component-calendar-nav-months]').hasText('February');
     assert.dom('[data-test-cs-component-calendar-nav-years]').hasText('2017');
@@ -145,9 +145,9 @@ module('Acceptance | components', function(hooks) {
     await click('[data-date="2017-02-07"]');
 
     assert.dom('.cs-component-calendar').doesNotExist();
-    assert.dom('[data-test-cs-component-date] input').hasValue('02-07-2017');
+    assert.dom('[data-test-cs-component-date] input').hasValue('02/07/2017');
 
-    await fillIn('[data-test-cs-component-date] input', '4-10-1990');
+    await fillIn('[data-test-cs-component-date] input', '4/10/1990');
     await click('[data-test-cs-component-date] input');
 
     assert.dom('[data-date="1990-04-10"].ember-power-calendar-day--selected').exists();

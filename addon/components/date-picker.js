@@ -1,6 +1,11 @@
 import Component from '@ember/component';
 import layout from '../templates/components/date-picker';
+import { computed } from '@ember/object';
+import { match, not } from '@ember/object/computed';
 import moment from 'moment';
+
+const DEFAULT_YEAR = 1920;
+const DEFAULT_YEAR_RANGE = 150;
 
 const MONTHS = [
   'January',
@@ -17,30 +22,78 @@ const MONTHS = [
   'December',
 ];
 
-// TO DO: make this more flexible
-const YEARS = Array(...Array(100)).map((_, i) => `${i + 1940}`);
+function setYears(range, startYear) {
+  // Adding 1 to range to account for current year.
+  return Array(...Array(range + 1)).map((_, i) => `${i + startYear}`);
+}
+
+// Valid for years since 1900. Includes leap years. MM and DD can be 1 or 2 digits.
+const DATE_REGEX = /^(((0?[1-9]|1[012])\/(0?[1-9]|1\d|2[0-8])|(0?[13456789]|1[012])\/(29|30)|(0?[13578]|1[02])\/31)\/(19|[2-9]\d)\d{2}|0?2\/29\/((19|[2-9]\d)(0[48]|[2468][048]|[13579][26])|(([2468][048]|[3579][26])00)))$/;
 
 export default Component.extend({
   layout,
   classNames: ['cs-component-date'],
-  attributeBindings: ['dataTestName:data-test-cs-component-date'],
+  attributeBindings: ['ariaLabel:aria-label', 'dataTestName:data-test-cs-component-date'],
+  ariaLabel: 'Datepicker container',
   dataTestName: true,
+  yearRange: DEFAULT_YEAR_RANGE,
+  startYear: DEFAULT_YEAR,
   months: MONTHS,
-  years: YEARS,
+  required: false,
+  inputValue: '',
+  errorMessage: '',
+  isValidDate: match('inputValue', DATE_REGEX),
+  invalid: not('isValidDate'),
+
+  years: computed('yearRange', 'startYear', function () {
+    return setYears(this.yearRange*1, this.startYear*1);
+  }),
+
+  selectedDate: computed('selected', function () {
+    if (!this.selected) { return ''; }
+
+    let date = moment(this.selected).format('MM/DD/YYYY');
+    this.updateInputValue(date);
+    return date;
+  }),
+
+  updateInputValue(date) {
+    this.set('inputValue', date);
+    this.set('errorMessage', '');
+  },
 
   actions: {
-    changeSelected(ev) {
+    handleInput(ev) {
       let value = ev.target.value;
-      value = moment(value, 'MM-DD-YYYY');
+      let errorMessage = `Please enter a valid date in the format MM/DD/YYYY
+                          or select one from the calendar.`;
 
-      if (!value.toISOString()) {
-        // if no value, reset calendar view to current month and year
-        value = moment();
-        return this.set('center', value);
+      this.set('inputValue', value);
+
+      if (!value && !this.required) {
+        this.set('selected', '');
+        this.set('center', moment());
+        return this.set('errorMessage', '');
       }
 
-      this.set('center', value);
-      this.set('selected', value);
+      if (!value && this.required) {
+        this.set('selected', '');
+        this.set('center', moment());
+        return this.set('errorMessage', 'This field is required.');
+      }
+
+      if (this.invalid) {
+        this.set('selected', '');
+        this.set('center', moment());
+        return this.set('errorMessage', errorMessage);
+      }
+
+      if (this.isValidDate) {
+        value = moment(value, 'MM/DD/YYYY');
+        this.set('center', value);
+        this.set('selected', value);
+        return this.set('errorMessage', '');
+      }
     },
 
     changeCenter(unit, calendar, val) {
