@@ -54,6 +54,7 @@
     "ember-moment": "^7.8.1",
     "ember-multiselect-checkboxes": "^0.11.1",
     "ember-percy": "^1.5.0",
+    "ember-phone-input": "^2.0.7",
     "ember-place-autocomplete": "^2.0.0",
     "ember-power-calendar-moment": "^0.1.7",
     "ember-power-datepicker": "^0.6.0",
