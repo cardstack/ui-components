@@ -32,14 +32,12 @@
   >
 {{/if}}
 
-<div style="position: absolute;">
-  <label
-    for={{inputId}}
-    class="cs-component-text-field--label {{if value "active"}}"
-  >
-    <span>{{label}}</span>
-  </label>
-</div>
+<label
+  for={{inputId}}
+  class="cs-component-text-field--label {{if value "active"}}"
+>
+  <span>{{label}}</span>
+</label>
 
 <div
   class="cs-component-text-field--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}}"
