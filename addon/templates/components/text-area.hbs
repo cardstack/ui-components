@@ -1,0 +1,34 @@
+{{#unless required}}
+  <span class="cs-component-text-field-optional" data-test-cs-component-text-field-optional>Optional</span>
+{{/unless}}
+
+<div class="cs-component-text-area--input-container">
+  {{textarea
+    rows=rows
+    value=value
+    class="cs-component-text-field--input"
+    id=inputId
+    required=required
+    autocomplete="off"
+    maxlength=characterLimit
+    focusOut=(action "handleInput")
+  }}
+
+  <label
+    for={{inputId}}
+    class="cs-component-text-field--label {{if value "active"}}"
+  >
+    <span>{{label}}</span>
+  </label>
+
+  {{#if characterLimit}}
+    <span class="cs-component-text-area--char-counter" data-test-cs-component-text-area-char-counter>{{value.length}}/{{characterLimit}}</span>
+  {{/if}}
+</div>
+
+<div
+  class="cs-component-text-field--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}}"
+  data-test-cs-component-text-field-validation
+>
+  {{validationMessage}}
+</div>
