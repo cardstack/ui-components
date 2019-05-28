@@ -28,13 +28,9 @@ Then navigate into the app you want to use the addon in, and run the following c
 Remote installation
 ------------------------------------------------------------------------------
 
-During early greenfield development, you can install this addon from GitHub by adding the following to your project's `package.json`:
-
-```json
-"@cardstack/ui-components": "github:cardstack/ui-components#master"
+```sh
+$ ember install @cardstack/ui-components
 ```
-
-Whatever comes after the `#` can be a tag, commit hash, or branch name.
 
 Usage
 ------------------------------------------------------------------------------
