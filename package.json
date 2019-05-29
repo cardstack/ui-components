@@ -33,7 +33,7 @@
     "ember-place-autocomplete": "^2.0.0",
     "ember-power-calendar": "^0.13.2",
     "ember-power-calendar-moment": "^0.1.7",
-    "ember-power-datepicker": "^0.6.0",
+    "ember-power-datepicker": "git+https://github.com/bagby/ember-power-datepicker#9eaf27d921056b47b7d620b42e303b45c7a40e67",
     "ember-power-select": "^2.3.1",
     "ember-radio-button": "^2.0.1",
     "ember-truth-helpers": "^2.1.0",
