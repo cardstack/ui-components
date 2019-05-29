@@ -305,4 +305,21 @@
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
+
+  {{#freestyle-section name="File Upload Dialog"}}
+    {{#freestyle-annotation}}
+      <code>FileUploadDialog</code> can take in a few parameters
+
+      <ul>
+        <li><code>acceptedFormats</code> - (string) a read-friendly list of formats accepted (i.e. "png, jpg, gif"). This will get rendered below the file icon.</li>
+        <li><code>accept</code> - (string) A list of MIME types / extensions to be accepted by the input i.e. "image/*" </li>
+      </ul>
+    {{/freestyle-annotation}}
+    {{#freestyle-note "password-field-default--notes"}}
+      By default, `PasswordField` will render without any of the password requirements except for needing a minimum length of 6.
+    {{/freestyle-note}}
+    {{#freestyle-usage "file-upload-dialog-default" title="File Upload Dialog"}}
+      <FileUploadDialog @acceptedFormats="jpg, gif, png" />
+    {{/freestyle-usage}}
+  {{/freestyle-section}}
 {{/freestyle-guide}}
