@@ -32,4 +32,12 @@ module('Integration | Component | phone-number-field', function(hooks) {
     assert.dom('[data-test-cs-component-validation="phone-number"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasText('Thank you.');
   });
+
+  test('it renders themed component', async function (assert) {
+    await render(hbs`<PhoneNumberField @label="Enter your phone number" @theme="cs-theme" />`);
+
+    assert.dom('[data-test-cs-component="phone-number"] input').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-label="phone-number"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-validation="phone-number"]').hasClass('cs-theme');
+  });
 });

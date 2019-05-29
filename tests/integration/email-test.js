@@ -74,4 +74,12 @@ module('Integration | Component | email', function(hooks) {
     assert.dom('[data-test-cs-component-validation="email"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="email"]').hasText('Please fill out this field.');
   });
+
+  test('it renders themed component', async function (assert) {
+    await render(hbs`<Email @theme="cs-theme" />`);
+
+    assert.dom('[data-test-cs-component-input="email"].cs-theme').exists();
+    assert.dom('[data-test-cs-component-label="email"].cs-theme').exists();
+    assert.dom('[data-test-cs-component-validation="email"].cs-theme').exists();
+  });
 });

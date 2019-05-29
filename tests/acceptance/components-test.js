@@ -98,9 +98,6 @@ module('Acceptance | components', function(hooks) {
     assert.equal(currentURL(), '/freestyle?=cta');
 
     assert.dom('[data-test-cs-component-cta="primary"]').exists();
-    assert.dom('[data-test-cs-component-cta="secondary"]').exists();
-    assert.dom('[data-test-cs-component-cta="primary"]:disabled').exists();
-    assert.dom('[data-test-cs-component-cta="secondary"]:disabled').exists();
   });
 
   test('email component', async function(assert) {
@@ -108,12 +105,9 @@ module('Acceptance | components', function(hooks) {
     assert.equal(currentURL(), '/freestyle');
 
     assert.dom('[data-test-cs-component="email"]').exists();
-    assert.dom('[data-test-cs-component="email"] input[required]').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-label="email"] > .optional').exists({ count: 2 });
-    assert.dom('[data-test-cs-component-label="email"] > .optional').hasText('Optional');
-    assert.dom('[data-test-cs-component-label="email"] > .label').hasText('Email Address');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
-    assert.dom('[data-test-cs-component-validation="email"].hidden').exists({ count: 3 });
+    assert.dom('[data-test-cs-component-label="email"] .optional').hasText('Optional');
+    assert.dom('[data-test-cs-component-label="email"] .label').hasText('Email Address');
+    assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
   });
 
   test('date picker component', async function(assert) {
@@ -124,7 +118,6 @@ module('Acceptance | components', function(hooks) {
     assert.equal(currentURL(), '/freestyle?s=date-picker');
 
     assert.dom('[data-test-cs-component-date]').exists();
-    assert.dom('[data-test-cs-component="date-picker"] > input[required]').exists({ count: 1 });
     assert.dom('[data-test-cs-component-label="date-picker"] > .label').hasText('Date (MM/DD/YYYY)');
     assert.dom('[data-test-cs-component-label="date-picker"] > .optional').hasText('Optional');
     assert.dom('.cs-component-calendar').doesNotExist();
@@ -153,56 +146,5 @@ module('Acceptance | components', function(hooks) {
     await click('[data-test-cs-component="date-picker"] > input');
 
     assert.dom('[data-date="1990-04-10"].ember-power-calendar-day--selected').exists();
-  });
-
-  test('themed components', async function(assert) {
-    await visit('/freestyle');
-
-    // Dropdown
-    assert.dom('[data-test-cs-component="dropdown"].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-label="dropdown"].cs-theme').exists({ count: 1 });
-
-    // CTA
-    assert.dom('[data-test-cs-component-cta="primary"].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-cta="secondary"].cs-theme').exists({ count: 1 });
-
-    // Text field
-    assert.dom('[data-test-cs-component-input="text-field"].cs-theme').exists();
-    assert.dom('[data-test-cs-component-label="text-field"].cs-theme').exists();
-    assert.dom('[data-test-cs-component-validation="text-field"].cs-theme').exists();
-
-    // Phone Number
-    assert.dom('[data-test-cs-component="phone-number"] input.cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-label="phone-number"].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-validation="phone-number"].cs-theme').exists({ count: 1 });
-
-    // Text Area
-    assert.dom('[data-test-cs-component="textarea"] textarea.cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-text-area-label].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-text-area-validation].cs-theme').exists({ count: 1 });
-
-    // Password
-    assert.dom('[data-test-cs-component-input="password"].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-label="password"].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-validation="password"].cs-theme').exists({ count: 1 });
-
-    // TODO: Add themed Choose Items
-
-    // Email
-    assert.dom('[data-test-cs-component-input="email"].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-label="email"].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-validation="email"].cs-theme').exists({ count: 1 });
-
-    // TODO: Add themed Checkbox
-
-    // Street Address
-    assert.dom('[data-test-cs-component="street-address"] .cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-label="street-address"].cs-theme').exists({ count: 1 });
-
-    // Date picker
-    assert.dom('[data-test-cs-component-date].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-input="date-picker"].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-label="date-picker"].cs-theme').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-validation="date-picker"].cs-theme').exists({ count: 1 });
   });
 });

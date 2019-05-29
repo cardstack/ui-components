@@ -2,7 +2,7 @@
 
   {{!-- DROPDOWN --}}
   {{#freestyle-section name="dropdown"}}
-    {{#freestyle-collection title="dropdown" inline=true as |collection|}}
+    {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-note "dropdown--notes"}}
           ```
@@ -93,7 +93,7 @@
 
   {{!-- CTA --}}
   {{#freestyle-section name="cta"}}
-    {{#freestyle-collection title="CTA" inline=true as |collection|}}
+    {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
       {{#collection.variant key="primary"}}
         {{#freestyle-usage "primary-cta" title="Primary CTA"}}
           <Cta>Primary Call to Action</Cta>
@@ -105,6 +105,11 @@
       {{#collection.variant key="secondary"}}
         {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
           <Cta @variant="secondary">Secondary Call to Action</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="without-block"}}
+        {{#freestyle-usage "cta" title="Primary CTA without block"}}
+          <Cta @label="Hello" />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="disabled"}}
@@ -131,9 +136,9 @@
 
   {{!-- TEXT FIELD --}}
   {{#freestyle-section name="TextField"}}
-    {{#freestyle-collection title="TextField" inline=true as |collection|}}
-      {{#collection.variant key="optional"}}
-        {{#freestyle-usage "text-field-default" title="Default (Optional)"}}
+    {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "text-field-default" title="Default"}}
           <TextField @label="What's your name?" />
         {{/freestyle-usage}}
       {{/collection.variant}}
@@ -164,7 +169,7 @@
 
   {{!-- TEXTAREA --}}
   {{#freestyle-section name="Text Area"}}
-    {{#freestyle-collection title="TextArea" inline=true as |collection|}}
+    {{#freestyle-collection title="TextArea" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-area-default" title="Text Area"}}
           <TextArea @label="What's on your mind?" @rows={{5}} />
@@ -175,7 +180,7 @@
           <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="cs-theme"}}
+      {{#collection.variant key="themed"}}
         {{#freestyle-usage "text-area-default-cs-theme" title="Default with cs-theme"}}
           <TextArea @label="What's on your mind?" @rows={{5}} @theme="cs-theme" />
         {{/freestyle-usage}}
@@ -186,7 +191,7 @@
 
   {{!-- PASSWORD --}}
   {{#freestyle-section name="Password Field"}}
-    {{#freestyle-collection title="password" inline=true as |collection|}}
+    {{#freestyle-collection title="password" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-annotation}}
         <code>PasswordField</code> can take in a few options that enforce security requirements
         <ul>
@@ -262,9 +267,9 @@
 
   {{!-- EMAIL --}}
   {{#freestyle-section name="Email Input"}}
-    {{#freestyle-collection title="email" inline=true as |collection|}}
+    {{#freestyle-collection title="email" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
-        {{#freestyle-usage "email-input-default" title="Default (Optional)"}}
+        {{#freestyle-usage "email-input-default" title="Default"}}
           <Email @label="Email Address" />
         {{/freestyle-usage}}
       {{/collection.variant}}
@@ -298,7 +303,7 @@
 
   {{!-- STREET ADDRESS --}}
   {{#freestyle-section name="Street Address"}}
-    {{#freestyle-collection title="street-address" inline=true as |collection|}}
+    {{#freestyle-collection title="street-address" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-note "street-address--notes"}}
         Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API
         enabled. Takes an optional `label` property (defaults to "Enter a street address").
@@ -319,7 +324,7 @@
 
   {{!-- DATE PICKER --}}
   {{#freestyle-section name="date-picker"}}
-    {{#freestyle-collection title="date picker" inline=true as |collection|}}
+    {{#freestyle-collection title="date picker" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-annotation}}
         <p>
           Allows user to select a date from calendar view or enter their own input.
@@ -339,7 +344,7 @@
         </p>
       {{/freestyle-annotation}}
       {{#collection.variant key="default"}}
-        {{#freestyle-usage "date-picker-optional" title="Default (Optional)"}}
+        {{#freestyle-usage "date-picker-optional" title="Default"}}
           <DatePicker @label="Date (MM/DD/YYYY)" />
         {{/freestyle-usage}}
       {{/collection.variant}}

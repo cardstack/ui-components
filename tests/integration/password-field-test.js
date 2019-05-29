@@ -122,4 +122,12 @@ module('Integration | Component | password-field', function(hooks) {
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
   });
+
+  test('it renders themed component', async function (assert) {
+    await render(hbs`<PasswordField @label="Enter your passcode" @theme="cs-theme" />`);
+
+    assert.dom('[data-test-cs-component-input="password"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-label="password"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-validation="password"]').hasClass('cs-theme');
+  });
 });

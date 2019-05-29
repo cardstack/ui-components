@@ -33,4 +33,11 @@ module('Integration | Component | street address', function(hooks) {
     assert.dom('.ember-power-select-option').exists({ count: 1 });
     assert.dom('.ember-power-select-option').hasText('No results found');
   });
+
+  test('it renders themed component', async function (assert) {
+    await render(hbs`<StreetAddress @label="Enter your address" @theme="cs-theme" />`);
+
+    assert.dom('[data-test-cs-component="street-address"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-label="street-address"]').hasClass('cs-theme');
+  });
 });

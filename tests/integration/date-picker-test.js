@@ -13,7 +13,7 @@ module('Integration | Component | date picker', function (hooks) {
 
   setupRenderingTest(hooks);
 
-  test('it renders optional field', async function (assert) {
+  test('it renders default component', async function (assert) {
     await render(hbs`<DatePicker @label="Pick a date" />`);
 
     assert.dom('[data-test-cs-component-date]').exists();
@@ -22,7 +22,7 @@ module('Integration | Component | date picker', function (hooks) {
     assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
   });
 
-  test('it renders required field', async function (assert) {
+  test('it renders required component', async function (assert) {
     await render(hbs`<DatePicker @required="true" />`);
 
     assert.dom('[data-test-cs-component-input="date-picker"][required]').exists();
@@ -259,5 +259,14 @@ module('Integration | Component | date picker', function (hooks) {
 
     await fillIn('[data-test-cs-component-input="date-picker"]', '');
     assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
+  });
+
+  test('it renders themed component', async function (assert) {
+    await render(hbs`<DatePicker @label="Pick a date" @theme="cs-theme" />`);
+
+    assert.dom('[data-test-cs-component-date]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-label="date-picker"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').hasClass('cs-theme');
   });
 });

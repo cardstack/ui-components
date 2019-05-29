@@ -4,6 +4,6 @@ import layout from '../templates/components/text-area';
 export default TextField.extend({
   layout,
   classNames: ['cs-component-text-area'],
-  dataTestName: 'textarea',
+  dataTestName: 'text-area',
   rows: 3,
 });
