@@ -1,58 +1,62 @@
-{{#unless required}}
-  <span class="cs-component-text-field-optional" data-test-cs-component-text-field-optional>Optional</span>
-{{/unless}}
-
 {{#if iconComponent}}
   {{component iconComponent
     class="cs-component-text-field--icon"
     type=type
     changeType=(action (mut type))
+    data-test-cs-component-input=dataTestName
   }}
 {{/if}}
 
 {{#if inputComponent}}
   {{component inputComponent
-    class="cs-component-text-field--input"
+    class=(concat "cs-component-text-field--input " @theme)
     required=required
     setValidationMessage=(action (mut validationMessage))
     setInvalid=(action (mut invalid))
     setValue=(action (mut value))
     id=inputId
+    data-test-cs-component-input=dataTestName
   }}
 {{else if dateComponent}}
   {{component dateComponent
     type=type
-    class="cs-component-text-field--input"
+    class=(concat "cs-component-text-field--input " @theme)
     required=required
     _value=value
     onblur=onblur
     onchange=onchange
     oninput=oninput
     id=inputId
+    data-test-cs-component-input=dataTestName
   }}
 {{else}}
   <input
     type={{type}}
     name="name"
     value={{value}}
-    class="cs-component-text-field--input {{if required "required"}}"
+    class="cs-component-text-field--input {{@theme}}"
     id={{inputId}}
     required={{required}}
     autocomplete="off"
     onchange={{action "handleInput"}}
+    data-test-cs-component-input={{dataTestName}}
   >
 {{/if}}
 
 <label
   for={{inputId}}
-  class="cs-component-text-field--label {{if value "active"}}"
+  class="cs-component-text-field--label {{if value "active"}} {{@theme}}"
+  data-test-cs-component-label={{dataTestName}}
 >
-  <span>{{label}}</span>
+  <span class="label">{{label}}</span>
+  {{#unless required}}
+    <span class="optional">Optional</span>
+  {{/unless}}
 </label>
 
 <div
-  class="cs-component-text-field--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}}"
-  data-test-cs-component-text-field-validation
+  class="cs-component-text-field--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}} {{@theme}}"
+  data-test-cs-component-validation={{dataTestName}}
 >
   {{validationMessage}}
 </div>

@@ -1,43 +1,48 @@
-// variables like color palette go here
+// Color palette
 $lighter-gray: #f5f5f5;
+$light-gray-e8: #e8e8e8;
 $light-gray: #c1c1c1;
 $gray: #5d5d5d;
 $dark-gray: #222;
-$dark-gray-op30: rgba($dark-gray, 0.3);
+$dark-gray-op20: rgba($dark-gray, 0.2);
 $dark-gray-op60: rgba($dark-gray, 0.6);
 $border-gray: #707070;
+$gray-70: #707070;
 $purple: #6a3ca3;
 $green: #58c949;
 $pink: #ff5c5c;
 $light-blue: rgb(59, 153, 252);
 
+// Theme color palette (cs-theme)
+$cs-theme-light-gray: #6f6f6f;
+$cs-theme-gray: #4d4d4d;
+$cs-theme-light-purple: #9f98bd;
+$cs-theme-purple: #343356;
+$cs-theme-green: green;
+$cs-theme-red: red;
 
-// global properties
-// never change these directly: set them to local variables or set theme properties
+// Global CSS custom properties
 :root {
-  // font
-  --cs-input-font-family: var(--theme-font-family, 'Open Sans', Arial, Helvetica, sans-serif);
-  --cs-input-font-size: var(--theme-input-font-size, 16px);
-  --cs-input-legend-font-size: var(--theme-input-legend-font-size, 20px);
-
-  // copy, background, borders, labels
-  --cs-input-background: var(--theme-input-background, #{$lighter-gray});
-  --cs-input-background-hover: var(--theme-input-background, #{$light-gray});
-  --cs-input-border: var(--theme-input-border, #{$border-gray});
-  --cs-input-border-radius: var(--theme-input-border-radius, 2px);
-  --cs-input-copy: var(--theme-input-copy, #{$dark-gray});
-  --cs-input-copy-op60: var(--theme-input-copy-op60, #{$dark-gray-op60});
-  --cs-input-selected: var(--theme-input-selected, #{$gray});
-  --cs-input-label: var(--theme-input-label, #{$gray});
-  --cs-input-label-focus: var(--theme-input-label-focus, #{$purple});
-  --cs-input-label-optional: var(--theme-input-label-optional, #{$gray});
-  --cs-input-outline-color: var(--theme-input-outline-color, #{$light-blue});
+  --cs-root-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  --cs-root-font-size: 16px;
+  --cs-root-input-height: 60px;
+  --cs-root-legend-font-size: 20px;
+  --cs-root-body-color: #{$dark-gray};
+  --cs-root-body-color-op60: #{$dark-gray-op60};
+  --cs-root-border-radius: 2px;
+  --cs-root-border-color: #{$border-gray};
+  --cs-root-background-color: #{$lighter-gray};
+  --cs-root-background-hover: #{$light-gray-e8};
+  --cs-root-label-color: #{$gray};
+  --cs-root-label-focus: #{$purple};
+  --cs-root-selected: #{$gray-70};
+  --cs-root-outline-color: #{$light-blue};
 
   // spacing
-  --cs-input-padding-horizontal: var(--theme-input-padding-horizontal, 15px);
-  --cs-input-padding-vertical: var(--theme-input-padding-vertical, 20px);
+  --cs-root-padding-horizontal: 15px;
+  --cs-root-padding-vertical: 20px;
 
   // validation
-  --cs-input-valid: var(--theme-input-valid, #{$green});
-  --cs-input-invalid: var(--theme-input-invalid, #{$pink});
+  --cs-root-valid: #{$green};
+  --cs-root-invalid: #{$pink};
 }

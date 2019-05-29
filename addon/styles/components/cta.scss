@@ -1,39 +1,68 @@
 .cs-component-cta {
-  --cs-button-copy: white;
-  --cs-button-background: #{$dark-gray};
+  --cs-cta-font-size: 14px;
+  --cs-cta-main: #{$gray};
+  --cs-cta-light: white;
+  --cs-cta-active: #{$dark-gray};
+  --cs-cta-disabled: var(--cs-cta-active);
+  --cs-cta-disabled-light: #{$dark-gray-op20};
+  --cs-cta-border: var(--cs-cta-main);
+  --cs-cta-border-radius: 0;
+  --cs-cta-padding: 12px 20px;
 
-  padding: 10px 20px;
-  font-family: inherit;
-  font-size: inherit;
-  background-color: var(--cs-button-background);
-  color: var(--cs-button-copy);
+  box-sizing: border-box;
+  padding: var(--cs-cta-padding);
+  border: 1px solid var(--cs-cta-border);
+  border-radius: var(--cs-cta-border-radius);
+  font-family: 'Open Sans';
+  font-size: var(--cs-cta-font-size);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: center;
   cursor: pointer;
   user-select: none;
 
-  &:not(:disabled):hover {
-    --cs-button-background: #{$dark-gray-op60};
-  }
-
   &:disabled {
-    --cs-button-background: #{$light-gray};
-    --cs-button-copy: #{$gray};
-
+    opacity: 0.3;
     cursor: not-allowed;
   }
 }
 
-.cs-component-cta--secondary {
-  --cs-button-background: #{$lighter-gray};
-  --cs-button-copy: #{$dark-gray};
+.cs-component-cta--primary {
+  --cs-component-cta-background: var(--cs-cta-main);
+  --cs-component-cta-copy: var(--cs-cta-light);
 
-  border: 1px solid var(--cs-button-copy);
+  background-color: var(--cs-component-cta-background);
+  color: var(--cs-component-cta-copy);
 
   &:not(:disabled):hover {
-    --cs-button-background: #{$dark-gray-op30};
+    --cs-component-cta-background: var(--cs-cta-active);
   }
 
   &:disabled {
-    --cs-button-background: #{$lighter-gray};
-    --cs-button-copy: #{$light-gray};
+    --cs-component-cta-background: var(--cs-cta-disabled-light);
+    --cs-component-cta-copy: var(--cs-cta-disabled);
   }
 }
+
+.cs-component-cta--secondary {
+  --cs-component-cta-background: transparent;
+  --cs-component-cta-copy: var(--cs-cta-main);
+
+  background-color: var(--cs-component-cta-background);
+  color: var(--cs-component-cta-copy);
+
+  &:not(:disabled):hover {
+    --cs-component-cta-background: var(--cs-cta-main);
+    --cs-component-cta-copy: var(--cs-cta-light);
+  }
+}
+
+
+// CS-THEME
+.cs-component-cta.cs-theme {
+  --cs-cta-border-radius: 4px;
+  --cs-cta-main: #{$cs-theme-purple};
+  --cs-cta-padding: 1em 1.2em;
+}
+

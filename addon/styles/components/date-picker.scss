@@ -1,7 +1,66 @@
+.cs-component-date {
+  --cs-date-background-color: var(--cs-root-background-color);
+  --cs-date-body-color: var(--cs-root-body-color);
+
+  .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
+    background: var(--cs-date-background-color);
+    color: var(--cs-date-body-color);
+    border: 1px solid var(--cs-root-border-color);
+    border-radius: var(--cs-root-border-radius);
+    font-size: var(--cs-root-font-size);
+  }
+
+  .ember-power-select-search {
+    padding: 5px var(--cs-root-padding-horizontal) 0;
+  }
+
+  .ember-power-select-option--search-message {
+    display: none;
+  }
+
+  .ember-power-select-search-input {
+    padding: 0;
+    height: 32px;
+    border: none;
+    border-bottom: 1px solid var(--cs-root-border-color);
+    background: inherit;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  .ember-power-select-search-input:hover {
+    background-color: var(--cs-root-background-hover);
+  }
+
+  .ember-power-select-search-input:focus {
+    border: none;
+    border-bottom: 1px solid var(--cs-root-border-color);
+  }
+
+  .ember-power-select-options {
+    background: inherit;
+    border: none;
+    margin-top: 6px;
+    border-radius: 0;
+  }
+
+  .ember-power-select-option {
+    padding: 6px var(--cs-root-padding-horizontal);
+    border-bottom: 1px solid var(--cs-root-border-color);
+    text-align: left;
+
+    &[aria-current=true] {
+      background: var(--cs-root-selected);
+    }
+  }
+}
+
 .cs-component-calendar.ember-basic-dropdown-content {
   background: #fff;
-  border: 1px solid var(--cs-input-border);
-  border-radius: var(--cs-input-border-radius);
+  border: 1px solid var(--cs-root-border-color);
+  border-radius: var(--cs-root-border-radius);
 
   .ember-power-calendar-day {
     padding: 1em;
@@ -14,9 +73,26 @@
 
 .cs-component-calendar--nav-dropdown {
   flex: 1;
+  padding: 5px;
 
-  > .ember-power-select-trigger {
-    background: transparent;
+  .ember-power-select-trigger {
     border: none;
+  }
+}
+
+
+// cs-theme
+.cs-component-date.cs-theme {
+  --cs-date-background-color: white;
+  --cs-date-body-color: #{$cs-theme-light-gray};
+  font-weight: 600;
+
+  .ember-power-select-trigger:hover,
+  .ember-power-select-search-input:hover {
+    background-color: var(--cs-dropdown-background-color);
+  }
+
+  .ember-power-select-option {
+    border-bottom: none;
   }
 }

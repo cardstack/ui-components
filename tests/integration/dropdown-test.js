@@ -11,8 +11,8 @@ module('Integration | Component | dropdown', function(hooks) {
     this.options = [];
     await render(hbs`<Dropdown @options={{options}} />`);
 
-    assert.dom('[data-test-cs-component-dropdown]').exists();
-    assert.dom('.cs-component-dropdown label').hasText('Select an option');
+    assert.dom('[data-test-cs-component="dropdown"]').exists();
+    assert.dom('[data-test-cs-component-label="dropdown"]').hasText('Select an option');
 
     await clickTrigger('.cs-component-dropdown');
 
@@ -24,8 +24,8 @@ module('Integration | Component | dropdown', function(hooks) {
     this.options = [];
     await render(hbs`<Dropdown @options={{options}} @label="Select a Country" />`);
 
-    assert.dom('[data-test-cs-component-dropdown]').exists();
-    assert.dom('.cs-component-dropdown label').hasText('Select a Country');
+    assert.dom('[data-test-cs-component="dropdown"]').exists();
+    assert.dom('[data-test-cs-component-label="dropdown"]').hasText('Select a Country');
   });
 
   test('it renders the component with options', async function(assert) {

@@ -9,69 +9,69 @@ module('Integration | Component | email', function(hooks) {
   test('it renders optional component', async function(assert) {
     await render(hbs`<Email @label="Enter Email" />`);
 
-    assert.dom('[data-test-cs-component-text-field]').exists();
-    assert.dom('[data-test-cs-component-text-field-optional]').hasText('Optional');
-    assert.dom('[data-test-cs-component-text-field] input').doesNotHaveClass('required');
-    assert.dom('[data-test-cs-component-text-field] label').hasText('Enter Email');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText('');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasClass('hidden');
+    assert.dom('[data-test-cs-component="email"]').exists();
+    assert.dom('[data-test-cs-component-input="email"]').doesNotHaveAttribute('required');
+    assert.dom('[data-test-cs-component-label="email"] .optional').hasText('Optional');
+    assert.dom('[data-test-cs-component-label="email"] .label').hasText('Enter Email');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
+    assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
   });
 
   test('it renders required component', async function (assert) {
-    await render(hbs`<Email @label="Enter Email" @required=true />`);
+    await render(hbs`<Email @label="Enter Email" @required="true" />`);
 
-    assert.dom('[data-test-cs-component-text-field]').exists();
-    assert.dom('[data-test-cs-component-text-field] input').hasClass('required');
-    assert.dom('[data-test-cs-component-text-field] label').hasText('Enter Email');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText('');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasClass('hidden');
+    assert.dom('[data-test-cs-component="email"]').exists();
+    assert.dom('[data-test-cs-component-input="email"]').hasAttribute('required');
+    assert.dom('[data-test-cs-component-label="email"] .label').hasText('Enter Email');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
+    assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
   });
 
   test('it displays error message for invalid input', async function (assert) {
     await render(hbs`<Email />`);
 
-    assert.dom('[data-test-cs-component-text-field] label').doesNotHaveClass('active');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasClass('hidden');
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText('');
+    assert.dom('[data-test-cs-component-label="email"]').doesNotHaveClass('active');
+    assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
 
-    await fillIn('[data-test-cs-component-text-field] input', ' username ');
+    await fillIn('[data-test-cs-component-input="email"]', ' username ');
 
-    assert.dom('[data-test-cs-component-text-field] label').hasClass('active');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotHaveClass('hidden');
-    assert.dom('[data-test-cs-component-text-field-validation]').containsText('@');
+    assert.dom('[data-test-cs-component-label="email"]').hasClass('active');
+    assert.dom('[data-test-cs-component-validation="email"]').hasClass('invalid');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('hidden');
+    assert.dom('[data-test-cs-component-validation="email"]').containsText('@');
   });
 
   test('it displays message for valid input', async function (assert) {
     await render(hbs`<Email />`);
 
-    assert.dom('[data-test-cs-component-text-field-validation]').hasClass('hidden');
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText('');
+    assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
 
-    await fillIn('[data-test-cs-component-text-field] input', 'username@cardstack.com');
+    await fillIn('[data-test-cs-component-input="email"]', 'username@cardstack.com');
 
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotHaveClass('hidden');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText('Thank you.');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('hidden');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('Thank you.');
   });
 
   test('it only displays message for required field if it is left blank', async function (assert) {
     await render(hbs`<Email />`);
-    await fillIn('[data-test-cs-component-text-field] input', 'username@cardstack.com');
-    await fillIn('[data-test-cs-component-text-field] input', '');
+    await fillIn('[data-test-cs-component-input="email"]', 'username@cardstack.com');
+    await fillIn('[data-test-cs-component-input="email"]', '');
 
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasClass('hidden');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText('');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
+    assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
 
     await render(hbs`<Email @required=true />`);
-    await fillIn('[data-test-cs-component-text-field] input', 'username');
-    await fillIn('[data-test-cs-component-text-field] input', '');
+    await fillIn('[data-test-cs-component-input="email"]', 'username');
+    await fillIn('[data-test-cs-component-input="email"]', '');
 
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotHaveClass('hidden');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText('Please fill out this field.');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('hidden');
+    assert.dom('[data-test-cs-component-validation="email"]').hasClass('invalid');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('Please fill out this field.');
   });
 });

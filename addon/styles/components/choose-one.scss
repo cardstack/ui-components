@@ -1,6 +1,6 @@
 .cs-component-choose-one {
-  --cs-component-choose-one-background: var(--cs-input-background);
-  --cs-component-choose-one-copy: var(--cs-input-copy);
+  --cs-choose-one-background: var(--cs-root-background-color);
+  --cs-choose-one-copy: var(--cs-root-body-color);
 }
 
 .cs-component-choose-one fieldset {
@@ -11,21 +11,15 @@
 .cs-component-choose-one__container {
   display: inline-grid;
   grid-auto-flow: column;
-  background-color: var(--cs-input-border);
+  background-color: var(--cs-choose-one-background);
   justify-content: start;
   grid-gap: 1px;
   align-items: center;
-  border: solid 1px var(--cs-input-border);
+  border: solid 1px var(--cs-root-border-color);
 }
 
 .cs-component-choose-one--legend {
-  font-size: var(--cs-input-legend-font-size);
-  font-weight: 600;
   margin-bottom: 10px;
-}
-
-.cs-component-choose-one.checked .cs-component-choose-one--label:not(.checked) {
-  --cs-component-choose-one-copy: var(--cs-input-copy-op60);
 }
 
 .cs-component-choose-one--label {
@@ -34,12 +28,12 @@
   padding: 15px;
   box-sizing: border-box;
   align-self: center;
-  background-color: var(--cs-component-choose-one-background);
-  color: var(--cs-component-choose-one-copy);
+  background-color: var(--cs-choose-one-background);
+  color: var(--cs-choose-one-copy);
   text-align: center;
 
   &:hover {
-    --cs-component-choose-one-background: var(--cs-input-background-hover);
+    --cs-choose-one-background: var(--cs-root-background-hover);
   }
 
   input[type="radio"] {
@@ -47,9 +41,17 @@
   }
 }
 
+.cs-component-choose-one--label + .cs-component-choose-one--label {
+  border-left: solid 1px var(--cs-root-border-color);
+}
+
+.cs-component-choose-one.checked .cs-component-choose-one--label:not(.checked) {
+  --cs-choose-one-copy: var(--cs-root-body-color-op60);
+}
+
 .cs-component-choose-one--label.checked {
-  --cs-component-choose-one-background: var(--cs-input-selected);
-  --cs-component-choose-one-copy: white;
+  --cs-choose-one-background: var(--cs-root-selected);
+  --cs-choose-one-copy: white;
 
   .cs-component-choose-one--name:after {
     display: inline-block;

@@ -1,10 +1,8 @@
-{{#freestyle-guide
-  title="Ember Freestyle"
-  subtitle="Living Style Guide"
-  }}
+{{#freestyle-guide title="Ember Freestyle" subtitle="Living Style Guide"}}
 
+  {{!-- DROPDOWN --}}
   {{#freestyle-section name="dropdown"}}
-    {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
+    {{#freestyle-collection title="dropdown" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-note "dropdown--notes"}}
           ```
@@ -84,9 +82,16 @@
           <Dropdown @options={{countries}} @label="Select a country" @multiple={{true}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "dropdown-default-cs-theme" title="Default with cs-theme"}}
+          <Dropdown @options={{countries}} @label="Select a country" @theme="cs-theme" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- CTA --}}
   {{#freestyle-section name="cta"}}
     {{#freestyle-collection title="CTA" inline=true as |collection|}}
       {{#collection.variant key="primary"}}
@@ -94,55 +99,72 @@
           <Cta>Primary Call to Action</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#freestyle-note "primary-cta--notes"}}
         By default, `Cta` will render a primary type
       {{/freestyle-note}}
-
       {{#collection.variant key="secondary"}}
         {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
           <Cta @variant="secondary">Secondary Call to Action</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#collection.variant key="disabled"}}
         {{#freestyle-usage "disabled-cta" title="Disabled CTA" inline=true}}
           <Cta @disabled="true">Disabled</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#collection.variant key="secondary-disabled"}}
         {{#freestyle-usage "secondary-disabled-cta" title="Secondary Disabled CTA" inline=true}}
           <Cta @variant="secondary" @disabled="true">Secondary Disabled</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "primary-cta-cs-theme" title="Primary CTA with cs-theme" inline=true}}
+          <Cta @variant="primary" @theme="cs-theme">Button</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "secondary-cta-cs-theme" title="Secondary CTA with cs-theme" inline=true}}
+          <Cta @variant="secondary" @theme="cs-theme">Button</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- TEXT FIELD --}}
   {{#freestyle-section name="TextField"}}
-    {{#freestyle-collection title="TextField" defaultKey="optional" inline=true as |collection|}}
+    {{#freestyle-collection title="TextField" inline=true as |collection|}}
       {{#collection.variant key="optional"}}
-        {{#freestyle-usage "text-field-optional" title="Optional Text Field"}}
+        {{#freestyle-usage "text-field-default" title="Default (Optional)"}}
           <TextField @label="What's your name?" />
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#collection.variant key="required"}}
-        {{#freestyle-usage "text-field-required" title="Required Text Field"}}
+        {{#freestyle-usage "text-field-required" title="Required"}}
           <TextField @label="What's your name?" @required={{true}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "text-field-default-cs-theme" title="Default with cs-theme"}}
+          <TextField @label="What's your name?" @theme="cs-theme" />
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- PHONE NUMBER --}}
   {{#freestyle-section name="Phone Number Field"}}
     {{#freestyle-usage "phone-number-field-default" title="Phone Number Field"}}
       <PhoneNumberField />
     {{/freestyle-usage}}
+    {{#freestyle-usage "phone-number-default-cs-theme" title="Default with cs-theme"}}
+      <PhoneNumberField @theme="cs-theme" />
+    {{/freestyle-usage}}
   {{/freestyle-section}}
 
+
+  {{!-- TEXTAREA --}}
   {{#freestyle-section name="Text Area"}}
-    {{#freestyle-collection title="TextArea" defaultKey="default" inline=true as |collection|}}
+    {{#freestyle-collection title="TextArea" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-area-default" title="Text Area"}}
           <TextArea @label="What's on your mind?" @rows={{5}} />
@@ -153,14 +175,20 @@
           <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="cs-theme"}}
+        {{#freestyle-usage "text-area-default-cs-theme" title="Default with cs-theme"}}
+          <TextArea @label="What's on your mind?" @rows={{5}} @theme="cs-theme" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- PASSWORD --}}
   {{#freestyle-section name="Password Field"}}
-    {{#freestyle-collection title="password" defaultKey="default" inline=true as |collection|}}
+    {{#freestyle-collection title="password" inline=true as |collection|}}
       {{#freestyle-annotation}}
         <code>PasswordField</code> can take in a few options that enforce security requirements
-
         <ul>
           <li><code>minLength</code> - (integer) minimum characters</li>
           <li><code>mustIncludeUppercase</code> - (boolean) must include at least one uppercase character</li>
@@ -193,7 +221,6 @@
       {{#collection.variant key="custom-validator"}}
         {{#freestyle-note "password-field-with-custom-validator--notes"}}
           You can define a custom function to validate the password and pass a custom validation message.
-
           ```
             validator(value) {
               return {
@@ -207,61 +234,90 @@
           <PasswordField @validate={{validator}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "password-field-default-cs-theme" title="Default with cs-theme"}}
+          <PasswordField @theme="cs-theme" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- CHOOSE ITEMS --}}
   {{#freestyle-section name="Choose Items"}}
     {{#freestyle-usage "choose-one" title="Choose One (Text)"}}
       <ChooseOne @legend="What is your Favorite Color?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
-
     {{#freestyle-note "text-choose-one--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
-
     {{#freestyle-usage "choose-many" title="Choose Many (Text)"}}
       <ChooseMany @legend="What combination makes Purple?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
-
     {{#freestyle-note "text-choose-many--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
   {{/freestyle-section}}
 
-  {{#freestyle-section name="Email Input"}}
-    {{#freestyle-usage "email-input-optional" title="Optional"}}
-      <Email @label="Email Address" />
-    {{/freestyle-usage}}
 
-    {{#freestyle-usage "email-input-required" title="Required"}}
-      <Email @label="Email Address" @required={{true}} />
-    {{/freestyle-usage}}
+  {{!-- EMAIL --}}
+  {{#freestyle-section name="Email Input"}}
+    {{#freestyle-collection title="email" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "email-input-default" title="Default (Optional)"}}
+          <Email @label="Email Address" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="required"}}
+        {{#freestyle-usage "email-input-required" title="Required"}}
+          <Email @label="Email Address" @required={{true}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "email-input-default-cs-theme" title="Default with cs-theme"}}
+          <Email @label="Email Address" @theme="cs-theme" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- CHECKBOX --}}
   {{#freestyle-section name="Checkbox (boolean)"}}
-    {{#freestyle-usage "checkbox-optional" title="Optional"}}
+    {{#freestyle-usage "checkbox-default" title="Default (Optional)"}}
       <Checkbox @label="Include a free gift in my order" />
     {{/freestyle-usage}}
-
     {{#freestyle-usage "checkbox-required" title="Required"}}
       <Checkbox @label="I accept the Cardstack Terms of Service" @required={{true}} />
     {{/freestyle-usage}}
-
     {{#freestyle-usage "checkbox-default-checked" title="Default Checked"}}
       <Checkbox @label="I would like to subscribe to your newsletter" @checked={{true}} />
     {{/freestyle-usage}}
   {{/freestyle-section}}
 
-  {{#freestyle-section name="Street Address"}}
-    {{#freestyle-usage "street-address" title="Street Address"}}
-      <StreetAddress @label="Enter your address"/>
-    {{/freestyle-usage}}
 
-    {{#freestyle-note "street-address--notes"}}
-      Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API enabled. Takes an optional `label` property (defaults to "Enter a street address").
-    {{/freestyle-note}}
+  {{!-- STREET ADDRESS --}}
+  {{#freestyle-section name="Street Address"}}
+    {{#freestyle-collection title="street-address" inline=true as |collection|}}
+      {{#freestyle-note "street-address--notes"}}
+        Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API
+        enabled. Takes an optional `label` property (defaults to "Enter a street address").
+      {{/freestyle-note}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "street-address" title="Street Address"}}
+          <StreetAddress @label="Enter your address"/>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "street-address-cs-theme" title="Street Address with cs-theme"}}
+          <StreetAddress @theme="cs-theme" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- DATE PICKER --}}
   {{#freestyle-section name="date-picker"}}
     {{#freestyle-collection title="date picker" inline=true as |collection|}}
       {{#freestyle-annotation}}
@@ -282,19 +338,16 @@
           However, this can be changed using <code>startYear</code> and <code>yearRange</code> attributes.
         </p>
       {{/freestyle-annotation}}
-
-      {{#collection.variant key="optional"}}
-        {{#freestyle-usage "date-picker-optional" title="Optional"}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "date-picker-optional" title="Default (Optional)"}}
           <DatePicker @label="Date (MM/DD/YYYY)" />
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#collection.variant key="required"}}
         {{#freestyle-usage "date-picker-required" title="Required"}}
           <DatePicker @label="Date (MM/DD/YYYY)" @required="true" />
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#collection.variant key="custom-years"}}
         {{#freestyle-note "date-picker-custom-years--notes"}}
           Using `startYear` and `yearRange` attributes to change the dropdown year range.
@@ -303,6 +356,12 @@
           <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "date-picker-default-cs-theme" title="Default with cs-theme"}}
+          <DatePicker @label="Date (MM/DD/YYYY)" @theme="cs-theme" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
+
 {{/freestyle-guide}}
