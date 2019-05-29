@@ -1,7 +1,6 @@
 <div
-  class="{{if multiple "cs-component-dropdown--multiple" "cs-component-dropdown"}} {{if isOpen "is-open"}} {{@theme}}"
+  class="{{if multiple "cs-component-dropdown--multiple" "cs-component-dropdown"}} {{if (or isOpen isFocused) "is-open"}} {{@theme}}"
   data-test-cs-component={{dataTestName}}
-  tabindex="0"
 >
   <div class="cs-component-dropdown__container">
     {{#if searchAction}}
@@ -16,6 +15,8 @@
           allowClear=true
           renderInPlace=true
           ariaLabel=label
+          onfocus=(action (mut isFocused) true)
+          onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
           onclose=(action (mut isOpen) false)
           triggerId=(concat elementId "-dropdown") as |option|}}
@@ -32,6 +33,8 @@
           allowClear=true
           renderInPlace=true
           ariaLabel=label
+          onfocus=(action (mut isFocused) true)
+          onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
           onclose=(action (mut isOpen) false)
           triggerId=(concat elementId "-dropdown") as |option|}}
@@ -49,6 +52,8 @@
           allowClear=true
           renderInPlace=true
           ariaLabel=label
+          onfocus=(action (mut isFocused) true)
+          onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
           onclose=(action (mut isOpen) false)
           triggerId=(concat elementId "-dropdown") as |option|}}
@@ -64,6 +69,8 @@
           allowClear=true
           renderInPlace=true
           ariaLabel=label
+          onfocus=(action (mut isFocused) true)
+          onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
           onclose=(action (mut isOpen) false)
           triggerId=(concat elementId "-dropdown") as |option|}}

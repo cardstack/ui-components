@@ -69,12 +69,23 @@
 
   .ember-power-select-trigger:focus,
   .ember-power-select-trigger--active {
+    padding-right: 1px;
+    padding-left: 1px;
     border: none;
     outline: none;
   }
 
   .ember-power-select-status-icon {
     right: 25px;
+    border-top-color: var(--cs-root-border-color);
+
+    transition: border-top-color 0.2s ease;
+  }
+
+  &.is-open {
+    .ember-power-select-status-icon {
+      border-top-color: var(--cs-root-border-color);
+    }
   }
 
   .ember-power-select-selected-item {
@@ -209,5 +220,9 @@
   .cs-component-dropdown--label.cs-theme {
     --cs-dropdown-label-font-size: 10px;
     --cs-dropdown-label-text-transform: uppercase;
+
+    &.with-option-selected {
+      --cs-dropdown-label-color: #{$purple};
+    }
   }
 }
