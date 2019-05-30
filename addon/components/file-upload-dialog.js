@@ -11,10 +11,14 @@ export default Component.extend({
   files: A([]),
   fileQueue: service(),
   actions: {
-    uploadFile(file) {
+    async uploadFile(file) {
       const now = new Date();
       file.uploadedDate = `${now.getMonth()}.${now.getDay()}.${now.getFullYear()}`;
       this.files.addObject(file);
+
+      if (typeof this.handleFile === 'function') {
+        await this.handleFile(file);
+      }
     },
 
     removeFile(file) {

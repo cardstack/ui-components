@@ -23,4 +23,16 @@ module('Integration | Component | file-upload-dialog', function(hooks) {
     await click('[data-test-cs-component-remove-file]');
     assert.dom('[data-test-cs-component-file]').doesNotExist();
   });
+
+  test('it takes in a function to handle the file upload to server', async function(assert) {
+    assert.expect(2);
+    this.set('handleFile', function(file) {
+      assert.ok(true, 'handleFile function must be called');
+      assert.equal(file.name, 'node.txt', 'file must be passed into handleFile function');
+    });
+    await render(hbs`<FileUploadDialog @acceptedFormats="txt, rtf, dat" @handleFile={{handleFile}}/>`);
+    let file = new File(["foo bar baz"], 'node.txt', { type: 'text/plain' });
+    await triggerEvent(find('[data-test-cs-component-file-upload-dialog] input'), 'change', [file] );
+  });
+
 });
