@@ -63,3 +63,39 @@
   font-weight: 800;
   font-style: italic;
 }
+
+
+html {
+  font-family: var(--cs-root-font-family);
+  font-size: var(--cs-root-font-size);
+  color: var(--cs-root-color);
+}
+
+// Section title
+h2 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 17px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+// Headline for each form section
+h3,
+legend {
+  font-size: var(--cs-root-legend-font-size);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 27px;
+  text-align: left;
+}
+
+// Body text
+p {
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 0;
+  line-height: 19px;
+  text-align: left;
+}

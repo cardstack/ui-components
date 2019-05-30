@@ -32,10 +32,7 @@ const DATE_REGEX = /^(((0?[1-9]|1[012])\/(0?[1-9]|1\d|2[0-8])|(0?[13456789]|1[01
 
 export default Component.extend({
   layout,
-  classNames: ['cs-component-date'],
-  attributeBindings: ['ariaLabel:aria-label', 'dataTestName:data-test-cs-component-date'],
-  ariaLabel: 'Datepicker container',
-  dataTestName: true,
+  tagName: '',
   yearRange: DEFAULT_YEAR_RANGE,
   startYear: DEFAULT_YEAR,
   months: MONTHS,

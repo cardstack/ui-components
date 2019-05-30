@@ -1,102 +1,118 @@
 .cs-component-text-field {
-  // local variables
-  --cs-component-text-field-border-radius: var(--cs-input-border-radius);
-  --cs-component-text-field-label: var(--cs-input-label);
-  --cs-component-text-field-validation: var(--cs-input-valid);
-  --cs-component-text-field-validation-icon: url('images/check-icon.svg');
-  --cs-component-text-field-validation-icon-size: 1em;
+  --cs-text-field-font-size: var(--cs-root-font-size);
+  --cs-text-field-border-radius: var(--cs-root-border-radius);
+  --cs-text-field-background-color: var(--cs-root-background-color);
+  --cs-text-field-color: var(--cs-root-color);
+
+  --cs-text-field-label-color: var(--cs-root-label-color);
+  --cs-text-field-label-optional: var(--cs-text-field-color);
+  --cs-text-field-label-font-size: var(--cs-text-field-font-size);
+  --cs-text-field-label-font-weight: normal;
+  --cs-text-field-label-text-transform: none;
+
+  --cs-text-field-validation: var(--cs-root-valid);
+  --cs-text-field-validation-icon: url('images/check-icon.svg');
+  --cs-text-field-validation-icon-size: 1em;
 
   position: relative;
-  padding-bottom: 2em;
-  font-size: var(--cs-input-font-size);
+  padding: 1rem 0 2rem;
 }
 
 .cs-component-text-field--input {
   box-sizing: border-box;
   width: 100%;
-  height: 60px;
+  height: var(--cs-root-input-height);
   margin: 0;
-  padding-left: 15px;
-  padding-top: 20px;
+  padding-left: var(--cs-root-padding-horizontal);
+  padding-top: var(--cs-root-padding-vertical);
 
-  border: 1px solid var(--cs-input-border);
-  border-radius: var(--cs-component-text-field-border-radius);
-  background-color: var(--cs-input-background);
-  color: var(--cs-input-copy);
+  border: 1px solid var(--cs-root-border-color);
+  border-radius: var(--cs-text-field-border-radius);
+  background-color: var(--cs-text-field-background-color);
+  color: var(--cs-text-field-color);
   font-family: inherit;
-  font-size: inherit;
+  font-size: var(--cs-text-field-font-size);
+  font-weight: 600;
+  letter-spacing: 0;
   line-height: 22px;
 
   overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
   -webkit-transition: padding-top 0.2s ease, margin-top 0.2s ease;
   transition: padding-top 0.2s ease, margin-top 0.2s ease;
+
+  &:focus + .cs-component-text-field--label > .label {
+    --cs-text-field-label-color: var(--cs-root-label-focus);
+    --cs-text-field-label-font-size: 12px;
+    --cs-text-field-label-font-weight: 600;
+
+    top: -45px;
+  }
 }
 
 .cs-component-text-field--label {
   display: block;
   position: relative;
   height: 0;
-  margin: -10px 15px 0 15px;
+  margin: -10px 1rem 0 1rem;
   padding: 0;
   white-space: nowrap;
 
-  border-bottom: 1px solid var(--cs-input-border);
-}
+  border-bottom: 1px solid var(--cs-root-border-color);
 
-.cs-component-text-field--label > span {
-  position: absolute;
-  top: -25px;
-  left: 0;
-  margin: 0;
+  > .optional {
+    position: absolute;
+    top: calc((var(--cs-root-input-height) + 0.5rem) * -1);
+    right: -1rem;
 
-  color: var(--cs-component-text-field-label);
-  line-height: 20px;
+    color: var(--cs-text-field-label-optional);
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    line-height: 14px;
+    text-align: right;
+    text-transform: uppercase;
+  }
 
-  -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-}
+  > .label {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    margin: 0;
 
-.cs-component-text-field--label.active > span {
-  top: -45px;
-  font-size: 12px;
-  font-weight: 600;
-}
+    color: var(--cs-text-field-label-color);
+    font-size: var(--cs-text-field-label-font-size);
+    font-weight: var(--cs-text-field-label-font-weight);
+    letter-spacing: 0;
+    line-height: 1.3;
+    text-align: left;
+    text-transform: var(--cs-text-field-label-text-transform);
 
-.cs-component-text-field--input:focus +
-.cs-component-text-field--label > span {
-  --cs-component-text-field-label: var(--cs-input-label-focus);
+    -webkit-transition: top 0.2s ease, font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
+    transition: top 0.2s ease, font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
+  }
 
-  top: -45px;
-  font-size: 12px;
-  font-weight: 600;
-}
+  &.active > .label {
+    --cs-text-field-label-color: var(--cs-root-label-color);
+    --cs-text-field-label-font-size: 12px;
+    --cs-text-field-label-font-weight: 600;
 
-.cs-component-text-field--optional {
-  --cs-component-text-field-label: var(--cs-input-label-optional);
-
-  float: right;
-  padding-bottom: 0.3em;
-  color: var(--cs-component-text-field-label);
-  font-size: 12px;
-  font-weight: normal;
-  letter-spacing: 1px;
-  line-height: 14px;
-  text-align: right;
-  text-transform: uppercase;
+    top: -45px;
+  }
 }
 
 .cs-component-text-field--validation {
   visibility: visible;
   position: absolute;
   max-width: 100%;
-  margin-top: 10px;
+  margin-top: 1em;
   padding-top: 1em;
-  padding-left: calc(var(--cs-component-text-field-validation-icon-size) + 0.5em);
+  padding-left: calc(var(--cs-text-field-validation-icon-size) + 0.5em);
 
-  background: var(--cs-component-text-field-validation-icon) no-repeat;
+  background: var(--cs-text-field-validation-icon) no-repeat;
   background-position: top 1.2em left;
-  background-size: var(--cs-component-text-field-validation-icon-size);
-  color: var(--cs-component-text-field-validation);
+  background-size: var(--cs-text-field-validation-icon-size);
+
+  color: var(--cs-text-field-validation);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -109,8 +125,8 @@
   transition: visibility 0.2s ease, background-image 0.2s ease;
 
   &.invalid {
-    --cs-component-text-field-validation: var(--cs-input-invalid);
-    --cs-component-text-field-validation-icon: url('images/x-icon.svg');
+    --cs-text-field-validation: var(--cs-root-invalid);
+    --cs-text-field-validation-icon: url('images/x-icon.svg');
 
     visibility: visible;
   }
@@ -118,5 +134,43 @@
   &.hidden {
     visibility: collapse;
     background-image: none;
+  }
+}
+
+
+// cs-theme
+.cs-component-text-field--input.cs-theme {
+  --cs-text-field-font-size: 20px;
+  --cs-text-field-border-radius: 10px;
+  --cs-text-field-background-color: white;
+  --cs-text-field-color: #{$cs-theme-light-gray};
+
+  outline-offset: 2px;
+  padding-bottom: 10px;
+
+  &:focus + .cs-component-text-field--label > .label {
+    --cs-text-field-label-font-size: 10px;
+    --cs-text-field-label-text-transform: uppercase;
+  }
+}
+
+.cs-component-text-field--label.cs-theme {
+  --cs-text-field-label-color: #{$cs-theme-light-gray};
+  --cs-text-field-label-font-size: 18px;
+
+  &.active > .label {
+    --cs-text-field-label-color: #{$cs-theme-light-purple};
+    --cs-text-field-label-font-size: 10px;
+    --cs-text-field-label-text-transform: uppercase;
+  }
+}
+
+.cs-component-text-field--validation {
+  &.cs-theme {
+    --cs-text-field-validation: #{$cs-theme-green};
+  }
+
+  &.invalid.cs-theme {
+    --cs-text-field-validation: #{$cs-theme-red};
   }
 }
