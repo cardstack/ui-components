@@ -17,12 +17,12 @@ Local installation
 
 * `git clone <repository-url>`
 * `cd ui-components`
-* `npm install`
-* `npm link`
+* `yarn install`
+* `yarn link`
 
 Then navigate into the app you want to use the addon in, and run the following command:
 
-* `npm link @cardstack/ui-components`
+* `yarn link @cardstack/ui-components`
 * Start your app with `ember serve`. As you make changes to the addon, if everything is working properly, your Ember app will rebuild to reflect the changes.
 
 Remote installation
