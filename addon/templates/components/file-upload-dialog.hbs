@@ -1,4 +1,4 @@
-<FileDropzone @class="cs-component-file-upload-dialog--prompt" @name="file" as |dropzone queue|>
+<FileDropzone @class="cs-component-file-upload-dialog--prompt" @name="file" as |dropzone|>
   {{#if dropzone.active}}
     <div class="cs-component-file-upload-dialog--dropzone">
       <h4>Drop to upload</h4>
@@ -17,7 +17,7 @@
         </div>
         <div class="cs-component-file-upload-dialog--file-actions">
           <span class="cs-component-file-upload-dialog--view-file"><div class="cs-component-file-upload-dialog--view-file-icon"></div>View</span>
-          <span class="cs-component-file-upload-dialog--remove-file" {{action 'removeFile' file}} data-test-cs-component-remove-file>Remove</span>
+          <span class="cs-component-file-upload-dialog--remove-file" {{action "removeFile" file}} role="button" data-test-cs-component-remove-file>Remove</span>
         </div>
       </div>
     {{/each}}
