@@ -2,7 +2,7 @@
   --cs-component-file-upload-dialog-icon: url('images/file-regular.svg');
 
   .cs-component-file-upload-dialog--prompt {
-    background: var(--cs-input-background);
+    background: $light-gray-e8;
     padding: 20px;
     position: relative;
   }
@@ -44,6 +44,10 @@
 
     span {
       text-decoration: underline;
+    }
+
+    p {
+      text-align: center;
     }
   }
 
@@ -91,7 +95,7 @@
 
   .cs-component-file-upload-dialog--file-thumbnail {
     display: inline-block;
-    border: 1px solid var(--cs-input-border);
+    border: 1px solid $light-gray;
     border-radius: 5px;
     width: 100px;
     height: 70px;

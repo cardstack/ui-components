@@ -1,10 +1,8 @@
 .cs-component-checkbox {
-  --cs-component-checkbox-border-color: var(--cs-input-border);
-  --cs-component-checkbox-outline-color: var(--cs-input-outline-color);
-  --cs-component-checkbox-label: var(--cs-input-label);
-  --cs-component-checkbox-validation: var(--cs-input-valid);
-  --cs-component-checkbox-validation-icon: url('images/check-icon.svg');
-  --cs-component-checkbox-validation-icon-size: 1em;
+  --cs-checkbox-label-color: var(--cs-root-label-color);
+  --cs-checkbox-validation: var(--cs-root-valid);
+  --cs-checkbox-validation-icon: url('images/check-icon.svg');
+  --cs-checkbox-validation-icon-size: 1em;
 
   position: relative;
   font-size: 12px;
@@ -21,7 +19,7 @@
   display: inline-block;
   height: 16px;
   width: 16px;
-  border: 2px solid var(--cs-component-checkbox-border-color);
+  border: 2px solid var(--cs-root-border-color);
   border-radius: 2px;
   left: 0px;
   top: 3px;
@@ -32,8 +30,8 @@
   display: inline-block;
   height: 6px;
   width: 9px;
-  border-left: 2px solid var(--cs-component-checkbox-border-color);
-  border-bottom: 2px solid var(--cs-component-checkbox-border-color);
+  border-left: 2px solid var(--cs-root-border-color);
+  border-bottom: 2px solid var(--cs-root-border-color);
 
   transform: rotate(-45deg);
   left: 4px;
@@ -41,11 +39,14 @@
 }
 
 .cs-component-checkbox label {
+  --cs-checkbox-label-color: var(--cs-root-color);
+
   display: inline-block;
   position: relative;
   padding-left: 26px;
   padding-top: 3px;
   line-height: 20px;
+  color: var(--cs-checkbox-label-color);
 }
 
 .cs-component-checkbox label::before,
@@ -62,19 +63,21 @@
 }
 
 .cs-component-checkbox input[type="checkbox"]:focus + label::before {
-  outline: var(--cs-component-checkbox-outline-color) auto 5px;
+  outline: var(--cs-root-outline-color) auto 5px;
 }
 
+
+// input validation message
 .cs-component-checkbox--validation {
   visibility: visible;
   position: absolute;
   max-width: 100%;
-  padding-left: calc(var(--cs-component-checkbox-validation-icon-size) + 0.5em);
+  padding-left: calc(var(--cs-checkbox-validation-icon-size) + 0.5em);
   margin-top: 5px;
-  background: var(--cs-component-checkbox-validation-icon) no-repeat;
+  background: var(--cs-checkbox-validation-icon) no-repeat;
   background-position: center left;
-  background-size: var(--cs-component-checkbox-validation-icon-size);
-  color: var(--cs-component-checkbox-validation);
+  background-size: var(--cs-checkbox-validation-icon-size);
+  color: var(--cs-checkbox-validation);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -87,8 +90,8 @@
   transition: visibility 0.2s ease, background-image 0.2s ease;
 
   &.invalid {
-    --cs-component-checkbox-validation: var(--cs-input-invalid);
-    --cs-component-checkbox-validation-icon: url('images/x-icon.svg');
+    --cs-checkbox-validation: var(--cs-root-invalid);
+    --cs-checkbox-validation-icon: url('images/x-icon.svg');
 
     visibility: visible;
   }

@@ -1,4 +1,4 @@
-.ui-components-example-group {
+.example-group {
   position: relative;
   max-width: 565px;
   padding: 30px;
@@ -6,81 +6,66 @@
   background-color: white;
 }
 
-.ui-components-example-group--title {
+.example-group--title {
   position: absolute;
   top: -20px;
   left: 10px;
   margin: 0;
   padding: 10px;
-
   background-color: inherit;
-  color: #222;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  line-height: 17px;
-  text-transform: uppercase;
 }
 
-.ui-components-example-group--prompt {
+.example-group--prompt {
   padding-bottom: 1em;
 
   h3 {
     margin: 0;
     padding-bottom: 1em;
-    color: #222;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 27px;
   }
 
   p {
     margin: 0;
     padding-bottom: 1em;
-    color: #222;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 19px;
   }
 }
 
-.ui-components-example-form {
+.example-form {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
   grid-auto-flow: row;
 }
 
-.ui-components-example-form .cs-component-choose-one--label {
+.example-form .cs-component-choose-one--label {
   width: 130px;
 }
 
-.ui-components-example {
+.example {
   padding-top: 60px;
   padding-left: 60px;
-  border-left: 1px solid var(--dummy-border-color);
+  border-left: 1px solid #707070;
 }
 
-.ui-components-examples {
+.examples {
   display: flex;
   direction: row;
   margin-top: 30px;
-  border-top: 1px solid var(--dummy-border-color);
+  border-top: 1px solid #707070;
 }
 
-.ui-components-examples nav {
+.examples nav {
   padding-top: 60px;
   padding-right: 60px;
   padding-left: 30px;
   height: 100vh;
 }
 
-.ui-components-examples nav ul {
+.examples nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.ui-components-examples nav ul li {
+.examples nav ul li {
   line-height: 30px;
 }

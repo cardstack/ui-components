@@ -5,8 +5,8 @@ import { computed } from '@ember/object';
 export default Component.extend({
   layout,
   classNames: ['cs-component-text-field'],
-  attributeBindings: ['dataTestName:data-test-cs-component-text-field'],
-  dataTestName: true,
+  attributeBindings: ['dataTestName:data-test-cs-component'],
+  dataTestName: "text-field",
   validationMessage: '',
   required: false,
   type: 'text',

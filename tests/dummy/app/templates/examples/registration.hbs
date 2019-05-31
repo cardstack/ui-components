@@ -1,11 +1,11 @@
-<section class="ui-components-example-group">
-  <h2 class="ui-components-example-group--title">Cardstack Registration</h2>
+<section class="example-group">
+  <h2 class="ui-components-section-title example-group--title">Cardstack Registration</h2>
 
-  <div class="ui-components-example-group--prompt">
-    <h3>Enter your email and choose a password</h3>
+  <div class="example-group--prompt">
+    <h3 class="ui-components-headline">Enter your email and choose a password</h3>
   </div>
 
-  <div class="ui-components-example-form registration">
+  <div class="example-form">
     <Email @label="Email" @required={{true}} @value={{emailValue}} @invalid={{isEmailInvalid}}/>
     <PasswordField @required={{true}} @value={{passwordValue}} @invalid={{isPasswordInvalid}} />
     <Checkbox @label="I accept the Cardstack Terms &amp; Conditions" @required={{true}} @checked={{isCheckboxChecked}} />
