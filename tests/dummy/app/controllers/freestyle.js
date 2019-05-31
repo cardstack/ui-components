@@ -77,6 +77,12 @@ export default Ember.Component.extend({
     { name: 'Blue', value: 'blue' }
   ]),
 
+  contactTypes: A([
+    { name: 'Work', value: 'work' },
+    { name: 'Cell', value: 'cell' },
+    { name: 'Home', value: 'home' }
+  ]),
+
   doSomething: () => {},
   searchByLengthOfCountryName: async num => Promise.resolve(countries.filter(item => item.name.length === parseInt(num))),
   validator(value) {

@@ -15,7 +15,7 @@
   --cs-text-field-validation-icon-size: 1em;
 
   position: relative;
-  padding: 1rem 0 2rem;
+  padding: 1rem 0 0;
 }
 
 .cs-component-text-field--input {
@@ -102,7 +102,6 @@
 
 .cs-component-text-field--validation {
   visibility: visible;
-  position: absolute;
   max-width: 100%;
   margin-top: 1em;
   padding-top: 1em;

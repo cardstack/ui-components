@@ -4147,7 +4147,7 @@ ember-place-autocomplete@^2.0.0:
     ember-cli-babel "^7.1.2"
     ember-cli-htmlbars "^3.0.0"
 
-ember-power-calendar-moment@^0.1.7:
+ember-power-calendar-moment@^0.1.6, ember-power-calendar-moment@^0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/ember-power-calendar-moment/-/ember-power-calendar-moment-0.1.7.tgz#2e79125f449bdcc94e62afff4e5411012792ed43"
   integrity sha512-tkxGrSfJJq3MkgDQXfKr3o2vJp8kTokcyZnSxwGC1KByMv/TgtDp4+74cTzaK/Di0qnj5AYeeElwEEcGIn4F3A==
@@ -4177,15 +4177,16 @@ ember-power-calendar@^0.13.2:
     ember-cli-htmlbars "^3.0.1"
     ember-concurrency "^0.8.27 || ^0.9.0 || ^0.10.0"
 
-ember-power-datepicker@^0.6.0:
+"ember-power-datepicker@git+https://github.com/bagby/ember-power-datepicker#9eaf27d921056b47b7d620b42e303b45c7a40e67":
   version "0.6.0"
-  resolved "https://registry.yarnpkg.com/ember-power-datepicker/-/ember-power-datepicker-0.6.0.tgz#f9c6052412c553615bfb9aa59cd0eb8d1ff1b45c"
+  resolved "git+https://github.com/bagby/ember-power-datepicker#9eaf27d921056b47b7d620b42e303b45c7a40e67"
   dependencies:
     ember-basic-dropdown "^1.1.2"
     ember-cli-babel "^7.1.2"
     ember-cli-htmlbars "^3.0.0"
     ember-native-dom-helpers "^0.5.10"
     ember-power-calendar "^0.12.0"
+    ember-power-calendar-moment "^0.1.6"
 
 ember-power-select@^2.3.1:
   version "2.3.1"

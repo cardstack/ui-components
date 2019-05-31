@@ -390,6 +390,11 @@
     {{!-- TODO: Themed version --}}
   {{/freestyle-section}}
 
+  {{#freestyle-section name="Choose Contact Type"}}
+    {{#freestyle-usage "choose-contact-type" title="Choose Contact Type"}}
+      <ChooseContactType @choices={{contactTypes}} @selectionChanged={{action doSomething}} />
+    {{/freestyle-usage}}
+  {{/freestyle-section}}
 
   {{!-- EMAIL --}}
   {{#freestyle-section name="Email Input"}}
