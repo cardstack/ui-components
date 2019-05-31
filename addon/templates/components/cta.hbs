@@ -1,7 +1,17 @@
-<button
-  class="cs-component-cta cs-component-cta--{{variant}}"
-  disabled={{disabled}}
-  data-test-cs-component-cta={{variant}}
->
-  {{yield}}
-</button>
+{{#if hasBlock}}
+  <button
+    class="cs-component-cta cs-component-cta--{{variant}} {{@theme}}"
+    disabled={{disabled}}
+    data-test-cs-component-cta={{variant}}
+  >
+    {{yield}}
+  </button>
+{{else}}
+  <button
+    class="cs-component-cta cs-component-cta--{{variant}} {{@theme}}"
+    disabled={{disabled}}
+    data-test-cs-component-cta={{variant}}
+  >
+    {{@label}}
+  </button>
+{{/if}}

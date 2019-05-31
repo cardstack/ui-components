@@ -1,138 +1,236 @@
-@mixin pill() {
-  border: 1px solid var(--cs-input-border);
-  padding: 0 10px;
-  border-radius: 20px;
-  background: transparent;
-}
+.cs-component-dropdown,
+.cs-component-dropdown--multiple {
+  --cs-dropdown-text-box-height: 1.75em;
 
-.cs-component-dropdown, .cs-component-dropdown--multiple {
-  background-color: var(--cs-input-background);
+  // Font properties
+  --cs-dropdown-color: var(--cs-root-color);
+  --cs-dropdown-label-color: var(--cs-root-label-color);
+  --cs-dropdown-font-size: var(--cs-root-font-size);
+  --cs-dropdown-label-font-size: var(--cs-dropdown-font-size);
+  --cs-dropdown-label-font-weight: normal;
+
+  // Background properties
+  --cs-dropdown-background-color: var(--cs-root-background-color);
+  --cs-dropdown-background-hover: var(--cs-root-background-hover);
+  --cs-dropdown-current-option: var(--cs-root-selected);
+
+  --cs-dropdown-border-radius: var(--cs-root-border-radius);
+
+  // Other
+  --cs-dropdown-label-text-transform: none;
+
   position: relative;
-  height: 60px;
-  border: 1px solid var(--cs-input-border);
+  box-sizing: border-box;
+  height: var(--cs-root-input-height);
+  border: 1px solid var(--cs-root-border-color);
+  border-radius: var(--cs-dropdown-border-radius);
+  background-color: var(--cs-dropdown-background-color);
+  color: var(--cs-dropdown-color);
+  font-family: inherit;
+  font-size: var(--cs-dropdown-font-size);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: var(--cs-dropdown-text-box-height);
 
-  &__container {
+  > .cs-component-dropdown__container {
     position: absolute;
     bottom: 10px;
     left: 0;
     right: 0;
   }
 
-  &.is-open &__container {
+  &.is-open > .cs-component-dropdown__container {
     left: -1px;
     right: -1px;
   }
+}
 
-  .cs-component-dropdown--label {
-    color: var(--cs-input-label);
-    z-index: 1;
-    position: absolute;
-    bottom: -1px;
-    left: var(--cs-input-padding-horizontal);
-    right: var(--cs-input-padding-horizontal);
-    border-bottom: 1px solid var(--cs-input-border);
-    pointer-events: none;
-    -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
-    transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+.cs-component-dropdown--label {
+  z-index: 1;
+  position: absolute;
+  bottom: -1px;
+  left: var(--cs-root-padding-horizontal);
+  right: var(--cs-root-padding-horizontal);
 
-    &.with-option-selected {
-      top: calc(0px - var(--cs-input-padding-vertical));
-      left: var(--cs-input-padding-horizontal);
-      font-size: 12px;
-      font-weight: 600;
-    }
+  border-bottom: 1px solid var(--cs-root-border-color);
+  color: var(--cs-dropdown-label-color);
+  font-size: var(--cs-dropdown-label-font-size);
+  font-weight: var(--cs-dropdown-label-font-weight);
+  line-height: inherit;
+  letter-spacing: 0;
+
+  text-align: left;
+  text-transform: var(--cs-dropdown-label-text-transform);
+  pointer-events: none;
+
+  -webkit-transition: top 0.2s ease, font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
+  transition: top 0.2s ease, font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
+
+  &.with-option-selected {
+    --cs-dropdown-label-color: var(--cs-root-label-color);
+    --cs-dropdown-label-font-size: 12px;
+    --cs-dropdown-label-font-weight: 600;
+
+    top: calc(var(--cs-root-padding-vertical) * -1);
+    left: var(--cs-root-padding-horizontal);
+    line-height: var(--cs-root-padding-vertical);
   }
 
-  &.is-open .cs-component-dropdown--label {
-    color: var(--cs-input-label-focus);
-    top: calc(0px - var(--cs-input-padding-vertical));
-    left: calc(var(--cs-input-padding-horizontal) + 1px);
-    font-size: 12px;
-    font-weight: 600;
-  }
+  &.is-open {
+    --cs-dropdown-label-color: var(--cs-root-label-focus);
+    --cs-dropdown-label-font-size: 12px;
+    --cs-dropdown-label-font-weight: 600;
 
-  .ember-power-select-trigger {
-    border: none;
-    outline: none;
-    background-color: var(--cs-input-background);
-    transition: padding-top 0.2s ease, margin-top 0.2s ease;
-  }
-
-  &.is-open .ember-power-select-multiple-trigger {
-    border-left: 1px solid var(--cs-input-border);
-    border-right: 1px solid var(--cs-input-border);
-    border-radius: 0;
-  }
-
-  .ember-power-select-trigger:focus, .ember-power-select-trigger--active {
-    border: none;
-    outline: none;
-  }
-
-  .ember-power-select-multiple-options {
-    margin-left: var(--cs-input-padding-horizontal);
-  }
-
-  .ember-power-select-status-icon {
-    right: 25px;
-  }
-
-  .ember-power-select-selected-item {
-    margin-left: calc(var(--cs-input-padding-horizontal) + 1px);
-  }
-
-  .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
-    border-color: var(--cs-input-border);
-  }
-
-  .ember-power-select-multiple-option {
-    @include pill();
+    top: calc(var(--cs-root-padding-vertical) * -1);
+    left: calc(var(--cs-root-padding-horizontal) + 1px);
+    line-height: var(--cs-root-padding-vertical);
   }
 }
 
-#ember-basic-dropdown-wormhole, .ember-basic-dropdown-content--in-place {
+// ember-power-select & ember-power-dropdown style changes
+.cs-component-dropdown__container {
+  .ember-power-select-trigger {
+    min-height: var(--cs-dropdown-text-box-height);
+    margin: 0 1em;
+    border: none;
+    background-color: var(--cs-dropdown-background-color);
+    line-height: inherit;
+    cursor: pointer;
+
+    -webkit-transition: margin 0.2s ease, background-color 0.2s ease;
+    transition: margin 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+      background-color: var(--cs-dropdown-background-hover);
+    }
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+
   .ember-power-select-search {
-    padding: 0 var(--cs-input-padding-horizontal);
+    padding: 0 var(--cs-root-padding-horizontal);
+
+    .ember-power-select-option--search-message {
+      display: none;
+    }
+
+    .ember-power-select-search-input {
+      min-height: var(--cs-dropdown-text-box-height);
+      padding: 0;
+      border: none;
+      background: inherit;
+      color: inherit;
+      font-family: inherit;
+      line-height: inherit;
+      font-weight: inherit;
+
+      &:focus {
+        border-bottom: 1px solid var(--cs-root-border-color);
+        outline: none;
+      }
+    }
   }
 
-  .ember-power-select-option--search-message {
-    display: none;
+  .ember-power-select-selected-item {
+    display: inline-block;
+    margin-left: 0;
+    font-weight: 600;
+
+    .ember-power-select-status-icon {
+      right: 25px;
+    }
+
+    .ember-power-select-clear-btn {
+      right: 5px;
+    }
   }
 
-  .ember-power-select-search-input {
-    border: none;
-    outline: none;
-    background: var(--cs-input-background);
-    padding: 4px;
-    height: 32px;
-  }
-
-  .ember-power-select-dropdown {
-    border: none;
+  .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
+    top: 0;
+    background-color: var(--cs-dropdown-background-color);
+    border-color: var(--cs-root-border-color);
+    border-bottom-left-radius: var(--cs-dropdown-border-radius);
+    border-bottom-right-radius: var(--cs-dropdown-border-radius);
   }
 
   .ember-power-select-options {
-    background: var(--cs-input-background);
-    border: none;
     margin-top: 6px;
+    background: inherit;
+    border: none;
     border-radius: 0;
   }
 
   .ember-power-select-option {
-    padding: 6px var(--cs-input-padding-horizontal);
-    border-bottom: 1px solid var(--cs-input-border);
+    padding: 6px var(--cs-root-padding-horizontal);
     font-size: 13px;
 
-    &[aria-current=true] {
-      background: var(--cs-input-selected);
+    & + .ember-power-select-option {
+      border-top: 1px solid var(--cs-root-border-color);
     }
-  }
 
-  .ember-basic-dropdown-content, &.ember-basic-dropdown-content {
-    background: transparent;
+    &[aria-current=true] {
+      background-color: var(--cs-dropdown-current-option);
+    }
   }
 }
 
-.cs-component-dropdown .ember-power-select-dropdown {
-  top: 0;
+.cs-component-dropdown--multiple {
+  .ember-power-select-trigger {
+    max-height: var(--cs-dropdown-text-box-height);
+    overflow-y: scroll;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: initial;
+    }
+  }
+
+  .ember-power-select-multiple-option {
+    border: 1px solid var(--cs-root-border-color);
+    padding: 0 10px;
+    border-radius: 20px;
+    background-color: var(--cs-dropdown-background-color);
+
+    &:hover {
+      --cs-dropdown-background-color: var(--cs-dropdown-background-hover);
+    }
+  }
+
+  .cs-component-dropdown--label {
+    bottom: -2px;
+  }
+
+  .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
+    top: calc(var(--cs-root-padding-vertical) * 1.5);
+  }
+}
+
+// Themes
+.cs-theme {
+  --cs-dropdown-font-size: 18px;
+  --cs-dropdown-label-font-size: 18px;
+  --cs-dropdown-border-radius: 10px;
+  --cs-dropdown-background-color: white;
+  --cs-dropdown-background-hover: transparent;
+  --cs-dropdown-current-option: #{$cs-theme-light-purple};
+  --cs-dropdown-color: #{$cs-theme-light-gray};
+
+  .ember-power-select-option + .ember-power-select-option {
+    border-top: none;
+  }
+
+  &.with-option-selected {
+    --cs-dropdown-label-color: #{$cs-theme-light-purple};
+    --cs-dropdown-label-font-size: 10px;
+    --cs-dropdown-label-text-transform: uppercase;
+  }
+
+  &.is-open {
+    --cs-dropdown-label-color: #{$purple};
+    --cs-dropdown-label-font-size: 10px;
+    --cs-dropdown-label-text-transform: uppercase;
+  }
 }

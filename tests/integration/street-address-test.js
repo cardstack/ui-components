@@ -15,7 +15,7 @@ module('Integration | Component | street address', function(hooks) {
 
   test('street address component shows dropdown of address when searching', async function(assert) {
     await render(hbs`<StreetAddress @label="Enter your address" />`);
-    await clickTrigger('.cs-component-street-address');
+    await clickTrigger('[data-test-cs-component="street-address"]');
     await fillIn('.ember-power-select-search-input', 'abc');
 
     assert.dom('.ember-power-select-option').exists({ count: 3 });
@@ -27,10 +27,17 @@ module('Integration | Component | street address', function(hooks) {
 
   test('street address component shows no results if no results', async function(assert) {
     await render(hbs`<StreetAddress @label="Enter your address" />`);
-    await clickTrigger('.cs-component-street-address');
+    await clickTrigger('[data-test-cs-component="street-address"]');
     await fillIn('.ember-power-select-search-input', 'xyz');
 
     assert.dom('.ember-power-select-option').exists({ count: 1 });
     assert.dom('.ember-power-select-option').hasText('No results found');
+  });
+
+  test('it renders themed component', async function (assert) {
+    await render(hbs`<StreetAddress @label="Enter your address" @theme="cs-theme" />`);
+
+    assert.dom('[data-test-cs-component="street-address"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-label="street-address"]').hasClass('cs-theme');
   });
 });

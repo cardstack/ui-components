@@ -1,8 +1,6 @@
-{{#freestyle-guide
-  title="Ember Freestyle"
-  subtitle="Living Style Guide"
-  }}
+{{#freestyle-guide title="Ember Freestyle" subtitle="Living Style Guide"}}
 
+  {{!-- DROPDOWN --}}
   {{#freestyle-section name="dropdown"}}
     {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
@@ -84,63 +82,201 @@
           <Dropdown @options={{countries}} @label="Select a country" @multiple={{true}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "dropdown-themed" title="Themed"}}
+          <Dropdown @options={{countries}} @label="Select a country" @theme="cs-theme" />
+        {{/freestyle-usage}}
+        {{#freestyle-note "dropdown-themed--notes"}}
+          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+          <p>Available themes: <code>cs-theme</code></p>
+        {{/freestyle-note}}
+        {{#freestyle-annotation}}
+          <h2>How to Create a Theme for This Component</h2>
+          <ol>
+            <li>Define a new CSS class on your stylesheet.</li>
+            <li>Change the values set to available CSS variables (see list below).</li>
+            <li>Pass the CSS class name to the <code>@theme</code> attribute on your <code>Dropdown</code> component.</li>
+            <li>More specific CSS changes can be made using <code>ember-power-select</code> classes nested inside your theme class.</li>
+          </ol>
+          <p>To change label styles while the dropdown menu is open or an option is selected, use <code>is-open</code> and <code>with-option-selected</code> classes along with your theme class, respectively.</p>
+          <h2>Supported CSS variables</h2>
+          <pre>
+            <code>
+              <b>Font properties:</b>
+              --cs-dropdown-color
+              --cs-dropdown-label-color
+              --cs-dropdown-label-font-size
+              --cs-dropdown-label-font-weight
+
+              <b>Background properties:</b>
+              --cs-dropdown-background-color
+              --cs-dropdown-background-hover
+              --cs-dropdown-current-option
+
+              <b>Border properties:</b>
+              --cs-dropdown-border-radius
+
+              <b>Other:</b>
+              --cs-dropdown-label-text-transform
+            </code>
+          </pre>
+        {{/freestyle-annotation}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- CTA --}}
   {{#freestyle-section name="cta"}}
-    {{#freestyle-collection title="CTA" inline=true as |collection|}}
+    {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
       {{#collection.variant key="primary"}}
         {{#freestyle-usage "primary-cta" title="Primary CTA"}}
           <Cta>Primary Call to Action</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#freestyle-note "primary-cta--notes"}}
         By default, `Cta` will render a primary type
       {{/freestyle-note}}
-
       {{#collection.variant key="secondary"}}
         {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
           <Cta @variant="secondary">Secondary Call to Action</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
-
+      {{#collection.variant key="without-block"}}
+        {{#freestyle-usage "cta" title="Primary CTA without block"}}
+          <Cta @label="Hello" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
       {{#collection.variant key="disabled"}}
         {{#freestyle-usage "disabled-cta" title="Disabled CTA" inline=true}}
           <Cta @disabled="true">Disabled</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#collection.variant key="secondary-disabled"}}
         {{#freestyle-usage "secondary-disabled-cta" title="Secondary Disabled CTA" inline=true}}
           <Cta @variant="secondary" @disabled="true">Secondary Disabled</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "primary-cta-themed" title="Themed Primary CTA" inline=true}}
+          <Cta @variant="primary" @theme="cs-theme">Button</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "secondary-cta-themed" title="Themed Secondary CTA" inline=true}}
+          <Cta @variant="secondary" @theme="cs-theme">Button</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-note "primary-cta-themed--notes"}}
+          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+          <p>Available themes: <code>cs-theme</code></p>
+        {{/freestyle-note}}
+        {{#freestyle-annotation}}
+          <h2>How to Create a Theme for This Component</h2>
+          <ol>
+            <li>Define a new CSS class on your stylesheet.</li>
+            <li>Change the values set to available CSS variables (see list below).</li>
+            <li>Pass the CSS class name to the <code>@theme</code> attribute on the component.</li>
+          </ol>
+          <h2>Supported CSS variables</h2>
+          <pre>
+            <code>
+              --cs-cta-padding
+              --cs-cta-font-size
+
+              <b>Main colors (most prominent color):</b>
+              --cs-cta-main
+              --cs-cta-active
+              --cs-cta-disabled
+
+              <b>Secondary-level colors:</b>
+              --cs-cta-light
+              --cs-cta-disabled-light
+
+              <b>Border properties:</b>
+              --cs-cta-border
+              --cs-cta-border-radius
+            </code>
+          </pre>
+        {{/freestyle-annotation}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- TEXT FIELD --}}
   {{#freestyle-section name="TextField"}}
-    {{#freestyle-collection title="TextField" defaultKey="optional" inline=true as |collection|}}
-      {{#collection.variant key="optional"}}
-        {{#freestyle-usage "text-field-optional" title="Optional Text Field"}}
+    {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "text-field-default" title="Default"}}
           <TextField @label="What's your name?" />
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#collection.variant key="required"}}
-        {{#freestyle-usage "text-field-required" title="Required Text Field"}}
+        {{#freestyle-usage "text-field-required" title="Required"}}
           <TextField @label="What's your name?" @required={{true}} />
         {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "text-field-themed" title="Themed"}}
+          <TextField @label="What's your name?" @theme="cs-theme" />
+        {{/freestyle-usage}}
+        {{#freestyle-note "text-field-themed--notes"}}
+          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+          <p>Available themes: <code>cs-theme</code></p>
+        {{/freestyle-note}}
+        {{#freestyle-annotation}}
+          <h2>How to Create a Theme for This Component</h2>
+          <ol>
+            <li>Define a new CSS class on your stylesheet.</li>
+            <li>Change the values set to available CSS variables (see list below).</li>
+            <li>Pass the CSS class name to the <code>@theme</code> attribute on the component.</li>
+          </ol>
+
+          <h2>Supported CSS variables</h2>
+          <pre>
+            <code>
+              <b>Font properties:</b>
+              --cs-text-field-font-size
+              --cs-text-field-label-font-size
+              --cs-text-field-label-font-weight
+              --cs-text-field-color
+              --cs-text-field-label-color
+              --cs-text-field-label-optional
+
+              <b>Background properties:</b>
+              --cs-text-field-background-color
+
+              <b>Border properties:</b>
+              --cs-text-field-border-radius
+
+              <b>Other:</b>
+              --cs-text-field-label-text-transform
+            </code>
+          </pre>
+        {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- PHONE NUMBER --}}
   {{#freestyle-section name="Phone Number Field"}}
     {{#freestyle-usage "phone-number-field-default" title="Phone Number Field"}}
       <PhoneNumberField />
     {{/freestyle-usage}}
+    {{#freestyle-usage "phone-number-themed" title="Themed"}}
+      <PhoneNumberField @theme="cs-theme" />
+    {{/freestyle-usage}}
+    {{#freestyle-note "phone-number-themed--notes"}}
+      <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+      <p>Available themes: <code>cs-theme</code></p>
+    {{/freestyle-note}}
+    {{#freestyle-annotation}}
+      <h2>How to Create a Theme for This Component</h2>
+      <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
+    {{/freestyle-annotation}}
   {{/freestyle-section}}
 
+
+  {{!-- TEXTAREA --}}
   {{#freestyle-section name="Text Area"}}
     {{#freestyle-collection title="TextArea" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
@@ -153,14 +289,28 @@
           <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "text-area-themed" title="Themed"}}
+          <TextArea @label="What's on your mind?" @rows={{5}} @theme="cs-theme" />
+        {{/freestyle-usage}}
+        {{#freestyle-note "text-area-themed--notes"}}
+          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+          <p>Available themes: <code>cs-theme</code></p>
+        {{/freestyle-note}}
+        {{#freestyle-annotation}}
+          <h2>How to Create a Theme for This Component</h2>
+          <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
+        {{/freestyle-annotation}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- PASSWORD --}}
   {{#freestyle-section name="Password Field"}}
     {{#freestyle-collection title="password" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-annotation}}
         <code>PasswordField</code> can take in a few options that enforce security requirements
-
         <ul>
           <li><code>minLength</code> - (integer) minimum characters</li>
           <li><code>mustIncludeUppercase</code> - (boolean) must include at least one uppercase character</li>
@@ -193,7 +343,6 @@
       {{#collection.variant key="custom-validator"}}
         {{#freestyle-note "password-field-with-custom-validator--notes"}}
           You can define a custom function to validate the password and pass a custom validation message.
-
           ```
             validator(value) {
               return {
@@ -207,94 +356,137 @@
           <PasswordField @validate={{validator}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "password-field-themed" title="Themed"}}
+          <PasswordField @theme="cs-theme" />
+        {{/freestyle-usage}}
+        {{#freestyle-note "password-field-themed--notes"}}
+          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+          <p>Available themes: <code>cs-theme</code></p>
+        {{/freestyle-note}}
+        {{#freestyle-annotation}}
+          <h2>How to Create a Theme for This Component</h2>
+          <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
+        {{/freestyle-annotation}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- CHOOSE ITEMS --}}
   {{#freestyle-section name="Choose Items"}}
     {{#freestyle-usage "choose-one" title="Choose One (Text)"}}
       <ChooseOne @legend="What is your Favorite Color?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
-
     {{#freestyle-note "text-choose-one--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
-
     {{#freestyle-usage "choose-many" title="Choose Many (Text)"}}
       <ChooseMany @legend="What combination makes Purple?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
-
     {{#freestyle-note "text-choose-many--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
+    {{!-- TODO: Themed version --}}
   {{/freestyle-section}}
 
+
+  {{!-- EMAIL --}}
   {{#freestyle-section name="Email Input"}}
-    {{#freestyle-usage "email-input-optional" title="Optional"}}
-      <Email @label="Email Address" />
-    {{/freestyle-usage}}
-
-    {{#freestyle-usage "email-input-required" title="Required"}}
-      <Email @label="Email Address" @required={{true}} />
-    {{/freestyle-usage}}
+    {{#freestyle-collection title="email" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "email-input-default" title="Default"}}
+          <Email @label="Email Address" />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="required"}}
+        {{#freestyle-usage "email-input-required" title="Required"}}
+          <Email @label="Email Address" @required={{true}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "email-input-themed" title="Themed"}}
+          <Email @label="Email Address" @theme="cs-theme" />
+        {{/freestyle-usage}}
+        {{#freestyle-note "email-input-themed--notes"}}
+          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+          <p>Available themes: <code>cs-theme</code></p>
+        {{/freestyle-note}}
+        {{#freestyle-annotation}}
+          <h2>How to Create a Theme for This Component</h2>
+          <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
+        {{/freestyle-annotation}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- CHECKBOX --}}
   {{#freestyle-section name="Checkbox (boolean)"}}
-    {{#freestyle-usage "checkbox-optional" title="Optional"}}
+    {{#freestyle-usage "checkbox-default" title="Default (Optional)"}}
       <Checkbox @label="Include a free gift in my order" />
     {{/freestyle-usage}}
-
     {{#freestyle-usage "checkbox-required" title="Required"}}
       <Checkbox @label="I accept the Cardstack Terms of Service" @required={{true}} />
     {{/freestyle-usage}}
-
     {{#freestyle-usage "checkbox-default-checked" title="Default Checked"}}
       <Checkbox @label="I would like to subscribe to your newsletter" @checked={{true}} />
     {{/freestyle-usage}}
+    {{!-- TODO: Themed version --}}
   {{/freestyle-section}}
 
+
+  {{!-- STREET ADDRESS --}}
   {{#freestyle-section name="Street Address"}}
-    {{#freestyle-usage "street-address" title="Street Address"}}
-      <StreetAddress @label="Enter your address"/>
-    {{/freestyle-usage}}
-
-    {{#freestyle-note "street-address--notes"}}
-      Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API enabled. Takes an optional `label` property (defaults to "Enter a street address").
-    {{/freestyle-note}}
+    {{#freestyle-collection title="street-address" defaultKey="default" inline=true as |collection|}}
+      {{#freestyle-note "street-address--notes"}}
+        Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API
+        enabled. Takes an optional `label` property (defaults to "Enter a street address").
+      {{/freestyle-note}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "street-address" title="Street Address"}}
+          <StreetAddress @label="Enter your address"/>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "street-address-themed" title="Themed"}}
+          <StreetAddress @theme="cs-theme" />
+        {{/freestyle-usage}}
+        {{#freestyle-note "street-address-themed--notes"}}
+          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+          <p>Available themes: <code>cs-theme</code></p>
+        {{/freestyle-note}}
+        {{#freestyle-annotation}}
+          <h2>How to Create a Theme for This Component</h2>
+          <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
+        {{/freestyle-annotation}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
   {{/freestyle-section}}
 
-  {{#freestyle-section name="date-picker"}}
-    {{#freestyle-collection title="date picker" inline=true as |collection|}}
-      {{#freestyle-annotation}}
-        <p>
-          Allows user to select a date from calendar view or enter their own input.
-          User can navigate the calendar using arrows or the month and year dropdowns.
-        </p>
-        <p>
-          Default validation for date input:
-          <ul>
-            <li>Valid for years as of 1900.</li>
-            <li>Accounts for leap years.</li>
-            <li>MM and DD can be 1 or 2 digits.</li>
-          </ul>
-        </p>
-        <p>
-          Default year range offered in the dropdown is from 1920 to 2070.
-          However, this can be changed using <code>startYear</code> and <code>yearRange</code> attributes.
-        </p>
-      {{/freestyle-annotation}}
 
-      {{#collection.variant key="optional"}}
-        {{#freestyle-usage "date-picker-optional" title="Optional"}}
+  {{!-- DATE PICKER --}}
+  {{#freestyle-section name="date-picker"}}
+    {{#freestyle-collection title="date picker" defaultKey="default" inline=true as |collection|}}
+      {{#freestyle-annotation}}
+        <p>Allows user to select a date from calendar view or enter their own input. User can navigate the calendar using arrows or the month and year dropdowns.</p>
+        Default validation for date input:
+        <ul>
+          <li>Valid for years as of 1900.</li>
+          <li>Accounts for leap years.</li>
+        </ul>
+        <p>Default year range offered in the dropdown is from 1920 to 2070. However, this can be changed using <code>startYear</code> and <code>yearRange</code> attributes.</p>
+      {{/freestyle-annotation}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "date-picker-optional" title="Default"}}
           <DatePicker @label="Date (MM/DD/YYYY)" />
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#collection.variant key="required"}}
         {{#freestyle-usage "date-picker-required" title="Required"}}
           <DatePicker @label="Date (MM/DD/YYYY)" @required="true" />
         {{/freestyle-usage}}
       {{/collection.variant}}
-
       {{#collection.variant key="custom-years"}}
         {{#freestyle-note "date-picker-custom-years--notes"}}
           Using `startYear` and `yearRange` attributes to change the dropdown year range.
@@ -302,6 +494,30 @@
         {{#freestyle-usage "date-picker-custom-years" title="Custom Years"}}
           <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" />
         {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="themed"}}
+        {{#freestyle-usage "date-picker-themed" title="Themed"}}
+          <DatePicker @label="Date (MM/DD/YYYY)" @theme="cs-theme" />
+        {{/freestyle-usage}}
+        {{#freestyle-note "date-picker-themed--notes"}}
+          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+          <p>Available themes: <code>cs-theme</code></p>
+        {{/freestyle-note}}
+        {{#freestyle-annotation}}
+          <h2>How to Create a Theme for This Component</h2>
+          <ol>
+            <li>Define a new CSS class on your stylesheet.</li>
+            <li>Change the values set to available CSS variables (see list below).</li>
+            <li>The input and dropdown fields of this component extend the styles of the <code>TextField</code> and <code>Dropdown</code> component. See the instructions on those components' <i>Themed</i> pages.</li>
+            <li>Pass the CSS class name to the <code>@theme</code> attribute on the component.</li>
+          </ol>
+          <h2>Supported CSS variables</h2>
+          <ul>
+            <li><code>--cs-date-background-color</code></li>
+            <li><code>--cs-date-color</code></li>
+            <li><code>--cs-date-font-weight</code></li>
+          </ul>
+        {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}

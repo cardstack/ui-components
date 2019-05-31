@@ -5,9 +5,9 @@ const PHONE_REGEX = /^((([0-9]{1})*[- .(]*([0-9]{3})[- .)]*[0-9]{3}[- .]*[0-9]{4
 
 export default TextField.extend({
   phoneInput: service(),
-  classNames: ['cs-component-phone-number-field'],
-  attributeBindings: ['dataTestName:data-test-cs-component-phone-number-field'],
-  dataTestName: true,
+  classNames: ['cs-component-phone-number'],
+  dataTestName: 'phone-number',
+  type: 'tel',
   label: 'Phone Number',
   inputComponent: '',
 

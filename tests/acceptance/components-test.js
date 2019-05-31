@@ -58,13 +58,13 @@ module('Acceptance | components', function(hooks) {
   test('single select dropdown component', async function(assert) {
     await visit('/freestyle');
 
-    assert.dom('.cs-component-dropdown').exists();
-    assert.dom('.cs-component-dropdown label').hasText('Select a country');
+    assert.dom('[data-test-cs-component="dropdown"]').exists();
+    assert.dom('[data-test-cs-component="dropdown"] label').hasText('Select a country');
 
-    await selectChoose('.cs-component-dropdown', 'Brazil');
+    await selectChoose('[data-test-cs-component="dropdown"]', 'Brazil');
     assert.dom('.ember-power-select-selected-item').hasText('Brazil');
 
-    await clickTrigger('.cs-component-dropdown');
+    await clickTrigger('[data-test-cs-component="dropdown"]');
     await typeInSearch('Lat');
 
     assert.dom('.ember-power-select-option').exists({ count: 1 });
@@ -98,22 +98,16 @@ module('Acceptance | components', function(hooks) {
     assert.equal(currentURL(), '/freestyle?=cta');
 
     assert.dom('[data-test-cs-component-cta="primary"]').exists();
-    assert.dom('[data-test-cs-component-cta="secondary"]').exists();
-    assert.dom('[data-test-cs-component-cta="primary"]:disabled').exists();
-    assert.dom('[data-test-cs-component-cta="secondary"]:disabled').exists();
   });
 
   test('email component', async function(assert) {
     await visit('/freestyle');
     assert.equal(currentURL(), '/freestyle');
 
-    assert.dom('[data-test-cs-component-email]').exists({ count: 2 });
-    assert.dom('[data-test-cs-component-email] input[required]').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-email] [data-test-cs-component-text-field-optional]').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-email] [data-test-cs-component-text-field-optional]').hasText('Optional');
-    assert.dom('[data-test-cs-component-email] label').hasText('Email Address');
-    assert.dom('[data-test-cs-component-email] [data-test-cs-component-text-field-validation]').hasText('');
-    assert.dom('[data-test-cs-component-email] [data-test-cs-component-text-field-validation].hidden').exists({ count: 2 });
+    assert.dom('[data-test-cs-component="email"]').exists();
+    assert.dom('[data-test-cs-component-label="email"] .optional').hasText('Optional');
+    assert.dom('[data-test-cs-component-label="email"] .label').hasText('Email Address');
+    assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
   });
 
   test('date picker component', async function(assert) {
@@ -123,12 +117,12 @@ module('Acceptance | components', function(hooks) {
     await visit('/freestyle?s=date-picker');
     assert.equal(currentURL(), '/freestyle?s=date-picker');
 
-    assert.dom('[data-test-cs-component-date]').exists({ count: 3 });
-    assert.dom('[data-test-cs-component-date] input[required]').exists({ count: 1 });
-    assert.dom('[data-test-cs-component-date] label').hasText('Date (MM/DD/YYYY)');
+    assert.dom('[data-test-cs-component-date]').exists();
+    assert.dom('[data-test-cs-component-label="date-picker"] > .label').hasText('Date (MM/DD/YYYY)');
+    assert.dom('[data-test-cs-component-label="date-picker"] > .optional').hasText('Optional');
     assert.dom('.cs-component-calendar').doesNotExist();
 
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component="date-picker"] > input');
 
     assert.dom('.cs-component-calendar').exists();
     assert.dom('[data-test-cs-component-calendar-nav-months]').hasText(month);
@@ -146,10 +140,10 @@ module('Acceptance | components', function(hooks) {
     await click('[data-date="2017-02-07"]');
 
     assert.dom('.cs-component-calendar').doesNotExist();
-    assert.dom('[data-test-cs-component-date] input').hasValue('02/07/2017');
+    assert.dom('[data-test-cs-component="date-picker"] > input').hasValue('02/07/2017');
 
-    await fillIn('[data-test-cs-component-date] input', '4/10/1990');
-    await click('[data-test-cs-component-date] input');
+    await fillIn('[data-test-cs-component="date-picker"] > input', '4/10/1990');
+    await click('[data-test-cs-component="date-picker"] > input');
 
     assert.dom('[data-date="1990-04-10"].ember-power-calendar-day--selected').exists();
   });

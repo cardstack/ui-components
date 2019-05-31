@@ -13,20 +13,20 @@ module('Integration | Component | date picker', function (hooks) {
 
   setupRenderingTest(hooks);
 
-  test('it renders optional field', async function (assert) {
+  test('it renders default component', async function (assert) {
     await render(hbs`<DatePicker @label="Pick a date" />`);
 
     assert.dom('[data-test-cs-component-date]').exists();
-    assert.dom('[data-test-cs-component-date] label').hasText('Pick a date');
+    assert.dom('[data-test-cs-component-label="date-picker"] .label').hasText('Pick a date');
     assert.dom('.cs-component-calendar').doesNotExist();
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotContainText();
+    assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
   });
 
-  test('it renders required field', async function (assert) {
+  test('it renders required component', async function (assert) {
     await render(hbs`<DatePicker @required="true" />`);
 
-    assert.dom('[data-test-cs-component-date] input[required]').exists();
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotContainText();
+    assert.dom('[data-test-cs-component-input="date-picker"][required]').exists();
+    assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
   });
 
   test('it renders component with custom years', async function (assert) {
@@ -34,7 +34,7 @@ module('Integration | Component | date picker', function (hooks) {
 
     assert.dom('[data-test-cs-component-date]').exists();
 
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
     await clickTrigger('[data-test-cs-component-calendar-nav-years]');
 
     assert.dom('[data-option-index="0"]').hasText('2019');
@@ -44,17 +44,17 @@ module('Integration | Component | date picker', function (hooks) {
 
   test('it displays calendar with current month and year when clicking on date input', async function (assert) {
     await render(hbs`<DatePicker />`);
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
 
     assert.dom('.cs-component-calendar').exists();
     assert.dom('[data-test-cs-component-calendar-nav-months]').hasText(month);
     assert.dom('[data-test-cs-component-calendar-nav-years]').hasText(year);
-    assert.dom('[data-test-cs-component-date] input').hasValue('');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('');
   });
 
   test('it can select date using calendar view', async function (assert) {
     await render(hbs`<DatePicker />`);
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
 
     await clickTrigger('[data-test-cs-component-calendar-nav-months]');
     await click('[data-option-index="3"]');
@@ -63,13 +63,13 @@ module('Integration | Component | date picker', function (hooks) {
     await click('[data-date="1990-04-10"]');
 
     assert.dom('.cs-component-calendar').doesNotExist();
-    assert.dom('[data-test-cs-component-date] input').hasValue('04/10/1990');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('04/10/1990');
   });
 
   test('it can select date using input field', async function (assert) {
     await render(hbs`<DatePicker />`);
-    await fillIn('[data-test-cs-component-date] input', '12/07/2018');
-    await click('[data-test-cs-component-date] input');
+    await fillIn('[data-test-cs-component-input="date-picker"]', '12/07/2018');
+    await click('[data-test-cs-component-input="date-picker"]');
 
     assert.dom('[data-test-cs-component-calendar-nav-months]').hasText('December');
     assert.dom('[data-test-cs-component-calendar-nav-years]').hasText('2018');
@@ -78,7 +78,7 @@ module('Integration | Component | date picker', function (hooks) {
 
   test('it can change selected date', async function (assert) {
     await render(hbs`<DatePicker />`);
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
 
     await clickTrigger('[data-test-cs-component-calendar-nav-months]');
     await click('[data-option-index="3"]');
@@ -86,35 +86,35 @@ module('Integration | Component | date picker', function (hooks) {
     await click('[data-option-index="70"]');
     await click('[data-date="1990-04-10"]');
 
-    assert.dom('[data-test-cs-component-date] input').hasValue('04/10/1990');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('04/10/1990');
 
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
     assert.dom('[data-date="1990-04-10"].ember-power-calendar-day--selected').hasText('10');
 
     await click('[data-date="1990-04-28"]');
-    assert.dom('[data-test-cs-component-date] input').hasValue('04/28/1990');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('04/28/1990');
 
-    await fillIn('[data-test-cs-component-date] input', '02/01/2018');
+    await fillIn('[data-test-cs-component-input="date-picker"]', '02/01/2018');
     await triggerKeyEvent('input', 'keydown', 'Enter');
 
-    assert.dom('[data-test-cs-component-date] input').hasValue('02/01/2018');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('02/01/2018');
     assert.dom('[data-date="2018-02-01"].ember-power-calendar-day--selected').hasText('1');
   });
 
   test('it can clear selected date and reset calendar', async function (assert) {
     await render(hbs`<DatePicker @label="Enter date" />`);
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
 
-    await fillIn('[data-test-cs-component-date] input', '02/01/2018');
+    await fillIn('[data-test-cs-component-input="date-picker"]', '02/01/2018');
     await triggerKeyEvent('input', 'keydown', 'Enter');
 
-    assert.dom('[data-test-cs-component-date] input').hasValue('02/01/2018');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('02/01/2018');
 
-    await fillIn('[data-test-cs-component-date] input', '');
+    await fillIn('[data-test-cs-component-input="date-picker"]', '');
     await triggerKeyEvent('input', 'keydown', 'Enter');
 
-    assert.dom('[data-test-cs-component-date] input').hasValue('');
-    assert.dom('[data-test-cs-component-date] label').hasText('Enter date');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('');
+    assert.dom('[data-test-cs-component-label="date-picker"] .label').hasText('Enter date');
     assert.dom('[data-test-cs-component-calendar-nav-months]').hasText(month);
     assert.dom('[data-test-cs-component-calendar-nav-years]').hasText(year);
     assert.dom('.ember-power-calendar-day--selected').doesNotExist();
@@ -122,7 +122,7 @@ module('Integration | Component | date picker', function (hooks) {
 
   test('it can change calendar view from the dropdown menu', async function (assert) {
     await render(hbs`<DatePicker />`);
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
 
     assert.dom('.cs-component-calendar').exists();
 
@@ -150,7 +150,7 @@ module('Integration | Component | date picker', function (hooks) {
 
   test('it can change calendar view using navigation arrows', async function (assert) {
     await render(hbs`<DatePicker />`);
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
     assert.dom('.cs-component-calendar').exists();
 
     await click('[data-test-nav-arrow="year-backwards"]');
@@ -178,7 +178,7 @@ module('Integration | Component | date picker', function (hooks) {
 
   test('it can change calendar view using both dropdown and navigation arrows', async function (assert) {
     await render(hbs`<DatePicker />`);
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
     assert.dom('.cs-component-calendar').exists();
 
     await clickTrigger('[data-test-cs-component-calendar-nav-months]');
@@ -208,11 +208,11 @@ module('Integration | Component | date picker', function (hooks) {
   test('it displays error message for invalid input', async function (assert) {
     await render(hbs`<DatePicker />`);
 
-    await fillIn('[data-test-cs-component-date] input', '111');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText(errorMessage);
+    await fillIn('[data-test-cs-component-input="date-picker"]', '111');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').hasText(errorMessage);
 
-    await fillIn('[data-test-cs-component-date] input', '11/11/2019');
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotContainText();
+    await fillIn('[data-test-cs-component-input="date-picker"]', '11/11/2019');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
   });
 
   test('it displays error message for required field left blank', async function (assert) {
@@ -220,44 +220,53 @@ module('Integration | Component | date picker', function (hooks) {
 
     await render(hbs`<DatePicker @required="true" />`);
 
-    await fillIn('[data-test-cs-component-date] input', '');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText(requiredErrorMessage);
+    await fillIn('[data-test-cs-component-input="date-picker"]', '');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').hasText(requiredErrorMessage);
 
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
     await clickTrigger('[data-test-cs-component-calendar-nav-months]');
     await click('[data-option-index="0"]');
     await clickTrigger('[data-test-cs-component-calendar-nav-years]');
     await click('[data-option-index="100"]');
     await click('[data-date="2020-01-10"]');
 
-    assert.dom('[data-test-cs-component-date] input').hasValue('01/10/2020');
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotContainText();
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('01/10/2020');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
 
-    await fillIn('[data-test-cs-component-date] input', '');
-    assert.dom('[data-test-cs-component-text-field-validation]').hasText(requiredErrorMessage);
+    await fillIn('[data-test-cs-component-input="date-picker"]', '');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').hasText(requiredErrorMessage);
   });
 
   test('it does not display error message for valid input', async function (assert) {
     await render(hbs`<DatePicker />`);
 
-    await fillIn('[data-test-cs-component-date] input', '02/03/2017');
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotContainText();
+    await fillIn('[data-test-cs-component-input="date-picker"]', '02/03/2017');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
 
-    await click('[data-test-cs-component-date] input');
+    await click('[data-test-cs-component-input="date-picker"]');
     await clickTrigger('[data-test-cs-component-calendar-nav-months]');
     await click('[data-option-index="0"]');
     await clickTrigger('[data-test-cs-component-calendar-nav-years]');
     await click('[data-option-index="100"]');
     await click('[data-date="2020-01-10"]');
 
-    assert.dom('[data-test-cs-component-date] input').hasValue('01/10/2020');
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotContainText();
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('01/10/2020');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
   });
 
   test('it does not display error message for optional input left blank', async function (assert) {
     await render(hbs`<DatePicker />`);
 
-    await fillIn('[data-test-cs-component-date] input', '');
-    assert.dom('[data-test-cs-component-text-field-validation]').doesNotContainText();
+    await fillIn('[data-test-cs-component-input="date-picker"]', '');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
+  });
+
+  test('it renders themed component', async function (assert) {
+    await render(hbs`<DatePicker @label="Pick a date" @theme="cs-theme" />`);
+
+    assert.dom('[data-test-cs-component-date]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-label="date-picker"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-validation="date-picker"]').hasClass('cs-theme');
   });
 });
