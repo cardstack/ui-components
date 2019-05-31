@@ -14,6 +14,7 @@
   --cs-dropdown-background-hover: var(--cs-root-background-hover);
   --cs-dropdown-current-option: var(--cs-root-selected);
 
+  // Border properties
   --cs-dropdown-border-radius: var(--cs-root-border-radius);
 
   // Other
@@ -35,11 +36,6 @@
   > .cs-component-dropdown__container {
     position: absolute;
     bottom: 10px;
-    left: 0;
-    right: 0;
-  }
-
-  &.is-open > .cs-component-dropdown__container {
     left: -1px;
     right: -1px;
   }
@@ -71,7 +67,7 @@
     --cs-dropdown-label-font-size: 12px;
     --cs-dropdown-label-font-weight: 600;
 
-    top: calc(var(--cs-root-padding-vertical) * -1);
+    top: -1.7em;
     left: var(--cs-root-padding-horizontal);
     line-height: var(--cs-root-padding-vertical);
   }
@@ -81,8 +77,8 @@
     --cs-dropdown-label-font-size: 12px;
     --cs-dropdown-label-font-weight: 600;
 
-    top: calc(var(--cs-root-padding-vertical) * -1);
-    left: calc(var(--cs-root-padding-horizontal) + 1px);
+    top: -1.7em;
+    left: var(--cs-root-padding-horizontal);
     line-height: var(--cs-root-padding-vertical);
   }
 }
@@ -91,7 +87,7 @@
 .cs-component-dropdown__container {
   .ember-power-select-trigger {
     min-height: var(--cs-dropdown-text-box-height);
-    margin: 0 1em;
+    margin: 0 1rem;
     border: none;
     background-color: var(--cs-dropdown-background-color);
     line-height: inherit;
@@ -105,6 +101,7 @@
     }
 
     &:focus {
+      background-color: var(--cs-dropdown-background-hover);
       border: none;
       outline: none;
     }
@@ -141,6 +138,7 @@
 
     .ember-power-select-status-icon {
       right: 25px;
+      border-top-color: var(--cs-root-border-color);
     }
 
     .ember-power-select-clear-btn {

@@ -11,13 +11,12 @@
           selected=selected
           search=(action searchAction)
           searchField=searchField
-          triggerRole="none"
-          allowClear=true
           renderInPlace=true
           ariaLabel=label
+          onfocus=(action (mut isFocused) true)
+          onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
-          onclose=(action (mut isOpen) false)
-          triggerId=(concat elementId "-dropdown") as |option|}}
+          onclose=(action (mut isOpen) false) as |option|}}
           {{get option searchField}}
         {{/power-select-multiple}}
       {{else}}
@@ -27,13 +26,13 @@
           selected=selected
           search=(action searchAction)
           searchField=searchField
-          triggerRole="none"
           allowClear=true
           renderInPlace=true
           ariaLabel=label
+          onfocus=(action (mut isFocused) true)
+          onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
-          onclose=(action (mut isOpen) false)
-          triggerId=(concat elementId "-dropdown") as |option|}}
+          onclose=(action (mut isOpen) false) as |option|}}
           {{get option searchField}}
         {{/power-select}}
       {{/if}}
@@ -44,13 +43,12 @@
           onchange=(action (mut selected))
           selected=selected
           searchField=searchField
-          triggerRole="none"
-          allowClear=true
           renderInPlace=true
           ariaLabel=label
+          onfocus=(action (mut isFocused) true)
+          onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
-          onclose=(action (mut isOpen) false)
-          triggerId=(concat elementId "-dropdown") as |option|}}
+          onclose=(action (mut isOpen) false) as |option|}}
           {{get option searchField}}
         {{/power-select-multiple}}
       {{else}}
@@ -59,20 +57,19 @@
           onchange=(action (mut selected))
           selected=selected
           searchField=searchField
-          triggerRole="none"
           allowClear=true
           renderInPlace=true
           ariaLabel=label
+          onfocus=(action (mut isFocused) true)
+          onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
-          onclose=(action (mut isOpen) false)
-          triggerId=(concat elementId "-dropdown") as |option|}}
+          onclose=(action (mut isOpen) false) as |option|}}
           {{get option searchField}}
         {{/power-select}}
       {{/if}}
     {{/if}}
     <label
-      for="{{elementId}}-dropdown"
-      class="cs-component-dropdown--label {{if selected "with-option-selected"}} {{if isOpen "is-open"}} {{@theme}}"
+      class="cs-component-dropdown--label {{if selected "with-option-selected"}} {{if (or isOpen isFocused) "is-open"}} {{@theme}}"
       data-test-cs-component-label={{dataTestName}}
     >
       {{label}}

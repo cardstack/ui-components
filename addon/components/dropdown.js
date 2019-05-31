@@ -6,6 +6,7 @@ export default Component.extend({
   dataTestName: 'dropdown',
   selected: null,
   multiple: false,
+  isFocused: false,
   label: 'Select an option',
   searchField: 'name'
 });
