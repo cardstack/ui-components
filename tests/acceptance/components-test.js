@@ -106,7 +106,7 @@ module('Acceptance | components', function(hooks) {
 
     assert.dom('[data-test-cs-component="email"]').exists();
     assert.dom('[data-test-cs-component-label="email"] .optional').hasText('Optional');
-    assert.dom('[data-test-cs-component-label="email"] .label').hasText('Email Address');
+    assert.dom('[data-test-cs-component-label="email"] .label').hasText('Enter your email');
     assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
   });
 
