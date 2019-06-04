@@ -21,19 +21,19 @@ module('Acceptance | components', function(hooks) {
   });
 
   test('single selection component', async function(assert) {
-    await visit('/freestyle');
-    assert.equal(currentURL(), '/freestyle');
+    await visit('/freestyle?s=Choose%20Items');
+    assert.equal(currentURL(), '/freestyle?s=Choose%20Items');
 
-    assert.dom('.cs-component-choose-one--label').exists({ count: 4 });
+    assert.dom('.cs-component-choose-one--label').isVisible({ count: 4 });
 
     await click('[data-test-choice-value="red"]');
 
-    assert.dom('.cs-component-choose-one--label.checked').exists({ count: 1 });
+    assert.dom('.cs-component-choose-one--label.checked').isVisible({ count: 1 });
     assert.dom('.cs-component-choose-one--label.checked').hasText('Red');
 
     await click('[data-test-choice-value="blue"]');
 
-    assert.dom('.cs-component-choose-one--label.checked').exists({ count: 1 });
+    assert.dom('.cs-component-choose-one--label.checked').isVisible({ count: 1 });
     assert.dom('.cs-component-choose-one--label.checked').hasText('Blue');
   });
 

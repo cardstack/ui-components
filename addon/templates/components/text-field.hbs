@@ -30,17 +30,17 @@
     data-test-cs-component-input=dataTestName
   }}
 {{else}}
-  <input
-    type={{type}}
+  {{text-field/input
+    type=type
     name="name"
-    value={{value}}
-    class="cs-component-text-field--input {{@theme}}"
-    id={{inputId}}
-    required={{required}}
+    value=value
+    class=(concat "cs-component-text-field--input " theme)
+    id=inputId
+    required=required
     autocomplete="off"
-    onchange={{action "handleInput"}}
-    data-test-cs-component-input={{dataTestName}}
-  >
+    change=(action "handleInput")
+    data-test-cs-component-input=dataTestName
+  }}
 {{/if}}
 
 <label
