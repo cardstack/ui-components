@@ -11,7 +11,6 @@
   --cs-text-field-label-text-transform: none;
 
   --cs-text-field-validation: var(--cs-root-valid);
-  --cs-text-field-validation-icon: url('images/check-icon.svg');
   --cs-text-field-validation-icon-size: 1em;
 
   position: relative;
@@ -108,7 +107,8 @@
   padding-top: 1em;
   padding-left: calc(var(--cs-text-field-validation-icon-size) + 0.5em);
 
-  background: var(--cs-text-field-validation-icon) no-repeat;
+  background-image: url('images/check-icon.svg');
+  background-repeat: no-repeat;
   background-position: top 1.2em left;
   background-size: var(--cs-text-field-validation-icon-size);
 
@@ -121,14 +121,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
 
-  -webkit-transition: visibility 0.2s ease, background-image 0.2s ease;
-  transition: visibility 0.2s ease, background-image 0.2s ease;
+  -webkit-transition: visibility 0.2s ease;
+  transition: visibility 0.2s ease;
 
   &.invalid {
     --cs-text-field-validation: var(--cs-root-invalid);
-    --cs-text-field-validation-icon: url('images/x-icon.svg');
 
     visibility: visible;
+    background-image: url('images/x-icon.svg');
   }
 
   &.hidden {

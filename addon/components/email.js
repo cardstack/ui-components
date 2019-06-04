@@ -5,6 +5,7 @@ const EMAIL_REGEX = /^([a-zA-Z0-9+_\-.]+)@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.)|
 export default TextField.extend({
   classNames: ['cs-component-email'],
   dataTestName: 'email',
+  autocomplete: 'off',
   label: 'Enter your email',
   otherInputComponent: 'email-field/input',
 

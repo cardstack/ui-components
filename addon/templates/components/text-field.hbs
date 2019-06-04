@@ -8,6 +8,7 @@
 {{/if}}
 
 {{#if inputComponent}}
+  {{!-- TODO: make aria-invalid and aria-describedby for this component work --}}
   {{component inputComponent
     class=(concat "cs-component-text-field--input " @theme)
     required=required
@@ -15,6 +16,7 @@
     setInvalid=(action (mut invalid))
     setValue=(action (mut value))
     id=inputId
+    autocomplete=autocomplete
     data-test-cs-component-input=dataTestName
   }}
 {{else if dateComponent}}
@@ -23,10 +25,13 @@
     class=(concat "cs-component-text-field--input " @theme)
     required=required
     value=value
-    onblur=onblur
-    onchange=onchange
     oninput=oninput
+    onchange=onchange
+    onblur=onblur
     id=inputId
+    autocomplete=autocomplete
+    aria-invalid=(if invalid "true")
+    aria-describedby=(if validationMessage (concat inputId "-validation-message"))
     data-test-cs-component-input=dataTestName
   }}
 {{else if otherInputComponent}}
@@ -37,6 +42,9 @@
     oninput=(action "validate")
     onblur=(action "validate")
     id=inputId
+    autocomplete=autocomplete
+    aria-invalid=(if invalid "true")
+    aria-describedby=(if validationMessage (concat inputId "-validation-message"))
     data-test-cs-component-input=dataTestName
   }}
 {{else}}
@@ -47,8 +55,11 @@
     class="cs-component-text-field--input {{@theme}}"
     id={{inputId}}
     required={{required}}
-    autocomplete="off"
-    onchange={{action "handleInput"}}
+    autocomplete={{autocomplete}}
+    oninput={{action "handleInput"}}
+    onblur={{action "handleInput"}}
+    aria-invalid={{if invalid "true"}}
+    aria-describedby={{if validationMessage (concat inputId "-validation-message")}}
     data-test-cs-component-input={{dataTestName}}
   >
 {{/if}}
@@ -66,6 +77,7 @@
 
 <div
   class="cs-component-text-field--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}} {{@theme}}"
+  id="{{inputId}}-validation-message"
   data-test-cs-component-validation={{dataTestName}}
 >
   {{validationMessage}}
