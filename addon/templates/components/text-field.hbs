@@ -15,6 +15,7 @@
     setInvalid=(action (mut invalid))
     setValue=(action (mut value))
     id=inputId
+    inputmode=inputmode
     data-test-cs-component-input=dataTestName
   }}
 {{else if dateComponent}}
@@ -27,6 +28,7 @@
     onchange=onchange
     oninput=oninput
     id=inputId
+    inputmode=inputmode
     data-test-cs-component-input=dataTestName
   }}
 {{else}}
@@ -39,6 +41,7 @@
     required={{required}}
     autocomplete="off"
     onchange={{action "handleInput"}}
+    inputmode={{inputmode}}
     data-test-cs-component-input={{dataTestName}}
   >
 {{/if}}
