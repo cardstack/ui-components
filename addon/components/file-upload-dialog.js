@@ -13,7 +13,7 @@ export default Component.extend({
   actions: {
     async uploadFile(file) {
       const now = new Date();
-      file.uploadedDate = `${now.getMonth()}.${now.getDay()}.${now.getFullYear()}`;
+      file.uploadedDate = `${now.getMonth() + 1}.${now.getDate()}.${now.getFullYear()}`;
       this.files.addObject(file);
 
       if (typeof this.handleFile === 'function') {
