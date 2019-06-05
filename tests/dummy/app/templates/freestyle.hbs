@@ -1,5 +1,4 @@
 {{#freestyle-guide title="Ember Freestyle" subtitle="Living Style Guide"}}
-
   {{!-- DROPDOWN --}}
   {{#freestyle-section name="dropdown"}}
     {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
@@ -538,5 +537,44 @@
     {{#freestyle-usage "file-upload-dialog-default" title="File Upload Dialog"}}
       <FileUploadDialog @acceptedFormats="jpg, gif, png" />
     {{/freestyle-usage}}
+  {{/freestyle-section}}
+
+  {{!-- CUSTOM ROOT STYLES --}}
+  {{#freestyle-section name="custom styles"}}
+    {{#freestyle-annotation}}
+      <p>To change the default styles across <em>ALL</em> Cardstack <code>ui-components</code>, set your own CSS values to the default root CSS variables below.</p>
+
+      <p>If you're only looking to make changes to specific components, see more info on theming on that component's documentation.</p>
+
+      <pre>
+        <code>
+          <strong>Root-level CSS custom properties:</strong>
+
+          :root {
+          --cs-root-font-family
+          --cs-root-font-size
+          --cs-root-input-height
+          --cs-root-legend-font-size
+          --cs-root-color
+          --cs-root-border-radius
+          --cs-root-border-color
+          --cs-root-background-color
+          --cs-root-background-hover
+          --cs-root-label-color
+          --cs-root-label-focus
+          --cs-root-selected
+          --cs-root-outline-color
+
+          // spacing
+          --cs-root-padding-horizontal
+          --cs-root-padding-vertical
+
+          // validation
+          --cs-root-valid
+          --cs-root-invalid
+          }
+        </code>
+      </pre>
+    {{/freestyle-annotation}}
   {{/freestyle-section}}
 {{/freestyle-guide}}
