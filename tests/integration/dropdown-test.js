@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import { typeInSearch, clickTrigger } from 'ember-power-select/test-support/helpers'
+import { typeInSearch, clickTrigger, selectChoose } from 'ember-power-select/test-support/helpers'
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | dropdown', function(hooks) {
@@ -46,6 +46,21 @@ module('Integration | Component | dropdown', function(hooks) {
     await typeInSearch('Lat');
     assert.dom('.ember-power-select-option').exists({ count: 1 });
     assert.dom('.ember-power-select-option').hasText('Latvia');
+  });
+
+  test('it renders the component with pre-selected option', async function(assert) {
+    this.countries = [
+      { name: 'United States' },
+      { name: 'Spain' },
+      { name: 'Portugal' },
+      { name: 'Russia' },
+      { name: 'Latvia' },
+      { name: 'Brazil' },
+      { name: 'United Kingdom' }
+    ];
+    this.spain = this.countries[1];
+    await render(hbs`<Dropdown @options={{countries}} @selected={{spain}} />`);
+    assert.dom('.ember-power-select-selected-item').hasText('Spain');
   });
 
   test('it renders the component with custom search field', async function(assert) {
@@ -97,5 +112,26 @@ module('Integration | Component | dropdown', function(hooks) {
 
     assert.dom('[data-test-cs-component="dropdown"].cs-theme').exists();
     assert.dom('[data-test-cs-component-label="dropdown"].cs-theme').exists();
+  });
+
+  test('it calls a custom action when onchange event is triggered', async function(assert) {
+    this.countries = [
+      { name: 'United States' },
+      { name: 'Spain' },
+      { name: 'Portugal' },
+      { name: 'Russia' },
+      { name: 'Latvia' },
+      { name: 'Brazil' },
+      { name: 'United Kingdom' }
+    ];
+    let selected = [];
+    this.updateAction = selectedObject => {
+      selected.push(selectedObject);
+    }
+    await render(hbs`<Dropdown @options={{countries}} @changeAction={{action updateAction}} />`);
+    await clickTrigger('.cs-component-dropdown');
+    await selectChoose('.cs-component-dropdown', 'Brazil');
+
+    assert.deepEqual(selected, [{ name: 'Brazil' }]);
   });
 });

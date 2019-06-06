@@ -101,8 +101,8 @@ module('Acceptance | components', function(hooks) {
   });
 
   test('email component', async function(assert) {
-    await visit('/freestyle');
-    assert.equal(currentURL(), '/freestyle');
+    await visit('/freestyle?s=Email%20Input');
+    assert.equal(currentURL(), '/freestyle?s=Email%20Input');
 
     assert.dom('[data-test-cs-component="email"]').exists();
     assert.dom('[data-test-cs-component-label="email"] .optional').hasText('Optional');
