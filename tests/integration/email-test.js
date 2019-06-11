@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, fillIn } from '@ember/test-helpers';
+import { render, fillIn, click } from '@ember/test-helpers';
+import { A } from '@ember/array';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | email', function(hooks) {
@@ -73,6 +74,20 @@ module('Integration | Component | email', function(hooks) {
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="email"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="email"]').hasText('Please fill out this field.');
+  });
+
+  test('can add more email address fields', async function (assert) {
+    this.emailValues = A([null]);
+    await render(hbs`<Emails @values={{emailValues}} />`);
+    await fillIn('[data-test-cs-component-input="email"]', 'username@cardstack.com');
+
+    await click('.cs-component-emails--add');
+
+    assert.dom('[data-test-cs-component-input="email"]').exists({ count: 2 })
+
+    await fillIn('.cs-component-emails__wrapper:nth-of-type(2) [data-test-cs-component-input="email"]', 'cooldude@cardstack.com');
+    
+    assert.deepEqual(this.emailValues, ['username@cardstack.com', 'cooldude@cardstack.com']);
   });
 
   test('it renders themed component', async function (assert) {

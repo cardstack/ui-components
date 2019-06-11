@@ -1,0 +1,8 @@
+<div class="cs-component-phone-number-fields__container">
+  {{#each values as |value index|}}
+    <div class="cs-component-phone-number-fields__wrapper">
+      <PhoneNumberField @value={{value}} @changeAction={{action "updateValue" index}} @label={{label}} />
+      <button class="cs-component-phone-number-fields--add" {{action "addComponent"}}>Add</button>
+    </div>
+  {{/each}}
+</div>

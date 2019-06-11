@@ -1,5 +1,6 @@
 import { inject as service } from '@ember/service';
 import { A } from '@ember/array';
+import { computed } from '@ember/object';
 import FreestyleController from 'ember-freestyle/controllers/freestyle';
 
 const countries = [
@@ -79,6 +80,19 @@ export default Ember.Component.extend({
 
   doSomething: () => {},
   searchByLengthOfCountryName: async num => Promise.resolve(countries.filter(item => item.name.length === parseInt(num))),
+  streetAddresses: A([null]),
+  emailValues: A([null]),
+  phoneNumberValues: A([null]),
+  stringifiedAddresses: computed('streetAddresses.[]', function() {
+    return JSON.stringify(this.streetAddresses, null, 2);
+  }),
+  stringifiedEmails: computed('emailValues.[]', function() {
+    return JSON.stringify(this.emailValues, null, 2);
+  }),
+  stringifiedPhoneNumbers: computed('phoneNumberValues.[]', function() {
+    return JSON.stringify(this.phoneNumberValues, null, 2);
+  }),
+
   validator(value) {
     return {
       valid: value === 'cardstack',

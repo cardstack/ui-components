@@ -1,5 +1,4 @@
 {{#freestyle-guide title="Ember Freestyle" subtitle="Living Style Guide"}}
-
   {{!-- DROPDOWN --}}
   {{#freestyle-section name="dropdown"}}
     {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
@@ -262,6 +261,12 @@
     {{#freestyle-usage "phone-number-field-default" title="Phone Number Field"}}
       <PhoneNumberField />
     {{/freestyle-usage}}
+    {{#freestyle-usage "phone-number-field-required" title="Phone Number Field (Required)"}}
+      <PhoneNumberField @required={{true}} />
+    {{/freestyle-usage}}
+    {{#freestyle-usage "phone-number-field-multi" title="Phone Number Fields"}}
+      <PhoneNumberFields @values={{phoneNumberValues}} />
+    {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-themed" title="Themed"}}
       <PhoneNumberField @theme="cs-theme" />
     {{/freestyle-usage}}
@@ -273,6 +278,9 @@
       <h2>How to Create a Theme for This Component</h2>
       <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
     {{/freestyle-annotation}}
+
+    Phone Numbers JSON:
+    <pre>{{stringifiedPhoneNumbers}}</pre>
   {{/freestyle-section}}
 
 
@@ -375,13 +383,14 @@
 
   {{!-- CHOOSE ITEMS --}}
   {{#freestyle-section name="Choose Items"}}
-    {{#freestyle-usage "choose-one" title="Choose One (Text)"}}
+    {{#freestyle-usage "text-choose-one" title="Choose One (Text)"}}
       <ChooseOne @legend="What is your Favorite Color?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
     {{#freestyle-note "text-choose-one--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
-    {{#freestyle-usage "choose-many" title="Choose Many (Text)"}}
+
+    {{#freestyle-usage "text-choose-many" title="Choose Many (Text)"}}
       <ChooseMany @legend="What combination makes Purple?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
     {{/freestyle-usage}}
     {{#freestyle-note "text-choose-many--notes"}}
@@ -408,6 +417,15 @@
         {{#freestyle-usage "email-input-required" title="Required"}}
           <Email @label="Email Address" @required={{true}} />
         {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="multiple"}}
+        {{#freestyle-usage "email-multiple" title="Multiple"}}
+          <Emails @label="Email Address" @values={{emailValues}}/>
+        {{/freestyle-usage}}
+        {{#freestyle-annotation}}
+          Emails JSON:
+          <pre>{{stringifiedEmails}}</pre>
+        {{/freestyle-annotation}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "email-input-themed" title="Themed"}}
@@ -453,6 +471,15 @@
           <StreetAddress @label="Enter your address"/>
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="multiple"}}
+        {{#freestyle-usage "street-address-multiple" title="Street Address Multiple"}}
+          <StreetAddresses @selections={{streetAddresses}} />
+        {{/freestyle-usage}}
+        {{#freestyle-annotation}}
+          Selected addresses JSON:
+          <pre>{{stringifiedAddresses}}</pre>
+        {{/freestyle-annotation}}
+      {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "street-address-themed" title="Themed"}}
           <StreetAddress @theme="cs-theme" />
@@ -468,7 +495,6 @@
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
-
 
   {{!-- DATE PICKER --}}
   {{#freestyle-section name="date-picker"}}
@@ -525,5 +551,62 @@
         {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
+  {{/freestyle-section}}
+
+  {{#freestyle-section name="File Upload Dialog"}}
+    {{#freestyle-annotation}}
+      <code>FileUploadDialog</code> can take in a few parameters
+
+      <ul>
+        <li><code>acceptedFormats</code> - (string) a read-friendly list of formats accepted (i.e. "png, jpg, gif"). This will get rendered below the file icon.</li>
+        <li><code>accept</code> - (string) A list of MIME types / extensions to be accepted by the input i.e. "image/*" </li>
+        <li><code>handleFile</code> - (function) function to handle uploading file to a server; <code>file</code> will be passed in</li>
+      </ul>
+    {{/freestyle-annotation}}
+    {{#freestyle-note "password-field-default--notes"}}
+      By default, `PasswordField` will render without any of the password requirements except for needing a minimum length of 6.
+    {{/freestyle-note}}
+    {{#freestyle-usage "file-upload-dialog-default" title="File Upload Dialog"}}
+      <FileUploadDialog @acceptedFormats="jpg, gif, png" />
+    {{/freestyle-usage}}
+  {{/freestyle-section}}
+
+  {{!-- CUSTOM ROOT STYLES --}}
+  {{#freestyle-section name="custom styles"}}
+    {{#freestyle-annotation}}
+      <p>To change the default styles across <em>ALL</em> Cardstack <code>ui-components</code>, set your own CSS values to the default root CSS variables below.</p>
+
+      <p>If you're only looking to make changes to specific components, see more info on theming on that component's documentation.</p>
+
+      <pre>
+        <code>
+          <strong>Root-level CSS custom properties:</strong>
+
+          :root {
+          --cs-root-font-family
+          --cs-root-font-size
+          --cs-root-input-height
+          --cs-root-legend-font-size
+          --cs-root-color
+          --cs-root-border-radius
+          --cs-root-border-color
+          --cs-root-background-color
+          --cs-root-background-hover
+          --cs-root-label-color
+          --cs-root-label-focus
+          --cs-root-selected
+          --cs-root-outline-color
+
+          // spacing
+          --cs-root-padding-horizontal
+          --cs-root-padding-vertical
+
+          // validation
+          --cs-root-valid
+          --cs-root-invalid
+          }
+        </code>
+      </pre>
+    {{/freestyle-annotation}}
   {{/freestyle-section}}
 {{/freestyle-guide}}
