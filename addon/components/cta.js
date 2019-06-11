@@ -5,5 +5,7 @@ export default Component.extend({
   layout,
   tagName: '',
   variant: 'primary',
-  disabled: false
+  disabled: false,
+
+  handleClick() {}
 });

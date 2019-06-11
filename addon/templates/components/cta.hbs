@@ -2,6 +2,7 @@
   <button
     class="cs-component-cta cs-component-cta--{{variant}} {{@theme}}"
     disabled={{disabled}}
+    onclick={{action handleClick}}
     data-test-cs-component-cta={{variant}}
   >
     {{yield}}
@@ -10,6 +11,7 @@
   <button
     class="cs-component-cta cs-component-cta--{{variant}} {{@theme}}"
     disabled={{disabled}}
+    onclick={{action handleClick}}
     data-test-cs-component-cta={{variant}}
   >
     {{@label}}
