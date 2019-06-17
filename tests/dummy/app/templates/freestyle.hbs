@@ -117,7 +117,7 @@
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-with-customized-options" title="Dropdown with customized options"}}
           <Dropdown @options={{customDropdownOptions}} @label="Payment method" as |option|>
-            <span><img src={{option.imageUrl}}></span>
+            <span><img src={{option.imageUrl}} alt="card"></span>
             <span class="caps">{{option.cardType}}</span>
             <span class="lightweight">{{option.transactionId}}</span>
             <span class="lightweight caps">{{option.network}}</span>

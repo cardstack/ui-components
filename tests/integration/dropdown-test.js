@@ -141,7 +141,6 @@ module('Integration | Component | dropdown', function(hooks) {
       { name: 'Banco Bradesco Financiamentos', amount: '$123534.36', country: 'BR' },
       { name: 'Shoko Chukin Bank', amount: '$34.36', country: 'JP' }
     ];
-    let selected = [];
     await render(hbs`
       <Dropdown @options={{accounts}} as |option|>
         <span>{{option.name}}</span>

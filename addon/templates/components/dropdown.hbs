@@ -66,11 +66,11 @@
           onopen=(action (mut isOpen) true)
           onclose=(action (mut isOpen) false)
           triggerId=(concat elementId "-dropdown") as |option|}}
-            {{#if (has-block)}}
-              {{yield option}}
-            {{else}}
-              {{get option searchField}}
-            {{/if}}
+          {{#if (has-block)}}
+            {{yield option}}
+          {{else}}
+            {{get option searchField}}
+          {{/if}}
         {{/power-select}}
       {{/if}}
     {{/if}}
