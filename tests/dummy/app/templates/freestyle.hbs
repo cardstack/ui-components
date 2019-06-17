@@ -81,6 +81,26 @@
           <Dropdown @options={{countries}} @label="Select a country" @multiple={{true}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="with-customized-options"}}
+        {{#freestyle-note "dropdown-with-customized-options--notes"}}
+          ```
+          export default Component.extend({
+            // ...
+            selected: { name: "Spain" }
+          });
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-with-customized-options" title="Dropdown with customized options"}}
+          <Dropdown @options={{customDropdownOptions}} @label="Select a country" @selected={{selected}} as |option|>
+              <span><img src={{option.imageUrl}}></span>
+              <span class="caps">{{option.cardType}}</span>
+              <span class="lightweight">{{option.transactionId}}</span>
+              <span class="lightweight caps">{{option.network}}</span>
+              <span class="lightweight">{{option.fromValue}}</span>
+              <span class="lightweight">{{option.toValue}}</span>
+          </Dropdown>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "dropdown-themed" title="Themed"}}
           <Dropdown @options={{countries}} @label="Select a country" @theme="cs-theme" />

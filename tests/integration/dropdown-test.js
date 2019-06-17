@@ -134,4 +134,25 @@ module('Integration | Component | dropdown', function(hooks) {
 
     assert.deepEqual(selected, [{ name: 'Brazil' }]);
   });
+
+  test('it renders options with tabular data', async function(assert) {
+    this.accounts = [
+      { name: 'Chase', amount: '$1234.36', country: 'US' },
+      { name: 'Banco Bradesco Financiamentos', amount: '$123534.36', country: 'BR' },
+      { name: 'Shoko Chukin Bank', amount: '$34.36', country: 'JP' }
+    ];
+    let selected = [];
+    await render(hbs`
+      <Dropdown @options={{accounts}} as |option|>
+        <span>{{option.name}}</span>
+        <span>{{option.amount}}</span>
+        <span>{{option.country}}</span>
+      </Dropdown>
+    `);
+    await clickTrigger('.cs-component-dropdown');
+    assert.dom('.ember-power-select-option').exists({ count: 3 });
+    assert.dom('.ember-power-select-option:nth-of-type(1)').hasText('Chase $1234.36 US');
+    assert.dom('.ember-power-select-option:nth-of-type(2)').hasText('Banco Bradesco Financiamentos $123534.36 BR');
+    assert.dom('.ember-power-select-option:nth-of-type(3)').hasText('Shoko Chukin Bank $34.36 JP');
+  });
 });
