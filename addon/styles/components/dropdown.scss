@@ -229,10 +229,16 @@
 .cs-component-dropdown--with-customized-options {
   .ember-power-select-selected-item {
     font-size: 13px;
+    display: flex;
+    align-items: center;
 
     span {
       padding: 0 5px;
     }
+  }
+
+  .ember-power-select-clear-btn {
+    top: 8px;
   }
 }
 
