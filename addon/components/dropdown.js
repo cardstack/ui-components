@@ -10,5 +10,5 @@ export default Component.extend({
   searchField: 'name',
   changeAction(item) {
     this.set('selected', item);
-  }
+  },
 });
