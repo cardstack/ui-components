@@ -1,6 +1,8 @@
 .cs-component-choose-one {
-  --cs-choose-one-background: var(--cs-root-background-color);
-  --cs-choose-one-copy: var(--cs-root-color);
+  @include cs-component-common-styles;
+
+  --cs-choose-one-background: var(--cs-component-background-color);
+  --cs-choose-one-copy: var(--cs-component-color);
 }
 
 .cs-component-choose-one fieldset {
@@ -15,10 +17,12 @@
   justify-content: start;
   grid-gap: 1px;
   align-items: center;
-  border: solid 1px var(--cs-root-border-color);
+  border: 1px solid var(--cs-component-border-color);
 }
 
 .cs-component-choose-one--legend {
+  font-size: var(--cs-component-legend-font-size);
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
@@ -33,7 +37,7 @@
   text-align: center;
 
   &:hover {
-    --cs-choose-one-background: var(--cs-root-background-hover);
+    --cs-choose-one-background: var(--cs-component-background-highlight-color);
   }
 
   input[type="radio"] {
@@ -42,15 +46,15 @@
 }
 
 .cs-component-choose-one--label + .cs-component-choose-one--label {
-  border-left: solid 1px var(--cs-root-border-color);
+  border-left: solid 1px var(--cs-component-border-color);
 }
 
 .cs-component-choose-one.checked .cs-component-choose-one--label:not(.checked) {
-  --cs-choose-one-copy: var(--cs-root-color-op60);
+  --cs-choose-one-copy: rgba($dark-gray, 0.6);
 }
 
 .cs-component-choose-one--label.checked {
-  --cs-choose-one-background: var(--cs-root-selected);
+  --cs-choose-one-background: var(--cs-component-selected-color);
   --cs-choose-one-copy: white;
 
   .cs-component-choose-one--name:after {

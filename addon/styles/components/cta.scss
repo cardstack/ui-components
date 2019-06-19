@@ -1,68 +1,87 @@
-.cs-component-cta {
-  --cs-cta-font-size: 14px;
-  --cs-cta-main: #{$gray};
-  --cs-cta-light: white;
-  --cs-cta-active: #{$dark-gray};
-  --cs-cta-disabled: var(--cs-cta-active);
-  --cs-cta-disabled-light: #{$dark-gray-op20};
-  --cs-cta-border: var(--cs-cta-main);
-  --cs-cta-border-radius: 0;
-  --cs-cta-padding: 12px 20px;
+// Default / Primary variant:
+.cs-component-cta,
+.cs-component-cta--primary {
+  @include cs-component-common-styles;
 
-  box-sizing: border-box;
-  padding: var(--cs-cta-padding);
-  border: 1px solid var(--cs-cta-border);
+  --cs-cta-width: auto;
+  --cs-cta-height: auto;
+  --cs-cta-padding-horizontal: 20px;
+  --cs-cta-padding-vertical: 12px;
+  --cs-cta-font-size: 14px;
+  --cs-cta-font-weight: 600;
+  --cs-cta-line-height: 1;
+  --cs-cta-border-radius: var(--cs-component-border-radius);
+  --cs-cta-box-shadow: var(--cs-component-box-shadow);
+
+  // Hover state
+  --cs-cta-hover-color: white;
+  --cs-cta-hover-background-color: #{$dark-gray};
+
+  // Primary-variant only
+  --cs-cta-color: white;
+  --cs-cta-background-color: #{$gray};
+  --cs-cta-border-color: var(--cs-cta-background-color);
+
+  // Primary-variant: Disabled state
+  --cs-cta-disabled-color: #{$dark-gray-op40};
+  --cs-cta-disabled-background-color: #{$dark-gray-op20};
+  --cs-cta-disabled-border-color: var(--cs-cta-disabled-background-color);
+
+  // Secondary-variant only
+  --cs-cta-secondary-color: #{$dark-gray};
+  --cs-cta-secondary-background-color: transparent;
+  --cs-cta-secondary-border-color: var(--cs-cta-secondary-color);
+
+  // Secondary-variant: Disabled state
+  --cs-cta-secondary-disabled-color: var(--cs-cta-disabled-color);
+  --cs-cta-secondary-disabled-border-color: var(--cs-cta-disabled-color);
+
+  height: var(--cs-cta-height);
+  width: var(--cs-cta-width);
+  padding: var(--cs-cta-padding-vertical) var(--cs-cta-padding-horizontal);
+  background-color: var(--cs-cta-background-color);
+  color: var(--cs-cta-color);
+  border: 1px solid var(--cs-cta-border-color);
   border-radius: var(--cs-cta-border-radius);
-  font-family: 'Open Sans';
+  box-shadow: var(--cs-cta-box-shadow);
   font-size: var(--cs-cta-font-size);
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1;
+  font-weight: var(--cs-cta-font-weight);
+  line-height: var(--cs-cta-line-height);
   text-align: center;
-  cursor: pointer;
   user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--cs-cta-hover-background-color);
+    color: var(--cs-cta-hover-color);
+  }
 
   &:disabled {
-    opacity: 0.3;
+    background-color: var(--cs-cta-disabled-background-color);
+    color: var(--cs-cta-disabled-color);
+    border-color: var(--cs-cta-disabled-border-color);
     cursor: not-allowed;
   }
 }
 
-.cs-component-cta--primary {
-  --cs-component-cta-background: var(--cs-cta-main);
-  --cs-component-cta-copy: var(--cs-cta-light);
-
-  background-color: var(--cs-component-cta-background);
-  color: var(--cs-component-cta-copy);
-
-  &:not(:disabled):hover {
-    --cs-component-cta-background: var(--cs-cta-active);
-  }
+// Secondary variant (outline button)
+.cs-component-cta--secondary {
+  background-color: var(--cs-cta-secondary-background-color);
+  color: var(--cs-cta-secondary-color);
+  border-color: var(--cs-cta-secondary-border-color);
 
   &:disabled {
-    --cs-component-cta-background: var(--cs-cta-disabled-light);
-    --cs-component-cta-copy: var(--cs-cta-disabled);
+    background-color: var(--cs-cta-secondary-background-color);
+    color: var(--cs-cta-secondary-disabled-color);
+    border-color: var(--cs-cta-secondary-disabled-border-color);
   }
 }
 
-.cs-component-cta--secondary {
-  --cs-component-cta-background: transparent;
-  --cs-component-cta-copy: var(--cs-cta-main);
-
-  background-color: var(--cs-component-cta-background);
-  color: var(--cs-component-cta-copy);
-
-  &:not(:disabled):hover {
-    --cs-component-cta-background: var(--cs-cta-main);
-    --cs-component-cta-copy: var(--cs-cta-light);
-  }
-}
-
-
-// CS-THEME
-.cs-component-cta.cs-theme {
+// Theme: cs-theme
+.cs-theme {
+  --cs-cta-padding-vertical: 1em;
+  --cs-cta-padding-horizontal: 1.2em;
   --cs-cta-border-radius: 4px;
-  --cs-cta-main: #{$cs-theme-purple};
-  --cs-cta-padding: 1em 1.2em;
+  --cs-cta-background-color: #{$cs-theme-purple};
+  --cs-cta-secondary-color: #{$cs-theme-purple};
 }
-

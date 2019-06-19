@@ -1,4 +1,6 @@
 .cs-component-choose-contact-type {
+  @include cs-component-common-styles;
+
   .cs-component-choose-one__container {
     border: none;
     background: none;

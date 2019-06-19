@@ -1,16 +1,18 @@
 .cs-component-text-field {
-  --cs-text-field-font-size: var(--cs-root-font-size);
-  --cs-text-field-border-radius: var(--cs-root-border-radius);
-  --cs-text-field-background-color: var(--cs-root-background-color);
-  --cs-text-field-color: var(--cs-root-color);
+  @include cs-component-common-styles;
 
-  --cs-text-field-label-color: var(--cs-root-label-color);
+  --cs-text-field-font-size: var(--cs-component-font-size);
+  --cs-text-field-border-radius: var(--cs-component-border-radius);
+  --cs-text-field-background-color: var(--cs-component-background-color);
+  --cs-text-field-color: var(--cs-component-color);
+
+  --cs-text-field-label-color: var(--cs-component-label-color);
   --cs-text-field-label-optional: var(--cs-text-field-color);
   --cs-text-field-label-font-size: var(--cs-text-field-font-size);
   --cs-text-field-label-font-weight: normal;
   --cs-text-field-label-text-transform: none;
 
-  --cs-text-field-validation: var(--cs-root-valid);
+  --cs-text-field-validation: var(--cs-component-valid);
   --cs-text-field-validation-icon: url('images/check-icon.svg');
   --cs-text-field-validation-icon-size: 1em;
 
@@ -21,12 +23,12 @@
 .cs-component-text-field--input {
   box-sizing: border-box;
   width: 100%;
-  height: var(--cs-root-input-height);
+  height: var(--cs-component-height);
   margin: 0;
-  padding-left: var(--cs-root-padding-horizontal);
-  padding-top: var(--cs-root-padding-vertical);
+  padding-left: var(--cs-component-padding-horizontal);
+  padding-top: var(--cs-component-padding-vertical);
 
-  border: 1px solid var(--cs-root-border-color);
+  border: 1px solid var(--cs-component-border-color);
   border-radius: var(--cs-text-field-border-radius);
   background-color: var(--cs-text-field-background-color);
   color: var(--cs-text-field-color);
@@ -41,7 +43,7 @@
   transition: padding-top 0.2s ease, margin-top 0.2s ease;
 
   &:focus + .cs-component-text-field--label > .label {
-    --cs-text-field-label-color: var(--cs-root-label-focus);
+    --cs-text-field-label-color: var(--cs-component-label-highlight-color);
     --cs-text-field-label-font-size: 12px;
     --cs-text-field-label-font-weight: 600;
 
@@ -57,11 +59,11 @@
   padding: 0;
   white-space: nowrap;
 
-  border-bottom: 1px solid var(--cs-root-border-color);
+  border-bottom: 1px solid var(--cs-component-border-color);
 
   > .optional {
     position: absolute;
-    top: calc((var(--cs-root-input-height) + 0.5rem) * -1);
+    top: calc((var(--cs-component-height) + 0.5rem) * -1);
     right: -1rem;
 
     color: var(--cs-text-field-label-optional);
@@ -92,7 +94,7 @@
   }
 
   &.active > .label {
-    --cs-text-field-label-color: var(--cs-root-label-color);
+    --cs-text-field-label-color: var(--cs-component-label-color);
     --cs-text-field-label-font-size: 12px;
     --cs-text-field-label-font-weight: 600;
 
@@ -124,7 +126,7 @@
   transition: visibility 0.2s ease, background-image 0.2s ease;
 
   &.invalid {
-    --cs-text-field-validation: var(--cs-root-invalid);
+    --cs-text-field-validation: var(--cs-component-invalid);
     --cs-text-field-validation-icon: url('images/x-icon.svg');
 
     visibility: visible;

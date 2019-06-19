@@ -209,34 +209,54 @@
           <Cta @variant="secondary" @theme="cs-theme">Button</Cta>
         {{/freestyle-usage}}
         {{#freestyle-note "primary-cta-themed--notes"}}
-          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
+          <p>
+            Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.
+            Themes affect all variants of a button.
+          </p>
+          <p>Available variants: <code>primary</code> (solid background button); <code>secondary</code> (outline button with transparent background)</p>
           <p>Available themes: <code>cs-theme</code></p>
         {{/freestyle-note}}
         {{#freestyle-annotation}}
           <h2>How to Create a Theme for This Component</h2>
           <ol>
-            <li>Define a new CSS class on your stylesheet.</li>
+            <li>Define a new CSS class on your stylesheet. This will be the theme name.</li>
             <li>Change the values set to available CSS variables (see list below).</li>
-            <li>Pass the CSS class name to the <code>@theme</code> attribute on the component.</li>
+            <li>Pass the theme name to the <code>@theme</code> attribute on the component.</li>
           </ol>
           <h2>Supported CSS variables</h2>
+          <p>Note: <code>--cs-component-cta</code> prefixed values below are set at the root level</p>
+          <p>(If the button variant is not specified, the default value applies to all variants.)</p>
           <pre>
             <code>
-              --cs-cta-padding
-              --cs-cta-font-size
+              --cs-cta-width // default: auto
+              --cs-cta-height // default: auto
+              --cs-cta-padding-horizontal // default: 20px
+              --cs-cta-padding-vertical // default: 12px
+              --cs-cta-font-size // default: 14px
+              --cs-cta-font-weight // default: 600
+              --cs-cta-line-height // default: 1
+              --cs-cta-border-radius // default: --cs-component-border-radius (2px)
+              --cs-cta-box-shadow // default: --cs-component-box-shadow (none)
 
-              <b>Main colors (most prominent color):</b>
-              --cs-cta-main
-              --cs-cta-active
-              --cs-cta-disabled
+              // Hover state
+              --cs-cta-hover-color // default: white
+              --cs-cta-hover-background-color // default: dark-gray
 
-              <b>Secondary-level colors:</b>
-              --cs-cta-light
-              --cs-cta-disabled-light
+              // Primary-variant only
+              --cs-cta-color // default: white
+              --cs-cta-background-color // default: gray
+              --cs-cta-border-color // default: --cs-cta-background-color (dark-gray)
 
-              <b>Border properties:</b>
-              --cs-cta-border
-              --cs-cta-border-radius
+              // Primary-variant: Disabled state
+              --cs-cta-disabled-color // default: dark-gray with opacity 0.4
+              --cs-cta-disabled-background-color // default: dark-gray with opacity 0.2
+              --cs-cta-disabled-border-color // default: --cs-cta-disabled-background-color (dark-gray with opacity 0.2)
+
+              // Secondary-variant only
+              --cs-cta-secondary-color // default: dark-gray
+              --cs-cta-secondary-background-color // default: transparent
+              --cs-cta-secondary-border-color // default: --cs-cta-secondary-color (dark-gray)
+              --cs-cta-secondary-disabled-border-color // --cs-cta-disabled-color (dark-gray with opacity 0.4)
             </code>
           </pre>
         {{/freestyle-annotation}}
@@ -623,29 +643,56 @@
       <pre>
         <code>
           <strong>Root-level CSS custom properties:</strong>
+          <strong>(Common across most ui-components. Exceptions in Cta component.)</strong>
 
           :root {
-          --cs-root-font-family
-          --cs-root-font-size
-          --cs-root-input-height
-          --cs-root-legend-font-size
-          --cs-root-color
-          --cs-root-border-radius
-          --cs-root-border-color
-          --cs-root-background-color
-          --cs-root-background-hover
-          --cs-root-label-color
-          --cs-root-label-focus
-          --cs-root-selected
-          --cs-root-outline-color
+          // Component text:
+          --cs-component-color
+          --cs-component-font-family
+          --cs-component-font-size
+          --cs-component-font-weight
+          --cs-component-letter-spacing
+          --cs-component-line-height
 
-          // spacing
-          --cs-root-padding-horizontal
-          --cs-root-padding-vertical
+          // Component background:
+          --cs-component-background-color
+          --cs-component-background-highlight-color
 
-          // validation
-          --cs-root-valid
-          --cs-root-invalid
+          // Sizing:
+          --cs-component-height
+          --cs-component-width
+
+          // Spacing:
+          --cs-component-padding-horizontal
+          --cs-component-padding-vertical
+
+          // Borders:
+          --cs-component-border-color
+          --cs-component-border-radius
+
+          // Box-shadow:
+          --cs-component-box-shadow
+
+          // Legend:
+          --cs-component-legend-font-size
+
+          // Labels:
+          --cs-component-label-color
+          --cs-component-label-highlight-color
+
+          // Selection:
+          --cs-component-selected-color
+
+          // Disabled state:
+          --cs-component-disabled-color: TBD
+          --cs-component-disabled-background-color: TBD
+
+          // Validation
+          --cs-component-valid
+          --cs-component-invalid
+
+          // A11y-related:
+          --cs-component-outline-color
           }
         </code>
       </pre>

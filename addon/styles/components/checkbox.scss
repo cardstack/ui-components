@@ -1,11 +1,12 @@
 .cs-component-checkbox {
-  --cs-checkbox-label-color: var(--cs-root-label-color);
-  --cs-checkbox-validation: var(--cs-root-valid);
+  @include cs-component-common-styles;
+
+  --cs-checkbox-label-color: var(--cs-component-label-color);
+  --cs-checkbox-validation: var(--cs-component-valid);
   --cs-checkbox-validation-icon: url('images/check-icon.svg');
   --cs-checkbox-validation-icon-size: 1em;
 
   position: relative;
-  font-size: 12px;
   margin-bottom: 10px;
 }
 
@@ -19,7 +20,7 @@
   display: inline-block;
   height: 16px;
   width: 16px;
-  border: 2px solid var(--cs-root-border-color);
+  border: 2px solid var(--cs-component-border-color);
   border-radius: 2px;
   left: 0px;
   top: 3px;
@@ -30,8 +31,8 @@
   display: inline-block;
   height: 6px;
   width: 9px;
-  border-left: 2px solid var(--cs-root-border-color);
-  border-bottom: 2px solid var(--cs-root-border-color);
+  border-left: 2px solid var(--cs-component-border-color);
+  border-bottom: 2px solid var(--cs-component-border-color);
 
   transform: rotate(-45deg);
   left: 4px;
@@ -39,7 +40,7 @@
 }
 
 .cs-component-checkbox label {
-  --cs-checkbox-label-color: var(--cs-root-color);
+  --cs-checkbox-label-color: var(--cs-component-color);
 
   display: inline-block;
   position: relative;
@@ -63,7 +64,7 @@
 }
 
 .cs-component-checkbox input[type="checkbox"]:focus + label::before {
-  outline: var(--cs-root-outline-color) auto 5px;
+  outline: var(--cs-component-outline-color) auto 5px;
 }
 
 
@@ -90,7 +91,7 @@
   transition: visibility 0.2s ease, background-image 0.2s ease;
 
   &.invalid {
-    --cs-checkbox-validation: var(--cs-root-invalid);
+    --cs-checkbox-validation: var(--cs-component-invalid);
     --cs-checkbox-validation-icon: url('images/x-icon.svg');
 
     visibility: visible;

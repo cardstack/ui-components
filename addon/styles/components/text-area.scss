@@ -1,7 +1,7 @@
 .cs-component-text-area {
-  --cs-text-area-background-color: var(--cs-root-background-color);
+  --cs-text-area-background-color: var(--cs-component-background-color);
   --cs-text-area-line-height: 35px;
-  --cs-text-area-label-color: var(--cs-root-label-color);
+  --cs-text-area-label-color: var(--cs-component-label-color);
 
   margin: 0;
   padding: 0;
