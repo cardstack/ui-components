@@ -166,6 +166,8 @@
   .ember-power-select-option {
     padding: 6px var(--cs-root-padding-horizontal);
     font-size: 13px;
+    display: flex;
+    flex-flow: row nowrap;
 
     & + .ember-power-select-option {
       border-top: 1px solid var(--cs-root-border-color);
@@ -173,6 +175,11 @@
 
     &[aria-current=true] {
       background-color: var(--cs-dropdown-current-option);
+    }
+
+    span {
+      width: 40%;
+      padding: 0 5px;
     }
   }
 }
@@ -205,6 +212,33 @@
 
   .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
     top: calc(var(--cs-root-padding-vertical) * 1.5);
+  }
+}
+
+// Utility classes
+.cs-component-dropdown {
+  .lightweight {
+    font-weight: 100;
+  }
+
+  .caps {
+    text-transform: uppercase;
+  }
+}
+
+.cs-component-dropdown--with-customized-options {
+  .ember-power-select-selected-item {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+
+    span {
+      padding: 0 5px;
+    }
+  }
+
+  .ember-power-select-clear-btn {
+    top: 8px;
   }
 }
 
