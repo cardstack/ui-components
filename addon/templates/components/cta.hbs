@@ -1,19 +1,13 @@
-{{#if hasBlock}}
-  <button
-    class="cs-component-cta cs-component-cta--{{variant}} {{@theme}}"
-    disabled={{disabled}}
-    onclick={{action handleClick}}
-    data-test-cs-component-cta={{variant}}
-  >
-    {{yield}}
-  </button>
-{{else}}
-  <button
-    class="cs-component-cta cs-component-cta--{{variant}} {{@theme}}"
-    disabled={{disabled}}
-    onclick={{action handleClick}}
-    data-test-cs-component-cta={{variant}}
-  >
+<button
+  class="cs-component-cta cs-component-cta--{{variant}} {{@theme}}"
+  disabled={{disabled}}
+  onclick={{action handleClick}}
+  data-test-cs-component-cta={{variant}}
+  ...attributes
+>
+  {{#if @label}}
     {{@label}}
-  </button>
-{{/if}}
+  {{else}}
+    {{yield}}
+  {{/if}}
+</button>

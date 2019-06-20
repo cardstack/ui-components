@@ -1,4 +1,6 @@
 .cs-component-file-upload-dialog {
+  @include cs-component-common-styles;
+
   --cs-component-file-upload-dialog-icon: url('images/file-regular.svg');
 
   .cs-component-file-upload-dialog--prompt {

@@ -1,5 +1,14 @@
-// base unchanging styles like typography go here
+// Mixins
+@mixin cs-component-common-styles {
+  box-sizing: border-box;
+  font-family: var(--cs-component-font-family);
+  font-size: var(--cs-component-font-size);
+  font-weight: var(--cs-component-font-weight);
+  letter-spacing: var(--cs-component-letter-spacing);
+  line-height: var(--cs-component-line-height);
+}
 
+// Font
 @font-face {
   font-family: 'Open Sans';
   src: url('fonts/OpenSans-Light.ttf');
@@ -62,11 +71,4 @@
   src: url('fonts/OpenSans-ExtraBoldItalic.ttf');
   font-weight: 800;
   font-style: italic;
-}
-
-
-html {
-  font-family: var(--cs-root-font-family);
-  font-size: var(--cs-root-font-size);
-  color: var(--cs-root-color);
 }

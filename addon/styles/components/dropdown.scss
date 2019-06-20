@@ -1,35 +1,32 @@
 .cs-component-dropdown,
 .cs-component-dropdown--multiple {
-  --cs-dropdown-text-box-height: 1.75em;
+  @include cs-component-common-styles;
 
   // Font properties
-  --cs-dropdown-color: var(--cs-root-color);
-  --cs-dropdown-label-color: var(--cs-root-label-color);
-  --cs-dropdown-font-size: var(--cs-root-font-size);
+  --cs-dropdown-color: var(--cs-component-color);
+  --cs-dropdown-label-color: var(--cs-component-label-color);
+  --cs-dropdown-font-size: var(--cs-component-font-size);
   --cs-dropdown-label-font-size: var(--cs-dropdown-font-size);
   --cs-dropdown-label-font-weight: normal;
 
   // Background properties
-  --cs-dropdown-background-color: var(--cs-root-background-color);
-  --cs-dropdown-background-hover: var(--cs-root-background-hover);
-  --cs-dropdown-current-option: var(--cs-root-selected);
-
-  --cs-dropdown-border-radius: var(--cs-root-border-radius);
+  --cs-dropdown-background-color: var(--cs-component-background-color);
+  --cs-dropdown-background-hover: var(--cs-component-background-highlight-color);
+  --cs-dropdown-current-option: var(--cs-component-selected-color);
 
   // Other
+  --cs-dropdown-border-radius: var(--cs-component-border-radius);
+  --cs-dropdown-text-box-height: 1.75em;
   --cs-dropdown-label-text-transform: none;
 
   position: relative;
-  box-sizing: border-box;
-  height: var(--cs-root-input-height);
-  border: 1px solid var(--cs-root-border-color);
+  height: var(--cs-component-height);
+  border: 1px solid var(--cs-component-border-color);
   border-radius: var(--cs-dropdown-border-radius);
   background-color: var(--cs-dropdown-background-color);
   color: var(--cs-dropdown-color);
-  font-family: inherit;
   font-size: var(--cs-dropdown-font-size);
   font-weight: 600;
-  letter-spacing: 0;
   line-height: var(--cs-dropdown-text-box-height);
 
   > .cs-component-dropdown__container {
@@ -49,10 +46,10 @@
   z-index: 1;
   position: absolute;
   bottom: -1px;
-  left: var(--cs-root-padding-horizontal);
-  right: var(--cs-root-padding-horizontal);
+  left: var(--cs-component-padding-horizontal);
+  right: var(--cs-component-padding-horizontal);
 
-  border-bottom: 1px solid var(--cs-root-border-color);
+  border-bottom: 1px solid var(--cs-component-border-color);
   color: var(--cs-dropdown-label-color);
   font-size: var(--cs-dropdown-label-font-size);
   font-weight: var(--cs-dropdown-label-font-weight);
@@ -67,23 +64,23 @@
   transition: top 0.2s ease, font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
 
   &.with-option-selected {
-    --cs-dropdown-label-color: var(--cs-root-label-color);
+    --cs-dropdown-label-color: var(--cs-component-label-color);
     --cs-dropdown-label-font-size: 12px;
     --cs-dropdown-label-font-weight: 600;
 
-    top: calc(var(--cs-root-padding-vertical) * -1);
-    left: var(--cs-root-padding-horizontal);
-    line-height: var(--cs-root-padding-vertical);
+    top: calc(var(--cs-component-padding-vertical) * -1);
+    left: var(--cs-component-padding-horizontal);
+    line-height: var(--cs-component-padding-vertical);
   }
 
   &.is-open {
-    --cs-dropdown-label-color: var(--cs-root-label-focus);
+    --cs-dropdown-label-color: var(--cs-component-label-highlight-color);
     --cs-dropdown-label-font-size: 12px;
     --cs-dropdown-label-font-weight: 600;
 
-    top: calc(var(--cs-root-padding-vertical) * -1);
-    left: calc(var(--cs-root-padding-horizontal) + 1px);
-    line-height: var(--cs-root-padding-vertical);
+    top: calc(var(--cs-component-padding-vertical) * -1);
+    left: calc(var(--cs-component-padding-horizontal) + 1px);
+    line-height: var(--cs-component-padding-vertical);
   }
 }
 
@@ -111,7 +108,7 @@
   }
 
   .ember-power-select-search {
-    padding: 0 var(--cs-root-padding-horizontal);
+    padding: 0 var(--cs-component-padding-horizontal);
 
     .ember-power-select-option--search-message {
       display: none;
@@ -128,7 +125,7 @@
       font-weight: inherit;
 
       &:focus {
-        border-bottom: 1px solid var(--cs-root-border-color);
+        border-bottom: 1px solid var(--cs-component-border-color);
         outline: none;
       }
     }
@@ -151,7 +148,7 @@
   .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
     top: 0;
     background-color: var(--cs-dropdown-background-color);
-    border-color: var(--cs-root-border-color);
+    border-color: var(--cs-component-border-color);
     border-bottom-left-radius: var(--cs-dropdown-border-radius);
     border-bottom-right-radius: var(--cs-dropdown-border-radius);
   }
@@ -164,13 +161,13 @@
   }
 
   .ember-power-select-option {
-    padding: 6px var(--cs-root-padding-horizontal);
+    padding: 6px var(--cs-component-padding-horizontal);
     font-size: 13px;
     display: flex;
     flex-flow: row nowrap;
 
     & + .ember-power-select-option {
-      border-top: 1px solid var(--cs-root-border-color);
+      border-top: 1px solid var(--cs-component-border-color);
     }
 
     &[aria-current=true] {
@@ -196,7 +193,7 @@
   }
 
   .ember-power-select-multiple-option {
-    border: 1px solid var(--cs-root-border-color);
+    border: 1px solid var(--cs-component-border-color);
     padding: 0 10px;
     border-radius: 20px;
     background-color: var(--cs-dropdown-background-color);
@@ -211,7 +208,7 @@
   }
 
   .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
-    top: calc(var(--cs-root-padding-vertical) * 1.5);
+    top: calc(var(--cs-component-padding-vertical) * 1.5);
   }
 }
 

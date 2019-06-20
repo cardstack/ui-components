@@ -1,6 +1,6 @@
 .cs-component-date {
-  --cs-date-background-color: var(--cs-root-background-color);
-  --cs-date-color: var(--cs-root-color);
+  --cs-date-background-color: var(--cs-component-background-color);
+  --cs-date-color: var(--cs-component-color);
   --cs-date-font-weight: normal;
 
   font-weight: var(--cs-date-font-weight);
@@ -8,13 +8,13 @@
   .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
     background: var(--cs-date-background-color);
     color: var(--cs-date-color);
-    border: 1px solid var(--cs-root-border-color);
-    border-radius: var(--cs-root-border-radius);
-    font-size: var(--cs-root-font-size);
+    border: 1px solid var(--cs-component-border-color);
+    border-radius: var(--cs-component-border-radius);
+    font-size: var(--cs-component-font-size);
   }
 
   .ember-power-select-search {
-    padding: 5px var(--cs-root-padding-horizontal) 0;
+    padding: 5px var(--cs-component-padding-horizontal) 0;
   }
 
   .ember-power-select-option--search-message {
@@ -25,7 +25,7 @@
     padding: 0;
     height: 32px;
     border: none;
-    border-bottom: 1px solid var(--cs-root-border-color);
+    border-bottom: 1px solid var(--cs-component-border-color);
     background: inherit;
     color: inherit;
     font-family: inherit;
@@ -34,12 +34,12 @@
   }
 
   .ember-power-select-search-input:hover {
-    background-color: var(--cs-root-background-hover);
+    background-color: var(--cs-component-background-highlight-color);
   }
 
   .ember-power-select-search-input:focus {
     border: none;
-    border-bottom: 1px solid var(--cs-root-border-color);
+    border-bottom: 1px solid var(--cs-component-border-color);
   }
 
   .ember-power-select-options {
@@ -50,19 +50,19 @@
   }
 
   .ember-power-select-option {
-    padding: 6px var(--cs-root-padding-horizontal);
+    padding: 6px var(--cs-component-padding-horizontal);
     text-align: left;
 
     &[aria-current=true] {
-      background: var(--cs-root-selected);
+      background: var(--cs-component-selected-color);
     }
   }
 }
 
 .cs-component-calendar.ember-basic-dropdown-content {
   background: #fff;
-  border: 1px solid var(--cs-root-border-color);
-  border-radius: var(--cs-root-border-radius);
+  border: 1px solid var(--cs-component-border-color);
+  border-radius: var(--cs-component-border-radius);
 
   .ember-power-calendar-day {
     padding: 1em;
