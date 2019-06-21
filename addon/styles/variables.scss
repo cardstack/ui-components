@@ -37,11 +37,11 @@ $cs-theme-red: red;
 
   // Component background
   --cs-component-background-color: #{$lighter-gray};
-  --cs-component-background-highlight-color: #{$light-gray-e8}; // used in hover, focus states etc.
+  --cs-component-background-highlight-color: #{$light-gray-e8}; // active state (hover, focus, etc.)
 
   // Sizing
+  --cs-component-max-width: 100%;
   --cs-component-height: 60px;
-  --cs-component-width: 100%;
 
   // Spacing
   --cs-component-padding-horizontal: 15px;
@@ -59,7 +59,7 @@ $cs-theme-red: red;
 
   // Labels
   --cs-component-label-color: #{$gray};
-  --cs-component-label-highlight-color: #{$purple}; // used in hover, focus states etc.
+  --cs-component-label-highlight-color: #{$purple}; // active state (hover, focus, etc.)
 
   // Selection
   --cs-component-selected-color: #{$gray-70};

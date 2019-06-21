@@ -2,31 +2,51 @@
 .cs-component-dropdown--multiple {
   @include cs-component-common-styles;
 
-  // Font properties
+  // Sizing
+  --cs-dropdown-max-width: var(--cs-component-max-width);
+  --cs-dropdown-height: var(--cs-component-height);
+  --cs-dropdown-text-box-height: 1.75em;
+
+  // Spacing
+  --cs-dropdown-padding-horizontal: var(--cs-component-padding-horizontal);
+  --cs-dropdown-padding-vertical: var(--cs-component-padding-vertical);
+
+  // Text
   --cs-dropdown-color: var(--cs-component-color);
-  --cs-dropdown-label-color: var(--cs-component-label-color);
   --cs-dropdown-font-size: var(--cs-component-font-size);
+
+  // Label
+  --cs-dropdown-label-color: var(--cs-component-label-color);
+  --cs-dropdown-label-highlight-color: var(--cs-component-label-highlight-color);
+  --cs-dropdown-label-minimized-color: var(--cs-dropdown-label-color);
   --cs-dropdown-label-font-size: var(--cs-dropdown-font-size);
   --cs-dropdown-label-font-weight: normal;
+  --cs-dropdown-label-minimized-font-size: 12px;
+  --cs-dropdown-label-minimized-font-weight: 600;
+  --cs-dropdown-label-text-transform: var(--cs-component-text-transform);
 
   // Background properties
   --cs-dropdown-background-color: var(--cs-component-background-color);
   --cs-dropdown-background-hover: var(--cs-component-background-highlight-color);
-  --cs-dropdown-current-option: var(--cs-component-selected-color);
 
-  // Other
+  // Borders
+  --cs-dropdown-border-color: var(--cs-component-border-color);
   --cs-dropdown-border-radius: var(--cs-component-border-radius);
-  --cs-dropdown-text-box-height: 1.75em;
-  --cs-dropdown-label-text-transform: none;
 
+  // Options
+  --cs-dropdown-selected-color: var(--cs-component-selected-color);
+}
+
+.cs-component-dropdown,
+.cs-component-dropdown--multiple {
   position: relative;
-  height: var(--cs-component-height);
-  border: 1px solid var(--cs-component-border-color);
+  max-width: var(--cs-dropdown-max-width);
+  height: var(--cs-dropdown-height);
+  border: 1px solid var(--cs-dropdown-border-color);
   border-radius: var(--cs-dropdown-border-radius);
   background-color: var(--cs-dropdown-background-color);
   color: var(--cs-dropdown-color);
   font-size: var(--cs-dropdown-font-size);
-  font-weight: 600;
   line-height: var(--cs-dropdown-text-box-height);
 
   > .cs-component-dropdown__container {
@@ -41,10 +61,10 @@
   z-index: 1;
   position: absolute;
   bottom: -1px;
-  left: var(--cs-component-padding-horizontal);
-  right: var(--cs-component-padding-horizontal);
+  left: var(--cs-dropdown-padding-horizontal);
+  right: calc(3 * var(--cs-dropdown-padding-horizontal)); // do not overlap dropdown open box arrow
 
-  border-bottom: 1px solid var(--cs-component-border-color);
+  border-bottom: 1px solid var(--cs-dropdown-border-color);
   color: var(--cs-dropdown-label-color);
   font-size: var(--cs-dropdown-label-font-size);
   font-weight: var(--cs-dropdown-label-font-weight);
@@ -55,27 +75,32 @@
   text-transform: var(--cs-dropdown-label-text-transform);
   pointer-events: none;
 
-  -webkit-transition: top 0.2s ease, font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
-  transition: top 0.2s ease, font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
+  // no line-wrap. truncate with ellipsis.
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
 
   &.with-option-selected {
-    --cs-dropdown-label-color: var(--cs-component-label-color);
-    --cs-dropdown-label-font-size: 12px;
-    --cs-dropdown-label-font-weight: 600;
+    --cs-dropdown-label-color: var(--cs-dropdown-label-minimized-color);
+    --cs-dropdown-label-font-size: var(--cs-dropdown-label-minimized-font-size);
+    --cs-dropdown-label-font-weight: var(--cs-dropdown-label-minimized-font-weight);
 
     top: -1.7em;
-    left: var(--cs-component-padding-horizontal);
-    line-height: var(--cs-component-padding-vertical);
+    left: var(--cs-dropdown-padding-horizontal);
+    line-height: var(--cs-dropdown-padding-vertical);
   }
 
   &.is-open {
-    --cs-dropdown-label-color: var(--cs-component-label-highlight-color);
-    --cs-dropdown-label-font-size: 12px;
-    --cs-dropdown-label-font-weight: 600;
+    --cs-dropdown-label-color: var(--cs-dropdown-label-highlight-color);
+    --cs-dropdown-label-font-size: var(--cs-dropdown-label-minimized-font-size);
+    --cs-dropdown-label-font-weight: var(--cs-dropdown-label-minimized-font-weight);
 
     top: -1.7em;
-    left: var(--cs-component-padding-horizontal);
-    line-height: var(--cs-component-padding-vertical);
+    left: var(--cs-dropdown-padding-horizontal);
+    line-height: var(--cs-dropdown-padding-vertical);
   }
 }
 
@@ -104,7 +129,7 @@
   }
 
   .ember-power-select-search {
-    padding: 0 var(--cs-component-padding-horizontal);
+    padding: 0 var(--cs-dropdown-padding-horizontal);
 
     .ember-power-select-option--search-message {
       display: none;
@@ -121,7 +146,7 @@
       font-weight: inherit;
 
       &:focus {
-        border-bottom: 1px solid var(--cs-component-border-color);
+        border-bottom: 1px solid var(--cs-dropdown-border-color);
         outline: none;
       }
     }
@@ -130,11 +155,10 @@
   .ember-power-select-selected-item {
     display: inline-block;
     margin-left: 0;
-    font-weight: 600;
 
     .ember-power-select-status-icon {
       right: 25px;
-      border-top-color: var(--cs-root-border-color);
+      border-top-color: var(--cs-dropdown-border-color);
     }
 
     .ember-power-select-clear-btn {
@@ -145,7 +169,7 @@
   .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
     top: 0;
     background-color: var(--cs-dropdown-background-color);
-    border-color: var(--cs-component-border-color);
+    border-color: var(--cs-dropdown-border-color);
     border-bottom-left-radius: var(--cs-dropdown-border-radius);
     border-bottom-right-radius: var(--cs-dropdown-border-radius);
   }
@@ -158,17 +182,17 @@
   }
 
   .ember-power-select-option {
-    padding: 6px var(--cs-component-padding-horizontal);
-    font-size: 13px;
+    padding: 6px var(--cs-dropdown-padding-horizontal);
+    font-size: var(--cs-dropdown-font-size);
     display: flex;
     flex-flow: row nowrap;
 
     & + .ember-power-select-option {
-      border-top: 1px solid var(--cs-component-border-color);
+      border-top: 1px solid var(--cs-dropdown-border-color);
     }
 
     &[aria-current=true] {
-      background-color: var(--cs-dropdown-current-option);
+      background-color: var(--cs-dropdown-selected-color);
     }
 
     span {
@@ -190,7 +214,7 @@
   }
 
   .ember-power-select-multiple-option {
-    border: 1px solid var(--cs-component-border-color);
+    border: 1px solid var(--cs-dropdown-border-color);
     padding: 0 10px;
     border-radius: 20px;
     background-color: var(--cs-dropdown-background-color);
@@ -205,7 +229,7 @@
   }
 
   .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
-    top: calc(var(--cs-component-padding-vertical) * 1.5);
+    top: calc(var(--cs-dropdown-padding-vertical) * 1.5);
   }
 }
 
@@ -222,7 +246,7 @@
 
 .cs-component-dropdown--with-customized-options {
   .ember-power-select-selected-item {
-    font-size: 13px;
+    font-size: var(--cs-dropdown-font-size);
     display: flex;
     align-items: center;
 
@@ -232,33 +256,26 @@
   }
 
   .ember-power-select-clear-btn {
-    top: 8px;
+    top: 0;
   }
 }
 
 // Themes
 .cs-theme {
   --cs-dropdown-font-size: 18px;
-  --cs-dropdown-label-font-size: 18px;
-  --cs-dropdown-border-radius: 10px;
+  --cs-dropdown-color: #{$cs-theme-light-gray};
+  --cs-dropdown-selected-color: #{$cs-theme-light-purple};
+
   --cs-dropdown-background-color: white;
   --cs-dropdown-background-hover: transparent;
-  --cs-dropdown-current-option: #{$cs-theme-light-purple};
-  --cs-dropdown-color: #{$cs-theme-light-gray};
+
+  --cs-dropdown-border-radius: 10px;
+
+  --cs-dropdown-label-minimized-color: #{$cs-theme-light-purple};
+  --cs-dropdown-label-minimized-font-size: 10px;
+  --cs-dropdown-label-text-transform: none;
 
   .ember-power-select-option + .ember-power-select-option {
     border-top: none;
-  }
-
-  &.with-option-selected {
-    --cs-dropdown-label-color: #{$cs-theme-light-purple};
-    --cs-dropdown-label-font-size: 10px;
-    --cs-dropdown-label-text-transform: uppercase;
-  }
-
-  &.is-open {
-    --cs-dropdown-label-color: #{$purple};
-    --cs-dropdown-label-font-size: 10px;
-    --cs-dropdown-label-text-transform: uppercase;
   }
 }

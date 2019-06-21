@@ -12,11 +12,13 @@
           search=(action searchAction)
           searchField=searchField
           renderInPlace=true
-          ariaLabel=label
           onfocus=(action (mut isFocused) true)
           onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
-          onclose=(action (mut isOpen) false) as |option|}}
+          onclose=(action (mut isOpen) false)
+          searchEnabled=searchEnabled
+          ariaLabel=label
+        as |option|}}
           {{get option searchField}}
         {{/power-select-multiple}}
       {{else}}
@@ -26,13 +28,15 @@
           selected=selected
           search=(action searchAction)
           searchField=searchField
-          allowClear=true
           renderInPlace=true
-          ariaLabel=label
           onfocus=(action (mut isFocused) true)
           onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
-          onclose=(action (mut isOpen) false) as |option|}}
+          onclose=(action (mut isOpen) false)
+          searchEnabled=searchEnabled
+          allowClear=allowClear
+          ariaLabel=label
+        as |option|}}
           {{get option searchField}}
         {{/power-select}}
       {{/if}}
@@ -44,11 +48,13 @@
           selected=selected
           searchField=searchField
           renderInPlace=true
-          ariaLabel=label
           onfocus=(action (mut isFocused) true)
           onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
-          onclose=(action (mut isOpen) false) as |option|}}
+          onclose=(action (mut isOpen) false)
+          searchEnabled=searchEnabled
+          ariaLabel=label
+        as |option|}}
           {{get option searchField}}
         {{/power-select-multiple}}
       {{else}}
@@ -57,13 +63,15 @@
           onchange=(or handleChange (action changeAction))
           selected=selected
           searchField=searchField
-          allowClear=true
           renderInPlace=true
-          ariaLabel=label
           onfocus=(action (mut isFocused) true)
           onblur=(action (mut isFocused) false)
           onopen=(action (mut isOpen) true)
-          onclose=(action (mut isOpen) false) as |option|}}
+          onclose=(action (mut isOpen) false)
+          searchEnabled=searchEnabled
+          allowClear=allowClear
+          ariaLabel=label
+        as |option|}}
           {{get option searchField}}
         {{/power-select}}
       {{/if}}

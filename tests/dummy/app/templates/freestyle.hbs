@@ -19,6 +19,12 @@
         {{#freestyle-usage "dropdown" title="Dropdown"}}
           <Dropdown @options={{countries}} @label="Select a country" />
         {{/freestyle-usage}}
+        {{#freestyle-usage "dropdown-search-disabled" title="With No Search Box"}}
+          <Dropdown @options={{countries}} @searchEnabled={{false}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "dropdown-clear-button" title="With No Clear Button"}}
+          <Dropdown @options={{countries}} @allowClear={{false}} />
+        {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="custom-search-field"}}
         {{#freestyle-note "dropdown-custom-search-field--notes"}}
@@ -677,8 +683,13 @@
           --cs-component-legend-font-size
 
           // Labels:
-          --cs-component-label-color
-          --cs-component-label-highlight-color
+          --cs-component-label-color                  // default: gray
+          --cs-component-label-highlight-color        // default: purple (active state, hover, focus, etc.)
+          --cs-component-label-minimized-color        // default: gray
+          --cs-component-label-font-size              // default: 16px
+          --cs-component-label-minimized-font-size    // default: 12px
+          --cs-component-label-font-weight            // default: normal
+          --cs-component-label-text-transform         // default: none
 
           // Selection:
           --cs-component-selected-color

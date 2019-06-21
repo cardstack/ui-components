@@ -9,6 +9,9 @@ export default Component.extend({
   isFocused: false,
   label: 'Select an option',
   searchField: 'name',
+  searchEnabled: true,
+  allowClear: true,
+
   changeAction(item) {
     this.set('selected', item);
   },
