@@ -3,7 +3,7 @@
 .cs-component-cta--primary {
   @include cs-component-common-styles;
 
-  --cs-cta-width: auto;
+  --cs-cta-min-width: auto;
   --cs-cta-height: auto;
   --cs-cta-padding-horizontal: 20px;
   --cs-cta-padding-vertical: 12px;
@@ -13,14 +13,14 @@
   --cs-cta-border-radius: var(--cs-component-border-radius);
   --cs-cta-box-shadow: var(--cs-component-box-shadow);
 
-  // Hover state
-  --cs-cta-hover-color: white;
-  --cs-cta-hover-background-color: #{$dark-gray};
-
   // Primary-variant only
   --cs-cta-color: white;
   --cs-cta-background-color: #{$gray};
   --cs-cta-border-color: var(--cs-cta-background-color);
+
+  // Primary-variant: Hover state
+  --cs-cta-hover-color: white;
+  --cs-cta-hover-background-color: #{$dark-gray};
 
   // Primary-variant: Disabled state
   --cs-cta-disabled-color: #{$dark-gray-op40};
@@ -32,12 +32,17 @@
   --cs-cta-secondary-background-color: transparent;
   --cs-cta-secondary-border-color: var(--cs-cta-secondary-color);
 
+  // Primary-variant: Hover state
+  --cs-cta-secondary-hover-color: var(--cs-cta-hover-color);
+  --cs-cta-secondary-hover-background-color: var(--cs-cta-hover-background-color);
+
   // Secondary-variant: Disabled state
   --cs-cta-secondary-disabled-color: var(--cs-cta-disabled-color);
-  --cs-cta-secondary-disabled-border-color: var(--cs-cta-disabled-color);
+  --cs-cta-secondary-disabled-border-color: var(--cs-cta-disabled-border-color);
 
+  width: auto;
+  min-width: var(--cs-cta-min-width);
   height: var(--cs-cta-height);
-  width: var(--cs-cta-width);
   padding: var(--cs-cta-padding-vertical) var(--cs-cta-padding-horizontal);
   background-color: var(--cs-cta-background-color);
   color: var(--cs-cta-color);
@@ -51,9 +56,11 @@
   user-select: none;
   cursor: pointer;
 
+  &:focus,
   &:hover {
     background-color: var(--cs-cta-hover-background-color);
     color: var(--cs-cta-hover-color);
+    outline-color: var(--cs-component-outline-color);
   }
 
   &:disabled {
@@ -69,6 +76,12 @@
   background-color: var(--cs-cta-secondary-background-color);
   color: var(--cs-cta-secondary-color);
   border-color: var(--cs-cta-secondary-border-color);
+
+  &:focus,
+  &:hover {
+    background-color: var(--cs-cta-secondary-hover-background-color);
+    color: var(--cs-cta-secondary-hover-color);
+  }
 
   &:disabled {
     background-color: var(--cs-cta-secondary-background-color);
