@@ -1,6 +1,8 @@
 // Mixins
 @mixin cs-component-common-styles {
   box-sizing: border-box;
+  width: 100%;
+  max-width: var(--cs-component-max-width);
   font-family: var(--cs-component-font-family);
   font-size: var(--cs-component-font-size);
   font-weight: var(--cs-component-font-weight);

@@ -60,6 +60,7 @@ $cs-theme-red: red;
   // Labels
   --cs-component-label-color: #{$gray};
   --cs-component-label-highlight-color: #{$purple}; // active state (hover, focus, etc.)
+  --cs-component-label-minimized-color: var(--cs-component-label-color); // input is filled in
 
   // Selection
   --cs-component-selected-color: #{$gray-70};

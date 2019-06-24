@@ -17,13 +17,11 @@
 
   // Label
   --cs-dropdown-label-color: var(--cs-component-label-color);
-  --cs-dropdown-label-highlight-color: var(--cs-component-label-highlight-color);
-  --cs-dropdown-label-minimized-color: var(--cs-dropdown-label-color);
   --cs-dropdown-label-font-size: var(--cs-dropdown-font-size);
-  --cs-dropdown-label-font-weight: normal;
-  --cs-dropdown-label-minimized-font-size: 12px;
-  --cs-dropdown-label-minimized-font-weight: 600;
-  --cs-dropdown-label-text-transform: var(--cs-component-text-transform);
+  --cs-dropdown-label-font-weight: var(--cs-dropdown-font-weight);
+  --cs-dropdown-label-highlight-color: var(--cs-component-label-highlight-color);
+  --cs-dropdown-label-highlight-font-size: 12px;
+  --cs-dropdown-label-minimized-color: var(--cs-dropdown-label-color);
 
   // Background properties
   --cs-dropdown-background-color: var(--cs-component-background-color);
@@ -47,7 +45,6 @@
   background-color: var(--cs-dropdown-background-color);
   color: var(--cs-dropdown-color);
   font-size: var(--cs-dropdown-font-size);
-  line-height: var(--cs-dropdown-text-box-height);
 
   > .cs-component-dropdown__container {
     position: absolute;
@@ -64,15 +61,10 @@
   left: var(--cs-dropdown-padding-horizontal);
   right: calc(3 * var(--cs-dropdown-padding-horizontal)); // do not overlap dropdown open box arrow
 
-  border-bottom: 1px solid var(--cs-dropdown-border-color);
   color: var(--cs-dropdown-label-color);
   font-size: var(--cs-dropdown-label-font-size);
   font-weight: var(--cs-dropdown-label-font-weight);
-  line-height: inherit;
-  letter-spacing: 0;
-
   text-align: left;
-  text-transform: var(--cs-dropdown-label-text-transform);
   pointer-events: none;
 
   // no line-wrap. truncate with ellipsis.
@@ -85,8 +77,7 @@
 
   &.with-option-selected {
     --cs-dropdown-label-color: var(--cs-dropdown-label-minimized-color);
-    --cs-dropdown-label-font-size: var(--cs-dropdown-label-minimized-font-size);
-    --cs-dropdown-label-font-weight: var(--cs-dropdown-label-minimized-font-weight);
+    --cs-dropdown-label-font-size: var(--cs-dropdown-label-highlight-font-size);
 
     top: -1.7em;
     left: var(--cs-dropdown-padding-horizontal);
@@ -95,8 +86,7 @@
 
   &.is-open {
     --cs-dropdown-label-color: var(--cs-dropdown-label-highlight-color);
-    --cs-dropdown-label-font-size: var(--cs-dropdown-label-minimized-font-size);
-    --cs-dropdown-label-font-weight: var(--cs-dropdown-label-minimized-font-weight);
+    --cs-dropdown-label-font-size: var(--cs-dropdown-label-highlight-font-size);
 
     top: -1.7em;
     left: var(--cs-dropdown-padding-horizontal);
@@ -111,20 +101,15 @@
     margin: 0 1rem;
     border: none;
     background-color: var(--cs-dropdown-background-color);
-    line-height: inherit;
     cursor: pointer;
 
     -webkit-transition: margin 0.2s ease, background-color 0.2s ease;
     transition: margin 0.2s ease, background-color 0.2s ease;
 
-    &:hover {
-      background-color: var(--cs-dropdown-background-hover);
-    }
-
     &:focus {
       background-color: var(--cs-dropdown-background-hover);
       border: none;
-      outline: none;
+      outline: 0;
     }
   }
 
@@ -147,7 +132,7 @@
 
       &:focus {
         border-bottom: 1px solid var(--cs-dropdown-border-color);
-        outline: none;
+        outline: 0;
       }
     }
   }
@@ -265,15 +250,11 @@
   --cs-dropdown-font-size: 18px;
   --cs-dropdown-color: #{$cs-theme-light-gray};
   --cs-dropdown-selected-color: #{$cs-theme-light-purple};
-
   --cs-dropdown-background-color: white;
   --cs-dropdown-background-hover: transparent;
-
   --cs-dropdown-border-radius: 10px;
-
-  --cs-dropdown-label-minimized-color: #{$cs-theme-light-purple};
-  --cs-dropdown-label-minimized-font-size: 10px;
-  --cs-dropdown-label-text-transform: none;
+  --cs-dropdown-label-highlight-color: #{$cs-theme-light-purple};
+  --cs-dropdown-label-highlight-font-size: 10px;
 
   .ember-power-select-option + .ember-power-select-option {
     border-top: none;

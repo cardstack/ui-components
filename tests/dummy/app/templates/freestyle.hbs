@@ -148,26 +148,43 @@
             <li>Pass the CSS class name to the <code>@theme</code> attribute on your <code>Dropdown</code> component.</li>
             <li>More specific CSS changes can be made using <code>ember-power-select</code> classes nested inside your theme class.</li>
           </ol>
-          <p>To change label styles while the dropdown menu is open or an option is selected, use <code>is-open</code> and <code>with-option-selected</code> classes along with your theme class, respectively.</p>
-          <h2>Supported CSS variables</h2>
+          <h2>Customizable CSS variables</h2>
+          <b>Note: <code>--cs-component</code> prefixed values below are inherited from the root level, but can still be customized with a theme.</b>
           <pre>
             <code>
-              <b>Font properties:</b>
-              --cs-dropdown-color
-              --cs-dropdown-label-color
-              --cs-dropdown-label-font-size
-              --cs-dropdown-label-font-weight
+              .your-theme-name {
+              <b>Sizing</b>
+              --cs-dropdown-max-width                   // --cs-component-max-width
+              --cs-dropdown-height                      // --cs-component-height
+              --cs-dropdown-text-box-height             // 1.75em
 
-              <b>Background properties:</b>
-              --cs-dropdown-background-color
-              --cs-dropdown-background-hover
-              --cs-dropdown-current-option
+              <b>Spacing</b>
+              --cs-dropdown-padding-horizontal          // --cs-component-padding-horizontal
+              --cs-dropdown-padding-vertical            // --cs-component-padding-vertical
 
-              <b>Border properties:</b>
-              --cs-dropdown-border-radius
+              <b>Text</b>
+              --cs-dropdown-color                       // --cs-component-color
+              --cs-dropdown-font-size                   // --cs-component-font-size
 
-              <b>Other:</b>
-              --cs-dropdown-label-text-transform
+              <b>Label</b>
+              --cs-dropdown-label-color                 // --cs-component-label-color
+              --cs-dropdown-label-font-size             // --cs-dropdown-font-size
+              --cs-dropdown-label-font-weight           // --cs-dropdown-font-weight
+              --cs-dropdown-label-highlight-color       // --cs-component-label-highlight-color
+              --cs-dropdown-label-highlight-font-size   // 12px
+              --cs-dropdown-label-minimized-color       // --cs-dropdown-label-color
+
+              <b>Background properties</b>
+              --cs-dropdown-background-color  // --cs-component-background-color
+              --cs-dropdown-background-hover  // --cs-component-background-highlight-color
+
+              <b>Borders</b>
+              --cs-dropdown-border-color      // --cs-component-border-color
+              --cs-dropdown-border-radius     // --cs-component-border-radius
+
+              <b>Options</b>
+              --cs-dropdown-selected-color    // --cs-component-selected-color
+              }
             </code>
           </pre>
         {{/freestyle-annotation}}
@@ -229,40 +246,49 @@
             <li>Change the values set to available CSS variables (see list below).</li>
             <li>Pass the theme name to the <code>@theme</code> attribute on the component.</li>
           </ol>
-          <h2>Supported CSS variables</h2>
-          <p>Note: <code>--cs-component-cta</code> prefixed values below are set at the root level</p>
-          <p>(If the button variant is not specified, the default value applies to all variants.)</p>
+          <h2>Customizable CSS variables</h2>
+          <b>Note: <code>--cs-component</code> prefixed values below are inherited from the root level, but can still be customized with a theme.</b>
           <pre>
             <code>
-              --cs-cta-width // default: auto
-              --cs-cta-height // default: auto
-              --cs-cta-padding-horizontal // default: 20px
-              --cs-cta-padding-vertical // default: 12px
-              --cs-cta-font-size // default: 14px
-              --cs-cta-font-weight // default: 600
-              --cs-cta-line-height // default: 1
-              --cs-cta-border-radius // default: --cs-component-border-radius (2px)
-              --cs-cta-box-shadow // default: --cs-component-box-shadow (none)
+              .your-theme-name {
+              <b>Common</b>
+              --cs-cta-width                // auto
+              --cs-cta-height               // auto
+              --cs-cta-padding-horizontal   // 20px
+              --cs-cta-padding-vertical     // 12px
+              --cs-cta-font-size            // 14px
+              --cs-cta-font-weight          // 600
+              --cs-cta-line-height          // 1
+              --cs-cta-border-radius        // <b>--cs-component-border-radius</b>
+              --cs-cta-box-shadow           // <b>--cs-component-box-shadow</b>
 
-              // Hover state
-              --cs-cta-hover-color // default: white
-              --cs-cta-hover-background-color // default: dark-gray
+              <b>Primary-variant only</b>
+              --cs-cta-color                      // white
+              --cs-cta-background-color           // gray (#5d5d5d)
+              --cs-cta-border-color               // --cs-cta-background-color
 
-              // Primary-variant only
-              --cs-cta-color // default: white
-              --cs-cta-background-color // default: gray
-              --cs-cta-border-color // default: --cs-cta-background-color (dark-gray)
+              <b>Primary-variant: Hover state</b>
+              --cs-cta-hover-color                // white
+              --cs-cta-hover-background-color     // dark-gray (#222)
 
-              // Primary-variant: Disabled state
-              --cs-cta-disabled-color // default: dark-gray with opacity 0.4
-              --cs-cta-disabled-background-color // default: dark-gray with opacity 0.2
-              --cs-cta-disabled-border-color // default: --cs-cta-disabled-background-color (dark-gray with opacity 0.2)
+              <b>Primary-variant: Disabled state</b>
+              --cs-cta-disabled-color             // dark-gray with opacity 0.4
+              --cs-cta-disabled-background-color  // dark-gray with opacity 0.2
+              --cs-cta-disabled-border-color      // --cs-cta-disabled-background-color
 
-              // Secondary-variant only
-              --cs-cta-secondary-color // default: dark-gray
-              --cs-cta-secondary-background-color // default: transparent
-              --cs-cta-secondary-border-color // default: --cs-cta-secondary-color (dark-gray)
-              --cs-cta-secondary-disabled-border-color // --cs-cta-disabled-color (dark-gray with opacity 0.4)
+              <b>Secondary-variant only</b>
+              --cs-cta-secondary-color            // dark-gray
+              --cs-cta-secondary-background-color // transparent
+              --cs-cta-secondary-border-color     // --cs-cta-secondary-color
+
+              <b>Secondary-variant: Hover state</b>
+              --cs-cta-secondary-hover-color              // --cs-cta-hover-color
+              --cs-cta-secondary-hover-background-color   // --cs-cta-hover-background-color
+
+              <b>Secondary-variant: Disabled state</b>
+              --cs-cta-secondary-disabled-color           // --cs-cta-disabled-color
+              --cs-cta-secondary-disabled-border-color    // --cs-cta-disabled-border-color
+              }
             </code>
           </pre>
         {{/freestyle-annotation}}
@@ -300,25 +326,31 @@
             <li>Pass the CSS class name to the <code>@theme</code> attribute on the component.</li>
           </ol>
 
-          <h2>Supported CSS variables</h2>
+          <h2>Customizable CSS variables</h2>
+          <b>Note: <code>--cs-component</code> prefixed values below are inherited from the root level, but can still be customized with a theme.</b>
           <pre>
             <code>
-              <b>Font properties:</b>
-              --cs-text-field-font-size
-              --cs-text-field-label-font-size
-              --cs-text-field-label-font-weight
-              --cs-text-field-color
-              --cs-text-field-label-color
-              --cs-text-field-label-optional
+              --cs-text-field-max-width             // --cs-component-max-width
+              --cs-text-field-height                // --cs-component-height
+              --cs-text-field-padding-horizontal    // --cs-component-padding-horizontal
+              --cs-text-field-padding-vertical      // --cs-component-padding-vertical
 
-              <b>Background properties:</b>
-              --cs-text-field-background-color
+              --cs-text-field-color                 // --cs-component-color
+              --cs-text-field-font-size:            // --cs-component-font-size
+              --cs-text-field-background-color      // --cs-component-background-color
+              --cs-text-field-border-color          // --cs-component-border-color
+              --cs-text-field-border-radius         // --cs-component-border-radius
 
-              <b>Border properties:</b>
-              --cs-text-field-border-radius
+              --cs-text-field-label-color                // --cs-component-label-color
+              --cs-text-field-label-font-size            // --cs-text-field-font-size
+              --cs-text-field-label-font-weight:         // --cs-text-field-font-weight
+              --cs-text-field-label-highlight-color      // --cs-component-label-highlight-color
+              --cs-text-field-label-highlight-font-size  // 12px;
+              --cs-text-field-label-minimized-color      // --cs-component-label-minimized-color
+              --cs-text-field-label-optional             // --cs-text-field-color
 
-              <b>Other:</b>
-              --cs-text-field-label-text-transform
+              --cs-text-field-valid                 // --cs-component-valid
+              --cs-text-field-invalid               // --cs-component-invalid
             </code>
           </pre>
         {{/freestyle-annotation}}
@@ -648,63 +680,59 @@
 
       <pre>
         <code>
-          <strong>Root-level CSS custom properties:</strong>
+          <strong>Root-level CSS custom properties with their default values:</strong>
           <strong>(Common across most ui-components. Exceptions in Cta component.)</strong>
 
-          :root {
-          // Component text:
-          --cs-component-color
-          --cs-component-font-family
-          --cs-component-font-size
-          --cs-component-font-weight
-          --cs-component-letter-spacing
-          --cs-component-line-height
+        :root {
+          <b>Text</b>
+          --cs-component-color                        // dark-gray (#222)
+          --cs-component-font-family                  // 'Open Sans', Arial, Helvetica, sans-serif
+          --cs-component-font-size                    // 16px
+          --cs-component-font-weight                  // 400
+          --cs-component-letter-spacing               // 0
+          --cs-component-line-height                  // 1.3
 
-          // Component background:
-          --cs-component-background-color
-          --cs-component-background-highlight-color
+          <b>Background</b>
+          --cs-component-background-color             // light-gray (#f5f5f5)
+          --cs-component-background-highlight-color   // light-gray (#e8e8e8)
 
-          // Sizing:
-          --cs-component-height
-          --cs-component-width
+          <b>Sizing</b>
+          --cs-component-max-width                    // 100%
+          --cs-component-height                       // 60px
 
-          // Spacing:
-          --cs-component-padding-horizontal
-          --cs-component-padding-vertical
+          <b>Spacing</b>
+          --cs-component-padding-horizontal           // 15px
+          --cs-component-padding-vertical             // 20px
 
-          // Borders:
-          --cs-component-border-color
-          --cs-component-border-radius
+          <b>Borders</b>
+          --cs-component-border-color                 // gray (#707070)
+          --cs-component-border-radius                // 2px
 
-          // Box-shadow:
-          --cs-component-box-shadow
+          <b>Box-shadow</b>
+          --cs-component-box-shadow                   // none
 
-          // Legend:
-          --cs-component-legend-font-size
+          <b>Legend</b>
+          --cs-component-legend-font-size             // 20px
 
-          // Labels:
-          --cs-component-label-color                  // default: gray
-          --cs-component-label-highlight-color        // default: purple (active state, hover, focus, etc.)
-          --cs-component-label-minimized-color        // default: gray
-          --cs-component-label-font-size              // default: 16px
-          --cs-component-label-minimized-font-size    // default: 12px
-          --cs-component-label-font-weight            // default: normal
-          --cs-component-label-text-transform         // default: none
+          <b>Labels</b>
+          --cs-component-label-color                  // gray (#5d5d5d)
+          --cs-component-label-highlight-color        // purple (#6a3ca3) (active state, hover, focus, etc.)
+          --cs-component-label-minimized-color        // --cs-component-label-color (filled-in state)
 
-          // Selection:
-          --cs-component-selected-color
+          <b>Selection</b>
+          --cs-component-selected-color               // gray (#707070)
 
           // Disabled state:
-          --cs-component-disabled-color: TBD
-          --cs-component-disabled-background-color: TBD
+          // --cs-component-disabled-color: TBD
+          // --cs-component-disabled-background-color: TBD
 
-          // Validation
-          --cs-component-valid
-          --cs-component-invalid
+          <b>Validation</b>
+          --cs-component-valid                        // green (#58c949)
+          --cs-component-invalid                      // pink (#ff5c5c)
 
-          // A11y-related:
-          --cs-component-outline-color
-          }
+          <b>A11y-related</b>
+          --cs-component-outline-color                // light-blue
+        }
         </code>
       </pre>
     {{/freestyle-annotation}}

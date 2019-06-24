@@ -72,7 +72,11 @@
           allowClear=allowClear
           ariaLabel=label
         as |option|}}
-          {{get option searchField}}
+          {{#if (has-block)}}
+            {{yield option}}
+          {{else}}
+            {{get option searchField}}
+          {{/if}}
         {{/power-select}}
       {{/if}}
     {{/if}}
