@@ -21,6 +21,12 @@ module('Integration | Component | text-field', function(hooks) {
     assert.dom('[data-test-cs-component-input="text-field"]').hasAttribute('required');
   });
 
+  test('it renders disabled component', async function (assert) {
+    await render(hbs`<TextField @label="What's the meaning of life?" @disabled="true" />`);
+
+    assert.dom('[data-test-cs-component-input="text-field"]').hasAttribute('disabled');
+  });
+
   test('it renders themed component', async function (assert) {
     await render(hbs`<TextField @label="What's the meaning of life?" @theme="cs-theme" />`);
 

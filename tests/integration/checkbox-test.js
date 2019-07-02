@@ -60,4 +60,15 @@ module('Integration | Component | checkbox', function(hooks) {
     assert.dom('.cs-component-checkbox input[type="checkbox"]').isNotChecked();
     assert.dom('[data-test-cs-component-checkbox-validation]').hasText('You must check this box!');
   });
+
+  test('component can be disabled', async function(assert) {
+    await render(hbs`<Checkbox @label="I would like to sign up for your newsletter" @checked={{true}} @disabled={{true}} />`);
+
+    assert.dom('.cs-component-checkbox input[type="checkbox"]').isChecked();
+    assert.dom('.cs-component-checkbox input[type="checkbox"]').hasAttribute('disabled');
+
+    await click('.cs-component-checkbox--label');
+
+    assert.dom('.cs-component-checkbox input[type="checkbox"]').isChecked();
+  });
 });

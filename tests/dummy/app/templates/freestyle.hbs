@@ -310,6 +310,11 @@
           <TextField @label="What's your name?" @required={{true}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="disabled"}}
+        {{#freestyle-usage "text-field-disabled" title="Disabled"}}
+          <TextField @label="What's your name?" @disabled={{true}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "text-field-themed" title="Themed"}}
           <TextField @label="What's your name?" @theme="cs-theme" />
@@ -554,6 +559,9 @@
     {{/freestyle-usage}}
     {{#freestyle-usage "checkbox-required" title="Required"}}
       <Checkbox @label="I accept the Cardstack Terms of Service" @required={{true}} />
+    {{/freestyle-usage}}
+    {{#freestyle-usage "checkbox-disabled" title="Disabled"}}
+      <Checkbox @label="Enable Dark Mode" @disabled={{true}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "checkbox-default-checked" title="Default Checked"}}
       <Checkbox @label="I would like to subscribe to your newsletter" @checked={{true}} />
