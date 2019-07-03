@@ -38,6 +38,16 @@ module('Integration | Component | cta', function(hooks) {
     assert.dom('[data-test-cs-component-cta="secondary"]').hasAttribute('disabled');
   });
 
+  test('it can show loading state', async function (assert) {
+    await render(hbs`
+      <Cta @isLoading={{true}}>Loading...</Cta>
+      <Cta @isLoading={{false}} @variant="secondary">not loading</Cta>
+    `);
+
+    assert.dom('[data-test-cs-component-cta="primary"]').hasClass('loading');
+    assert.dom('[data-test-cs-component-cta="secondary"]').doesNotHaveClass('loading');
+  });
+
   test('it renders themed component', async function (assert) {
     await render(hbs`
       <Cta @theme="cs-theme" @label="Button" />
