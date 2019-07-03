@@ -224,6 +224,11 @@
           <Cta @variant="secondary" @disabled="true">Secondary Disabled</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="loading"}}
+        {{#freestyle-usage "loading-cta" title="Loading CTA" inline=true}}
+          <Cta @isLoading={{isLoading}} @handleClick={{action showLoadingState}}>Click to load</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "primary-cta-themed" title="Themed Primary CTA" inline=true}}
           <Cta @variant="primary" @theme="cs-theme">Button</Cta>

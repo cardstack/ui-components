@@ -23,6 +23,7 @@ export default FreestyleController.extend({
   countries,
   customDropdownOptions,
   selected: countries[1],
+  isLoading: false,
 
   /* BEGIN-FREESTYLE-USAGE fp--notes
 ### A few notes regarding freestyle-palette
@@ -98,6 +99,12 @@ export default Ember.Component.extend({
   stringifiedPhoneNumbers: computed('phoneNumberValues.[]', function() {
     return JSON.stringify(this.phoneNumberValues, null, 2);
   }),
+
+  showLoadingState() {
+    this.set('isLoading', true);
+
+    setTimeout(() => this.set('isLoading', false), 3000);
+  },
 
   validator(value) {
     return {
