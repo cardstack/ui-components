@@ -39,20 +39,18 @@
   }
 }
 
-.cs-component-text-area--label {
-  > .label {
-    padding-left: 0;
-  }
+.cs-component-text-area--label > .label {
+  padding-left: 0;
 }
 
 .cs-component-text-area--char-counter {
   position: absolute;
-  bottom: -1.2rem;
+  bottom: -1rem;
   right: 0;
   color: var(--cs-text-area-char-counter-color);
   font-size: 12px;
-}
 
-.cs-component-text-area--validation {
-  margin-top: 1.2rem;
+  &.with-validation {
+    bottom: 0;
+  }
 }

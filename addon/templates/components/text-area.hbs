@@ -2,7 +2,7 @@
   {{textarea
     rows=rows
     value=value
-    class=(concat "cs-component-text-field--input cs-component-text-area--input " @theme)
+    class=(concat "cs-component-text-field--input cs-component-text-area--input " (if value "active ") @theme)
     id=inputId
     required=required
     autocomplete="off"
@@ -10,8 +10,12 @@
     focusOut=(action "handleInput")
   }}
 
-  {{!-- TO-DO: Refactor label and validation.
-        This is using the same classes as text field. --}}
+  {{#if characterLimit}}
+    <span class="cs-component-text-area--char-counter {{if validationMessage "with-validation"}}" data-test-cs-component-text-area-char-counter>
+      {{value.length}}/{{characterLimit}}
+    </span>
+  {{/if}}
+
   <label
     for={{inputId}}
     class="cs-component-text-field--label cs-component-text-area--label {{if value "active"}} {{@theme}}"
@@ -22,17 +26,11 @@
       <span class="optional">Optional</span>
     {{/unless}}
   </label>
+</div>
 
-  {{#if characterLimit}}
-    <span class="cs-component-text-area--char-counter" data-test-cs-component-text-area-char-counter>
-      {{value.length}}/{{characterLimit}}
-    </span>
-  {{/if}}
-
-  <div
-    class="cs-component-text-field--validation cs-component-text-area--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}} {{@theme}}"
-    data-test-cs-component-text-area-validation
-  >
-    {{validationMessage}}
-  </div>
+<div
+  class="cs-component-text-field--validation cs-component-text-area--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}} {{@theme}}"
+  data-test-cs-component-text-area-validation
+>
+  {{validationMessage}}
 </div>

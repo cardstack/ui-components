@@ -24,7 +24,7 @@
   --cs-text-field-invalid: var(--cs-component-invalid);
 
   position: relative;
-  padding: 1rem 0;
+  padding-top: 1rem;
 }
 
 .cs-component-text-field--input {
@@ -49,6 +49,7 @@
     outline: 0;
   }
 
+  &[type="date"] + .cs-component-text-field--label > .label,
   &:focus + .cs-component-text-field--label > .label {
     --cs-text-field-label-color: var(--cs-text-field-label-highlight-color);
     --cs-text-field-label-font-size: var(--cs-text-field-label-highlight-font-size);
@@ -60,7 +61,6 @@
 .cs-component-text-field--label {
   display: block;
   width: 100%;
-  max-width: var(--cs-text-field-max-width);
 
   > .optional {
     position: absolute;
@@ -79,7 +79,7 @@
 
   > .label {
     position: absolute;
-    top: 2.5rem;
+    top: 3rem;
     padding-left: var(--cs-text-field-padding-horizontal);
     color: var(--cs-text-field-label-color);
     font-size: var(--cs-text-field-label-font-size);
@@ -105,9 +105,6 @@
 }
 
 .cs-component-text-field--validation {
-  position: absolute;
-  left: 0;
-  bottom: 0;
   max-width: 100%;
   margin-top: 0.2rem;
   padding-left: 0.8rem;
@@ -164,13 +161,3 @@
     text-transform: uppercase;
   }
 }
-
-// .cs-component-text-field--validation {
-//   &.cs-theme {
-//     --cs-text-field-validation: #{$cs-theme-green};
-//   }
-
-//   &.invalid.cs-theme {
-//     --cs-text-field-validation: #{$cs-theme-red};
-//   }
-// }
