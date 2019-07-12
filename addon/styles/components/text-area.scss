@@ -6,6 +6,7 @@
   --cs-text-area-border-radius: var(--cs-text-field-border-radius);
   --cs-text-area-char-counter-color: var(--cs-text-field-label-color);
 
+  max-width: var(--cs-text-area-max-width);
   padding: 1rem;
   background-color: var(--cs-text-area-background-color);
   border: 1px solid var(--cs-text-area-border-color);
@@ -27,15 +28,14 @@
   background-size: 100% var(--cs-text-area-line-height);
   border: none;
   line-height: var(--cs-text-area-line-height);
+  margin-top: 0.2rem;
   margin-bottom: 0.5rem;
   padding: 0;
   resize: none;
   overflow-y: scroll;
 
-  &:focus,
-  &.active {
+  &:focus {
     outline: 0;
-    margin-top: 0.5rem;
   }
 }
 
@@ -54,6 +54,5 @@
 }
 
 .cs-component-text-area--validation {
-  left: 0;
-  position: absolute;
+  margin-top: 1.2rem;
 }

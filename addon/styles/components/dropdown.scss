@@ -35,6 +35,10 @@
   --cs-dropdown-selected-color: var(--cs-component-selected-color);
 }
 
+.cs-component-dropdown--container {
+  padding: 1rem 0;
+}
+
 .cs-component-dropdown,
 .cs-component-dropdown--multiple {
   position: relative;

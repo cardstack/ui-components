@@ -6,7 +6,7 @@ export default Component.extend({
   layout,
   classNames: ['cs-component-text-field'],
   attributeBindings: ['dataTestName:data-test-cs-component'],
-  dataTestName: "text-field",
+  dataTestName: 'text-field',
   validationMessage: '',
   required: false,
   type: 'text',
@@ -28,19 +28,30 @@ export default Component.extend({
       }
 
       if (!value && !this.required) {
-        this.set('invalid', false);
-        return this.set('validationMessage', '');
+        return this.setProperties({
+          invalid: false,
+          validationMessage: ''
+        });
+      }
+
+      if (!value && this.required) {
+        return this.setProperties({
+          invalid: true,
+          validationMessage: 'Please fill out this field.'
+        });
       }
 
       if (errorMessage) {
-        this.set('invalid', true);
-        return this.set('validationMessage', errorMessage);
+        return this.setProperties({
+          invalid: true,
+          validationMessage: errorMessage
+        });
       }
 
-      if (!errorMessage) {
-        this.set('invalid', false);
-        return this.set('validationMessage', 'Thank you.');
-      }
+      return this.setProperties({
+        invalid: false,
+        validationMessage: 'Thank you.'
+      });
     }
   }
 });

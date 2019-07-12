@@ -1,3 +1,5 @@
+// TODO: Disabled styles
+
 .cs-component-text-field {
   --cs-text-field-max-width: var(--cs-component-max-width);
   --cs-text-field-height: var(--cs-component-height);
@@ -20,11 +22,9 @@
 
   --cs-text-field-valid: var(--cs-component-valid);
   --cs-text-field-invalid: var(--cs-component-invalid);
-  --cs-text-field-validation-icon: url('images/check-icon.svg');
-  --cs-text-field-validation-icon-size: 1em;
 
   position: relative;
-  padding-top: 1rem; // when optional label
+  padding: 1rem 0;
 }
 
 .cs-component-text-field--input {
@@ -105,15 +105,17 @@
 }
 
 .cs-component-text-field--validation {
-  visibility: visible;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   max-width: 100%;
-  margin-top: 1em;
-  padding-top: 1em;
-  padding-left: calc(var(--cs-text-field-validation-icon-size) + 0.5em);
+  margin-top: 0.2rem;
+  padding-left: 0.8rem;
 
-  background: var(--cs-text-field-validation-icon) no-repeat;
-  background-position: top 1.2em left;
-  background-size: var(--cs-text-field-validation-icon-size);
+  background-image: url('images/check-icon.svg');
+  background-repeat: no-repeat;
+  background-position: top 0.2rem left;
+  background-size: 9px 9px;
 
   color: var(--cs-text-field-valid);
   font-size: 10px;
@@ -128,14 +130,13 @@
   transition: visibility 0.2s ease, background-image 0.2s ease;
 
   &.invalid {
-    --cs-text-field-validation: var(--cs-text-field-invalid);
-    --cs-text-field-validation-icon: url('images/x-icon.svg');
-
-    visibility: visible;
+    display: block;
+    background-image: url('images/x-icon.svg');
+    color: var(--cs-text-field-invalid);
   }
 
   &.hidden {
-    visibility: collapse;
+    display: none;
     background-image: none;
   }
 }
