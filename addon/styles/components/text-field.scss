@@ -1,3 +1,5 @@
+// TODO: Disabled styles
+
 .cs-component-text-field {
   --cs-text-field-max-width: var(--cs-component-max-width);
   --cs-text-field-height: var(--cs-component-height);
@@ -20,11 +22,9 @@
 
   --cs-text-field-valid: var(--cs-component-valid);
   --cs-text-field-invalid: var(--cs-component-invalid);
-  --cs-text-field-validation-icon: url('images/check-icon.svg');
-  --cs-text-field-validation-icon-size: 1em;
 
   position: relative;
-  max-width: var(--cs-text-field-max-width);
+  padding-top: 1rem;
 }
 
 .cs-component-text-field--input {
@@ -45,28 +45,29 @@
   -webkit-transition: padding-top 0.2s ease, margin-top 0.2s ease;
   transition: padding-top 0.2s ease, margin-top 0.2s ease;
 
+  &:focus {
+    outline: 0;
+  }
+
+  &[type="date"] + .cs-component-text-field--label > .label,
   &:focus + .cs-component-text-field--label > .label {
     --cs-text-field-label-color: var(--cs-text-field-label-highlight-color);
     --cs-text-field-label-font-size: var(--cs-text-field-label-highlight-font-size);
 
-    top: -45px;
-    outline: 0;
+    top: 1.5rem;
   }
 }
 
 .cs-component-text-field--label {
   display: block;
-  position: relative;
-  height: 0;
-  margin: -10px 1rem 0 1rem;
-  padding: 0;
-  white-space: nowrap;
+  width: 100%;
 
   > .optional {
     position: absolute;
-    top: calc((var(--cs-text-field-height) + 0.5rem) * -1);
-    right: -1rem;
-
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: var(--cs-text-field-max-width);
     color: var(--cs-text-field-label-optional);
     font-size: 12px;
     font-weight: normal;
@@ -78,19 +79,15 @@
 
   > .label {
     position: absolute;
-    top: -25px;
-    left: 0;
-    margin: 0;
-
+    top: 3rem;
+    padding-left: var(--cs-text-field-padding-horizontal);
     color: var(--cs-text-field-label-color);
     font-size: var(--cs-text-field-label-font-size);
     font-weight: var(--cs-text-field-label-font-weight);
     letter-spacing: 0;
     line-height: 1.3;
     text-align: left;
-
     // no line-wrap. truncate with ellipsis.
-    max-width: 100%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -103,20 +100,19 @@
     --cs-text-field-label-color: var(--cs-text-field-label-minimized-color);
     --cs-text-field-label-font-size: var(--cs-text-field-label-highlight-font-size);
 
-    top: -45px;
+    top: 1.5rem;
   }
 }
 
 .cs-component-text-field--validation {
-  visibility: visible;
   max-width: 100%;
-  margin-top: 1em;
-  padding-top: 1em;
-  padding-left: calc(var(--cs-text-field-validation-icon-size) + 0.5em);
+  margin-top: 0.2rem;
+  padding-left: 0.8rem;
 
-  background: var(--cs-text-field-validation-icon) no-repeat;
-  background-position: top 1.2em left;
-  background-size: var(--cs-text-field-validation-icon-size);
+  background-image: url('images/check-icon.svg');
+  background-repeat: no-repeat;
+  background-position: top 0.2rem left;
+  background-size: 9px 9px;
 
   color: var(--cs-text-field-valid);
   font-size: 10px;
@@ -131,14 +127,13 @@
   transition: visibility 0.2s ease, background-image 0.2s ease;
 
   &.invalid {
-    --cs-text-field-validation: var(--cs-text-field-invalid);
-    --cs-text-field-validation-icon: url('images/x-icon.svg');
-
-    visibility: visible;
+    display: block;
+    background-image: url('images/x-icon.svg');
+    color: var(--cs-text-field-invalid);
   }
 
   &.hidden {
-    visibility: collapse;
+    display: none;
     background-image: none;
   }
 }
@@ -166,13 +161,3 @@
     text-transform: uppercase;
   }
 }
-
-// .cs-component-text-field--validation {
-//   &.cs-theme {
-//     --cs-text-field-validation: #{$cs-theme-green};
-//   }
-
-//   &.invalid.cs-theme {
-//     --cs-text-field-validation: #{$cs-theme-red};
-//   }
-// }

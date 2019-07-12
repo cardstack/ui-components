@@ -41,9 +41,11 @@
     required=required
     disabled=disabled
     autocomplete="off"
+    focusOut=(action "handleInput")
     change=(action "handleInput")
     data-test-cs-component-input=dataTestName
     inputmode=inputmode
+    max=max
   }}
 {{/if}}
 

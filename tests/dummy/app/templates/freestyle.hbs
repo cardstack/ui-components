@@ -340,16 +340,17 @@
           <b>Note: <code>--cs-component</code> prefixed values below are inherited from the root level, but can still be customized with a theme.</b>
           <pre>
             <code>
-              --cs-text-field-max-width             // --cs-component-max-width
-              --cs-text-field-height                // --cs-component-height
-              --cs-text-field-padding-horizontal    // --cs-component-padding-horizontal
-              --cs-text-field-padding-vertical      // --cs-component-padding-vertical
+              <b>CSS custom property:</b>               // <b>Default value:</b>
+              --cs-text-field-max-width                 // --cs-component-max-width
+              --cs-text-field-height                    // --cs-component-height
+              --cs-text-field-padding-horizontal        // --cs-component-padding-horizontal
+              --cs-text-field-padding-vertical          // --cs-component-padding-vertical
 
-              --cs-text-field-color                 // --cs-component-color
-              --cs-text-field-font-size:            // --cs-component-font-size
-              --cs-text-field-background-color      // --cs-component-background-color
-              --cs-text-field-border-color          // --cs-component-border-color
-              --cs-text-field-border-radius         // --cs-component-border-radius
+              --cs-text-field-color                     // --cs-component-color
+              --cs-text-field-font-size:                // --cs-component-font-size
+              --cs-text-field-background-color          // --cs-component-background-color
+              --cs-text-field-border-color              // --cs-component-border-color
+              --cs-text-field-border-radius             // --cs-component-border-radius
 
               --cs-text-field-label-color                // --cs-component-label-color
               --cs-text-field-label-font-size            // --cs-text-field-font-size
@@ -359,8 +360,8 @@
               --cs-text-field-label-minimized-color      // --cs-component-label-minimized-color
               --cs-text-field-label-optional             // --cs-text-field-color
 
-              --cs-text-field-valid                 // --cs-component-valid
-              --cs-text-field-invalid               // --cs-component-invalid
+              --cs-text-field-valid                      // --cs-component-valid
+              --cs-text-field-invalid                    // --cs-component-invalid
             </code>
           </pre>
         {{/freestyle-annotation}}
@@ -421,6 +422,18 @@
         {{#freestyle-annotation}}
           <h2>How to Create a Theme for This Component</h2>
           <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
+          <p>However, if you want your <code>Textarea</code> to be styled differently from your <code>TextField</code> component, you can set the following CSS properties:</p>
+          <pre>
+            <code>
+              <b>CSS custom property:</b>         // <b>Default value:</b>
+              --cs-text-area-line-height          // 35px
+              --cs-text-area-max-width            // --cs-text-field-max-width
+              --cs-text-area-background-color     // --cs-text-field-background-color
+              --cs-text-area-border-color         // --cs-text-field-border-color
+              --cs-text-area-border-radius        // --cs-text-field-border-radius
+              --cs-text-area-char-counter-color   // --cs-text-field-label-color
+            </code>
+          </pre>
         {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
@@ -697,6 +710,8 @@
           <strong>(Common across most ui-components. Exceptions in Cta component.)</strong>
 
         :root {
+          <b>CSS custom property:</b>                 // <b>Default value:</b>
+
           <b>Text</b>
           --cs-component-color                        // dark-gray (#222)
           --cs-component-font-family                  // 'Open Sans', Arial, Helvetica, sans-serif
