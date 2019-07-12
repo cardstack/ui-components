@@ -24,7 +24,7 @@
   --cs-text-field-validation-icon-size: 1em;
 
   position: relative;
-  max-width: var(--cs-text-field-max-width);
+  padding-top: 1rem; // when optional label
 }
 
 .cs-component-text-field--input {
@@ -45,28 +45,29 @@
   -webkit-transition: padding-top 0.2s ease, margin-top 0.2s ease;
   transition: padding-top 0.2s ease, margin-top 0.2s ease;
 
+  &:focus {
+    outline: 0;
+  }
+
   &:focus + .cs-component-text-field--label > .label {
     --cs-text-field-label-color: var(--cs-text-field-label-highlight-color);
     --cs-text-field-label-font-size: var(--cs-text-field-label-highlight-font-size);
 
-    top: -45px;
-    outline: 0;
+    top: 1.5rem;
   }
 }
 
 .cs-component-text-field--label {
   display: block;
-  position: relative;
-  height: 0;
-  margin: -10px 1rem 0 1rem;
-  padding: 0;
-  white-space: nowrap;
+  width: 100%;
+  max-width: var(--cs-text-field-max-width);
 
   > .optional {
     position: absolute;
-    top: calc((var(--cs-text-field-height) + 0.5rem) * -1);
-    right: -1rem;
-
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: var(--cs-text-field-max-width);
     color: var(--cs-text-field-label-optional);
     font-size: 12px;
     font-weight: normal;
@@ -78,19 +79,15 @@
 
   > .label {
     position: absolute;
-    top: -25px;
-    left: 0;
-    margin: 0;
-
+    top: 2.5rem;
+    padding-left: var(--cs-text-field-padding-horizontal);
     color: var(--cs-text-field-label-color);
     font-size: var(--cs-text-field-label-font-size);
     font-weight: var(--cs-text-field-label-font-weight);
     letter-spacing: 0;
     line-height: 1.3;
     text-align: left;
-
     // no line-wrap. truncate with ellipsis.
-    max-width: 100%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -103,7 +100,7 @@
     --cs-text-field-label-color: var(--cs-text-field-label-minimized-color);
     --cs-text-field-label-font-size: var(--cs-text-field-label-highlight-font-size);
 
-    top: -45px;
+    top: 1.5rem;
   }
 }
 

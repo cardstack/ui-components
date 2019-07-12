@@ -2,7 +2,7 @@
   {{textarea
     rows=rows
     value=value
-    class=(concat "cs-component-text-field--input cs-component-text-area--input " @theme)
+    class=(concat "cs-component-text-field--input cs-component-text-area--input " (if value "active ")  @theme)
     id=inputId
     required=required
     autocomplete="off"

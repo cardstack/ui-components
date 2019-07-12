@@ -421,6 +421,17 @@
         {{#freestyle-annotation}}
           <h2>How to Create a Theme for This Component</h2>
           <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
+          <p>However, if you want your <code>Textarea</code> to be styled differently from your <code>TextField</code> component, you can set the following CSS properties:</p>
+          <pre>
+            <code>
+              --cs-text-area-line-height          // 35px
+              --cs-text-area-max-width            // --cs-text-field-max-width
+              --cs-text-area-background-color     // --cs-text-field-background-color
+              --cs-text-area-border-color         // --cs-text-field-border-color
+              --cs-text-area-border-radius        // --cs-text-field-border-radius
+              --cs-text-area-char-counter-color   // --cs-text-field-label-color
+            </code>
+          </pre>
         {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}

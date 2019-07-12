@@ -1,23 +1,23 @@
-.cs-component-text-area {
-  --cs-text-area-background-color: var(--cs-component-background-color);
-  --cs-text-area-line-height: 35px;
-  --cs-text-area-label-color: var(--cs-component-label-color);
-
-  margin: 0;
-  padding: 0;
-}
-
 .cs-component-text-area--container {
-  margin: 1rem 0;
+  --cs-text-area-line-height: 35px;
+  --cs-text-area-max-width: var(--cs-text-field-max-width);
+  --cs-text-area-background-color: var(--cs-text-field-background-color);
+  --cs-text-area-border-color: var(--cs-text-field-border-color);
+  --cs-text-area-border-radius: var(--cs-text-field-border-radius);
+  --cs-text-area-char-counter-color: var(--cs-text-field-label-color);
+
   padding: 1rem;
-  border: 1px solid #ccc;
-  background: var(--cs-text-area-background-color);
+  background-color: var(--cs-text-area-background-color);
+  border: 1px solid var(--cs-text-area-border-color);
+  border-radius: var(--cs-text-area-border-radius);
 }
 
 .cs-component-text-area--input {
   --gradient-height: calc(var(--cs-text-area-line-height) - 1px);
 
+  max-width: 100%;
   height: auto;
+
   background-image: -webkit-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: -moz-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: -ms-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
@@ -27,36 +27,21 @@
   background-size: 100% var(--cs-text-area-line-height);
   border: none;
   line-height: var(--cs-text-area-line-height);
-  margin: 0.5rem 0;
+  margin-bottom: 0.5rem;
   padding: 0;
   resize: none;
-  outline: none;
-  overflow: hidden;
+  overflow-y: scroll;
 
-  &:focus + .cs-component-text-area--label > .label {
-    top: 0.5rem;
-    left: 1rem;
+  &:focus,
+  &.active {
+    outline: 0;
+    margin-top: 0.5rem;
   }
 }
 
 .cs-component-text-area--label {
-  margin: 0;
-  border: none;
-  position: unset;
-
-  > .optional {
-    top: -1rem;
-    right: 0;
-  }
-
   > .label {
-    top: 2rem;
-    left: 1rem;
-  }
-
-  &.active > .label {
-    top: 0.5rem;
-    left: 1rem;
+    padding-left: 0;
   }
 }
 
@@ -64,37 +49,11 @@
   position: absolute;
   bottom: -1.2rem;
   right: 0;
-  color: var(--cs-text-area-label-color);
+  color: var(--cs-text-area-char-counter-color);
   font-size: 12px;
 }
 
 .cs-component-text-area--validation {
   left: 0;
   position: absolute;
-}
-
-
-// cs-theme
-.cs-component-text-area--container.cs-theme {
-  --cs-text-area-background-color: white;
-  --cs-text-area-label-color: #{$cs-theme-light-gray};
-}
-
-.cs-component-text-area--input.cs-theme {
-  &:focus + .cs-component-text-area--label > .label {
-    top: 0.5rem;
-    left: 1rem;
-  }
-}
-
-.cs-component-text-area--label.cs-theme {
-  > .label {
-    top: 2rem;
-    left: 1rem;
-  }
-
-  &.active > .label {
-    top: 0.5rem;
-    left: 1rem;
-  }
 }
