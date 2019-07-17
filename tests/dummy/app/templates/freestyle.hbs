@@ -19,6 +19,12 @@
         {{#freestyle-usage "dropdown" title="Dropdown"}}
           <Dropdown @options={{countries}} @label="Select a country" />
         {{/freestyle-usage}}
+        {{#freestyle-usage "dropdown-disabled" title="Disabled"}}
+          <Dropdown @options={{countries}} @disabled={{true}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "dropdown-required" title="Required"}}
+          <Dropdown @options={{countries}} @required={{true}} />
+        {{/freestyle-usage}}
         {{#freestyle-usage "dropdown-search-disabled" title="With No Search Box"}}
           <Dropdown @options={{countries}} @searchEnabled={{false}} />
         {{/freestyle-usage}}
@@ -642,6 +648,11 @@
           <DatePicker @label="Date (MM/DD/YYYY)" />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="disabled"}}
+        {{#freestyle-usage "date-picker-disabled" title="Disabled"}}
+          <DatePicker @label="Date (MM/DD/YYYY)" @disabled={{true}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "date-picker-required" title="Required"}}
           <DatePicker @label="Date (MM/DD/YYYY)" @required="true" />
@@ -675,7 +686,6 @@
           <ul>
             <li><code>--cs-date-background-color</code></li>
             <li><code>--cs-date-color</code></li>
-            <li><code>--cs-date-font-weight</code></li>
           </ul>
         {{/freestyle-annotation}}
       {{/collection.variant}}

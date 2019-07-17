@@ -18,6 +18,8 @@
           onclose=(action (mut isOpen) false)
           searchEnabled=searchEnabled
           ariaLabel=label
+          required=required
+          disabled=disabled
         as |option|}}
           {{get option searchField}}
         {{/power-select-multiple}}
@@ -36,6 +38,8 @@
           searchEnabled=searchEnabled
           allowClear=allowClear
           ariaLabel=label
+          required=required
+          disabled=disabled
         as |option|}}
           {{get option searchField}}
         {{/power-select}}
@@ -54,6 +58,8 @@
           onclose=(action (mut isOpen) false)
           searchEnabled=searchEnabled
           ariaLabel=label
+          required=required
+          disabled=disabled
         as |option|}}
           {{get option searchField}}
         {{/power-select-multiple}}
@@ -71,6 +77,8 @@
           searchEnabled=searchEnabled
           allowClear=allowClear
           ariaLabel=label
+          required=required
+          disabled=disabled
         as |option|}}
           {{#if (has-block)}}
             {{yield option}}
@@ -88,3 +96,5 @@
     </label>
   </div>
 </div>
+
+{{!-- TODO: Optional label and validation messages --}}

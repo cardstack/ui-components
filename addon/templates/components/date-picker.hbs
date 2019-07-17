@@ -18,6 +18,7 @@
         @onchange={{action "handleInput"}}
         @oninput={{action "handleInput"}}
         @required={{required}}
+        @disabled={{disabled}}
         @autocomplete="off"
         @validationMessage={{errorMessage}}
         @invalid={{invalid}}
@@ -88,3 +89,5 @@
     {{/calendar.content}}
   </PowerDatepicker>
 </div>
+
+{{!-- TODO: Make it accept min/max date selection --}}

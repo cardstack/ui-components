@@ -21,8 +21,10 @@
 {{else if dateComponent}}
   {{component dateComponent
     type=type
+    name=name
     class=(concat "cs-component-text-field--input " @theme)
     required=required
+    disabled=disabled
     _value=value
     onblur=onblur
     onchange=onchange
@@ -34,7 +36,7 @@
 {{else}}
   {{text-field/input
     type=type
-    name="name"
+    name=name
     value=value
     class=(concat "cs-component-text-field--input " theme)
     id=inputId
@@ -42,10 +44,14 @@
     disabled=disabled
     autocomplete="off"
     focusOut=(action "handleInput")
+    autofocus=autofocus
     change=(action "handleInput")
-    data-test-cs-component-input=dataTestName
     inputmode=inputmode
+    pattern=pattern
+    min=min
     max=max
+    step=step
+    data-test-cs-component-input=dataTestName
   }}
 {{/if}}
 

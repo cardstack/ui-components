@@ -1,13 +1,17 @@
 <div class="cs-component-text-area--container {{@theme}}">
   {{textarea
     rows=rows
+    name=name
     value=value
     class=(concat "cs-component-text-field--input cs-component-text-area--input " (if value "active ") @theme)
     id=inputId
     required=required
-    autocomplete="off"
+    disabled=disabled
     maxlength=characterLimit
+    readonly=readonly
+    autofocus=autofocus
     focusOut=(action "handleInput")
+    change=(action "handleInput")
   }}
 
   {{#if characterLimit}}

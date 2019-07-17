@@ -29,6 +29,12 @@ module('Integration | Component | date picker', function (hooks) {
     assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
   });
 
+  test('it renders disabled component', async function (assert) {
+    await render(hbs`<DatePicker @disabled="true" />`);
+
+    assert.dom('[data-test-cs-component-input="date-picker"][disabled]').exists();
+  });
+
   test('it renders component with custom years', async function (assert) {
     await render(hbs`<DatePicker @startYear="2019" @yearRange="10" />`);
 

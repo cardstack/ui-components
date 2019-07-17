@@ -14,6 +14,18 @@ module('Integration | Component | text-area', function(hooks) {
     assert.dom('[data-test-cs-component="text-area"] textarea').hasAttribute('rows', '2');
   });
 
+  test('it renders required component', async function(assert) {
+    await render(hbs`<TextArea @label="What's the meaning of life?" @required={{true}} />`);
+
+    assert.dom('[data-test-cs-component="text-area"] textarea[required]').exists();
+  });
+
+  test('it renders disabled component', async function(assert) {
+    await render(hbs`<TextArea @label="What's the meaning of life?" @disabled={{true}} />`);
+
+    assert.dom('[data-test-cs-component="text-area"] textarea[disabled]').exists();
+  });
+
   test('it shows a character counter when a character limit is passed in', async function(assert) {
     await render(hbs`<TextArea @label="What's the meaning of life?" @rows={{2}} @characterLimit={{10}} />`);
 
