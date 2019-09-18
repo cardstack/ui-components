@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('examples', function() {
     this.route('registration');
     this.route('contact-info');
+    this.route('configurator');
   });
 });
 

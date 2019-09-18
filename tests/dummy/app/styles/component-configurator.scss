@@ -1,0 +1,12 @@
+.component-configurator {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+}
+
+.component-configurator pre {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+}

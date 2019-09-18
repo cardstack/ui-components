@@ -1,0 +1,10 @@
+<div class="component-configurator">
+  <div class="component-display">
+    <ComponentDisplay @componentName="text-field" @value={{textFieldValue}} @label={{textFieldLabel}} @required={{textFieldRequired}} />
+  </div>
+  <div class="component-options">
+    <div class="component-option"><label for="option-value">Value</label><input id="option-value" onkeyup={{action (mut textFieldValue) value="target.value"}} value={{textFieldValue}}></div>
+    <div class="component-option"><label for="option-label">Label</label><input id="option-label" onkeyup={{action (mut textFieldLabel) value="target.value"}} value={{textFieldLabel}}></div>
+    <div class="component-option"><label for="option-value">Required</label><input type="checkbox" id="option-required" onclick={{action (mut textFieldRequired) value="target.checked"}} checked={{textFieldRequired}}></div>
+  </div>
+</div>
