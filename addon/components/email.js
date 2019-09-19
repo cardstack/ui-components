@@ -6,10 +6,11 @@ export default TextField.extend({
   classNames: ['cs-component-email'],
   dataTestName: 'email',
   label: 'Enter your email',
-  otherInputComponent: 'email-field/input',
+  inputmode: 'email',
+  inputComponent: 'email-field/input',
 
   actions: {
-    validate(ev) {
+    handleInput(ev) {
       let value = ev.target.value;
       this.set('value', value);
 
