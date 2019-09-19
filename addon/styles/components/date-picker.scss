@@ -1,9 +1,6 @@
 .cs-component-date {
   --cs-date-background-color: var(--cs-component-background-color);
   --cs-date-color: var(--cs-component-color);
-  --cs-date-font-weight: normal;
-
-  font-weight: var(--cs-date-font-weight);
 
   .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
     background: var(--cs-date-background-color);
@@ -87,5 +84,4 @@
 .cs-theme {
   --cs-date-background-color: white;
   --cs-date-color: #{$cs-theme-light-gray};
-  --cs-date-font-weight: 600;
 }
