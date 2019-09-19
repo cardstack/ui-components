@@ -19,6 +19,12 @@ export default TextField.extend({
   },
 
   actions: {
+    handleMultiInput(ev) {
+      if (this.changeAction) {
+        this.changeAction(ev.target.value);
+      }
+    },
+
     handleInput(ev) {
       let value = ev.target.value;
       let errorMessage = ev.target.validationMessage;

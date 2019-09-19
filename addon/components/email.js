@@ -10,6 +10,12 @@ export default TextField.extend({
   inputComponent: 'email-field/input',
 
   actions: {
+    handleMultiInput(ev) {
+      if (this.changeAction) {
+        this.changeAction(ev.target.value);
+      }
+    },
+
     handleInput(ev) {
       let value = ev.target.value;
       this.set('value', value);

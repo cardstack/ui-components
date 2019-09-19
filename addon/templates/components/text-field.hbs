@@ -14,7 +14,8 @@
     setValidationMessage=(action (mut validationMessage))
     setInvalid=(action (mut invalid))
     setValue=(action (mut value))
-    focusOut=(action "handleInput")
+    value=value
+    focusOut=(and (action "handleInput") (action "handleMultiInput"))
     oninput=(action "handleInput")
     id=inputId
     inputmode=inputmode

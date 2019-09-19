@@ -66,7 +66,7 @@ module('Integration | Component | email', function(hooks) {
     assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
     assert.dom('[data-test-cs-component-validation="email"]').hasText('');
 
-    await render(hbs`<Email @required=true />`);
+    await render(hbs`<Email @required={{true}} />`);
     await fillIn('[data-test-cs-component-input="email"]', '');
 
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('hidden');
@@ -84,7 +84,7 @@ module('Integration | Component | email', function(hooks) {
     assert.dom('[data-test-cs-component-input="email"]').exists({ count: 2 })
 
     await fillIn('.cs-component-emails__wrapper:nth-of-type(2) [data-test-cs-component-input="email"]', 'cooldude@cardstack.com');
-    
+
     assert.deepEqual(this.emailValues, ['username@cardstack.com', 'cooldude@cardstack.com']);
   });
 
