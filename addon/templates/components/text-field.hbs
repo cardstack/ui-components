@@ -1,8 +1,5 @@
 {{#if (eq mode "view")}}
   <div data-test-cs-component-view-field-value class="cs-component-text-field--view-value">{{value}}</div>
-{{else if (eq mode "schema")}}
-  <div data-test-cs-component-schema-field-type class="cs-component-text-field--schema--field-type">{{fieldType}}</div>
-  <div data-test-cs-component-schema-field-value class="cs-component-text-field--schema--field-value">{{value}}</div>
 {{else}}
   {{#if iconComponent}}
     {{component iconComponent
@@ -40,14 +37,17 @@
       data-test-cs-component-input=dataTestName
     }}
   {{else}}
+    {{#if (eq mode "schema")}}
+      <div data-test-cs-component-schema-field-type class="cs-component-text-field--schema--field-type">{{fieldType}}</div>
+    {{/if}}
     {{text-field/input
       type=type
       name=name
       value=value
-      class=(concat "cs-component-text-field--input " theme)
+      class=(concat "cs-component-text-field--input " theme " " @mode)
       id=inputId
       required=required
-      disabled=disabled
+      disabled=(or (eq mode "schema") disabled)
       autocomplete="off"
       focusOut=(action "handleInput")
       autofocus=autofocus

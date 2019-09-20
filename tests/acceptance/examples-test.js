@@ -68,9 +68,9 @@ module('Acceptance | examples', function(hooks) {
 
     await click('#option-mode-schema');
 
-    assert.dom('[data-test-cs-component-input="text-field"]').doesNotExist('input field not present');
+    assert.dom('[data-test-cs-component-input="text-field"]').isDisabled('input field is disabled');
     assert.dom('[data-test-cs-component-schema-field-type]').hasText('text', 'field type is present');
-    assert.dom('[data-test-cs-component-schema-field-value]').hasText('Bill Wagby', 'schema is rendered');
+    assert.dom('.cs-component-text-field--input.schema').hasValue('Bill Wagby', 'schema is rendered');
 
     await click('#option-mode-edit');
 

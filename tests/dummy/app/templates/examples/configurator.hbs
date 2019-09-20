@@ -9,7 +9,7 @@
     <div class="component-option">
       <fieldset>
         <legend>Mode:</legend>
-        <input type="radio" name="mode" id="option-mode-edit" onclick={{action (mut textFieldMode) value="target.value"}} value="edit"><label for="option-mode-edit">Edit</label><br>
+        <input type="radio" name="mode" id="option-mode-edit" onclick={{action (mut textFieldMode) value="target.value"}} value="edit" checked><label for="option-mode-edit">Edit</label><br>
         <input type="radio" name="mode" id="option-mode-view" onclick={{action (mut textFieldMode) value="target.value"}} value="view"><label for="option-mode-view">View</label><br>
         <input type="radio" name="mode" id="option-mode-schema" onclick={{action (mut textFieldMode) value="target.value"}} value="schema"><label for="option-mode-schema">Schema</label>
       </fieldset>
