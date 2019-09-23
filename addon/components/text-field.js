@@ -10,6 +10,7 @@ export default Component.extend({
   validationMessage: '',
   required: false,
   type: 'text',
+  fieldType: 'text',
   value: '',
   invalid: false,
   inputId: computed('elementId', function() {

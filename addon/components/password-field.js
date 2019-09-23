@@ -7,6 +7,7 @@ const SPECIAL_CHARACTER_REGEX = /\W|_/;
 export default TextField.extend({
   classNames: ['cs-component-password-field'],
   type: 'password',
+  fieldType: 'text',
   dataTestName: 'password',
   iconComponent: 'password-field/visibility-toggle',
   successMessage: 'Thank you.',

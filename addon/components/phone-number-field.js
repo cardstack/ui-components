@@ -8,6 +8,7 @@ export default TextField.extend({
   classNames: ['cs-component-phone-number'],
   dataTestName: 'phone-number',
   type: 'tel',
+  fieldType: 'text',
   label: 'Phone Number',
   inputComponent: '',
 
