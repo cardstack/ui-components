@@ -23,7 +23,15 @@ export default FreestyleController.extend({
   countries,
   customDropdownOptions,
   selected: countries[1],
-  selectedCrypto: customDropdownOptions[1],
+  showLabelInViewMode: false,
+  viewMode: false,
+  mode: computed('viewMode', function() {
+    if (this.viewMode) {
+      return 'view';
+    }
+
+    return 'edit';
+  }),
   isLoading: false,
 
   /* BEGIN-FREESTYLE-USAGE fp--notes
