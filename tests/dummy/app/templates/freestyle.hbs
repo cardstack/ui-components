@@ -28,6 +28,9 @@
         {{#freestyle-usage "dropdown-clear-button" title="With No Clear Button"}}
           <Dropdown @options={{countries}} @allowClear={{false}} />
         {{/freestyle-usage}}
+        {{#freestyle-usage "dropdown-in-view-mode" title="In View Mode"}}
+          <Dropdown @options={{countries}} @selected={{selected}} @mode="view" />
+        {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="custom-search-field"}}
         {{#freestyle-note "dropdown-custom-search-field--notes"}}
@@ -93,46 +96,55 @@
       {{#collection.variant key="with-customized-options"}}
         {{#freestyle-note "dropdown-with-customized-options--notes"}}
           ```
+          const customDropdownOptions = [
+            {
+              imageUrl: 'https://via.placeholder.com/50x35',
+              cardType: 'Ether',
+              transactionId: '0xCb3d...C16fc',
+              network: 'Mainnet',
+              fromValue: '15.3532 ETH',
+              toValue: '$3993.7 USD'
+            },
+            {
+              imageUrl: 'https://via.placeholder.com/50x35',
+              cardType: 'Bitcoin',
+              transactionId: '0xCb3a...C36fc',
+              network: 'Rinkeby',
+              fromValue: '2.3532 BTC',
+              toValue: '$8509 USD'
+            },
+            {
+              imageUrl: 'https://via.placeholder.com/50x35',
+              cardType: 'Litecoin',
+              transactionId: '0xCb3a...B96fa',
+              network: 'Ropstein',
+              fromValue: '82.92 LIT',
+              toValue: '$2547 USD'
+            }
+          ];
           export default Component.extend({
             // ...
-            customDropdownOptions: [
-              {
-                imageUrl: 'https://via.placeholder.com/50x35',
-                cardType: 'Ether',
-                transactionId: '0xCb3d...C16fc',
-                network: 'Mainnet',
-                fromValue: '15.3532 ETH',
-                toValue: '$3993.7 USD'
-              },
-              {
-                imageUrl: 'https://via.placeholder.com/50x35',
-                cardType: 'Bitcoin',
-                transactionId: '0xCb3a...C36fc',
-                network: 'Rinkeby',
-                fromValue: '2.3532 BTC',
-                toValue: '$8509 USD'
-              },
-              {
-                imageUrl: 'https://via.placeholder.com/50x35',
-                cardType: 'Litecoin',
-                transactionId: '0xCb3a...B96fa',
-                network: 'Ropstein',
-                fromValue: '82.92 LIT',
-                toValue: '$2547 USD'
-              }
-            ]
+            customDropdownOptions,
+            selectedCrypto: customDropdownOptions[1],
           });
+
+
+          // custom-option.hbs
+
+          <span><img src={{option.imageUrl}} alt="card"></span>
+          <span class="caps">{{option.cardType}}</span>
+          <span class="lightweight">{{option.transactionId}}</span>
+          <span class="lightweight caps">{{option.network}}</span>
+          <span class="lightweight">{{option.fromValue}}</span>
+          <span class="lightweight">{{option.toValue}}</span>
           ```
+
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-with-customized-options" title="Dropdown with customized options"}}
-          <Dropdown @options={{customDropdownOptions}} @label="Payment method" as |option|>
-            <span><img src={{option.imageUrl}} alt="card"></span>
-            <span class="caps">{{option.cardType}}</span>
-            <span class="lightweight">{{option.transactionId}}</span>
-            <span class="lightweight caps">{{option.network}}</span>
-            <span class="lightweight">{{option.fromValue}}</span>
-            <span class="lightweight">{{option.toValue}}</span>
-          </Dropdown>
+          <Dropdown @options={{customDropdownOptions}} @label="Payment method" @optionComponent='custom-option' as |option| />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "dropdown-with-customized-options-in-view-mode" title="With customized options in view mode"}}
+          <Dropdown @options={{customDropdownOptions}} @label="Payment method" @selected={{selectedCrypto}} @optionComponent='custom-option' @mode='view' as |option| />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}

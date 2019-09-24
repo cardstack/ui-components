@@ -4,6 +4,7 @@ import layout from '../templates/components/dropdown';
 export default Component.extend({
   layout,
   dataTestName: 'dropdown',
+  fieldType: 'text',
   selected: null,
   multiple: false,
   isFocused: false,

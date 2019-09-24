@@ -23,6 +23,7 @@ export default FreestyleController.extend({
   countries,
   customDropdownOptions,
   selected: countries[1],
+  selectedCrypto: customDropdownOptions[1],
   isLoading: false,
 
   /* BEGIN-FREESTYLE-USAGE fp--notes
