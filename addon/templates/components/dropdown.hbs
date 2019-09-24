@@ -1,5 +1,9 @@
 {{#if (eq mode "view")}}
   <div data-test-cs-component-view-field-value class="cs-component-dropdown--view-value">
+    {{#if showLabelInViewMode}}
+      <div data-test-cs-component-view-label>{{label}}</div>
+    {{/if}}
+
     {{#if optionComponent}}
       {{component optionComponent option=selected}}
     {{else}}

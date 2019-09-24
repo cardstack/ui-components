@@ -141,10 +141,10 @@
 
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-with-customized-options" title="Dropdown with customized options"}}
-          <Dropdown @options={{customDropdownOptions}} @label="Payment method" @optionComponent='custom-option' as |option| />
+          <Dropdown @options={{customDropdownOptions}} @label="Payment method" @optionComponent='custom-option' />
         {{/freestyle-usage}}
         {{#freestyle-usage "dropdown-with-customized-options-in-view-mode" title="With customized options in view mode"}}
-          <Dropdown @options={{customDropdownOptions}} @label="Payment method" @selected={{selectedCrypto}} @optionComponent='custom-option' @mode='view' as |option| />
+          <Dropdown @options={{customDropdownOptions}} @label="Payment method" @selected={{selectedCrypto}} @optionComponent='custom-option' @mode='view' />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}

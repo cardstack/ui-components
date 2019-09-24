@@ -174,13 +174,14 @@ module('Integration | Component | dropdown', function(hooks) {
 
   test('it renders the custom selected option (optionComponent passed in) when in view mode', async function(assert) {
     this.mode = 'edit';
+    this.showLabelInViewMode = false;
     this.coins = [
       { imageUrl: 'https://via.placeholder.com/50x35', cardType: 'Ether', transactionId: '0xCb3d...C16fc', network: 'Mainnet', fromValue: '15.3532 ETH', toValue: '$3993.7 USD' },
       { imageUrl: 'https://via.placeholder.com/50x35', cardType: 'Bitcoin', transactionId: '0xCb3a...C36fc', network: 'Rinkeby', fromValue: '2.3532 BTC', toValue: '$8509 USD' },
       { imageUrl: 'https://via.placeholder.com/50x35', cardType: 'Litecoin', transactionId: '0xCb3a...B96fa', network: 'Ropstein', fromValue: '82.92 LIT', toValue: '$2547 USD' }
     ]
 
-    await render(hbs`<Dropdown @options={{coins}} @mode={{mode}} @optionComponent='custom-option' />`);
+    await render(hbs`<Dropdown @options={{coins}} @label='Choose crypto' @showLabelInViewMode={{showLabelInViewMode}} @mode={{mode}} @optionComponent='custom-option' />`);
     await clickTrigger('.cs-component-dropdown');
     await selectChoose('.cs-component-dropdown', 'Litecoin');
 
@@ -188,5 +189,9 @@ module('Integration | Component | dropdown', function(hooks) {
     this.set('mode', 'view');
 
     assert.dom('[data-test-cs-component-view-field-value]').includesText('Litecoin');
+    assert.dom('[data-test-cs-component-view-label]').doesNotExist();
+
+    this.set('showLabelInViewMode', true);
+    assert.dom('[data-test-cs-component-view-label]').hasText('Choose crypto');
   });
 });

@@ -9,6 +9,7 @@ export default Component.extend({
   multiple: false,
   isFocused: false,
   label: 'Select an option',
+  showLabelInViewMode: false,
   searchField: 'name',
   searchEnabled: true,
   allowClear: true,
