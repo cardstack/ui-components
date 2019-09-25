@@ -40,4 +40,22 @@ module('Integration | Component | phone-number-field', function(hooks) {
     assert.dom('[data-test-cs-component-label="phone-number"]').hasClass('cs-theme');
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasClass('cs-theme');
   });
+
+  test('it renders in view mode', async function (assert) {
+    this.showLabelInViewMode = false;
+    this.mode = 'edit';
+    this.number = '+15102322512';
+
+    await render(hbs`<PhoneNumberField @value={{number}} @label="Enter your phone number" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
+
+    assert.dom('[data-test-cs-component="phone-number"] input').hasValue(this.number);
+
+    this.set('mode', 'view');
+
+    assert.dom('[data-test-cs-component-view-field-value]').hasText(this.number);
+    assert.dom('[data-test-cs-component-view-label]').doesNotExist();
+
+    this.set('showLabelInViewMode', true);
+    assert.dom('[data-test-cs-component-view-label]').hasText("Enter your phone number");
+  });
 });
