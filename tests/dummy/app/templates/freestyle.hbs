@@ -2,7 +2,7 @@
   {{!-- DROPDOWN --}}
   {{#freestyle-section name="dropdown"}}
 
-    {{view-mode-control viewMode=viewMode showLabelInViewMode=showLabelInViewMode}}
+    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
 
     {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
@@ -317,7 +317,7 @@
   {{!-- TEXT FIELD --}}
   {{#freestyle-section name="TextField"}}
 
-    {{view-mode-control viewMode=viewMode showLabelInViewMode=showLabelInViewMode}}
+    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
 
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
@@ -387,17 +387,20 @@
 
   {{!-- PHONE NUMBER --}}
   {{#freestyle-section name="Phone Number Field"}}
+
+    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+
     {{#freestyle-usage "phone-number-field-default" title="Phone Number Field"}}
-      <PhoneNumberField />
+      <PhoneNumberField @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-required" title="Phone Number Field (Required)"}}
-      <PhoneNumberField @required={{true}} />
+      <PhoneNumberField @required={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-multi" title="Phone Number Fields"}}
-      <PhoneNumberFields @values={{phoneNumberValues}} />
+      <PhoneNumberFields @values={{phoneNumberValues}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-themed" title="Themed"}}
-      <PhoneNumberField @theme="cs-theme" />
+      <PhoneNumberField @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-note "phone-number-themed--notes"}}
       <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
