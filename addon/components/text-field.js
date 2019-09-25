@@ -9,6 +9,7 @@ export default Component.extend({
   dataTestName: 'text-field',
   validationMessage: '',
   required: false,
+  showLabelInViewMode: false,
   type: 'text',
   fieldType: 'text',
   value: '',

@@ -141,7 +141,7 @@
 
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-with-customized-options" title="Dropdown with customized options"}}
-          <Dropdown @options={{customDropdownOptions}} @label="Payment method" @optionComponent='custom-option' @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @options={{customDropdownOptions}} @label="Payment method" @optionComponent="custom-option" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
@@ -316,25 +316,28 @@
 
   {{!-- TEXT FIELD --}}
   {{#freestyle-section name="TextField"}}
+
+    {{view-mode-control viewMode=viewMode showLabelInViewMode=showLabelInViewMode}}
+
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-field-default" title="Default"}}
-          <TextField @label="What's your name?" />
+          <TextField @label="What's your name?" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "text-field-required" title="Required"}}
-          <TextField @label="What's your name?" @required={{true}} />
+          <TextField @label="What's your name?" @required={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="disabled"}}
         {{#freestyle-usage "text-field-disabled" title="Disabled"}}
-          <TextField @label="What's your name?" @disabled={{true}} />
+          <TextField @label="What's your name?" @disabled={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "text-field-themed" title="Themed"}}
-          <TextField @label="What's your name?" @theme="cs-theme" />
+          <TextField @label="What's your name?" @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "text-field-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>

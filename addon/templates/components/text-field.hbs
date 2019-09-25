@@ -1,4 +1,7 @@
 {{#if (eq mode "view")}}
+  {{#if showLabelInViewMode}}
+    <div data-test-cs-component-view-label>{{label}}</div>
+  {{/if}}
   <div data-test-cs-component-view-field-value class="cs-component-text-field--view-value">{{value}}</div>
 {{else}}
   {{#if iconComponent}}
