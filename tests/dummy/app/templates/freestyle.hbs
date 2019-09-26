@@ -418,20 +418,23 @@
 
   {{!-- TEXTAREA --}}
   {{#freestyle-section name="Text Area"}}
+
+    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+
     {{#freestyle-collection title="TextArea" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-area-default" title="Text Area"}}
-          <TextArea @label="What's on your mind?" @rows={{5}} />
+          <TextArea @label="What's on your mind?" @rows={{5}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="with-max-length"}}
         {{#freestyle-usage "text-area-with-max-length" title="Text Area with Max Length"}}
-          <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} />
+          <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "text-area-themed" title="Themed"}}
-          <TextArea @label="What's on your mind?" @rows={{5}} @theme="cs-theme" />
+          <TextArea @label="What's on your mind?" @rows={{5}} @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "text-area-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
