@@ -554,20 +554,23 @@
 
   {{!-- EMAIL --}}
   {{#freestyle-section name="Email Input"}}
+
+    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+
     {{#freestyle-collection title="email" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "email-input-default" title="Default"}}
-          <Email @label="Email Address" />
+          <Email @label="Email Address" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "email-input-required" title="Required"}}
-          <Email @label="Email Address" @required={{true}} />
+          <Email @label="Email Address" @required={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multiple"}}
         {{#freestyle-usage "email-multiple" title="Multiple"}}
-          <Emails @label="Email Address" @values={{emailValues}}/>
+          <Emails @label="Email Address" @values={{emailValues}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-annotation}}
           Emails JSON:
@@ -576,7 +579,7 @@
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "email-input-themed" title="Themed"}}
-          <Email @label="Email Address" @theme="cs-theme" />
+          <Email @label="Email Address" @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "email-input-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
