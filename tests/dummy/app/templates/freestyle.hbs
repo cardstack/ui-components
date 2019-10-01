@@ -651,6 +651,9 @@
 
   {{!-- DATE PICKER --}}
   {{#freestyle-section name="date-picker"}}
+
+    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+
     {{#freestyle-collection title="date picker" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-annotation}}
         <p>Allows user to select a date from calendar view or enter their own input. User can navigate the calendar using arrows or the month and year dropdowns.</p>
@@ -663,17 +666,17 @@
       {{/freestyle-annotation}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "date-picker-optional" title="Default"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" />
+          <DatePicker @label="Date (MM/DD/YYYY)" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="disabled"}}
         {{#freestyle-usage "date-picker-disabled" title="Disabled"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @disabled={{true}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @disabled={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "date-picker-required" title="Required"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @required="true" />
+          <DatePicker @label="Date (MM/DD/YYYY)" @required="true" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="custom-years"}}
@@ -681,12 +684,12 @@
           Using `startYear` and `yearRange` attributes to change the dropdown year range.
         {{/freestyle-note}}
         {{#freestyle-usage "date-picker-custom-years" title="Custom Years"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" />
+          <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "date-picker-themed" title="Themed"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @theme="cs-theme" />
+          <DatePicker @label="Date (MM/DD/YYYY)" @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "date-picker-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
