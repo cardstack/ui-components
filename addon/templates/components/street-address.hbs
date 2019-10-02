@@ -1,8 +1,5 @@
 {{#if (eq mode "view")}}
-  {{#if showLabelInViewMode}}
-    <div data-test-cs-component-view-label>{{label}}</div>
-  {{/if}}
-  <div data-test-cs-component-view-field-value class="cs-component-text-field--view-value">{{selected}}</div>
+  <TextView @showLabelInViewMode={{showLabelInViewMode}} @label={{label}} @value={{selected}} />
 {{else}}
   <div class="cs-component-street-address__container">
     <Dropdown
