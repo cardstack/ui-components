@@ -9,8 +9,7 @@ export default Component.extend({
       this.values.pushObject(null);
     },
 
-    updateValue(index, event) {
-      let { value } = event.srcElement;
+    updateValue(index, value) {
       this.values.replace(index, 1, [value]);
     },
   }
