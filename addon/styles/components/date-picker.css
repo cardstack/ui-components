@@ -1,0 +1,75 @@
+.cs-component-date {
+  --cs-date-background-color: var(--cs-component-background-color);
+  --cs-date-color: var(--cs-component-color);
+}
+.cs-component-date .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
+  background: var(--cs-date-background-color);
+  color: var(--cs-date-color);
+  border: 1px solid var(--cs-component-border-color);
+  border-radius: var(--cs-component-border-radius);
+  font-size: var(--cs-component-font-size);
+}
+.cs-component-date .ember-power-select-search {
+  padding: 5px var(--cs-component-padding-horizontal) 0;
+}
+.cs-component-date .ember-power-select-option--search-message {
+  display: none;
+}
+.cs-component-date .ember-power-select-search-input {
+  padding: 0;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid var(--cs-component-border-color);
+  background: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+.cs-component-date .ember-power-select-search-input:hover {
+  background-color: var(--cs-component-background-highlight-color);
+}
+.cs-component-date .ember-power-select-search-input:focus {
+  border: none;
+  border-bottom: 1px solid var(--cs-component-border-color);
+}
+.cs-component-date .ember-power-select-options {
+  background: inherit;
+  border: none;
+  margin-top: 6px;
+  border-radius: 0;
+}
+.cs-component-date .ember-power-select-option {
+  padding: 6px var(--cs-component-padding-horizontal);
+  text-align: left;
+}
+.cs-component-date .ember-power-select-option[aria-current=true] {
+  background: var(--cs-component-selected-color);
+}
+
+.cs-component-calendar.ember-basic-dropdown-content {
+  background: #fff;
+  border: 1px solid var(--cs-component-border-color);
+  border-radius: var(--cs-component-border-radius);
+}
+.cs-component-calendar.ember-basic-dropdown-content .ember-power-calendar-day {
+  padding: 1em;
+}
+
+.cs-component-calendar--nav-title {
+  display: flex;
+}
+
+.cs-component-calendar--nav-dropdown {
+  flex: 1;
+  padding: 5px;
+}
+.cs-component-calendar--nav-dropdown .ember-power-select-trigger {
+  border: none;
+}
+
+/* Themes */
+.cs-theme {
+  --cs-date-background-color: white;
+  --cs-date-color: var(--color-cs-theme-light-gray);
+}

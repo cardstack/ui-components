@@ -5,7 +5,6 @@
   --cs-text-area-border-color: var(--cs-text-field-border-color);
   --cs-text-area-border-radius: var(--cs-text-field-border-radius);
   --cs-text-area-char-counter-color: var(--cs-text-field-label-color);
-
   max-width: var(--cs-text-area-max-width);
   padding: 1rem;
   background-color: var(--cs-text-area-background-color);
@@ -15,16 +14,13 @@
 
 .cs-component-text-area--input {
   --gradient-height: calc(var(--cs-text-area-line-height) - 1px);
-
   max-width: 100%;
   height: auto;
-
   background-image: -webkit-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: -moz-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: -ms-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: -o-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
-
   background-size: 100% var(--cs-text-area-line-height);
   border: none;
   line-height: var(--cs-text-area-line-height);
@@ -33,10 +29,9 @@
   padding: 0;
   resize: none;
   overflow-y: scroll;
-
-  &:focus {
-    outline: 0;
-  }
+}
+.cs-component-text-area--input:focus {
+  outline: 0;
 }
 
 .cs-component-text-area--label > .label {
@@ -49,8 +44,7 @@
   right: 0;
   color: var(--cs-text-area-char-counter-color);
   font-size: 12px;
-
-  &.with-validation {
-    bottom: 0;
-  }
+}
+.cs-component-text-area--char-counter.with-validation {
+  bottom: 0;
 }

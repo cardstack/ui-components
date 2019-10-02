@@ -1,6 +1,12 @@
 .cs-component-choose-one {
-  @include cs-component-common-styles;
-
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--cs-component-max-width);
+  font-family: var(--cs-component-font-family);
+  font-size: var(--cs-component-font-size);
+  font-weight: var(--cs-component-font-weight);
+  letter-spacing: var(--cs-component-letter-spacing);
+  line-height: var(--cs-component-line-height);
   --cs-choose-one-background: var(--cs-component-background-color);
   --cs-choose-one-copy: var(--cs-component-color);
 }
@@ -35,14 +41,12 @@
   background-color: var(--cs-choose-one-background);
   color: var(--cs-choose-one-copy);
   text-align: center;
-
-  &:hover {
-    --cs-choose-one-background: var(--cs-component-background-highlight-color);
-  }
-
-  input[type="radio"] {
-    display: none;
-  }
+}
+.cs-component-choose-one--label:hover {
+  --cs-choose-one-background: var(--cs-component-background-highlight-color);
+}
+.cs-component-choose-one--label input[type=radio] {
+  display: none;
 }
 
 .cs-component-choose-one--label + .cs-component-choose-one--label {
@@ -50,25 +54,24 @@
 }
 
 .cs-component-choose-one.checked .cs-component-choose-one--label:not(.checked) {
-  --cs-choose-one-copy: rgba($dark-gray, 0.6);
+  --cs-choose-one-copy: rgba(var(--color-dark-gray), 0.6);
 }
 
 .cs-component-choose-one--label.checked {
   --cs-choose-one-background: var(--cs-component-selected-color);
   --cs-choose-one-copy: white;
-
-  .cs-component-choose-one--name:after {
-    display: inline-block;
-    position: absolute;
-    top: 4px;
-    content: ' ';
-    width: 12px;
-    height: 12px;
-    margin-left: 5px;
-    background-image: url('images/icon-checked.svg');
-    background-size: 12px 12px;
-    background-repeat: no-repeat;
-  }
+}
+.cs-component-choose-one--label.checked .cs-component-choose-one--name:after {
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  content: " ";
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+  background-image: url("images/icon-checked.svg");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
 }
 
 .cs-component-choose-one--name {
