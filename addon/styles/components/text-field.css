@@ -1,0 +1,146 @@
+/* TODO: Disabled styles */
+.cs-component-text-field {
+  --cs-text-field-max-width: var(--cs-component-max-width);
+  --cs-text-field-height: var(--cs-component-height);
+  --cs-text-field-padding-horizontal: var(--cs-component-padding-horizontal);
+  --cs-text-field-padding-vertical: var(--cs-component-padding-vertical);
+  --cs-text-field-color: var(--cs-component-color);
+  --cs-text-field-font-size: var(--cs-component-font-size);
+  --cs-text-field-background-color: var(--cs-component-background-color);
+  --cs-text-field-border-color: var(--cs-component-border-color);
+  --cs-text-field-border-radius: var(--cs-component-border-radius);
+  --cs-text-field-label-color: var(--cs-component-label-color);
+  --cs-text-field-label-font-size: var(--cs-text-field-font-size);
+  --cs-text-field-label-font-weight: var(--cs-text-field-font-weight);
+  --cs-text-field-label-highlight-color: var(--cs-component-label-highlight-color);
+  --cs-text-field-label-highlight-font-size: 12px;
+  --cs-text-field-label-minimized-color: var(--cs-component-label-minimized-color);
+  --cs-text-field-label-optional: var(--cs-text-field-color);
+  --cs-text-field-valid: var(--cs-component-valid);
+  --cs-text-field-invalid: var(--cs-component-invalid);
+  position: relative;
+  padding-top: 1rem;
+}
+
+.cs-component-text-field--input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--cs-component-max-width);
+  font-family: var(--cs-component-font-family);
+  font-size: var(--cs-component-font-size);
+  font-weight: var(--cs-component-font-weight);
+  letter-spacing: var(--cs-component-letter-spacing);
+  line-height: var(--cs-component-line-height);
+  padding-left: var(--cs-text-field-padding-horizontal);
+  padding-top: var(--cs-text-field-padding-vertical);
+  max-width: var(--cs-text-field-max-width);
+  height: var(--cs-text-field-height);
+  border: 1px solid var(--cs-text-field-border-color);
+  border-radius: var(--cs-text-field-border-radius);
+  background-color: var(--cs-text-field-background-color);
+  color: var(--cs-text-field-color);
+  font-size: var(--cs-text-field-font-size);
+  overflow-x: hidden;
+  /* Hack to make "rows" attribute apply in Firefox. */
+  -webkit-transition: padding-top 0.2s ease, margin-top 0.2s ease;
+  transition: padding-top 0.2s ease, margin-top 0.2s ease;
+}
+.cs-component-text-field--input:focus {
+  outline: 0;
+}
+.cs-component-text-field--input[type=date] + .cs-component-text-field--label > .label, .cs-component-text-field--input:focus + .cs-component-text-field--label > .label {
+  --cs-text-field-label-color: var(--cs-text-field-label-highlight-color);
+  --cs-text-field-label-font-size: var(--cs-text-field-label-highlight-font-size);
+  top: 1.5rem;
+}
+
+.cs-component-text-field--label {
+  display: block;
+  width: 100%;
+}
+.cs-component-text-field--label > .optional {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: var(--cs-text-field-max-width);
+  color: var(--cs-text-field-label-optional);
+  font-size: 12px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  line-height: 14px;
+  text-align: right;
+  text-transform: uppercase;
+}
+.cs-component-text-field--label > .label {
+  position: absolute;
+  top: 3rem;
+  padding-left: var(--cs-text-field-padding-horizontal);
+  color: var(--cs-text-field-label-color);
+  font-size: var(--cs-text-field-label-font-size);
+  font-weight: var(--cs-text-field-label-font-weight);
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-align: left;
+  /* no line-wrap. truncate with ellipsis. */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transition: top 0.2s ease, font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
+  transition: top 0.2s ease, font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease;
+}
+.cs-component-text-field--label.active > .label {
+  --cs-text-field-label-color: var(--cs-text-field-label-minimized-color);
+  --cs-text-field-label-font-size: var(--cs-text-field-label-highlight-font-size);
+  top: 1.5rem;
+}
+
+.cs-component-text-field--validation {
+  max-width: 100%;
+  margin-top: 0.2rem;
+  padding-left: 0.8rem;
+  background-image: url("images/check-icon.svg");
+  background-repeat: no-repeat;
+  background-position: top 0.2rem left;
+  background-size: 9px 9px;
+  color: var(--cs-text-field-valid);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 14px;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-transition: visibility 0.2s ease, background-image 0.2s ease;
+  transition: visibility 0.2s ease, background-image 0.2s ease;
+}
+.cs-component-text-field--validation.invalid {
+  display: block;
+  background-image: url("images/x-icon.svg");
+  color: var(--cs-text-field-invalid);
+}
+.cs-component-text-field--validation.hidden {
+  display: none;
+  background-image: none;
+}
+
+/* cs-theme */
+.cs-theme {
+  --cs-text-field-font-size: 20px;
+  --cs-text-field-border-radius: 10px;
+  --cs-text-field-background-color: white;
+  --cs-text-field-color: var(--color-cs-theme-light-gray);
+  --cs-text-field-label-color: var(--color-cs-theme-light-gray);
+  --cs-text-field-label-font-size: 18px;
+  --cs-text-field-label-highlight-color: var(--color-cs-theme-purple);
+  --cs-text-field-label-minimized-color: var(--color-cs-theme-light-purple);
+  --cs-text-field-label-highlight-font-size: 10px;
+  --cs-text-field-valid: var(--color-cs-theme-green);
+  --cs-text-field-invalid: var(--color-cs-theme-red);
+}
+.cs-theme:focus + label > .label {
+  text-transform: uppercase;
+}
+.cs-theme.active > .label {
+  text-transform: uppercase;
+}

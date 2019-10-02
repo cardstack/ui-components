@@ -1,6 +1,12 @@
 .cs-component-choose-many {
-  @include cs-component-common-styles;
-
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--cs-component-max-width);
+  font-family: var(--cs-component-font-family);
+  font-size: var(--cs-component-font-size);
+  font-weight: var(--cs-component-font-weight);
+  letter-spacing: var(--cs-component-letter-spacing);
+  line-height: var(--cs-component-line-height);
   --cs-choose-many-background: var(--cs-component-background-color);
   --cs-choose-many-copy: var(--cs-component-color);
 }
@@ -35,14 +41,12 @@
   background-color: var(--cs-choose-many-background);
   color: var(--cs-choose-many-copy);
   text-align: center;
-
-  &:hover {
-    --cs-choose-many-background: var(--cs-component-background-highlight-color);
-  }
-
-  input[type="checkbox"] {
-    display: none;
-  }
+}
+.cs-component-choose-many--label:hover {
+  --cs-choose-many-background: var(--cs-component-background-highlight-color);
+}
+.cs-component-choose-many--label input[type=checkbox] {
+  display: none;
 }
 
 .cs-component-choose-many--label + .cs-component-choose-many--label {
@@ -52,19 +56,18 @@
 .cs-component-choose-many--label.checked {
   --cs-choose-many-background: var(--cs-component-selected-color);
   --cs-choose-many-copy: white;
-
-  .cs-component-choose-many--name:after {
-    display: inline-block;
-    position: absolute;
-    top: 4px;
-    content: ' ';
-    width: 12px;
-    height: 12px;
-    margin-left: 5px;
-    background-image: url('images/icon-checked.svg');
-    background-size: 12px 12px;
-    background-repeat: no-repeat;
-  }
+}
+.cs-component-choose-many--label.checked .cs-component-choose-many--name:after {
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  content: " ";
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+  background-image: url("images/icon-checked.svg");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
 }
 
 .cs-component-choose-many--name {

@@ -1,0 +1,34 @@
+@import 'examples.css';
+
+body {
+  font-family: "Open Sans";
+  font-size: 16px;
+}
+
+.FreestyleGuide .hljs-deletion, .FreestyleGuide .hljs-string, .FreestyleGuide .hljs-built_in, .FreestyleGuide .hljs-builtin-name {
+  color: white;
+}
+.FreestyleGuide .hljs-comment {
+  color: #bcf2bc;
+}
+.FreestyleGuide .FreestyleMenu-itemLink.active {
+  color: #005a66;
+}
+
+.application-nav ul {
+  margin-bottom: 30px;
+  padding: 0;
+}
+
+.application-nav ul li {
+  display: inline-block;
+}
+
+.application-nav ul li a {
+  text-decoration: none;
+  padding: 10px 20px;
+}
+.application-nav ul li a.active {
+  background-color: #eee;
+  border-bottom: solid 1px black;
+}
