@@ -614,6 +614,9 @@
 
   {{!-- STREET ADDRESS --}}
   {{#freestyle-section name="Street Address"}}
+
+    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+
     {{#freestyle-collection title="street-address" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-note "street-address--notes"}}
         Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API
@@ -621,12 +624,12 @@
       {{/freestyle-note}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "street-address" title="Street Address"}}
-          <StreetAddress @label="Enter your address"/>
+          <StreetAddress @label="Enter your address" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multiple"}}
         {{#freestyle-usage "street-address-multiple" title="Street Address Multiple"}}
-          <StreetAddresses @selections={{streetAddresses}} />
+          <StreetAddresses @selections={{streetAddresses}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-annotation}}
           Selected addresses JSON:
@@ -635,7 +638,7 @@
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "street-address-themed" title="Themed"}}
-          <StreetAddress @theme="cs-theme" />
+          <StreetAddress @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "street-address-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>

@@ -58,4 +58,21 @@ module('Integration | Component | street address', function(hooks) {
 
     assert.dom('.cs-component-street-address').exists({ count: 2 });
   });
+
+  test('it renders in view mode', async function (assert) {
+    this.showLabelInViewMode = false;
+    this.mode = 'edit';
+    this.selectedAddress = '12 Grimmauld Place';
+
+    await render(hbs`<StreetAddress @label="Where do you live?" @selected={{selectedAddress}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
+
+    this.set('mode', 'view');
+
+    assert.dom('[data-test-cs-component-view-field-value]').hasText(this.selectedAddress);
+    assert.dom('[data-test-cs-component-view-label]').doesNotExist();
+
+    this.set('showLabelInViewMode', true);
+
+    assert.dom('[data-test-cs-component-view-label]').hasText("Where do you live?");
+  });
 });
