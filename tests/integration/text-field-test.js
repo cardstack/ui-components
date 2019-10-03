@@ -34,4 +34,21 @@ module('Integration | Component | text-field', function(hooks) {
     assert.dom('[data-test-cs-component-label="text-field"]').hasClass('cs-theme');
     assert.dom('[data-test-cs-component-validation="text-field"]').hasClass('cs-theme');
   });
+
+  test('it renders in view mode', async function (assert) {
+    this.showLabelInViewMode = false;
+    this.mode = 'edit';
+
+    await render(hbs`<TextField @value="Hello world" @label="What's the meaning of life?" @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
+
+    assert.dom('[data-test-cs-component-input="text-field"]').hasValue('Hello world');
+
+    this.set('mode', 'view');
+
+    assert.dom('[data-test-cs-component-view-field-value]').hasText('Hello world');
+    assert.dom('[data-test-cs-component-view-label]').doesNotExist();
+
+    this.set('showLabelInViewMode', true);
+    assert.dom('[data-test-cs-component-view-label]').hasText("What's the meaning of life?");
+  });
 });

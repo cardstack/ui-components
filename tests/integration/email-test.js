@@ -97,4 +97,21 @@ module('Integration | Component | email', function(hooks) {
     assert.dom('[data-test-cs-component-label="email"].cs-theme').exists();
     assert.dom('[data-test-cs-component-validation="email"].cs-theme').exists();
   });
+
+  test('it renders in view mode', async function (assert) {
+    this.showLabelInViewMode = false;
+    this.mode = 'edit';
+
+    await render(hbs`<Email @value="schema@cardstack.com" @label="Enter your email" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
+
+    assert.dom('[data-test-cs-component-input="email"]').hasValue('schema@cardstack.com');
+
+    this.set('mode', 'view');
+
+    assert.dom('[data-test-cs-component-view-field-value]').hasText('schema@cardstack.com');
+    assert.dom('[data-test-cs-component-view-label]').doesNotExist();
+
+    this.set('showLabelInViewMode', true);
+    assert.dom('[data-test-cs-component-view-label]').hasText("Enter your email");
+  });
 });

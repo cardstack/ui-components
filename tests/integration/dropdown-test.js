@@ -154,4 +154,44 @@ module('Integration | Component | dropdown', function(hooks) {
     assert.dom('.ember-power-select-option:nth-of-type(2)').hasText('Banco Bradesco Financiamentos $123534.36 BR');
     assert.dom('.ember-power-select-option:nth-of-type(3)').hasText('Shoko Chukin Bank $34.36 JP');
   });
+
+  test('it renders the selected option when in view mode', async function(assert) {
+    this.mode = 'edit';
+    this.fruits = [
+      { name: 'Banana' },
+      { name: 'Apple' },
+      { name: 'Orange' }
+    ];
+
+    await render(hbs`<Dropdown @options={{fruits}} @mode={{mode}}/>`);
+    await clickTrigger('.cs-component-dropdown');
+    await selectChoose('.cs-component-dropdown', 'Banana');
+
+    this.set('mode', 'view');
+
+    assert.dom('[data-test-cs-component-view-field-value]').hasText('Banana');
+  });
+
+  test('it renders the custom selected option (optionComponent passed in) when in view mode', async function(assert) {
+    this.mode = 'edit';
+    this.showLabelInViewMode = false;
+    this.coins = [
+      { imageUrl: 'https://via.placeholder.com/50x35', cardType: 'Ether', transactionId: '0xCb3d...C16fc', network: 'Mainnet', fromValue: '15.3532 ETH', toValue: '$3993.7 USD' },
+      { imageUrl: 'https://via.placeholder.com/50x35', cardType: 'Bitcoin', transactionId: '0xCb3a...C36fc', network: 'Rinkeby', fromValue: '2.3532 BTC', toValue: '$8509 USD' },
+      { imageUrl: 'https://via.placeholder.com/50x35', cardType: 'Litecoin', transactionId: '0xCb3a...B96fa', network: 'Ropstein', fromValue: '82.92 LIT', toValue: '$2547 USD' }
+    ]
+
+    await render(hbs`<Dropdown @options={{coins}} @label='Choose crypto' @showLabelInViewMode={{showLabelInViewMode}} @mode={{mode}} @optionComponent='custom-option' />`);
+    await clickTrigger('.cs-component-dropdown');
+    await selectChoose('.cs-component-dropdown', 'Litecoin');
+
+    assert.dom('.ember-power-select-selected-item').includesText('Litecoin');
+    this.set('mode', 'view');
+
+    assert.dom('[data-test-cs-component-view-field-value]').includesText('Litecoin');
+    assert.dom('[data-test-cs-component-view-label]').doesNotExist();
+
+    this.set('showLabelInViewMode', true);
+    assert.dom('[data-test-cs-component-view-label]').hasText('Choose crypto');
+  });
 });

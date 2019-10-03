@@ -275,4 +275,24 @@ module('Integration | Component | date picker', function (hooks) {
     assert.dom('[data-test-cs-component-label="date-picker"]').hasClass('cs-theme');
     assert.dom('[data-test-cs-component-validation="date-picker"]').hasClass('cs-theme');
   });
+
+
+  test('it renders in view mode', async function (assert) {
+    this.showLabelInViewMode = false;
+    this.mode = 'edit';
+    this.selectedDate = '09/29/1997';
+
+    await render(hbs`<DatePicker @label="When is Judgment Day?" @inputValue={{selectedDate}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
+
+    assert.dom('[data-test-cs-component-label="date-picker"] .label').hasText('When is Judgment Day?');
+
+    this.set('mode', 'view');
+
+    assert.dom('[data-test-cs-component-view-field-value]').hasText(this.selectedDate);
+    assert.dom('[data-test-cs-component-view-label]').doesNotExist();
+
+    this.set('showLabelInViewMode', true);
+
+    assert.dom('[data-test-cs-component-view-label]').hasText("When is Judgment Day?");
+  });
 });

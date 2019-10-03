@@ -47,4 +47,21 @@ module('Integration | Component | text-area', function(hooks) {
     assert.dom('[data-test-cs-component-text-area-label]').hasClass('cs-theme');
     assert.dom('[data-test-cs-component-text-area-validation]').hasClass('cs-theme');
   });
+
+  test('it renders in view mode', async function (assert) {
+    this.showLabelInViewMode = false;
+    this.mode = 'edit';
+
+    await render(hbs`<TextArea @label="What's the meaning of life?" @value="tacos" @rows={{2}} @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
+
+    assert.dom('[data-test-cs-component="text-area"] textarea').hasValue('tacos');
+
+    this.set('mode', 'view');
+
+    assert.dom('[data-test-cs-component-view-field-value]').hasText('tacos');
+    assert.dom('[data-test-cs-component-view-label]').doesNotExist();
+
+    this.set('showLabelInViewMode', true);
+    assert.dom('[data-test-cs-component-view-label]').hasText("What's the meaning of life?");
+  });
 });

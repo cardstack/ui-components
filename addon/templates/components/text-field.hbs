@@ -1,5 +1,5 @@
 {{#if (eq mode "view")}}
-  <div data-test-cs-component-view-field-value class="cs-component-text-field--view-value">{{value}}</div>
+  <TextView @showLabelInViewMode={{showLabelInViewMode}} @label={{label}} @value={{value}} />
 {{else}}
   {{#if iconComponent}}
     {{component iconComponent
@@ -17,6 +17,8 @@
       setValidationMessage=(action (mut validationMessage))
       setInvalid=(action (mut invalid))
       setValue=(action (mut value))
+      onChange=onChange
+      number=value
       id=inputId
       inputmode=inputmode
       data-test-cs-component-input=dataTestName

@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, waitFor, fillIn } from '@ember/test-helpers';
+import { render, waitFor, waitUntil, fillIn, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | phone-number-field', function(hooks) {
@@ -39,5 +39,25 @@ module('Integration | Component | phone-number-field', function(hooks) {
     assert.dom('[data-test-cs-component="phone-number"] input').hasClass('cs-theme');
     assert.dom('[data-test-cs-component-label="phone-number"]').hasClass('cs-theme');
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasClass('cs-theme');
+  });
+
+  test('it renders in view mode', async function (assert) {
+    this.showLabelInViewMode = false;
+    this.mode = 'edit';
+    this.number = '+15102322512';
+
+    await render(hbs`<PhoneNumberField @value={{number}} @label="Enter your phone number" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
+
+    await waitUntil(() => {
+      return find('[data-test-cs-component="phone-number"] input').value === '(510) 232-2512';
+    });
+
+    await this.set('mode', 'view');
+
+    assert.dom('[data-test-cs-component-view-field-value]').hasText(this.number);
+    assert.dom('[data-test-cs-component-view-label]').doesNotExist();
+
+    this.set('showLabelInViewMode', true);
+    assert.dom('[data-test-cs-component-view-label]').hasText("Enter your phone number");
   });
 });

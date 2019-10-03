@@ -1,0 +1,11 @@
+<div class="toggle-view-mode">
+  <div class="row">
+    {{input id=(concat "in-view-mode-" elementId) type="checkbox" checked=viewMode}}
+    <label for={{concat "in-view-mode-" elementId}}>Toggle View mode</label>
+  </div>
+
+  <div class="row">
+    {{input id=(concat "show-label-in-view-mode-" elementId) type="checkbox" checked=showLabelInViewMode}}
+    <label for={{concat "show-label-in-view-mode-" elementId}}>Toggle show label in view mode</label>
+  </div>
+</div>

@@ -1,93 +1,97 @@
-<div class="cs-component-date {{@theme}}" data-test-cs-component-date>
-  <PowerDatepicker
-    @renderInPlace="true"
-    @selected={{selected}}
-    @onSelect={{action (mut selected) value="date"}}
-    @center={{center}}
-    @onCenterChange={{action (mut center) value="date"}} as |calendar|>
-    {{#calendar.trigger tabindex="-1"}}
-      {{!-- User can pick a date from the calendar view or type it in. --}}
-      <TextField
-        @dateComponent="date-field/input"
-        @type="text"
-        @label={{label}}
-        @id="{{calendar.uniqueId}}-date"
-        @class="cs-component-date--input"
-        @value={{if selected selectedDate inputValue}}
-        @onblur={{action "handleInput"}}
-        @onchange={{action "handleInput"}}
-        @oninput={{action "handleInput"}}
-        @required={{required}}
-        @disabled={{disabled}}
-        @autocomplete="off"
-        @validationMessage={{errorMessage}}
-        @invalid={{invalid}}
-        @inputmode="numeric"
-        @dataTestName="date-picker"
-        @theme={{@theme}}
-      />
-    {{/calendar.trigger}}
+{{#if (eq mode "view")}}
+  <TextView @showLabelInViewMode={{showLabelInViewMode}} @label={{label}} @value={{inputValue}} />
+{{else}}
+  <div class="cs-component-date {{@theme}}" data-test-cs-component-date>
+    <PowerDatepicker
+      @renderInPlace="true"
+      @selected={{selected}}
+      @onSelect={{action (mut selected) value="date"}}
+      @center={{center}}
+      @onCenterChange={{action (mut center) value="date"}} as |calendar|>
+      {{#calendar.trigger tabindex="-1"}}
+        {{!-- User can pick a date from the calendar view or type it in. --}}
+        <TextField
+          @dateComponent="date-field/input"
+          @type="text"
+          @label={{label}}
+          @id="{{calendar.uniqueId}}-date"
+          @class="cs-component-date--input"
+          @value={{if selected selectedDate inputValue}}
+          @onblur={{action "handleInput"}}
+          @onchange={{action "handleInput"}}
+          @oninput={{action "handleInput"}}
+          @required={{required}}
+          @disabled={{disabled}}
+          @autocomplete="off"
+          @validationMessage={{errorMessage}}
+          @invalid={{invalid}}
+          @inputmode="numeric"
+          @dataTestName="date-picker"
+          @theme={{@theme}}
+        />
+      {{/calendar.trigger}}
 
-    {{#calendar.content class="cs-component-calendar"}}
-      {{!-- Navigation arrows allow scrolling by month and year.
-            User can also use the dropdown to pick month and year. --}}
-      <nav class="cs-component-calendar--nav ember-power-calendar-nav">
-        <button
-          class="ember-power-calendar-nav-control"
-          onclick={{action calendar.actions.moveCenter -12 "month"}}
-          aria-label="Previous year"
-          data-test-nav-arrow="year-backwards">
-          «
-        </button>
-        <button
-          class="ember-power-calendar-nav-control"
-          onclick={{action calendar.actions.moveCenter -1 "month"}}
-          aria-label="Previous month"
-          data-test-nav-arrow="month-backwards">
-          ‹
-        </button>
+      {{#calendar.content class="cs-component-calendar"}}
+        {{!-- Navigation arrows allow scrolling by month and year.
+              User can also use the dropdown to pick month and year. --}}
+        <nav class="cs-component-calendar--nav ember-power-calendar-nav">
+          <button
+            class="ember-power-calendar-nav-control"
+            onclick={{action calendar.actions.moveCenter -12 "month"}}
+            aria-label="Previous year"
+            data-test-nav-arrow="year-backwards">
+            «
+          </button>
+          <button
+            class="ember-power-calendar-nav-control"
+            onclick={{action calendar.actions.moveCenter -1 "month"}}
+            aria-label="Previous month"
+            data-test-nav-arrow="month-backwards">
+            ‹
+          </button>
 
-        <div class="cs-component-calendar--nav-title ember-power-calendar-nav-title">
-          <div id="{{elementId}}-months-nav" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-months>
-            <PowerSelect
-              @ariaLabel="Month dropdown"
-              @renderInPlace="true"
-              @options={{months}}
-              @selected={{moment-format calendar.center "MMMM"}}
-              @onchange={{action "changeCenter" "month" calendar}} as |month|>
-              {{month}}
-            </PowerSelect>
+          <div class="cs-component-calendar--nav-title ember-power-calendar-nav-title">
+            <div id="{{elementId}}-months-nav" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-months>
+              <PowerSelect
+                @ariaLabel="Month dropdown"
+                @renderInPlace="true"
+                @options={{months}}
+                @selected={{moment-format calendar.center "MMMM"}}
+                @onchange={{action "changeCenter" "month" calendar}} as |month|>
+                {{month}}
+              </PowerSelect>
+            </div>
+            <div id="{{elementId}}-years-nav" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-years>
+              <PowerSelect
+                @ariaLabel="Year dropdown"
+                @renderInPlace="true"
+                @options={{years}}
+                @selected={{moment-format calendar.center "YYYY"}}
+                @onchange={{action "changeCenter" "year" calendar}} as |year|>
+                {{year}}
+              </PowerSelect>
+            </div>
           </div>
-          <div id="{{elementId}}-years-nav" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-years>
-            <PowerSelect
-              @ariaLabel="Year dropdown"
-              @renderInPlace="true"
-              @options={{years}}
-              @selected={{moment-format calendar.center "YYYY"}}
-              @onchange={{action "changeCenter" "year" calendar}} as |year|>
-              {{year}}
-            </PowerSelect>
-          </div>
-        </div>
 
-        <button
-          class="ember-power-calendar-nav-control"
-          onclick={{action calendar.actions.moveCenter 1 "month"}}
-          aria-label="Next month"
-          data-test-nav-arrow="month-forwards">
-          ›
-        </button>
-        <button
-          class="ember-power-calendar-nav-control"
-          onclick={{action calendar.actions.moveCenter 12 "month"}}
-          aria-label="Next year"
-          data-test-nav-arrow="year-forwards">
-          »
-        </button>
-      </nav>
-      {{calendar.days}}
-    {{/calendar.content}}
-  </PowerDatepicker>
-</div>
+          <button
+            class="ember-power-calendar-nav-control"
+            onclick={{action calendar.actions.moveCenter 1 "month"}}
+            aria-label="Next month"
+            data-test-nav-arrow="month-forwards">
+            ›
+          </button>
+          <button
+            class="ember-power-calendar-nav-control"
+            onclick={{action calendar.actions.moveCenter 12 "month"}}
+            aria-label="Next year"
+            data-test-nav-arrow="year-forwards">
+            »
+          </button>
+        </nav>
+        {{calendar.days}}
+      {{/calendar.content}}
+    </PowerDatepicker>
+  </div>
 
-{{!-- TODO: Make it accept min/max date selection --}}
+  {{!-- TODO: Make it accept min/max date selection --}}
+{{/if}}

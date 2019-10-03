@@ -1,12 +1,16 @@
-<div class="cs-component-street-address__container">
-  <Dropdown
-    @options={{predictions}}
-    @searchAction={{action "requestPredictions"}}
-    @searchField="description"
-    @selected={{selected}}
-    @changeAction={{action changeAction}}
-    @label={{label}}
-    @dataTestName="street-address"
-    @theme={{@theme}}
-  />
-</div>
+{{#if (eq mode "view")}}
+  <TextView @showLabelInViewMode={{showLabelInViewMode}} @label={{label}} @value={{selected}} />
+{{else}}
+  <div class="cs-component-street-address__container">
+    <Dropdown
+      @options={{predictions}}
+      @searchAction={{action "requestPredictions"}}
+      @searchField="description"
+      @selected={{selected}}
+      @changeAction={{action changeAction}}
+      @label={{label}}
+      @dataTestName="street-address"
+      @theme={{@theme}}
+    />
+  </div>
+{{/if}}

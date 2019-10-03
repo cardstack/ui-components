@@ -4,10 +4,12 @@ import layout from '../templates/components/dropdown';
 export default Component.extend({
   layout,
   dataTestName: 'dropdown',
+  fieldType: 'text',
   selected: null,
   multiple: false,
   isFocused: false,
   label: 'Select an option',
+  showLabelInViewMode: false,
   searchField: 'name',
   searchEnabled: true,
   allowClear: true,
