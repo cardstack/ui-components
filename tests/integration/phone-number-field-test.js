@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, waitFor, fillIn } from '@ember/test-helpers';
+import { render, waitUntil, fillIn, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | phone-number-field', function(hooks) {
@@ -48,9 +48,11 @@ module('Integration | Component | phone-number-field', function(hooks) {
 
     await render(hbs`<PhoneNumberField @value={{number}} @label="Enter your phone number" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
 
-    assert.dom('[data-test-cs-component="phone-number"] input').hasValue(this.number);
+    await waitUntil(() => {
+      return find('[data-test-cs-component="phone-number"] input').value === '(510) 232-2512';
+    });
 
-    this.set('mode', 'view');
+    await this.set('mode', 'view');
 
     assert.dom('[data-test-cs-component-view-field-value]').hasText(this.number);
     assert.dom('[data-test-cs-component-view-label]').doesNotExist();
