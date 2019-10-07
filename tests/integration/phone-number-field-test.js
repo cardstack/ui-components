@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, waitFor, waitUntil, fillIn, find } from '@ember/test-helpers';
+import { A } from '@ember/array';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | phone-number-field', function(hooks) {
@@ -20,6 +21,23 @@ module('Integration | Component | phone-number-field', function(hooks) {
 
   test('it validates phone numbers', async function(assert) {
     await render(hbs`<PhoneNumberField @label="Enter your phone number" />`);
+    await fillIn('[data-test-cs-component="phone-number"] input', '510-223-232');
+
+    assert.dom('[data-test-cs-component-validation="phone-number"]').hasClass('invalid');
+    assert.dom('[data-test-cs-component-validation="phone-number"]').doesNotHaveClass('hidden');
+    assert.dom('[data-test-cs-component-validation="phone-number"]').containsText('Please enter a valid phone number')
+
+    await fillIn('[data-test-cs-component="phone-number"] input', '510-223-2322');
+
+    assert.dom('[data-test-cs-component-validation="phone-number"]').doesNotHaveClass('invalid');
+    assert.dom('[data-test-cs-component-validation="phone-number"]').doesNotHaveClass('hidden');
+    assert.dom('[data-test-cs-component-validation="phone-number"]').hasText('Thank you.');
+  });
+
+  test('it validates phone numbers from the PhoneNumberFields component', async function(assert) {
+    this.values = A([null]);
+    await render(hbs`<PhoneNumberFields @values={{values}} />`);
+
     await fillIn('[data-test-cs-component="phone-number"] input', '510-223-232');
 
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasClass('invalid');
