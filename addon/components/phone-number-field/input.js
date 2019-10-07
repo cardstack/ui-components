@@ -11,11 +11,7 @@ export default PhoneInput.extend({
     this.set('number', internationalPhoneNumber);
   },
 
-  change(event) {
-    if (this.onChange) {
-      this.onChange(event);
-    }
-
+  change() {
     const internationalPhoneNumber = this.number;
     this.setValue(internationalPhoneNumber);
     this._iti.setNumber(internationalPhoneNumber);
