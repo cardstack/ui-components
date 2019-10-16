@@ -6,7 +6,7 @@ const join = require('path').join;
 module.exports = {
   name: require('./package').name,
   isDevelopingAddon() {
-    return true
+    return process.env.CARDSTACK_DEV;
   },
   included: function(/* app */) {
     this._super.included.apply(this, arguments);
