@@ -6,6 +6,11 @@
 * `cd ui-components-library`
 * `npm install`
 
+## Styling the Date Picker Component
+
+See the instructions in `lib/ember-power-calendar.scss` if you want to
+make changes to the style of the date picker component.
+
 ## Linting
 
 * `npm run lint:hbs`
