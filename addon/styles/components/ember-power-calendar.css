@@ -1,0 +1,222 @@
+/* 
+This stylesheet was programatically generated from the SASS
+stylesheets provided by ember-power-calendar, in an effort to make
+this addon be free from SASS.
+Do not make changes by hand to the ember-power-calendar.css file.
+
+Instead, make changes at the very bottom of `lib/ember-power-calendar.scss`,
+where we use the ember-power-calendar mixin and set the
+variables that we want it to use. For example:
+
+```scss
+.cs-component-calendar {
+  @include ember-power-calendar($cell-size: 30px);
+}
+```
+
+Then, install the sass compiler (`npm install -g sass`), and run it
+on the scss file, to turn it into css.
+This command will overwrite ember-power-calendar.css with the results: 
+
+```sh
+sass --no-source-map lib/ember-power-calendar.scss addon/styles/components/ember-power-calendar.css
+```
+
+Commit both `ember-power-calendar.css` and `lib/ember-power-calendar.scss`.
+You can delete the .map file.
+*/
+.ember-power-calendar {
+  box-sizing: border-box;
+  position: relative;
+}
+
+.ember-power-calendar-nav {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ember-power-calendar-nav * {
+  box-sizing: border-box;
+}
+
+.ember-power-calendar-days, .ember-power-calendar-days * {
+  box-sizing: border-box;
+}
+
+.ember-power-calendar-nav-title {
+  flex: 1;
+  text-align: center;
+}
+
+.ember-power-calendar-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ember-power-calendar-weekday {
+  -webkit-appearance: none;
+  flex: 1 1 100%;
+  padding: 0;
+  background-color: transparent;
+  background-color: initial;
+  border: none;
+  border: initial;
+  outline: none;
+  outline: initial;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.ember-power-calendar-day {
+  -webkit-appearance: none;
+  background-color: transparent;
+  background-color: initial;
+  border: none;
+  border: initial;
+  outline: none;
+  outline: initial;
+  flex: 1 1 100%;
+  font-size: inherit;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.ember-power-calendar-nav-control {
+  -webkit-appearance: none;
+  background-color: transparent;
+  background-color: initial;
+  border: none;
+  border: initial;
+  outline: none;
+  outline: initial;
+  font-size: inherit;
+}
+
+.ember-power-calendar {
+  font-size: 14px;
+  line-height: 1.42857;
+}
+
+.ember-power-calendar-nav {
+  line-height: 2;
+}
+
+.ember-power-calendar-nav-control {
+  line-height: 1;
+  font-size: 150%;
+}
+.ember-power-calendar-nav-control:focus {
+  transform: scale(1.2);
+}
+
+.ember-power-calendar-day--selected,
+.ember-power-calendar-day--selected:not([disabled]):hover {
+  font-weight: bold;
+}
+
+.ember-power-calendar-day--interactive[disabled] {
+  opacity: 0.4;
+}
+
+.cs-component-calendar {
+  width: 222px;
+}
+.cs-component-calendar .ember-power-calendar-week:first-child[data-missing-days="1"] {
+  padding-left: 32px;
+}
+.cs-component-calendar .ember-power-calendar-week:first-child[data-missing-days="2"] {
+  padding-left: 64px;
+}
+.cs-component-calendar .ember-power-calendar-week:first-child[data-missing-days="3"] {
+  padding-left: 96px;
+}
+.cs-component-calendar .ember-power-calendar-week:first-child[data-missing-days="4"] {
+  padding-left: 128px;
+}
+.cs-component-calendar .ember-power-calendar-week:first-child[data-missing-days="5"] {
+  padding-left: 160px;
+}
+.cs-component-calendar .ember-power-calendar-week:first-child[data-missing-days="6"] {
+  padding-left: 192px;
+}
+.cs-component-calendar .ember-power-calendar-week:last-child[data-missing-days="1"] {
+  padding-right: 32px;
+}
+.cs-component-calendar .ember-power-calendar-week:last-child[data-missing-days="2"] {
+  padding-right: 64px;
+}
+.cs-component-calendar .ember-power-calendar-week:last-child[data-missing-days="3"] {
+  padding-right: 96px;
+}
+.cs-component-calendar .ember-power-calendar-week:last-child[data-missing-days="4"] {
+  padding-right: 128px;
+}
+.cs-component-calendar .ember-power-calendar-week:last-child[data-missing-days="5"] {
+  padding-right: 160px;
+}
+.cs-component-calendar .ember-power-calendar-week:last-child[data-missing-days="6"] {
+  padding-right: 192px;
+}
+.cs-component-calendar .ember-power-calendar-day, .cs-component-calendar .ember-power-calendar-weekday {
+  max-width: 30px;
+  max-height: 30px;
+  width: 30px;
+  height: 30px;
+}
+.cs-component-calendar .ember-power-calendar-weekdays, .cs-component-calendar .ember-power-calendar-week {
+  height: 32px;
+  padding-left: 0;
+  padding-right: 0;
+}
+.cs-component-calendar .ember-power-calendar-day {
+  color: #bbb;
+}
+.cs-component-calendar .ember-power-calendar-weekdays {
+  color: #333333;
+}
+.cs-component-calendar .ember-power-calendar-nav-control {
+  color: #0078c9;
+}
+.cs-component-calendar .ember-power-calendar-nav-control:focus {
+  color: #30acff;
+}
+.cs-component-calendar .ember-power-calendar-day--current-month {
+  color: #656D78;
+  background-color: #F5F7FA;
+}
+.cs-component-calendar .ember-power-calendar-day--today {
+  background-color: #eee;
+}
+.cs-component-calendar .ember-power-calendar-day:not([disabled]):hover {
+  background-color: #eee;
+}
+.cs-component-calendar .ember-power-calendar-day--focused {
+  box-shadow: inset 0px -2px 0px 0px #0078c9;
+}
+.cs-component-calendar .ember-power-calendar-day--selected.ember-power-calendar-day--range-start {
+  background-color: #96d5ff;
+}
+.cs-component-calendar .ember-power-calendar-day--selected.ember-power-calendar-day--range-start:hover {
+  background-color: #96d5ff;
+}
+.cs-component-calendar .ember-power-calendar-day--selected.ember-power-calendar-day--range-end {
+  background-color: #96d5ff;
+}
+.cs-component-calendar .ember-power-calendar-day--selected.ember-power-calendar-day--range-end:hover {
+  background-color: #96d5ff;
+}
+.cs-component-calendar .ember-power-calendar-day--selected {
+  background-color: #c9e9ff;
+  color: #656D78;
+}
+.cs-component-calendar .ember-power-calendar-day--selected:not([disabled]):hover {
+  background-color: #c9e9ff;
+  color: #656D78;
+}
+.cs-component-calendar .ember-power-calendar-day--other-month:not([disabled]):hover {
+  color: #656D78;
+}
