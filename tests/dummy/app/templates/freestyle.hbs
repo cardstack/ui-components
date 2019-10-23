@@ -2,7 +2,11 @@
   {{!-- DROPDOWN --}}
   {{#freestyle-section name="dropdown"}}
 
-    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+    <ViewModeControl
+      @name="dropdown"
+      @viewMode={{viewMode}}
+      @showLabelInViewMode={{showLabelInViewMode}}
+    />
 
     {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
@@ -317,7 +321,11 @@
   {{!-- TEXT FIELD --}}
   {{#freestyle-section name="TextField"}}
 
-    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+    <ViewModeControl
+      @name="text-field"
+      @viewMode={{viewMode}}
+      @showLabelInViewMode={{showLabelInViewMode}}
+    />
 
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
@@ -388,7 +396,11 @@
   {{!-- PHONE NUMBER --}}
   {{#freestyle-section name="Phone Number Field"}}
 
-    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+    <ViewModeControl
+      @name="phone-number"
+      @viewMode={{viewMode}}
+      @showLabelInViewMode={{showLabelInViewMode}}
+    />
 
     {{#freestyle-usage "phone-number-field-default" title="Phone Number Field"}}
       <PhoneNumberField @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
@@ -419,7 +431,11 @@
   {{!-- TEXTAREA --}}
   {{#freestyle-section name="Text Area"}}
 
-    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+    <ViewModeControl
+      @name="text-area"
+      @viewMode={{viewMode}}
+      @showLabelInViewMode={{showLabelInViewMode}}
+    />
 
     {{#freestyle-collection title="TextArea" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
@@ -555,7 +571,11 @@
   {{!-- EMAIL --}}
   {{#freestyle-section name="Email Input"}}
 
-    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+    <ViewModeControl
+      @name="email"
+      @viewMode={{viewMode}}
+      @showLabelInViewMode={{showLabelInViewMode}}
+    />
 
     {{#freestyle-collection title="email" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
@@ -615,7 +635,11 @@
   {{!-- STREET ADDRESS --}}
   {{#freestyle-section name="Street Address"}}
 
-    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+    <ViewModeControl
+      @name="street-address"
+      @viewMode={{viewMode}}
+      @showLabelInViewMode={{showLabelInViewMode}}
+    />
 
     {{#freestyle-collection title="street-address" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-note "street-address--notes"}}
@@ -655,7 +679,11 @@
   {{!-- DATE PICKER --}}
   {{#freestyle-section name="date-picker"}}
 
-    <ViewModeControl @viewMode={{viewMode}} @showLabelInViewMode={{showLabelInViewMode}} />
+    <ViewModeControl
+      @name="date-picker"
+      @viewMode={{viewMode}}
+      @showLabelInViewMode={{showLabelInViewMode}}
+    />
 
     {{#freestyle-collection title="date picker" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-annotation}}
