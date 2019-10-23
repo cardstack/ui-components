@@ -1,30 +1,30 @@
 {{#if (eq mode "view")}}
   <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{label}} @value={{value}} />
 {{else}}
-  {{#if iconComponent}}
-    {{component iconComponent
+  {{#if this.iconComponent}}
+    {{component this.iconComponent
       class="cs-component-text-field--icon"
-      type=type
-      changeType=(action (mut type))
-      data-test-cs-component-input=dataTestName
+      type=this.type
+      changeType=(action (mut this.type))
+      data-test-cs-component-input=this.dataTestName
     }}
   {{/if}}
 
-  {{#if inputComponent}}
-    {{component inputComponent
+  {{#if this.inputComponent}}
+    {{component this.inputComponent
       class=(concat "cs-component-text-field--input " @theme)
-      required=required
-      setValidationMessage=(action (mut validationMessage))
-      setInvalid=(action (mut invalid))
-      setValue=(action (mut value))
+      required=this.required
+      setValidationMessage=(action (mut this.validationMessage))
+      setInvalid=(action (mut this.invalid))
+      setValue=(action (mut this.value))
       onChange=onChange
-      number=value
-      id=inputId
-      inputmode=inputmode
-      data-test-cs-component-input=dataTestName
+      number=this.value
+      id=this.inputId
+      inputmode=@inputmode
+      data-test-cs-component-input=this.dataTestName
     }}
-  {{else if dateComponent}}
-    {{component dateComponent
+  {{else if @dateComponent}}
+    {{component @dateComponent
       type=type
       name=name
       class=(concat "cs-component-text-field--input " @theme)
@@ -36,7 +36,7 @@
       oninput=oninput
       id=inputId
       inputmode=inputmode
-      data-test-cs-component-input=dataTestName
+      data-test-cs-component-input=this.dataTestName
     }}
   {{else}}
     {{#if (eq mode "schema")}}
@@ -59,7 +59,7 @@
       min=min
       max=max
       step=step
-      data-test-cs-component-input=dataTestName
+      data-test-cs-component-input=this.dataTestName
     }}
   {{/if}}
 
