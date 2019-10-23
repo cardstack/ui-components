@@ -1,14 +1,14 @@
-{{#if (eq mode "view")}}
-  <TextView @showLabelInViewMode={{showLabelInViewMode}} @label={{label}} @value={{selected}} />
+{{#if (eq @mode "view")}}
+  <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{this.label}} @value={{this.selected}} />
 {{else}}
   <div class="cs-component-street-address__container">
     <Dropdown
-      @options={{predictions}}
+      @options={{this.predictions}}
       @searchAction={{action "requestPredictions"}}
       @searchField="description"
-      @selected={{selected}}
-      @changeAction={{action changeAction}}
-      @label={{label}}
+      @selected={{this.selected}}
+      @changeAction={{action this.changeAction}}
+      @label={{this.label}}
       @dataTestName="street-address"
       @theme={{@theme}}
     />

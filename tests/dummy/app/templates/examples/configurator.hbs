@@ -1,17 +1,17 @@
 <div class="component-configurator">
   <div class="component-display">
-    <ComponentDisplay @componentName="text-field" @value={{textFieldValue}} @label={{textFieldLabel}} @required={{textFieldRequired}} @mode={{textFieldMode}} />
+    <ComponentDisplay @componentName="text-field" @value={{@textFieldValue}} @label={{@textFieldLabel}} @required={{@textFieldRequired}} @mode={{@textFieldMode}} />
   </div>
   <div class="component-options">
-    <div class="component-option"><label for="option-value">Value</label><input id="option-value" oninput={{action (mut textFieldValue) value="target.value"}} value={{textFieldValue}}></div>
-    <div class="component-option"><label for="option-label">Label</label><input id="option-label" oninput={{action (mut textFieldLabel) value="target.value"}} value={{textFieldLabel}}></div>
-    <div class="component-option"><label for="option-required">Required</label><input type="checkbox" id="option-required" onclick={{action (mut textFieldRequired) value="target.checked"}} checked={{textFieldRequired}}></div>
+    <div class="component-option"><label for="option-value">Value</label><input id="option-value" oninput={{action (mut @textFieldValue) value="target.value"}} value={{@textFieldValue}}></div>
+    <div class="component-option"><label for="option-label">Label</label><input id="option-label" oninput={{action (mut @textFieldLabel) value="target.value"}} value={{@textFieldLabel}}></div>
+    <div class="component-option"><label for="option-required">Required</label><input type="checkbox" id="option-required" onclick={{action (mut @textFieldRequired) value="target.checked"}} checked={{@textFieldRequired}}></div>
     <div class="component-option">
       <fieldset>
         <legend>Mode:</legend>
-        <input type="radio" name="mode" id="option-mode-edit" onclick={{action (mut textFieldMode) value="target.value"}} value="edit" checked><label for="option-mode-edit">Edit</label><br>
-        <input type="radio" name="mode" id="option-mode-view" onclick={{action (mut textFieldMode) value="target.value"}} value="view"><label for="option-mode-view">View</label><br>
-        <input type="radio" name="mode" id="option-mode-schema" onclick={{action (mut textFieldMode) value="target.value"}} value="schema"><label for="option-mode-schema">Schema</label>
+        <input type="radio" name="mode" id="option-mode-edit" onclick={{action (mut @textFieldMode) value="target.value"}} value="edit" checked><label for="option-mode-edit">Edit</label><br>
+        <input type="radio" name="mode" id="option-mode-view" onclick={{action (mut @textFieldMode) value="target.value"}} value="view"><label for="option-mode-view">View</label><br>
+        <input type="radio" name="mode" id="option-mode-schema" onclick={{action (mut @textFieldMode) value="target.value"}} value="schema"><label for="option-mode-schema">Schema</label>
       </fieldset>
     </div>
   </div>

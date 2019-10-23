@@ -1,18 +1,18 @@
 <fieldset>
-  {{#if legend}}
-    <legend class="cs-component-choose-one--legend">{{legend}}</legend>
+  {{#if @legend}}
+    <legend class="cs-component-choose-one--legend">{{@legend}}</legend>
   {{/if}}
   <div class="cs-component-choose-one__container">
-    {{#each choices as |choice|}}
+    {{#each @choices as |choice|}}
       {{#with (hash
                 value=(if choice.value choice.value choice)
                 name=(if choice.name choice.name choice)
               ) as |item|}}
         {{#radio-button
           value=item.value
-          groupValue=selectedItem
+          groupValue=this.selectedItem
           classNames="cs-component-choose-one--label"
-          changed=(action performActions)
+          changed=(action this.performActions)
         }}
           <span class="cs-component-choose-one--name" data-test-choice-value={{item.value}}>{{item.name}}</span>
         {{/radio-button}}

@@ -4,8 +4,8 @@
       <h4>Drop to upload</h4>
     </div>
   {{/if}}
-  {{#if files.length}}
-    {{#each files as |file|}}
+  {{#if this.files.length}}
+    {{#each this.files as |file|}}
       <div class="cs-component-file-upload-dialog--file" data-test-cs-component-file>
         <div class="cs-component-file-upload-dialog--file-thumbnail"></div>
         <div class="cs-component-file-upload-dialog--file-details">
@@ -24,7 +24,7 @@
   {{else}}
     <div class="cs-component-file-upload-dialog--copy">
       <div class="cs-component-file-upload-dialog--icon"></div>
-      <p class="cs-component-file-upload-dialog--accepted-formats" data-test-cs-component-file-upload-dialog-accepted-formats>{{acceptedFormats}}</p>
+      <p class="cs-component-file-upload-dialog--accepted-formats" data-test-cs-component-file-upload-dialog-accepted-formats>{{@acceptedFormats}}</p>
       {{#if dropzone.supported}}
         <p>Drag and drop your document here</p>
         Or
@@ -34,7 +34,7 @@
         {{#file-upload
           name="file"
           for="upload-file"
-          accept=accept
+          accept=@accept
           multiple=true
           onfileadd=(action "uploadFile")}}
           Select

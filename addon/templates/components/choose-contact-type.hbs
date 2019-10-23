@@ -1,11 +1,11 @@
-{{choose-one/contact-type
-  setAddNewTypeVisible=(action (mut addNewTypeVisible))
-  choices=choices
-  selectedItem=selectedItem
-}}
+<ChooseOne::ContactType
+  @setAddNewTypeVisible={{action (mut this.addNewTypeVisible)}}
+  @choices={{this.choices}}
+  @selectedItem={{this.selectedItem}}
+/>
 
-{{#if addNewTypeVisible}}
+{{#if this.addNewTypeVisible}}
   <hr>
-  <TextField @label="Phone Number Name" @required={{true}} @value={{newContactType}} />
-  <Cta @handleClick={{action "addContactType"}} @label="Add" @disabled={{newContactTypeIsEmpty}} />
+  <TextField @label="Phone Number Name" @required={{true}} @value={{this.newContactType}} />
+  <Cta @handleClick={{action "addContactType"}} @label="Add" @disabled={{this.newContactTypeIsEmpty}} />
 {{/if}}

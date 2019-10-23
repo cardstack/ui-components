@@ -1,30 +1,30 @@
-{{#if (eq mode "view")}}
-  <TextView @showLabelInViewMode={{showLabelInViewMode}} @label={{label}} @value={{inputValue}} />
+{{#if (eq @mode "view")}}
+  <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{this.inputValue}} />
 {{else}}
   <div class="cs-component-date {{@theme}}" data-test-cs-component-date>
     <PowerDatepicker
       @renderInPlace="true"
-      @selected={{selected}}
-      @onSelect={{action (mut selected) value="date"}}
-      @center={{center}}
-      @onCenterChange={{action (mut center) value="date"}} as |calendar|>
+      @selected={{this.selected}}
+      @onSelect={{action (mut this.selected) value="date"}}
+      @center={{this.center}}
+      @onCenterChange={{action (mut this.center) value="date"}} as |calendar|>
       {{#calendar.trigger tabindex="-1"}}
         {{!-- User can pick a date from the calendar view or type it in. --}}
         <TextField
           @dateComponent="date-field/input"
           @type="text"
-          @label={{label}}
+          @label={{@label}}
           @id="{{calendar.uniqueId}}-date"
           @class="cs-component-date--input"
-          @value={{if selected selectedDate inputValue}}
+          @value={{if this.selected this.selectedDate this.inputValue}}
           @onblur={{action "handleInput"}}
           @onchange={{action "handleInput"}}
           @oninput={{action "handleInput"}}
-          @required={{required}}
-          @disabled={{disabled}}
+          @required={{@required}}
+          @disabled={{@disabled}}
           @autocomplete="off"
-          @validationMessage={{errorMessage}}
-          @invalid={{invalid}}
+          @validationMessage={{this.errorMessage}}
+          @invalid={{this.invalid}}
           @inputmode="numeric"
           @dataTestName="date-picker"
           @theme={{@theme}}
@@ -55,7 +55,7 @@
               <PowerSelect
                 @ariaLabel="Month dropdown"
                 @renderInPlace="true"
-                @options={{months}}
+                @options={{this.months}}
                 @selected={{moment-format calendar.center "MMMM"}}
                 @onchange={{action "changeCenter" "month" calendar}} as |month|>
                 {{month}}
@@ -65,7 +65,7 @@
               <PowerSelect
                 @ariaLabel="Year dropdown"
                 @renderInPlace="true"
-                @options={{years}}
+                @options={{this.years}}
                 @selected={{moment-format calendar.center "YYYY"}}
                 @onchange={{action "changeCenter" "year" calendar}} as |year|>
                 {{year}}

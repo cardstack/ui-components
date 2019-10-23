@@ -5,12 +5,14 @@ export default Component.extend({
   layout,
   dataTestName: 'dropdown',
   fieldType: 'text',
+  // FIXME: set this to this.args.selected
   selected: null,
-  multiple: false,
   isFocused: false,
   label: 'Select an option',
   showLabelInViewMode: false,
+  // FIXME: set this to this.args.searchField
   searchField: 'name',
+  // FIXME: set this to this.args.searchEnabled
   searchEnabled: true,
   allowClear: true,
 
