@@ -1,65 +1,74 @@
-import Component from '@ember/component';
-import layout from '../templates/components/text-field';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { action, computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 let nonce = 0;
 
-export default Component.extend({
-  layout,
-  classNames: ['cs-component-text-field'],
-  attributeBindings: ['dataTestName:data-test-cs-component'],
-  dataTestName: 'text-field',
-  validationMessage: '',
-  required: false,
-  showLabelInViewMode: false,
-  type: 'text',
-  fieldType: 'text',
-  value: '',
-  invalid: false,
-  inputId: computed('elementId', function() {
+export default class TextField extends Component {
+  @tracked dataTestName = 'text-field';
+  @tracked value = '';
+  validationMessage = '';
+  required = false;
+  showLabelInViewMode = false;
+  type = 'text';
+  fieldType = 'text';
+  invalid = false;
+
+  constructor(...args) {
+    super(...args);
+
+    this.value = this.args.value;
+    console.log(Object.keys(this.args).join(','));
+  }
+
+  @computed('elementId')
+  get inputId() {
     return `text-field-input-${this.elementId}`;
-  }),
+  }
 
-  elementId() {
+  get elementId() {
     return nonce++;
-  },
+  }
 
-  actions: {
-    handleInput(ev) {
-      let value = ev.target.value.trim();
-      let errorMessage = ev.target.validationMessage;
+  get onFieldUpdated() {
+    this.value = this.args.value;
+  }
 
-      this.set('value', value);
+  @action
+  handleInput(ev) {
+    let value = ev.target.value.trim();
+    let errorMessage = ev.target.validationMessage;
 
-      if (this.changeAction) {
-        this.changeAction(value);
-      }
+    this.value = value;
 
-      if (!value && !this.required) {
-        return this.setProperties({
-          invalid: false,
-          validationMessage: ''
-        });
-      }
+    if (this.changeAction) {
+      this.changeAction(value);
+    }
 
-      if (!value && this.required) {
-        return this.setProperties({
-          invalid: true,
-          validationMessage: 'Please fill out this field.'
-        });
-      }
-
-      if (errorMessage) {
-        return this.setProperties({
-          invalid: true,
-          validationMessage: errorMessage
-        });
-      }
-
+    if (!value && !this.required) {
       return this.setProperties({
         invalid: false,
-        validationMessage: 'Thank you.'
+        validationMessage: ''
       });
     }
+
+    if (!value && this.required) {
+      return this.setProperties({
+        invalid: true,
+        validationMessage: 'Please fill out this field.'
+      });
+    }
+
+    if (errorMessage) {
+      return this.setProperties({
+        invalid: true,
+        validationMessage: errorMessage
+      });
+    }
+
+    return this.setProperties({
+      invalid: false,
+      validationMessage: 'Thank you.'
+    });
   }
-});
+}

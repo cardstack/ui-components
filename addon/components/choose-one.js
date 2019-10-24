@@ -1,17 +1,12 @@
-import Component from '@ember/component';
-import layout from '../templates/components/choose-one';
+import Component from '@glimmer/component';
 
-export default Component.extend({
-  layout,
-  classNames: ['cs-component-choose-one'],
-  classNameBindings: ['checked:checked'],
-  attributeBindings: ['dataTestName:data-test-cs-component-choose-one'],
-  dataTestName: true,
+export default class ChooseOne extends Component {
+  dataTestName = 'choose-one';
 
-  performActions: function(changed) {
+  performActions(changed) {
     this.set('checked', !!this.selectedItem);
     this.selectionChanged(changed);
-  },
+  }
 
-  selectionChanged: () => {}
-});
+  selectionChanged = () => {};
+}

@@ -1,4 +1,4 @@
-<div class="cs-component-phone-number-fields__container">
+<div class="cs-component-phone-number-fields">
   {{#each this.values as |value index|}}
     <div class="cs-component-phone-number-fields__wrapper">
       <PhoneNumberField @value={{value}} @changeAction={{action "updateValue" index}} @label={{this.label}} @mode={{@mode}} @showLabelInViewMode={{@showLabelInViewMode}} />

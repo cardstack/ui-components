@@ -1,19 +1,21 @@
-import TextField from './text-field';
 import { inject as service } from '@ember/service';
+import TextField from './text-field';
 
-export default TextField.extend({
-  phoneInput: service(),
-  classNames: ['cs-component-phone-number'],
-  dataTestName: 'phone-number',
-  type: 'tel',
-  fieldType: 'text',
-  label: 'Phone Number',
-  inputComponent: '',
+export default class PhoneNumberField extends TextField {
+  @service phoneInput;
 
-  init() {
-    this._super(...arguments);
+  className = 'cs-component-phone-number';
+  dataTestName = 'phone-number';
+  type = 'tel';
+  fieldType = 'text';
+  label = 'Phone Number';
+  inputComponent = '';
+
+  constructor(...args) {
+    super(...args);
+
     this.phoneInput.load().then(() => {
-      this.set('inputComponent', 'phone-number-field/input');
+      this.inputComponent = 'phone-number-field/input';
     });
   }
-});
+}

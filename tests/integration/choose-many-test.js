@@ -9,7 +9,7 @@ module('Integration | Component | choose-many', function(hooks) {
   test('it renders the component with no choices', async function(assert) {
     await render(hbs`<ChooseMany />`);
 
-    assert.dom('[data-test-cs-component-choose-many]').exists();
+    assert.dom('[data-test-cs-component="choose-many"]').exists();
     assert.dom('[data-test-choose-item]').doesNotExist();
   });
 
@@ -17,7 +17,7 @@ module('Integration | Component | choose-many', function(hooks) {
     this.set('choices', ['red', 'yellow', 'green', 'blue']);
     await render(hbs`<ChooseMany @choices={{choices}} />`);
 
-    assert.dom('[data-test-cs-component-choose-many]').exists();
+    assert.dom('[data-test-cs-component="choose-many"]').exists();
     assert.dom('.cs-component-choose-many--label').exists({ count: 4 });
     assert.dom('[data-test-choice-value="red"]').hasText('red');
     assert.dom('[data-test-choice-value="yellow"]').hasText('yellow');
@@ -34,7 +34,7 @@ module('Integration | Component | choose-many', function(hooks) {
     ]);
     await render(hbs`<ChooseMany @choices={{choices}} />`);
 
-    assert.dom('[data-test-cs-component-choose-many]').exists();
+    assert.dom('[data-test-cs-component="choose-many"]').exists();
     assert.dom('.cs-component-choose-many--label').exists({ count: 4 });
     assert.dom('[data-test-choice-value="red"]').hasText('Red');
     assert.dom('[data-test-choice-value="yellow"]').hasText('Yellow');
@@ -46,7 +46,7 @@ module('Integration | Component | choose-many', function(hooks) {
     this.set('choices', ['red', 'yellow', 'green', 'blue']);
     await render(hbs`<ChooseMany @choices={{choices}} @legend="Favorite Colors" />`);
 
-    assert.dom('[data-test-cs-component-choose-many]').exists();
+    assert.dom('[data-test-cs-component="choose-many"]').exists();
     assert.dom('.cs-component-choose-many--label').exists({ count: 4 });
     assert.dom('.cs-component-choose-many--legend').hasText('Favorite Colors');
   });
@@ -56,13 +56,13 @@ module('Integration | Component | choose-many', function(hooks) {
     await render(hbs`<ChooseMany @choices={{choices}} />`);
 
     assert.dom('.cs-component-choose-many--label.checked').doesNotExist();
-    assert.dom('[data-test-cs-component-choose-many].checked').doesNotExist();
+    assert.dom('[data-test-cs-component="choose-many"].checked').doesNotExist();
 
     await click('[data-test-choice-value="red"]');
 
     assert.dom('.cs-component-choose-many--label.checked').exists({ count: 1 });
     assert.dom('.cs-component-choose-many--label.checked').hasText('red');
-    assert.dom('[data-test-cs-component-choose-many].checked').exists();
+    assert.dom('[data-test-cs-component="choose-many"].checked').exists();
 
     await click('[data-test-choice-value="blue"]');
 

@@ -1,7 +1,9 @@
+import classic from 'ember-classic-decorator';
 import PhoneInput from 'ember-phone-input/components/phone-input';
 
-export default PhoneInput.extend({
-  autoPlaceholder: 'aggressive',
+@classic
+export default class Input extends PhoneInput {
+  autoPlaceholder = 'aggressive';
 
   update(internationalPhoneNumber) {
     if (!internationalPhoneNumber) {
@@ -9,7 +11,7 @@ export default PhoneInput.extend({
     }
 
     this.set('number', internationalPhoneNumber);
-  },
+  }
 
   change() {
     const internationalPhoneNumber = this.number;
@@ -19,5 +21,5 @@ export default PhoneInput.extend({
     const validationMessage = isValid ? 'Thank you.' : 'Please enter a valid phone number.';
     this.setInvalid(!isValid);
     this.setValidationMessage(validationMessage);
-  },
-});
+  }
+}

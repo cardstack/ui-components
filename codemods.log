@@ -1,0 +1,30 @@
+2019-10-24T16:53:45.899Z [info] [addon/components/emails.js]: SUCCESS
+2019-10-24T16:53:46.093Z [warn] [addon/components/file-upload-dialog.js]: FAILURE 
+Validation errors: 
+	[files]: Transform not supported - need option '--decorators=true' or the property type CallExpression can not be transformed
+2019-10-24T16:53:46.116Z [warn] [addon/components/multi-component.js]: FAILURE 
+Validation errors: 
+	[values]: Transform not supported - need option '--decorators=true' or the property type CallExpression can not be transformed
+2019-10-24T16:53:46.234Z [info] [addon/components/password-field.js]: SUCCESS
+2019-10-24T16:53:46.564Z [info] [addon/components/phone-number-field.js]: SUCCESS
+2019-10-24T16:53:46.681Z [info] [addon/components/phone-number-fields.js]: SUCCESS
+2019-10-24T16:53:46.799Z [info] [addon/components/street-address.js]: SUCCESS
+2019-10-24T16:53:46.853Z [info] [addon/components/street-addresses.js]: SUCCESS
+2019-10-24T16:53:46.894Z [info] [addon/components/checkbox.js]: SUCCESS
+2019-10-24T16:53:46.906Z [info] [addon/components/cta.js]: SUCCESS
+2019-10-24T16:53:47.138Z [info] [addon/components/date-field/input.js]: SUCCESS
+2019-10-24T16:53:47.108Z [info] [addon/components/choose-one.js]: SUCCESS
+2019-10-24T16:53:47.174Z [warn] [addon/components/choose-contact-type.js]: FAILURE 
+Validation errors: 
+	[choices]: Transform not supported - need option '--decorators=true' or the property type CallExpression can not be transformed
+2019-10-24T16:53:47.215Z [info] [addon/components/choose-many.js]: SUCCESS
+2019-10-24T16:53:47.348Z [info] [addon/components/text-area.js]: SUCCESS
+2019-10-24T16:53:47.255Z [info] [addon/components/phone-number-field/input.js]: SUCCESS
+2019-10-24T16:53:47.332Z [info] [addon/components/password-field/visibility-toggle.js]: SUCCESS
+2019-10-24T16:53:47.371Z [info] [addon/components/text-field/input.js]: SUCCESS
+2019-10-24T16:53:47.043Z [info] [addon/components/email.js]: SUCCESS
+2019-10-24T16:53:47.148Z [info] [addon/components/dropdown.js]: SUCCESS
+2019-10-24T16:53:47.683Z [info] [addon/components/date-picker.js]: SUCCESS
+2019-10-24T16:53:47.673Z [info] [addon/components/text-view.js]: SUCCESS
+2019-10-24T16:53:47.875Z [info] [addon/components/text-field.js]: SUCCESS
+2019-10-24T16:53:47.908Z [info] [addon/components/choose-one/contact-type.js]: SUCCESS

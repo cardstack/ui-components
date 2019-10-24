@@ -1,4 +1,4 @@
-<div class="cs-component-emails__container">
+<div class="cs-component-emails">
   {{#each this.values as |value index|}}
     <div class="cs-component-emails__wrapper">
       <Email @value={{value}} @changeAction={{action "updateValue" index}} @label={{this.label}} />

@@ -1,14 +1,12 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  classNameBindings: ['textVisible:hide'],
-  attributeBindings: ['dataTestName:data-test-cs-component-password-field-visibility-toggle'],
-  dataTestName: true,
+export default class VisibilityToggle extends Component {
+  @tracked type;
 
-  textVisible: computed('type', function() {
+  get textVisible() {
     return this.type !== 'password';
-  }),
+  }
 
   click() {
     if (this.textVisible) {
@@ -17,4 +15,4 @@ export default Component.extend({
       this.changeType('text');
     }
   }
-});
+}

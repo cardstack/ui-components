@@ -1,16 +1,17 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 import { A } from '@ember/array';
 
-export default Component.extend({
-  values: A([null]),
+export default class MultiComponent extends Component {
+  values = A([null]);
 
-  actions: {
-    addComponent() {
-      this.values.pushObject(null);
-    },
-
-    updateValue(index, value) {
-      this.values.replace(index, 1, [value]);
-    },
+  @action
+  addComponent() {
+    this.values.pushObject(null);
   }
-});
+
+  @action
+  updateValue(index, value) {
+    this.values.replace(index, 1, [value]);
+  }
+}
