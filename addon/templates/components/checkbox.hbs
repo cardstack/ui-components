@@ -3,14 +3,14 @@
   value={{@value}}
   checked={{@checked}}
   class="cs-component-checkbox--input {{if @required "required"}}"
-  id={{concat elementId "-checkbox"}}
+  id={{concat "checkbox-input-" this.elementId}}
   required={{@required}}
   onchange={{action "handleInput"}}
   disabled={{@disabled}}
 >
 
 <label
-  for={{concat elementId "-checkbox"}}
+  for={{concat "checkbox-input-" this.elementId}}
   class="cs-component-checkbox--label {{if @checked "checked"}}"
 >
   <span>{{@label}}</span>

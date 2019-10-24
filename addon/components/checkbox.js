@@ -1,11 +1,17 @@
 import Component from '@ember/component';
 import layout from '../templates/components/checkbox';
 
+let nonce = 0;
+
 export default Component.extend({
   layout,
   classNames: ['cs-component-checkbox'],
   requiredMessage: 'You must check this box!',
   value: 'on',
+
+  elementId() {
+    return nonce++;
+  },
 
   actions: {
     handleInput(ev) {

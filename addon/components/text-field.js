@@ -2,6 +2,8 @@ import Component from '@ember/component';
 import layout from '../templates/components/text-field';
 import { computed } from '@ember/object';
 
+let nonce = 0;
+
 export default Component.extend({
   layout,
   classNames: ['cs-component-text-field'],
@@ -15,8 +17,12 @@ export default Component.extend({
   value: '',
   invalid: false,
   inputId: computed('elementId', function() {
-    return `${this.elementId}-input`;
+    return `text-field-input-${this.elementId}`;
   }),
+
+  elementId() {
+    return nonce++;
+  },
 
   actions: {
     handleInput(ev) {

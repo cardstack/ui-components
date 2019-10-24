@@ -51,7 +51,7 @@
           </button>
 
           <div class="cs-component-calendar--nav-title ember-power-calendar-nav-title">
-            <div id="{{elementId}}-months-nav" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-months>
+            <div id="months-nav-{{this.elementId}}" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-months>
               <PowerSelect
                 @ariaLabel="Month dropdown"
                 @renderInPlace="true"
@@ -61,7 +61,7 @@
                 {{month}}
               </PowerSelect>
             </div>
-            <div id="{{elementId}}-years-nav" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-years>
+            <div id="years-nav-{{this.elementId}}" class="cs-component-calendar--nav-dropdown" data-test-cs-component-calendar-nav-years>
               <PowerSelect
                 @ariaLabel="Year dropdown"
                 @renderInPlace="true"

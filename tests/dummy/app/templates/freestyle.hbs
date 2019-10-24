@@ -4,8 +4,8 @@
 
     <ViewModeControl
       @name="dropdown"
-      @viewMode={{viewMode}}
-      @showLabelInViewMode={{showLabelInViewMode}}
+      @viewMode={{this.viewMode}}
+      @showLabelInViewMode={{this.showLabelInViewMode}}
     />
 
     {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
@@ -24,16 +24,16 @@
           ```
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown" title="Dropdown"}}
-          <Dropdown @options={{countries}} @label="Select a country" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @options={{this.countries}} @label="Select a country" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-usage "dropdown-disabled" title="Disabled"}}
-          <Dropdown @options={{countries}} @disabled={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @options={{this.countries}} @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-usage "dropdown-search-disabled" title="With No Search Box"}}
-          <Dropdown @options={{countries}} @searchEnabled={{false}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @options={{this.countries}} @searchEnabled={{false}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-usage "dropdown-clear-button" title="With No Clear Button"}}
-          <Dropdown @options={{countries}} @allowClear={{false}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @options={{this.countries}} @allowClear={{false}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="custom-search-field"}}
@@ -51,7 +51,7 @@
           ```
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-custom-search-field" title="Dropdown with custom search field"}}
-          <Dropdown @options={{countries}} @label="Select a country" @searchField="formalName" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @options={{this.countries}} @label="Select a country" @searchField="formalName" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="with-default-selected"}}
@@ -64,7 +64,7 @@
           ```
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-with-default-selected" title="Dropdown with default selected"}}
-          <Dropdown @options={{countries}} @label="Select a country" @selected={{selected}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @options={{this.countries}} @label="Select a country" @selected={{this.selected}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="with-custom-search-action"}}
@@ -89,12 +89,12 @@
           `@searchAction` must be an `async` function that returns an array of items.
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-with-custom-search-action" title="Dropdown with custom search action"}}
-          <Dropdown @searchAction={{action searchByLengthOfCountryName}} @label="Enter number of letters" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @searchAction={{action this.searchByLengthOfCountryName}} @label="Enter number of letters" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multi-select"}}
         {{#freestyle-usage "dropdown-multiple" title="Multiple Select Dropdown"}}
-          <Dropdown @options={{countries}} @label="Select a country" @multiple={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @options={{this.countries}} @label="Select a country" @multiple={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="with-customized-options"}}
@@ -135,22 +135,22 @@
 
           // custom-option.hbs
 
-          <span><img src={{option.imageUrl}} alt="card"></span>
-          <span class="caps">{{option.cardType}}</span>
-          <span class="lightweight">{{option.transactionId}}</span>
-          <span class="lightweight caps">{{option.network}}</span>
-          <span class="lightweight">{{option.fromValue}}</span>
-          <span class="lightweight">{{option.toValue}}</span>
+          <span><img src={{@option.imageUrl}} alt="card"></span>
+          <span class="caps">{{@option.cardType}}</span>
+          <span class="lightweight">{{@option.transactionId}}</span>
+          <span class="lightweight caps">{{@option.network}}</span>
+          <span class="lightweight">{{@option.fromValue}}</span>
+          <span class="lightweight">{{@option.toValue}}</span>
           ```
 
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown-with-customized-options" title="Dropdown with customized options"}}
-          <Dropdown @options={{customDropdownOptions}} @label="Payment method" @optionComponent="custom-option" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Dropdown @options={{this.customDropdownOptions}} @label="Payment method" @optionComponent="custom-option" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "dropdown-themed" title="Themed"}}
-          <Dropdown @options={{countries}} @label="Select a country" @theme="cs-theme" />
+          <Dropdown @options={{this.countries}} @label="Select a country" @theme="cs-theme" />
         {{/freestyle-usage}}
         {{#freestyle-note "dropdown-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
@@ -242,7 +242,7 @@
       {{/collection.variant}}
       {{#collection.variant key="loading"}}
         {{#freestyle-usage "loading-cta" title="Loading CTA" inline=true}}
-          <Cta @isLoading={{isLoading}} @handleClick={{action showLoadingState}}>Click to load</Cta>
+          <Cta @isLoading={{this.isLoading}} @handleClick={{action this.showLoadingState}}>Click to load</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
@@ -323,29 +323,29 @@
 
     <ViewModeControl
       @name="text-field"
-      @viewMode={{viewMode}}
-      @showLabelInViewMode={{showLabelInViewMode}}
+      @viewMode={{this.viewMode}}
+      @showLabelInViewMode={{this.showLabelInViewMode}}
     />
 
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-field-default" title="Default"}}
-          <TextField @label="What's your name?" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <TextField @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "text-field-required" title="Required"}}
-          <TextField @label="What's your name?" @required={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <TextField @label="What's your name?" @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="disabled"}}
         {{#freestyle-usage "text-field-disabled" title="Disabled"}}
-          <TextField @label="What's your name?" @disabled={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <TextField @label="What's your name?" @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "text-field-themed" title="Themed"}}
-          <TextField @label="What's your name?" @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <TextField @label="What's your name?" @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "text-field-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
@@ -398,21 +398,21 @@
 
     <ViewModeControl
       @name="phone-number"
-      @viewMode={{viewMode}}
-      @showLabelInViewMode={{showLabelInViewMode}}
+      @viewMode={{this.viewMode}}
+      @showLabelInViewMode={{this.showLabelInViewMode}}
     />
 
     {{#freestyle-usage "phone-number-field-default" title="Phone Number Field"}}
-      <PhoneNumberField @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+      <PhoneNumberField @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-required" title="Phone Number Field (Required)"}}
-      <PhoneNumberField @required={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+      <PhoneNumberField @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-multi" title="Phone Number Fields"}}
-      <PhoneNumberFields @values={{phoneNumberValues}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+      <PhoneNumberFields @values={{this.phoneNumberValues}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-themed" title="Themed"}}
-      <PhoneNumberField @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+      <PhoneNumberField @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-note "phone-number-themed--notes"}}
       <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
@@ -424,7 +424,7 @@
     {{/freestyle-annotation}}
 
     Phone Numbers JSON:
-    <pre>{{stringifiedPhoneNumbers}}</pre>
+    <pre>{{this.stringifiedPhoneNumbers}}</pre>
   {{/freestyle-section}}
 
 
@@ -433,24 +433,24 @@
 
     <ViewModeControl
       @name="text-area"
-      @viewMode={{viewMode}}
-      @showLabelInViewMode={{showLabelInViewMode}}
+      @viewMode={{this.viewMode}}
+      @showLabelInViewMode={{this.showLabelInViewMode}}
     />
 
     {{#freestyle-collection title="TextArea" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-area-default" title="Text Area"}}
-          <TextArea @label="What's on your mind?" @rows={{5}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <TextArea @label="What's on your mind?" @rows={{5}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="with-max-length"}}
         {{#freestyle-usage "text-area-with-max-length" title="Text Area with Max Length"}}
-          <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "text-area-themed" title="Themed"}}
-          <TextArea @label="What's on your mind?" @rows={{5}} @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <TextArea @label="What's on your mind?" @rows={{5}} @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "text-area-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
@@ -524,7 +524,7 @@
           ```
         {{/freestyle-note}}
         {{#freestyle-usage "password-field-with-custom-validator" title="Password Field with custom validator function"}}
-          <PasswordField @validate={{validator}} />
+          <PasswordField @validate={{this.validator}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
@@ -547,14 +547,14 @@
   {{!-- CHOOSE ITEMS --}}
   {{#freestyle-section name="Choose Items"}}
     {{#freestyle-usage "text-choose-one" title="Choose One (Text)"}}
-      <ChooseOne @legend="What is your Favorite Color?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
+      <ChooseOne @legend="What is your Favorite Color?" @choices={{this.selectItemOptions}} @selectionChanged={{action this.doSomething}} />
     {{/freestyle-usage}}
     {{#freestyle-note "text-choose-one--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
 
     {{#freestyle-usage "text-choose-many" title="Choose Many (Text)"}}
-      <ChooseMany @legend="What combination makes Purple?" @choices={{selectItemOptions}} @selectionChanged={{action doSomething}} />
+      <ChooseMany @legend="What combination makes Purple?" @choices={{this.selectItemOptions}} @selectionChanged={{action this.doSomething}} />
     {{/freestyle-usage}}
     {{#freestyle-note "text-choose-many--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
@@ -564,7 +564,7 @@
 
   {{#freestyle-section name="Choose Contact Type"}}
     {{#freestyle-usage "choose-contact-type" title="Choose Contact Type"}}
-      <ChooseContactType @selectionChanged={{action doSomething}} />
+      <ChooseContactType @selectionChanged={{action this.doSomething}} />
     {{/freestyle-usage}}
   {{/freestyle-section}}
 
@@ -573,33 +573,33 @@
 
     <ViewModeControl
       @name="email"
-      @viewMode={{viewMode}}
-      @showLabelInViewMode={{showLabelInViewMode}}
+      @viewMode={{this.viewMode}}
+      @showLabelInViewMode={{this.showLabelInViewMode}}
     />
 
     {{#freestyle-collection title="email" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "email-input-default" title="Default"}}
-          <Email @label="Email Address" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Email @label="Email Address" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "email-input-required" title="Required"}}
-          <Email @label="Email Address" @required={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Email @label="Email Address" @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multiple"}}
         {{#freestyle-usage "email-multiple" title="Multiple"}}
-          <Emails @label="Email Address" @values={{emailValues}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Emails @label="Email Address" @values={{this.emailValues}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-annotation}}
           Emails JSON:
-          <pre>{{stringifiedEmails}}</pre>
+          <pre>{{this.stringifiedEmails}}</pre>
         {{/freestyle-annotation}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "email-input-themed" title="Themed"}}
-          <Email @label="Email Address" @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <Email @label="Email Address" @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "email-input-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
@@ -637,8 +637,8 @@
 
     <ViewModeControl
       @name="street-address"
-      @viewMode={{viewMode}}
-      @showLabelInViewMode={{showLabelInViewMode}}
+      @viewMode={{this.viewMode}}
+      @showLabelInViewMode={{this.showLabelInViewMode}}
     />
 
     {{#freestyle-collection title="street-address" defaultKey="default" inline=true as |collection|}}
@@ -648,21 +648,21 @@
       {{/freestyle-note}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "street-address" title="Street Address"}}
-          <StreetAddress @label="Enter your address" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <StreetAddress @label="Enter your address" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multiple"}}
         {{#freestyle-usage "street-address-multiple" title="Street Address Multiple"}}
-          <StreetAddresses @selections={{streetAddresses}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <StreetAddresses @selections={{this.streetAddresses}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-annotation}}
           Selected addresses JSON:
-          <pre>{{stringifiedAddresses}}</pre>
+          <pre>{{this.stringifiedAddresses}}</pre>
         {{/freestyle-annotation}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "street-address-themed" title="Themed"}}
-          <StreetAddress @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <StreetAddress @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "street-address-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
@@ -681,8 +681,8 @@
 
     <ViewModeControl
       @name="date-picker"
-      @viewMode={{viewMode}}
-      @showLabelInViewMode={{showLabelInViewMode}}
+      @viewMode={{this.viewMode}}
+      @showLabelInViewMode={{this.showLabelInViewMode}}
     />
 
     {{#freestyle-collection title="date picker" defaultKey="default" inline=true as |collection|}}
@@ -697,17 +697,17 @@
       {{/freestyle-annotation}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "date-picker-optional" title="Default"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="disabled"}}
         {{#freestyle-usage "date-picker-disabled" title="Disabled"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @disabled={{true}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "date-picker-required" title="Required"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @required="true" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @required="true" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="custom-years"}}
@@ -715,12 +715,12 @@
           Using `startYear` and `yearRange` attributes to change the dropdown year range.
         {{/freestyle-note}}
         {{#freestyle-usage "date-picker-custom-years" title="Custom Years"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="themed"}}
         {{#freestyle-usage "date-picker-themed" title="Themed"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-note "date-picker-themed--notes"}}
           <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
