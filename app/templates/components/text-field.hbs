@@ -13,13 +13,11 @@
       }}
     {{/if}}
 
-    {{#if this.inputComponent}}
-      {{component this.inputComponent
+    {{#if (eq @inputComponent 'phone-number-field/input')}}
+      {{phone-input
+        update=(fn @update (action (mut this.value)) (action (mut this.validationMessage)))
         class=(concat "cs-component-text-field--input " @theme)
         required=this.required
-        setValidationMessage=(action (mut this.validationMessage))
-        setInvalid=(action (mut this.invalid))
-        setValue=(action (mut this.value))
         number=this.value
         id=this.inputId
         inputmode=@inputmode

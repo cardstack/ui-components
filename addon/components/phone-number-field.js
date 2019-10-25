@@ -1,7 +1,9 @@
+import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import TextField from './text-field';
+import { action, set } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default class PhoneNumberField extends TextField {
+export default class PhoneNumberField extends Component {
   @service phoneInput;
 
   className = 'cs-component-phone-number';
@@ -9,7 +11,9 @@ export default class PhoneNumberField extends TextField {
   type = 'tel';
   fieldType = 'text';
   label = 'Phone Number';
-  inputComponent = '';
+
+  @tracked inputComponent = '';
+  autoPlaceholder = 'aggressive';
 
   constructor(...args) {
     super(...args);
@@ -17,5 +21,19 @@ export default class PhoneNumberField extends TextField {
     this.phoneInput.load().then(() => {
       this.inputComponent = 'phone-number-field/input';
     });
+  }
+
+  @action
+  update(updateValue, updateValidationMessage, internationalPhoneNumber, meta) {
+    if (!internationalPhoneNumber) {
+      return;
+    }
+
+    this.value = internationalPhoneNumber;
+    updateValue(internationalPhoneNumber);
+    let isValid = meta.isValidNumber;
+    this.invalid = !isValid;
+    let validationMessage = isValid ? 'Thank you.' : 'Please enter a valid phone number.';
+    updateValidationMessage(validationMessage);
   }
 }

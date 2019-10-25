@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { action, computed } from '@ember/object';
+import { action, computed, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 let nonce = 0;
@@ -17,8 +17,10 @@ export default class TextField extends Component {
   constructor(...args) {
     super(...args);
 
-    this.value = this.args.value;
-    console.log(Object.keys(this.args).join(','));
+    // FIXME: we probably don't want to set a property for every attribute, just a select few
+    for (let arg of Object.keys(this.args)) {
+      set(this, arg, this.args[arg]);
+    }
   }
 
   @computed('elementId')
