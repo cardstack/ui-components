@@ -27,4 +27,11 @@ export default class ChooseContactType extends Component {
     this.set('newContactType', '');
     this.set('addNewTypeVisible', false);
   }
+
+  @action
+  performActions(selectedValue) {
+    if (selectedValue === '_add') {
+      this.setAddNewTypeVisible(true);
+    }
+  }
 }

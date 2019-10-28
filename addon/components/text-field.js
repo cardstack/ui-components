@@ -3,23 +3,26 @@ import { action, computed, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 let nonce = 0;
+const ATTRIBUTES_TO_COPY = ['type', 'label', 'value', 'invalid', 'validationMessage', 'dataTestName'];
 
 export default class TextField extends Component {
   @tracked dataTestName = 'text-field';
   @tracked value = '';
-  validationMessage = '';
+  @tracked invalid = false;
+  @tracked validationMessage = '';
   required = false;
   showLabelInViewMode = false;
   type = 'text';
   fieldType = 'text';
-  invalid = false;
 
   constructor(...args) {
     super(...args);
 
     // FIXME: we probably don't want to set a property for every attribute, just a select few
     for (let arg of Object.keys(this.args)) {
-      set(this, arg, this.args[arg]);
+      if (ATTRIBUTES_TO_COPY.includes(arg)) {
+        set(this, arg, this.args[arg]);
+      }
     }
   }
 
@@ -37,9 +40,15 @@ export default class TextField extends Component {
   }
 
   @action
-  handleInput(ev) {
-    let value = ev.target.value.trim();
-    let errorMessage = ev.target.validationMessage;
+  handleInput(value) {
+    if (this.args.handleInput) {
+      let [invalid, validationMessage] = this.args.handleInput(value);
+      this.invalid = invalid;
+      this.validationMessage = validationMessage;
+      return
+    }
+
+    let validationMessage = this.validationMessage;
 
     this.value = value;
 
@@ -48,29 +57,23 @@ export default class TextField extends Component {
     }
 
     if (!value && !this.required) {
-      return this.setProperties({
-        invalid: false,
-        validationMessage: ''
-      });
+      this.invalid = false;
+      this.validationMessage = '';
     }
 
     if (!value && this.required) {
-      return this.setProperties({
-        invalid: true,
-        validationMessage: 'Please fill out this field.'
-      });
+      this.invalid = false;
+      this.validationMessage = 'Please fill out this field.';
     }
 
-    if (errorMessage) {
-      return this.setProperties({
-        invalid: true,
-        validationMessage: errorMessage
-      });
+    if (validationMessage) {
+      this.invalid = true;
+      this.validationMessage = validationMessage;
     }
 
-    return this.setProperties({
-      invalid: false,
-      validationMessage: 'Thank you.'
-    });
+    this.invalid = false;
+    this.validationMessage = 'Thank you.';
+
+    return;
   }
 }

@@ -35,10 +35,15 @@ export default class DatePicker extends Component {
   @tracked startYear = DEFAULT_YEAR;
   @tracked selected;
   @tracked inputValue = '';
+  @tracked errorMessage = '';
+  className= "cs-component-email";
+  dataTestName = 'email';
+  type = 'email';
+  fieldType = 'text';
+  label = 'Email address';
 
   months = MONTHS;
   required = false;
-  errorMessage = '';
 
   @match('inputValue', DATE_REGEX)
   isValidDate;
@@ -59,41 +64,40 @@ export default class DatePicker extends Component {
   }
 
   updateInputValue(date) {
-    this.set('inputValue', date);
-    this.set('errorMessage', '');
+    this.inputValue = date;
+    this.errorMessage = '';
   }
 
   @action
-  handleInput(ev) {
-    let value = ev.target.value;
+  handleInput(value) {
     let errorMessage = `Please enter a valid date in the format MM/DD/YYYY
                         or select one from the calendar.`;
 
-    this.set('inputValue', value);
+    this.inputValue = value;
 
     if (!value && !this.required) {
-      this.set('selected', '');
-      this.set('center', moment());
-      return this.set('errorMessage', '');
+      this.selected = '';
+      this.center = moment();
+      return this.errorMessage = '';
     }
 
     if (!value && this.required) {
-      this.set('selected', '');
-      this.set('center', moment());
-      return this.set('errorMessage', 'This field is required.');
+      this.selected = '';
+      this.center = moment();
+      return this.errorMessage = 'This field is required.';
     }
 
     if (this.invalid) {
-      this.set('selected', '');
-      this.set('center', moment());
-      return this.set('errorMessage', errorMessage);
+      this.selected = '';
+      this.center = moment();
+      return this.errorMessage = errorMessage;
     }
 
     if (this.isValidDate) {
       value = moment(value, 'MM/DD/YYYY');
-      this.set('center', value);
-      this.set('selected', value);
-      return this.set('errorMessage', '');
+      this.center = value;
+      this.selected = value;
+      return this.errorMessage = '';
     }
   }
 

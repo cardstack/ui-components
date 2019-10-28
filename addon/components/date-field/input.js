@@ -1,16 +1,19 @@
-import classic from 'ember-classic-decorator';
-import { attributeBindings } from '@ember-decorators/component';
-import { computed } from '@ember/object';
-import OneWayDateMask from 'ember-inputmask/components/one-way-date-mask';
+import Component from '@glimmer/component';
+// import { attributeBindings } from '@ember-decorators/component';
+import { action } from '@ember/object';
 
-@classic
-@attributeBindings('type', '_value:value', 'required')
-export default class Input extends OneWayDateMask {
-  @computed
+// @attributeBindings('type', '_value:value', 'required')
+export default class Input extends Component {
   get options() {
     return {
       inputFormat: 'mm/dd/yyyy',
+      outputFormat: 'yyyy-mm-dd',
       showMaskOnHover: false
     }
+  }
+
+  @action
+  update(value) {
+    debugger;
   }
 }

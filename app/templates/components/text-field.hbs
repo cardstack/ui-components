@@ -13,7 +13,7 @@
       }}
     {{/if}}
 
-    {{#if (eq @inputComponent 'phone-number-field/input')}}
+    {{#if (eq @inputComponent "phone-number-field/input")}}
       {{phone-input
         update=(fn @update (action (mut this.value)) (action (mut this.validationMessage)))
         class=(concat "cs-component-text-field--input " @theme)
@@ -30,8 +30,8 @@
         class=(concat "cs-component-text-field--input " @theme)
         required=this.required
         disabled=this.disabled
-        _value=this.value
-        onblur=@onblur
+        value=this.value
+        onblur=(fn @onblur this.value)
         onchange=@onchange
         oninput=@oninput
         id=this.inputId
