@@ -3,14 +3,14 @@ import { action, computed, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 let nonce = 0;
-const ATTRIBUTES_TO_COPY = ['type', 'label', 'value', 'invalid', 'validationMessage', 'dataTestName'];
+const ATTRIBUTES_TO_COPY = ['type', 'label', 'value', 'required', 'disabled', 'invalid', 'validationMessage', 'dataTestName'];
 
 export default class TextField extends Component {
   @tracked dataTestName = 'text-field';
   @tracked value = '';
   @tracked invalid = false;
   @tracked validationMessage = '';
-  required = false;
+  @tracked required = false;
   showLabelInViewMode = false;
   type = 'text';
   fieldType = 'text';
@@ -28,6 +28,10 @@ export default class TextField extends Component {
 
   @computed('elementId')
   get inputId() {
+    if (this.args.inputId) {
+      return this.args.inputId;
+    }
+
     return `text-field-input-${this.elementId}`;
   }
 
@@ -35,8 +39,10 @@ export default class TextField extends Component {
     return nonce++;
   }
 
-  get onFieldUpdated() {
-    this.value = this.args.value;
+  @action
+  updateValue(element, [value]) {
+    console.log('text-field updated value to', value);
+    this.value = value;
   }
 
   @action

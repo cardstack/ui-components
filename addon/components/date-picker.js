@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { not, match } from '@ember/object/computed';
 import moment from 'moment';
 
@@ -34,22 +34,34 @@ export default class DatePicker extends Component {
   @tracked yearRange = DEFAULT_YEAR_RANGE;
   @tracked startYear = DEFAULT_YEAR;
   @tracked selected;
-  @tracked inputValue = '';
+  @tracked value = '';
   @tracked errorMessage = '';
   className= "cs-component-email";
-  dataTestName = 'email';
-  type = 'email';
+  dataTestName = 'date-picker';
+  type = 'date';
   fieldType = 'text';
-  label = 'Email address';
+  label = 'Enter a Date';
 
   months = MONTHS;
   required = false;
 
-  @match('inputValue', DATE_REGEX)
+  @match('value', DATE_REGEX)
   isValidDate;
 
   @not('isValidDate')
   invalid;
+
+
+  constructor(...args) {
+    super(...args);
+
+    // FIXME: we probably don't want to set a property for every attribute, just a select few
+    for (let arg of Object.keys(this.args)) {
+      // if (ATTRIBUTES_TO_COPY.includes(arg)) {
+        set(this, arg, this.args[arg]);
+      // }
+    }
+  }
 
   get years() {
     return setYears(this.yearRange*1, this.startYear*1);
@@ -59,21 +71,22 @@ export default class DatePicker extends Component {
     if (!this.selected) { return ''; }
 
     let date = moment(this.selected).format('MM/DD/YYYY');
-    this.updateInputValue(date);
+    this.updatevalue(date);
     return date;
   }
 
-  updateInputValue(date) {
-    this.inputValue = date;
+  updatevalue(date) {
+    this.value = date;
     this.errorMessage = '';
   }
 
   @action
   handleInput(value) {
+    console.log('date-picker handleInput value', value);
     let errorMessage = `Please enter a valid date in the format MM/DD/YYYY
                         or select one from the calendar.`;
 
-    this.inputValue = value;
+    this.value = value;
 
     if (!value && !this.required) {
       this.selected = '';

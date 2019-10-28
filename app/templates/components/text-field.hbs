@@ -1,6 +1,4 @@
-{{this.onFieldUpdated}}
-
-<div class="cs-component-text-field {{this.className}}" data-test-cs-component={{this.dataTestName}}>
+<div class="cs-component-text-field {{this.className}}" data-test-cs-component={{this.dataTestName}} {{did-update this.updateValue @value}}>
   {{#if (eq @mode "view")}}
     <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{this.value}} />
   {{else}}
@@ -31,12 +29,12 @@
         required=this.required
         disabled=this.disabled
         value=this.value
-        onblur=(fn @onblur this.value)
-        onchange=@onchange
-        oninput=@oninput
+        onblur=(fn @onblur @value)
+        onchange=(fn @onchange @value)
+        oninput=(fn @oninput @value)
         id=this.inputId
         inputmode=@inputmode
-        data-test-cs-component-input=this.dataTestName
+        dataTestName=this.dataTestName
       }}
     {{else}}
       {{#if (eq @mode "schema")}}

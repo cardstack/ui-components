@@ -16,22 +16,22 @@ export default class Checkbox extends Component {
     let value = ev.target.value;
     let checked = ev.target.checked;
 
-    this.set('value', value);
-    this.set('checked', checked);
+    this.value = value;
+    this.checked = checked;
 
     if (checked && !this.required) {
-      this.set('invalid', false);
-      return this.set('validationMessage', '');
+      this.invalid = false;
+      return this.validationMessage = '';
     }
 
     if (!checked && this.required) {
-      this.set('invalid', true);
-      return this.set('validationMessage', this.requiredMessage);
+      this.invalid = true;
+      return this.validationMessage = this.requiredMessage;
     }
 
     if (checked && this.required) {
-      this.set('invalid', false);
-      return this.set('validationMessage', 'Thank you.');
+      this.invalid = false;
+      return this.validationMessage = 'Thank you.';
     }
   }
 }

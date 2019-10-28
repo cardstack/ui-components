@@ -1,0 +1,83 @@
+{{#if (eq mode "view")}}
+  <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{label}} @value={{value}} />
+{{else}}
+  {{#if this.iconComponent}}
+    {{component this.iconComponent
+      class="cs-component-text-field--icon"
+      type=this.type
+      changeType=(action (mut this.type))
+      data-test-cs-component-input=this.dataTestName
+    }}
+  {{/if}}
+
+  {{#if this.inputComponent}}
+    {{component this.inputComponent
+      class=(concat "cs-component-text-field--input " @theme)
+      required=this.required
+      setValidationMessage=(action (mut this.validationMessage))
+      setInvalid=(action (mut this.invalid))
+      setValue=(action (mut this.value))
+      onChange=onChange
+      number=this.value
+      id=this.inputId
+      inputmode=@inputmode
+      data-test-cs-component-input=this.dataTestName
+    }}
+  {{else if @dateComponent}}
+    {{component @dateComponent
+      type=type
+      name=name
+      class=(concat "cs-component-text-field--input " @theme)
+      required=required
+      disabled=disabled
+      _value=value
+      onblur=onblur
+      onchange=onchange
+      oninput=oninput
+      id=this.inputId
+      inputmode=inputmode
+      data-test-cs-component-input=this.dataTestName
+    }}
+  {{else}}
+    {{#if (eq mode "schema")}}
+      <div data-test-cs-component-schema-field-type class="cs-component-text-field--schema--field-type">{{fieldType}}</div>
+    {{/if}}
+    {{text-field/input
+      type=type
+      name=name
+      value=value
+      class=(concat "cs-component-text-field--input " @theme " " @mode)
+      id=inputId
+      required=required
+      disabled=(or (eq mode "schema") disabled)
+      autocomplete="off"
+      focusOut=(action "handleInput")
+      autofocus=autofocus
+      change=(action "handleInput")
+      inputmode=inputmode
+      pattern=pattern
+      min=min
+      max=max
+      step=step
+      data-test-cs-component-input=this.dataTestName
+    }}
+  {{/if}}
+
+  <label
+    for={{inputId}}
+    class="cs-component-text-field--label {{if value "active"}} {{@theme}}"
+    data-test-cs-component-label={{dataTestName}}
+  >
+    <span class="label">{{label}}</span>
+    {{#unless required}}
+      <span class="optional">Optional</span>
+    {{/unless}}
+  </label>
+
+  <div
+    class="cs-component-text-field--validation {{if (not validationMessage) "hidden"}} {{if invalid "invalid"}} {{@theme}}"
+    data-test-cs-component-validation={{dataTestName}}
+  >
+    {{validationMessage}}
+  </div>
+{{/if}}

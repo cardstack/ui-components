@@ -10,16 +10,16 @@ export default class StreetAddress extends Component {
   label = 'Enter a street address';
 
   changeAction(item) {
-    this.set('selected', item);
+    this.selected = item;
   }
 
   @action
   async requestPredictions(placeServiceInput) {
     if (isBlank(placeServiceInput)) {
-      this.set('predictions', []);
+      this.predictions = [];
     }
     let properties = { input: placeServiceInput };
     let predictions = await this.get('googlePlaceAutocompleteService').getPlacePredictions(properties);
-    this.set('predictions', predictions);
+    this.predictions = predictions;
   }
 }

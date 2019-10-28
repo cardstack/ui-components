@@ -8,7 +8,7 @@ export default class ChooseOne extends Component {
       this.args.performActions(changed);
     }
 
-    this.set('checked', !!this.selectedItem);
+    this.checked = !!this.selectedItem;
     this.selectionChanged(changed);
   }
 

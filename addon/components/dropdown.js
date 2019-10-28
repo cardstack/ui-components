@@ -20,6 +20,6 @@ export default class Dropdown extends Component {
   allowClear = true;
 
   changeAction(item) {
-    this.set('selected', item);
+    this.selected = item;
   }
 }

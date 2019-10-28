@@ -5,5 +5,5 @@ export default class Email extends Component {
   dataTestName = 'email';
   type = 'email';
   fieldType = 'text';
-  label = 'Email address';
+  label = 'Email Address';
 }

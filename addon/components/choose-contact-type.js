@@ -23,9 +23,9 @@ export default class ChooseContactType extends Component {
   addContactType() {
     const secondToLastPosition = this.choices.length - 1;
     this.choices.insertAt(secondToLastPosition, { name: this.newContactType, value: this.newContactType });
-    this.set('selectedItem', this.newContactType);
-    this.set('newContactType', '');
-    this.set('addNewTypeVisible', false);
+    this.selectedItem = this.newContactType;
+    this.newContactType = '';
+    this.addNewTypeVisible = false;
   }
 
   @action

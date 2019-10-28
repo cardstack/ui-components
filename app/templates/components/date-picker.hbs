@@ -1,5 +1,5 @@
 {{#if (eq @mode "view")}}
-  <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{this.inputValue}} />
+  <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{this.value}} />
 {{else}}
   <div class="cs-component-date {{@theme}}" data-test-cs-component-date>
     <PowerDatepicker
@@ -14,9 +14,9 @@
           @dateComponent="date-field/input"
           @type="text"
           @label={{@label}}
-          @id="{{calendar.uniqueId}}-date"
+          @inputId={{@id}}
           @class="cs-component-date--input"
-          @value={{if this.selected this.selectedDate this.inputValue}}
+          @value={{if this.selected this.selectedDate this.value}}
           @onblur={{action this.handleInput}}
           @onchange={{action this.handleInput}}
           @oninput={{action this.handleInput}}

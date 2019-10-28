@@ -1,11 +1,16 @@
-<div type={{@type}}>
-  {{one-way-date-mask
-    @value
-    options=this.options
-    update=(action this.update)
-    onblur=@onblur
-    onchange=@onchange
-    oninput=@oninput
-    class=@class
-  }}
-</div>
+<div {{did-update this.updateValue @value}}></div>
+{{one-way-date-mask
+  value=this.value
+  _value=@value
+  options=this.options
+  update=@onchange
+  onblur=@onblur
+  onchange=@onchange
+  oninput=@oninput
+  onkeyup=@onchange
+  class=@class
+  id=@id
+  required=@required
+  disabled=@disabled
+  data-test-cs-component-input=@dataTestName
+}}
