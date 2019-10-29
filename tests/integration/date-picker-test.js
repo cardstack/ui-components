@@ -224,7 +224,7 @@ module('Integration | Component | date picker', function (hooks) {
   test('it displays error message for required field left blank', async function (assert) {
     let requiredErrorMessage = 'This field is required.';
 
-    await render(hbs`<DatePicker @required="true" />`);
+    await render(hbs`<DatePicker @required={{true}} />`);
 
     await fillIn('[data-test-cs-component-input="date-picker"]', '');
     assert.dom('[data-test-cs-component-validation="date-picker"]').hasText(requiredErrorMessage);

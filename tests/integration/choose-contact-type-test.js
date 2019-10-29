@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, fillIn, findAll } from '@ember/test-helpers';
+import { render, click, fillIn, findAll, triggerKeyEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | choose-contact-type', function(hooks) {
@@ -24,6 +24,7 @@ module('Integration | Component | choose-contact-type', function(hooks) {
     assert.dom('[data-test-cs-component="choose-contact-type"]').exists();
     await click('[data-test-choice-value="_add"]')
     await fillIn('[data-test-cs-component="text-field"] input', 'cell2');
+    await triggerKeyEvent('[data-test-cs-component="text-field"] input', 'keyup', 'Enter');
     await click('[data-test-cs-component-cta="primary"]');
     let values = findAll('[data-test-choice-value]').map(elem => elem.getAttribute('data-test-choice-value'));
     assert.deepEqual(values, ['cell', 'home', 'work', 'cell2', '_add']);

@@ -1,4 +1,4 @@
-<div class="cs-component-choose-contact-type">
+<div class="cs-component-choose-contact-type" data-test-cs-component="choose-contact-type">
   <ChooseOne
     @setAddNewTypeVisible={{action (mut this.addNewTypeVisible)}}
     @choices={{this.choices}}
@@ -8,7 +8,7 @@
 
   {{#if this.addNewTypeVisible}}
     <hr>
-    <TextField @label="Phone Number Name" @required={{true}} @value={{this.newContactType}} />
-    <Cta @handleClick={{action "addContactType"}} @label="Add" @disabled={{this.newContactTypeIsEmpty}} />
+    <TextField @label="Phone Number Name" @required={{true}} @value={{this.newContactType}} @changeAction={{action (mut this.newContactType)}} />
+    <Cta @handleClick={{action this.addContactType}} @label="Add" @disabled={{this.newContactTypeIsEmpty}} />
   {{/if}}
 </div>

@@ -1,30 +1,19 @@
-import Component from '@glimmer/component';
-import { action, computed, set } from '@ember/object';
+import BaseComponent from './base-component';
+import { action, computed } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 let nonce = 0;
-const ATTRIBUTES_TO_COPY = ['type', 'label', 'value', 'required', 'disabled', 'invalid', 'validationMessage', 'dataTestName'];
 
-export default class TextField extends Component {
+export default class TextField extends BaseComponent {
   @tracked dataTestName = 'text-field';
+  @tracked type = 'text';
   @tracked value = '';
   @tracked invalid = false;
   @tracked validationMessage = '';
   @tracked required = false;
-  showLabelInViewMode = false;
-  type = 'text';
+  @tracked attributesToCopy = ['type', 'label', 'value', 'required', 'disabled', 'invalid', 'validationMessage', 'dataTestName', 'iconComponent', 'rows'];
+  @tracked showLabelInViewMode = false;
   fieldType = 'text';
-
-  constructor(...args) {
-    super(...args);
-
-    // FIXME: we probably don't want to set a property for every attribute, just a select few
-    for (let arg of Object.keys(this.args)) {
-      if (ATTRIBUTES_TO_COPY.includes(arg)) {
-        set(this, arg, this.args[arg]);
-      }
-    }
-  }
 
   @computed('elementId')
   get inputId() {
@@ -40,45 +29,40 @@ export default class TextField extends Component {
   }
 
   @action
-  updateValue(element, [value]) {
-    console.log('text-field updated value to', value);
+  updateValue(element, [value, validationMessage, required]) {
     this.value = value;
+    this.validationMessage = validationMessage;
+    this.required = required;
   }
 
   @action
-  handleInput(value) {
+  handleInput({ target: { value, validationMessage }}) {
     if (this.args.handleInput) {
       let [invalid, validationMessage] = this.args.handleInput(value);
       this.invalid = invalid;
       this.validationMessage = validationMessage;
-      return
+      return;
     }
-
-    let validationMessage = this.validationMessage;
 
     this.value = value;
 
-    if (this.changeAction) {
-      this.changeAction(value);
+    if (this.args.changeAction) {
+      this.args.changeAction(value);
     }
 
     if (!value && !this.required) {
       this.invalid = false;
       this.validationMessage = '';
-    }
-
-    if (!value && this.required) {
-      this.invalid = false;
+    } else if (!value && this.required) {
+      this.invalid = true;
       this.validationMessage = 'Please fill out this field.';
-    }
-
-    if (validationMessage) {
+    } else if (validationMessage) {
       this.invalid = true;
       this.validationMessage = validationMessage;
+    } else {
+      this.invalid = false;
+      this.validationMessage = 'Thank you.';
     }
-
-    this.invalid = false;
-    this.validationMessage = 'Thank you.';
 
     return;
   }

@@ -1,4 +1,4 @@
-<div class="cs-component-text-field {{this.className}}" data-test-cs-component={{this.dataTestName}} {{did-update this.updateValue @value}}>
+<div class="cs-component-text-field {{@className}}" data-test-cs-component={{this.dataTestName}} {{did-update this.updateValue @value @validationMessage @required}}>
   {{#if (eq @mode "view")}}
     <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{this.value}} />
   {{else}}
@@ -13,7 +13,7 @@
 
     {{#if (eq @inputComponent "phone-number-field/input")}}
       {{phone-input
-        update=(fn @update (action (mut this.value)) (action (mut this.validationMessage)))
+        update=(fn @update (action (mut this.value)) (action (mut this.invalid)) (action (mut this.validationMessage)))
         class=(concat "cs-component-text-field--input " @theme)
         required=this.required
         number=this.value
@@ -29,9 +29,9 @@
         required=this.required
         disabled=this.disabled
         value=this.value
-        onblur=(fn @onblur @value)
-        onchange=(fn @onchange @value)
-        oninput=(fn @oninput @value)
+        onblur=(action @onblur)
+        onchange=(action @onchange)
+        oninput=(action @oninput)
         id=this.inputId
         inputmode=@inputmode
         dataTestName=this.dataTestName
@@ -49,8 +49,7 @@
         required={{this.required}}
         disabled={{or (eq @mode "schema") this.disabled}}
         autocomplete="off"
-        @focus-out={{action "handleInput"}}
-        @key-up={{action "handleInput"}}
+        @change={{action this.handleInput}}
         autofocus={{@autofocus}}
         inputmode={{@inputmode}}
         pattern={{@pattern}}

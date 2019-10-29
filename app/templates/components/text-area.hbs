@@ -1,4 +1,4 @@
-<div class="cs-component-text-area">
+<div class="cs-component-text-area" data-test-cs-component={{this.dataTestName}}>
   {{#if (eq @mode "view")}}
     <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{@value}} />
   {{else}}

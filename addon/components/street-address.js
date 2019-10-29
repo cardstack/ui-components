@@ -1,13 +1,16 @@
-import Component from '@glimmer/component';
+import BaseComponent from './base-component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { isBlank } from '@ember/utils';
 
-export default class StreetAddress extends Component {
+export default class StreetAddress extends BaseComponent {
   @service('google-place-autocomplete')
   googlePlaceAutocompleteService;
 
-  label = 'Enter a street address';
+  @tracked selected;
+  @tracked predictions;
+  @tracked label = 'Enter a street address';
 
   changeAction(item) {
     this.selected = item;
@@ -19,7 +22,7 @@ export default class StreetAddress extends Component {
       this.predictions = [];
     }
     let properties = { input: placeServiceInput };
-    let predictions = await this.get('googlePlaceAutocompleteService').getPlacePredictions(properties);
+    let predictions = await this.googlePlaceAutocompleteService.getPlacePredictions(properties);
     this.predictions = predictions;
   }
 }

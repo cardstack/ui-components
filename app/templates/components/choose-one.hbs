@@ -1,4 +1,4 @@
-<div class="cs-component-choose-one {{if this.checked "checked"}}" data-test-cs-component={{this.dataTestName}}>
+<div class="cs-component-choose-one {{if this.checked "checked"}}" data-test-cs-component={{this.dataTestName}} {{did-update this.updateSelectedItem @selectedItem}}>
   <fieldset>
     {{#if @legend}}
       <legend class="cs-component-choose-one--legend">{{@legend}}</legend>

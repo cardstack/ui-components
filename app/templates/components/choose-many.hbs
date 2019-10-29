@@ -6,7 +6,7 @@
     <div class="cs-component-choose-many__container">
       {{#multiselect-checkboxes
           options=@choices
-          selection=this.selectedItems
+          selection=@selectedItems
           tagName=""
           onchange=(action this.performActions)
           as |item isSelected|}}

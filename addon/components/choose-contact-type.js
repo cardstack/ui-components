@@ -1,23 +1,25 @@
-import Component from '@glimmer/component';
+import BaseComponent from './base-component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { A } from '@ember/array';
-import { empty } from '@ember/object/computed';
 
-export default class ChooseContactType extends Component {
-  addNewTypeVisible = false;
-  newContactType = '';
+export default class ChooseContactType extends BaseComponent {
+  @tracked addNewTypeVisible = false;
+  @tracked newContactType = '';
 
-  @empty('newContactType')
-  newContactTypeIsEmpty;
 
-  choices = A([
+  get newContactTypeIsEmpty() {
+    return !!this.newContactType;
+  }
+
+  @tracked choices = A([
     { name: 'Cell', value: 'cell' },
     { name: 'Home', value: 'home' },
     { name: 'Work', value: 'work' },
     { name: 'Add+', value: '_add' },
 
   ]);
-  selectedItem = 'cell';
+  @tracked selectedItem = 'cell';
 
   @action
   addContactType() {
@@ -31,7 +33,7 @@ export default class ChooseContactType extends Component {
   @action
   performActions(selectedValue) {
     if (selectedValue === '_add') {
-      this.setAddNewTypeVisible(true);
+      this.addNewTypeVisible = true;
     }
   }
 }

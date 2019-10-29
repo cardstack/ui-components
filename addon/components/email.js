@@ -1,9 +1,10 @@
-import Component from '@glimmer/component';
+import BaseComponent from './base-component';
+import { tracked } from '@glimmer/tracking';
 
-export default class Email extends Component {
+export default class Email extends BaseComponent {
+  @tracked label = 'Email Address';
   className= "cs-component-email";
   dataTestName = 'email';
   type = 'email';
   fieldType = 'text';
-  label = 'Email Address';
 }

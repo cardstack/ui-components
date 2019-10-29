@@ -1,37 +1,29 @@
-import Component from '@glimmer/component';
-import { action, set } from '@ember/object';
+import BaseComponent from './base-component';
+import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 const UPPERCASE_REGEX = /[A-Z]/;
 const LOWERCASE_REGEX = /[a-z]/;
 const SPECIAL_CHARACTER_REGEX = /\W|_/;
-const ATTRIBUTES_TO_COPY = [ 'minLength', 'mustIncludeUppercase', 'mustIncludeLowercase', 'mustIncludeNumber', 'mustIncludeSpecialCharacter', 'successMessage'];
 
-export default class PasswordField extends Component {
+// const ATTRIBUTES_TO_COPY = [ 'minLength', 'mustIncludeUppercase', 'mustIncludeLowercase', 'mustIncludeNumber', 'mustIncludeSpecialCharacter', 'successMessage'];
+
+export default class PasswordField extends BaseComponent {
   @tracked invalid = false;
   @tracked validationMessage = '';
+  @tracked label = 'Enter your password';
+  @tracked minLength = 6;
+  @tracked mustIncludeUppercase = false;
+  @tracked mustIncludeLowercase = false;
+  @tracked mustIncludeNumber = false;
+  @tracked mustIncludeSpecialCharacter = false;
+  @tracked iconComponent = 'password-field/visibility-toggle';
   type = 'password';
   fieldType = 'text';
   dataTestName = 'password';
-  iconComponent = 'password-field/visibility-toggle';
   successMessage = 'Thank you.';
-  label = 'Enter your password';
-  minLength = 6;
-  mustIncludeUppercase = false;
-  mustIncludeLowercase = false;
-  mustIncludeNumber = false;
-  mustIncludeSpecialCharacter = false;
   className = 'cs-component-password-field';
-
-  constructor(...args) {
-    super(...args);
-
-    for (let arg of Object.keys(this.args)) {
-      if (ATTRIBUTES_TO_COPY.includes(arg)) {
-        set(this, arg, this.args[arg]);
-      }
-    }
-  }
+  attributesToCopy = [ 'minLength', 'mustIncludeUppercase', 'mustIncludeLowercase', 'mustIncludeNumber', 'mustIncludeSpecialCharacter', 'successMessage'];
 
   @action
   handleInput(value) {
@@ -42,14 +34,12 @@ export default class PasswordField extends Component {
       this.validationMessage =  '';
     }
 
-    if (typeof this.validate === 'function') {
-      let { valid, message } = this.validate(value);
+    if (typeof this.args.validate === 'function') {
+      let { valid, message } = this.args.validate(value);
 
       this.invalid = !valid;
       this.validationMessage =  this.invalid ? message : this.successMessage;
-    }
-
-    if (value.length < this.minLength) {
+    } else if (value.length < this.minLength) {
       this.invalid = true;
       this.validationMessage =  `Password must be at least ${this.minLength} characters`;
     } else if (this.mustIncludeUppercase && !UPPERCASE_REGEX.test(value)) {

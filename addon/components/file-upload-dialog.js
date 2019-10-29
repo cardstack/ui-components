@@ -1,9 +1,9 @@
-import Component from '@glimmer/component';
+import BaseComponent from './base-component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { A } from '@ember/array';
 
-export default class FileUploadDialog extends Component {
+export default class FileUploadDialog extends BaseComponent {
   files = A([]);
   @service fileQueue;
 

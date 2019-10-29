@@ -1,23 +1,23 @@
-import Component from '@glimmer/component';
+import BaseComponent from './base-component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default class Dropdown extends Component {
-  dataTestName = 'dropdown';
+export default class Dropdown extends BaseComponent {
+  @tracked selected = null;
+  @tracked label = 'Select an option';
+  @tracked searchField = 'name';
+  @tracked dataTestName = 'dropdown';
   fieldType = 'text';
-
-  // FIXME: set this to this.args.selected
-  selected = null;
-
   isFocused = false;
-  label = 'Select an option';
   showLabelInViewMode = false;
-
-  // FIXME: set this to this.args.searchField
-  searchField = 'name';
-
-  // FIXME: set this to this.args.searchEnabled
   searchEnabled = true;
 
   allowClear = true;
+
+  @action
+  updateSelected(element, [selected]) {
+    this.selected = selected;
+  }
 
   changeAction(item) {
     this.selected = item;

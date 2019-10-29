@@ -1,6 +1,10 @@
-import Component from '@glimmer/component';
+import BaseComponent from './base-component';
+import { tracked } from '@glimmer/tracking';
 
-export default class ChooseMany extends Component {
+export default class ChooseMany extends BaseComponent {
+  @tracked checked;
+  @tracked attributesToCopy = ['selectionChanged'];
+  @tracked selectionChanged = () => {};
   dataTestName = 'choose-many';
 
   performActions(selectedItems) {
@@ -8,5 +12,4 @@ export default class ChooseMany extends Component {
     this.selectionChanged(selectedItems);
   }
 
-  selectionChanged = () => {};
 }

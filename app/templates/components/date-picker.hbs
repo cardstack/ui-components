@@ -1,7 +1,7 @@
 {{#if (eq @mode "view")}}
   <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{this.value}} />
 {{else}}
-  <div class="cs-component-date {{@theme}}" data-test-cs-component-date>
+  <div class="cs-component-date {{@theme}}" data-test-cs-component={{this.dataTestName}}>
     <PowerDatepicker
       @renderInPlace="true"
       @selected={{this.selected}}

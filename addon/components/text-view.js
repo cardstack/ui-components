@@ -1,3 +1,3 @@
-import Component from '@glimmer/component';
+import BaseComponent from './base-component';
 
-export default class TextView extends Component {}
+export default class TextView extends BaseComponent {}

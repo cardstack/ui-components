@@ -14,6 +14,7 @@
   <div
     class="{{if @multiple "cs-component-dropdown--multiple" "cs-component-dropdown"}} {{if (has-block) "cs-component-dropdown--with-customized-options"}} {{if this.isOpen "is-open"}} {{@theme}}"
     data-test-cs-component={{this.dataTestName}}
+    {{did-update this.updateSelected @selected}}
   >
     <div class="cs-component-dropdown__container">
       {{#if @searchAction}}
@@ -23,7 +24,7 @@
             onchange=(or @handleChange (action this.changeAction))
             selected=this.selected
             search=(action @searchAction)
-            searchField=@searchField
+            searchField=this.searchField
             renderInPlace=true
             onfocus=(action (mut this.isFocused) true)
             onblur=(action (mut this.isFocused) false)
@@ -33,7 +34,7 @@
             ariaLabel=this.label
             disabled=@disabled
           as |option|}}
-            {{get option @searchField}}
+            {{get option this.searchField}}
           {{/power-select-multiple}}
         {{else}}
           {{#power-select
@@ -41,7 +42,7 @@
             onchange=(or @handleChange (action this.changeAction))
             selected=this.selected
             search=(action @searchAction)
-            searchField=@searchField
+            searchField=this.searchField
             renderInPlace=true
             onfocus=(action (mut this.isFocused) true)
             onblur=(action (mut this.isFocused) false)
@@ -52,7 +53,7 @@
             ariaLabel=this.label
             disabled=@disabled
           as |option|}}
-            {{get option @searchField}}
+            {{get option this.searchField}}
           {{/power-select}}
         {{/if}}
       {{else}}
@@ -61,7 +62,7 @@
             options=@options
             onchange=(or @handleChange (action this.changeAction))
             selected=this.selected
-            searchField=@searchField
+            searchField=this.searchField
             renderInPlace=true
             onfocus=(action (mut this.isFocused) true)
             onblur=(action (mut this.isFocused) false)
@@ -71,14 +72,14 @@
             ariaLabel=this.label
             disabled=@disabled
           as |option|}}
-            {{get option @searchField}}
+            {{get option this.searchField}}
           {{/power-select-multiple}}
         {{else}}
           {{#power-select
             options=@options
             onchange=(or @handleChange (action this.changeAction))
             selected=this.selected
-            searchField=@searchField
+            searchField=this.searchField
             renderInPlace=true
             onfocus=(action (mut this.isFocused) true)
             onblur=(action (mut this.isFocused) false)
@@ -94,7 +95,7 @@
             {{else if (has-block)}}
               {{yield option}}
             {{else}}
-              {{get option @searchField}}
+              {{get option this.searchField}}
             {{/if}}
           {{/power-select}}
         {{/if}}

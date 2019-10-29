@@ -1,9 +1,11 @@
+import BaseComponent from './base-component';
 import { action } from '@ember/object';
-import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
 let nonce = 0;
 
-export default class Checkbox extends Component {
+export default class Checkbox extends BaseComponent {
+  @tracked validationMessage;
   requiredMessage = 'You must check this box!';
   value = 'on';
 
@@ -21,17 +23,19 @@ export default class Checkbox extends Component {
 
     if (checked && !this.required) {
       this.invalid = false;
-      return this.validationMessage = '';
+      this.validationMessage = '';
     }
 
     if (!checked && this.required) {
       this.invalid = true;
-      return this.validationMessage = this.requiredMessage;
+      this.validationMessage = this.requiredMessage;
     }
 
     if (checked && this.required) {
       this.invalid = false;
-      return this.validationMessage = 'Thank you.';
+      this.validationMessage = 'Thank you.';
     }
+
+    return;
   }
 }

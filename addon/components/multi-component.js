@@ -1,9 +1,10 @@
-import Component from '@glimmer/component';
+import BaseComponent from './base-component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { A } from '@ember/array';
 
-export default class MultiComponent extends Component {
-  values = A([null]);
+export default class MultiComponent extends BaseComponent {
+  @tracked values = A([null]);
 
   @action
   addComponent() {

@@ -21,6 +21,7 @@ module('Integration | Component | phone-number-field', function(hooks) {
 
   test('it validates phone numbers', async function(assert) {
     await render(hbs`<PhoneNumberField @label="Enter your phone number" />`);
+    await waitFor('[data-test-cs-component="phone-number"] [aria-owns="country-listbox"]');
     await fillIn('[data-test-cs-component="phone-number"] input', '510-223-232');
 
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasClass('invalid');
