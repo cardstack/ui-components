@@ -72,7 +72,6 @@ export default class DatePicker extends BaseComponent {
 
   @action
   handleInput({ target: { value } }) {
-    console.log('date-picker handleInput value', value);
     let errorMessage = `Please enter a valid date in the format MM/DD/YYYY
                         or select one from the calendar.`;
 
