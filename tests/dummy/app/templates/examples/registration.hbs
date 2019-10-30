@@ -6,9 +6,9 @@
   </div>
 
   <div class="example-form">
-    <Email @label="Email" @required={{true}} @value={{emailValue}} @invalid={{isEmailInvalid}}/>
-    <PasswordField @required={{true}} @value={{passwordValue}} @invalid={{isPasswordInvalid}} />
-    <Checkbox @label="I accept the Cardstack Terms &amp; Conditions" @required={{true}} @checked={{isCheckboxChecked}} />
-    <Cta @disabled={{isSubmitDisabled}}>Submit</Cta>
+    <Email @label="Email" @required={{true}} @value={{this.emailValue}} @invalid={{this.isEmailInvalid}}/>
+    <PasswordField @required={{true}} @value={{this.passwordValue}} @invalid={{this.isPasswordInvalid}} />
+    <Checkbox @label="I accept the Cardstack Terms &amp; Conditions" @required={{true}} @checked={{this.isCheckboxChecked}} />
+    <Cta @disabled={{this.isSubmitDisabled}}>Submit</Cta>
   </div>
 </section>

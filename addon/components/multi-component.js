@@ -1,16 +1,18 @@
-import Component from '@ember/component';
+import BaseComponent from './base-component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { A } from '@ember/array';
 
-export default Component.extend({
-  values: A([null]),
+export default class MultiComponent extends BaseComponent {
+  @tracked values = A([null]);
 
-  actions: {
-    addComponent() {
-      this.values.pushObject(null);
-    },
-
-    updateValue(index, value) {
-      this.values.replace(index, 1, [value]);
-    },
+  @action
+  addComponent() {
+    this.values.pushObject(null);
   }
-});
+
+  @action
+  updateValue(index, value) {
+    this.values.replace(index, 1, [value]);
+  }
+}

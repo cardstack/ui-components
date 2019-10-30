@@ -1,8 +1,10 @@
-import TextField from './text-field';
+import BaseComponent from './base-component';
+import { tracked } from '@glimmer/tracking';
 
-export default TextField.extend({
-  classNames: ['cs-component-email'],
-  dataTestName: 'email',
-  type: 'email',
-  fieldType: 'text'
-});
+export default class Email extends BaseComponent {
+  @tracked label = 'Email Address';
+  className= "cs-component-email";
+  dataTestName = 'email';
+  type = 'email';
+  fieldType = 'text';
+}

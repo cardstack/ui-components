@@ -1,10 +1,8 @@
 import TextField from './text-field';
-import layout from '../templates/components/text-area';
+import { tracked } from '@glimmer/tracking';
 
-export default TextField.extend({
-  layout,
-  fieldType: 'text',
-  classNames: ['cs-component-text-area'],
-  dataTestName: 'text-area',
-  rows: 3,
-});
+export default class TextArea extends TextField {
+  @tracked dataTestName = 'text-area';
+  @tracked rows = 3;
+  fieldType = 'text';
+}

@@ -1,6 +1,3 @@
-import Component from '@ember/component';
-import layout from '../templates/components/text-view';
+import BaseComponent from './base-component';
 
-export default Component.extend({
-  layout
-});
+export default class TextView extends BaseComponent {}

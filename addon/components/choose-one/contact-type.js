@@ -1,11 +1,12 @@
 import ChooseOne from '../choose-one';
 
-export default ChooseOne.extend({
-  attributeBindings: ['dataTestName:data-test-cs-component-choose-contact-type'],
+export default class ContactType extends ChooseOne {
+  dataTestName = 'choose-contact-type';
+
   performActions(selectedValue) {
     if (selectedValue === '_add') {
       this.setAddNewTypeVisible(true);
     }
-    this._super(...arguments);
-  },
-});
+    super.performActions(...arguments);
+  }
+}

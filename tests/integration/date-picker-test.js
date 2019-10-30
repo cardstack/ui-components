@@ -16,14 +16,14 @@ module('Integration | Component | date picker', function (hooks) {
   test('it renders default component', async function (assert) {
     await render(hbs`<DatePicker @label="Pick a date" />`);
 
-    assert.dom('[data-test-cs-component-date]').exists();
+    assert.dom('[data-test-cs-component-input="date-picker"]').exists();
     assert.dom('[data-test-cs-component-label="date-picker"] .label').hasText('Pick a date');
     assert.dom('.cs-component-calendar').doesNotExist();
     assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
   });
 
   test('it renders required component', async function (assert) {
-    await render(hbs`<DatePicker @required="true" />`);
+    await render(hbs`<DatePicker @required={{true}} />`);
 
     assert.dom('[data-test-cs-component-input="date-picker"][required]').exists();
     assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
@@ -38,7 +38,7 @@ module('Integration | Component | date picker', function (hooks) {
   test('it renders component with custom years', async function (assert) {
     await render(hbs`<DatePicker @startYear="2019" @yearRange="10" />`);
 
-    assert.dom('[data-test-cs-component-date]').exists();
+    assert.dom('[data-test-cs-component="date-picker"]').exists();
 
     await click('[data-test-cs-component-input="date-picker"]');
     await clickTrigger('[data-test-cs-component-calendar-nav-years]');
@@ -224,7 +224,7 @@ module('Integration | Component | date picker', function (hooks) {
   test('it displays error message for required field left blank', async function (assert) {
     let requiredErrorMessage = 'This field is required.';
 
-    await render(hbs`<DatePicker @required="true" />`);
+    await render(hbs`<DatePicker @required={{true}} />`);
 
     await fillIn('[data-test-cs-component-input="date-picker"]', '');
     assert.dom('[data-test-cs-component-validation="date-picker"]').hasText(requiredErrorMessage);
@@ -270,7 +270,7 @@ module('Integration | Component | date picker', function (hooks) {
   test('it renders themed component', async function (assert) {
     await render(hbs`<DatePicker @label="Pick a date" @theme="cs-theme" />`);
 
-    assert.dom('[data-test-cs-component-date]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component="date-picker"]').hasClass('cs-theme');
     assert.dom('[data-test-cs-component-input="date-picker"]').hasClass('cs-theme');
     assert.dom('[data-test-cs-component-label="date-picker"]').hasClass('cs-theme');
     assert.dom('[data-test-cs-component-validation="date-picker"]').hasClass('cs-theme');
@@ -282,7 +282,7 @@ module('Integration | Component | date picker', function (hooks) {
     this.mode = 'edit';
     this.selectedDate = '09/29/1997';
 
-    await render(hbs`<DatePicker @label="When is Judgment Day?" @inputValue={{selectedDate}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
+    await render(hbs`<DatePicker @label="When is Judgment Day?" @value={{selectedDate}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
 
     assert.dom('[data-test-cs-component-label="date-picker"] .label').hasText('When is Judgment Day?');
 

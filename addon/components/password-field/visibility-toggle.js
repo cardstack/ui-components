@@ -1,20 +1,22 @@
-import Component from '@ember/component';
-import { computed } from '@ember/object';
+import BaseComponent from '../base-component';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
-export default Component.extend({
-  classNameBindings: ['textVisible:hide'],
-  attributeBindings: ['dataTestName:data-test-cs-component-password-field-visibility-toggle'],
-  dataTestName: true,
+export default class VisibilityToggle extends BaseComponent {
+  @tracked type;
 
-  textVisible: computed('type', function() {
+  get textVisible() {
     return this.type !== 'password';
-  }),
+  }
 
-  click() {
+  @action
+  toggleVisibility() {
     if (this.textVisible) {
       this.changeType('password');
+      this.type = "password";
     } else {
       this.changeType('text');
+      this.type = "text";
     }
   }
-});
+}

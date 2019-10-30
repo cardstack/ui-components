@@ -1,8 +1,0 @@
-<div class="cs-component-street-addresses__container">
-  {{#each values as |value index|}}
-    <div class="cs-component-street-addresses__wrapper">
-      <StreetAddress @selected={{value}} @changeAction={{action "updateValue" index}} @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />
-      <button class="cs-component-street-addresses--add-address" {{action "addComponent"}}>Add</button>
-    </div>
-  {{/each}}
-</div>

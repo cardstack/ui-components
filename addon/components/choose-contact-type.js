@@ -1,30 +1,39 @@
-import Component from '@ember/component';
+import BaseComponent from './base-component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import { A } from '@ember/array';
-import { empty } from '@ember/object/computed';
-import layout from '../templates/components/choose-contact-type';
 
-export default Component.extend({
-  layout,
-  classNames: ['cs-component-choose-contact-type'],
-  addNewTypeVisible: false,
-  newContactType: '',
-  newContactTypeIsEmpty: empty('newContactType'),
-  choices: A([
+export default class ChooseContactType extends BaseComponent {
+  @tracked addNewTypeVisible = false;
+  @tracked newContactType = '';
+
+
+  get newContactTypeIsEmpty() {
+    return !!this.newContactType;
+  }
+
+  @tracked choices = A([
     { name: 'Cell', value: 'cell' },
     { name: 'Home', value: 'home' },
     { name: 'Work', value: 'work' },
     { name: 'Add+', value: '_add' },
 
-  ]),
-  selectedItem: 'cell',
+  ]);
+  @tracked selectedItem = 'cell';
 
-  actions: {
-    addContactType() {
-      const secondToLastPosition = this.choices.length - 1;
-      this.choices.insertAt(secondToLastPosition, { name: this.newContactType, value: this.newContactType });
-      this.set('selectedItem', this.newContactType);
-      this.set('newContactType', '');
-      this.set('addNewTypeVisible', false);
+  @action
+  addContactType() {
+    const secondToLastPosition = this.choices.length - 1;
+    this.choices.insertAt(secondToLastPosition, { name: this.newContactType, value: this.newContactType });
+    this.selectedItem = this.newContactType;
+    this.newContactType = '';
+    this.addNewTypeVisible = false;
+  }
+
+  @action
+  performActions(selectedValue) {
+    if (selectedValue === '_add') {
+      this.addNewTypeVisible = true;
     }
   }
-});
+}

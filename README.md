@@ -1,4 +1,4 @@
-ui-components
+@cardstack/ui-components
 ==============================================================================
 
 This is a work-in-progress addon that will contain reusable UI elements like form inputs, buttons, navbars, and more. The components can be used in regular Ember apps as well as Cardstack projects.
@@ -10,6 +10,7 @@ Compatibility
 
 * Ember.js v2.18 or above
 * Ember CLI v2.13 or above
+* Node.js v8 or above
 
 
 Local installation

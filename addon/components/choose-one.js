@@ -1,17 +1,25 @@
-import Component from '@ember/component';
-import layout from '../templates/components/choose-one';
+import BaseComponent from './base-component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  layout,
-  classNames: ['cs-component-choose-one'],
-  classNameBindings: ['checked:checked'],
-  attributeBindings: ['dataTestName:data-test-cs-component-choose-one'],
-  dataTestName: true,
+export default class ChooseOne extends BaseComponent {
+  @tracked checked;
+  @tracked selectedItem;
+  @tracked attributesToCopy = ['selectedItem', 'selectionChanged'];
+  @tracked selectionChanged = () => {};
+  dataTestName = 'choose-one';
 
-  performActions: function(changed) {
-    this.set('checked', !!this.selectedItem);
+  @action
+  updateSelectedItem(element, [selectedItem]) {
+    this.selectedItem = selectedItem;
+  }
+
+  performActions(changed) {
+    if (this.args.performActions) {
+      this.args.performActions(changed);
+    }
+
+    this.checked =  !!this.selectedItem;
     this.selectionChanged(changed);
-  },
-
-  selectionChanged: () => {}
-});
+  }
+}

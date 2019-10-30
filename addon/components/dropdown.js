@@ -1,20 +1,25 @@
-import Component from '@ember/component';
-import layout from '../templates/components/dropdown';
+import BaseComponent from './base-component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  layout,
-  dataTestName: 'dropdown',
-  fieldType: 'text',
-  selected: null,
-  multiple: false,
-  isFocused: false,
-  label: 'Select an option',
-  showLabelInViewMode: false,
-  searchField: 'name',
-  searchEnabled: true,
-  allowClear: true,
+export default class Dropdown extends BaseComponent {
+  @tracked selected = null;
+  @tracked label = 'Select an option';
+  @tracked searchField = 'name';
+  @tracked dataTestName = 'dropdown';
+  fieldType = 'text';
+  isFocused = false;
+  showLabelInViewMode = false;
+  searchEnabled = true;
+
+  allowClear = true;
+
+  @action
+  updateSelected(element, [selected]) {
+    this.selected = selected;
+  }
 
   changeAction(item) {
-    this.set('selected', item);
-  },
-});
+    this.selected = item;
+  }
+}

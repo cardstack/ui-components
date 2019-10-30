@@ -1,11 +1,9 @@
-import Component from '@ember/component';
-import layout from '../templates/components/cta';
+import BaseComponent from './base-component';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  layout,
-  tagName: '',
-  variant: 'primary',
-  disabled: false,
-
+export default class Cta extends BaseComponent {
+  @tracked variant = 'primary';
+  @tracked disabled = false;
+  
   handleClick() {}
-});
+}

@@ -1,8 +1,0 @@
-<div class="cs-component-emails__container">
-  {{#each values as |value index|}}
-    <div class="cs-component-emails__wrapper">
-      <Email @value={{value}} @changeAction={{action "updateValue" index}} @label={{label}} />
-      <button class="cs-component-emails--add" {{action "addComponent"}}>Add</button>
-    </div>
-  {{/each}}
-</div>

@@ -3,14 +3,14 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd ui-components-library`
-* `npm install`
+* `cd @cardstack/ui-components`
+* `yarn install`
 
 ## Linting
 
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
+* `yarn lint:hbs`
+* `yarn lint:js`
+* `yarn lint:js --fix`
 
 ## Running tests
 

@@ -1,34 +1,42 @@
-import Component from '@ember/component';
-import layout from '../templates/components/checkbox';
+import BaseComponent from './base-component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  layout,
-  classNames: ['cs-component-checkbox'],
-  requiredMessage: 'You must check this box!',
-  value: 'on',
+let nonce = 0;
 
-  actions: {
-    handleInput(ev) {
-      let value = ev.target.value;
-      let checked = ev.target.checked;
+export default class Checkbox extends BaseComponent {
+  @tracked validationMessage;
+  @tracked invalid;
+  requiredMessage = 'You must check this box!';
+  value = 'on';
 
-      this.set('value', value);
-      this.set('checked', checked);
-
-      if (checked && !this.required) {
-        this.set('invalid', false);
-        return this.set('validationMessage', '');
-      }
-
-      if (!checked && this.required) {
-        this.set('invalid', true);
-        return this.set('validationMessage', this.requiredMessage);
-      }
-
-      if (checked && this.required) {
-        this.set('invalid', false);
-        return this.set('validationMessage', 'Thank you.');
-      }
-    }
+  get elementId() {
+    return nonce++;
   }
-});
+
+  @action
+  handleInput(ev) {
+    let value = ev.target.value;
+    let checked = ev.target.checked;
+
+    this.value = value;
+    this.checked = checked;
+
+    if (checked && !this.required) {
+      this.invalid = false;
+      this.validationMessage = '';
+    }
+
+    if (!checked && this.required) {
+      this.invalid = true;
+      this.validationMessage = this.requiredMessage;
+    }
+
+    if (checked && this.required) {
+      this.invalid = false;
+      this.validationMessage = 'Thank you.';
+    }
+
+    return;
+  }
+}

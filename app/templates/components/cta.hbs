@@ -1,0 +1,18 @@
+<button
+  class="cs-component-cta cs-component-cta--{{this.variant}} {{@theme}} {{if @isLoading "loading"}}"
+  disabled={{this.disabled}}
+  onclick={{action this.handleClick}}
+  data-test-cs-component-cta={{this.variant}}
+  ...attributes
+>
+  {{#if @isLoading}}
+    <div class="loading">Loading...</div>
+  {{/if}}
+  <span class="button-text">
+    {{#if @label}}
+      {{@label}}
+    {{else}}
+      {{yield}}
+    {{/if}}
+  </span>
+</button>

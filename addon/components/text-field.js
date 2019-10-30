@@ -1,59 +1,69 @@
-import Component from '@ember/component';
-import layout from '../templates/components/text-field';
-import { computed } from '@ember/object';
+import BaseComponent from './base-component';
+import { action, computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  layout,
-  classNames: ['cs-component-text-field'],
-  attributeBindings: ['dataTestName:data-test-cs-component'],
-  dataTestName: 'text-field',
-  validationMessage: '',
-  required: false,
-  showLabelInViewMode: false,
-  type: 'text',
-  fieldType: 'text',
-  value: '',
-  invalid: false,
-  inputId: computed('elementId', function() {
-    return `${this.elementId}-input`;
-  }),
+let nonce = 0;
 
-  actions: {
-    handleInput(ev) {
-      let value = ev.target.value.trim();
-      let errorMessage = ev.target.validationMessage;
+export default class TextField extends BaseComponent {
+  @tracked dataTestName = 'text-field';
+  @tracked type = 'text';
+  @tracked value = '';
+  @tracked invalid = false;
+  @tracked validationMessage = '';
+  @tracked required = false;
+  @tracked attributesToCopy = ['type', 'label', 'value', 'required', 'disabled', 'invalid', 'validationMessage', 'dataTestName', 'iconComponent', 'rows'];
+  @tracked showLabelInViewMode = false;
+  fieldType = 'text';
 
-      this.set('value', value);
-
-      if (this.changeAction) {
-        this.changeAction(value);
-      }
-
-      if (!value && !this.required) {
-        return this.setProperties({
-          invalid: false,
-          validationMessage: ''
-        });
-      }
-
-      if (!value && this.required) {
-        return this.setProperties({
-          invalid: true,
-          validationMessage: 'Please fill out this field.'
-        });
-      }
-
-      if (errorMessage) {
-        return this.setProperties({
-          invalid: true,
-          validationMessage: errorMessage
-        });
-      }
-
-      return this.setProperties({
-        invalid: false,
-        validationMessage: 'Thank you.'
-      });
+  @computed('elementId')
+  get inputId() {
+    if (this.args.inputId) {
+      return this.args.inputId;
     }
+
+    return `text-field-input-${this.elementId}`;
   }
-});
+
+  get elementId() {
+    return nonce++;
+  }
+
+  @action
+  updateValue(element, [value, validationMessage, required]) {
+    this.value = value;
+    this.validationMessage = validationMessage;
+    this.required = required;
+  }
+
+  @action
+  handleInput({ target: { value, validationMessage }}) {
+    if (this.args.handleInput) {
+      let [invalid, validationMessage] = this.args.handleInput(value);
+      this.invalid = invalid;
+      this.validationMessage = validationMessage;
+      return;
+    }
+
+    this.value = value;
+
+    if (this.args.changeAction) {
+      this.args.changeAction(value);
+    }
+
+    if (!value && !this.required) {
+      this.invalid = false;
+      this.validationMessage = '';
+    } else if (!value && this.required) {
+      this.invalid = true;
+      this.validationMessage = 'Please fill out this field.';
+    } else if (validationMessage) {
+      this.invalid = true;
+      this.validationMessage = validationMessage;
+    } else {
+      this.invalid = false;
+      this.validationMessage = 'Thank you.';
+    }
+
+    return;
+  }
+}
