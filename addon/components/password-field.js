@@ -6,8 +6,6 @@ const UPPERCASE_REGEX = /[A-Z]/;
 const LOWERCASE_REGEX = /[a-z]/;
 const SPECIAL_CHARACTER_REGEX = /\W|_/;
 
-// const ATTRIBUTES_TO_COPY = [ 'minLength', 'mustIncludeUppercase', 'mustIncludeLowercase', 'mustIncludeNumber', 'mustIncludeSpecialCharacter', 'successMessage'];
-
 export default class PasswordField extends BaseComponent {
   @tracked invalid = false;
   @tracked validationMessage = '';
