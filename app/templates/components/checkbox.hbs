@@ -18,7 +18,7 @@
   </label>
 
   <div
-    class="cs-component-checkbox--validation {{if (not this.validationMessage) "hidden"}} {{if @invalid "invalid"}}"
+    class="cs-component-checkbox--validation {{if (not this.validationMessage) "hidden"}} {{if this.invalid "invalid"}}"
     data-test-cs-component-checkbox-validation
   >
     {{this.validationMessage}}

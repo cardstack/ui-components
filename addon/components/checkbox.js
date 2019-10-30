@@ -6,6 +6,7 @@ let nonce = 0;
 
 export default class Checkbox extends BaseComponent {
   @tracked validationMessage;
+  @tracked invalid;
   requiredMessage = 'You must check this box!';
   value = 'on';
 
