@@ -1,4 +1,4 @@
-@import "ember-power-calendar";
+@import "ember-power-calendar.css";
 
 .cs-component-date {
   --cs-date-background-color: var(--cs-component-background-color);

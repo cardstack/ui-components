@@ -15,26 +15,31 @@
 .cs-component-text-area--input {
   --gradient-height: calc(var(--cs-text-area-line-height) - 1px);
   max-width: 100%;
-  height: auto;
   background-image: -webkit-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: -moz-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: -ms-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: -o-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-image: linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
   background-size: 100% var(--cs-text-area-line-height);
-  border: none;
-  line-height: var(--cs-text-area-line-height);
   margin-top: 0.2rem;
   margin-bottom: 0.5rem;
-  padding: 0;
   resize: none;
   overflow-y: scroll;
 }
+
+.cs-component-text-area--input.cs-component-text-field--input {
+  width: 100%;
+  height: auto;
+  border: none;
+  padding: 0;
+  line-height: var(--cs-text-area-line-height);
+}
+
 .cs-component-text-area--input:focus {
   outline: 0;
 }
 
-.cs-component-text-area--label > .label {
+.cs-component-text-area--label.cs-component-text-field--label > .label {
   padding-left: 0;
 }
 
