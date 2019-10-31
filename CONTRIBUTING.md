@@ -6,6 +6,11 @@
 * `cd @cardstack/ui-components`
 * `yarn install`
 
+## Styling the Date Picker Component
+
+See the instructions in `lib/ember-power-calendar.scss` if you want to
+make changes to the style of the date picker component.
+
 ## Linting
 
 * `yarn lint:hbs`

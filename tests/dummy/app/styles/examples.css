@@ -1,4 +1,4 @@
-@import 'component-configurator';
+@import 'component-configurator.css';
 
 .example-group {
   position: relative;
@@ -15,7 +15,6 @@
   margin: 0;
   padding: 10px;
   background-color: inherit;
-
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -26,28 +25,24 @@
 
 .example-group--prompt {
   padding-bottom: 1em;
-
-  h3 {
-    margin: 0;
-    padding-bottom: 1em;
-
-    font-size: var(--cs-component-legend-font-size);
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: 27px;
-    text-align: left;
-  }
-
-  p {
-    margin: 0;
-    padding-bottom: 1em;
-
-    font-size: 14px;
-    font-weight: normal;
-    letter-spacing: 0;
-    line-height: 19px;
-    text-align: left;
-  }
+}
+.example-group--prompt h3 {
+  margin: 0;
+  padding-bottom: 1em;
+  font-size: var(--cs-component-legend-font-size);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 27px;
+  text-align: left;
+}
+.example-group--prompt p {
+  margin: 0;
+  padding-bottom: 1em;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 0;
+  line-height: 19px;
+  text-align: left;
 }
 
 .example-form {

@@ -1,0 +1,39 @@
+.cs-component-choose-contact-type {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--cs-component-max-width);
+  font-family: var(--cs-component-font-family);
+  font-size: var(--cs-component-font-size);
+  font-weight: var(--cs-component-font-weight);
+  letter-spacing: var(--cs-component-letter-spacing);
+  line-height: var(--cs-component-line-height);
+}
+.cs-component-choose-contact-type .cs-component-choose-one__container {
+  border: none;
+  background: none;
+}
+.cs-component-choose-contact-type .cs-component-choose-one--label {
+  background: none;
+  color: var(--color-gray);
+  width: auto;
+  padding: 0;
+  padding-right: 10px;
+}
+.cs-component-choose-contact-type .cs-component-choose-one--name {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding-top: 3px;
+}
+.cs-component-choose-contact-type .cs-component-choose-one--name:hover, .cs-component-choose-contact-type .cs-component-choose-one--name:active, .cs-component-choose-contact-type .cs-component-choose-one--name:focus {
+  border-top: 2px solid var(--color-light-gray);
+}
+.cs-component-choose-contact-type .cs-component-choose-one--label.checked .cs-component-choose-one--name {
+  border-top: 2px solid var(--color-green);
+}
+.cs-component-choose-contact-type .cs-component-choose-one--label.checked .cs-component-choose-one--name:after {
+  background: none;
+}
+.cs-component-choose-contact-type .cs-component-choose-one--label + .cs-component-choose-one--label {
+  border: none;
+}

@@ -1,0 +1,164 @@
+/* Default / Primary variant: */
+.cs-component-cta,
+.cs-component-cta--primary {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--cs-component-max-width);
+  font-family: var(--cs-component-font-family);
+  font-size: var(--cs-component-font-size);
+  font-weight: var(--cs-component-font-weight);
+  letter-spacing: var(--cs-component-letter-spacing);
+  line-height: var(--cs-component-line-height);
+  --cs-cta-min-width: auto;
+  --cs-cta-height: auto;
+  --cs-cta-padding-horizontal: 20px;
+  --cs-cta-padding-vertical: 12px;
+  --cs-cta-font-size: 14px;
+  --cs-cta-font-weight: 600;
+  --cs-cta-line-height: 1;
+  --cs-cta-border-radius: var(--cs-component-border-radius);
+  --cs-cta-box-shadow: var(--cs-component-box-shadow);
+  /* Primary-variant only */
+  --cs-cta-color: white;
+  --cs-cta-background-color: var(--color-gray);
+  --cs-cta-border-color: var(--cs-cta-background-color);
+  /* Primary-variant: Hover state */
+  --cs-cta-hover-color: white;
+  --cs-cta-hover-background-color: var(--color-dark-gray);
+  /* Primary-variant: Disabled state */
+  --cs-cta-disabled-color: var(--color-dark-gray-op40);
+  --cs-cta-disabled-background-color: var(--color-dark-gray-op20);
+  --cs-cta-disabled-border-color: var(--cs-cta-disabled-background-color);
+  /* Secondary-variant only */
+  --cs-cta-secondary-color: var(--color-dark-gray);
+  --cs-cta-secondary-background-color: transparent;
+  --cs-cta-secondary-border-color: var(--cs-cta-secondary-color);
+  /* Primary-variant: Hover state */
+  --cs-cta-secondary-hover-color: var(--cs-cta-hover-color);
+  --cs-cta-secondary-hover-background-color: var(--cs-cta-hover-background-color);
+  /* Secondary-variant: Disabled state */
+  --cs-cta-secondary-disabled-color: var(--cs-cta-disabled-color);
+  --cs-cta-secondary-disabled-border-color: var(--cs-cta-disabled-border-color);
+  width: auto;
+  min-width: var(--cs-cta-min-width);
+  height: var(--cs-cta-height);
+  padding: var(--cs-cta-padding-vertical) var(--cs-cta-padding-horizontal);
+  background-color: var(--cs-cta-background-color);
+  color: var(--cs-cta-color);
+  border: 1px solid var(--cs-cta-border-color);
+  border-radius: var(--cs-cta-border-radius);
+  box-shadow: var(--cs-cta-box-shadow);
+  font-size: var(--cs-cta-font-size);
+  font-weight: var(--cs-cta-font-weight);
+  line-height: var(--cs-cta-line-height);
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+.cs-component-cta.loading .button-text,
+.cs-component-cta--primary.loading .button-text {
+  opacity: 0.15;
+}
+.cs-component-cta:focus, .cs-component-cta:hover,
+.cs-component-cta--primary:focus,
+.cs-component-cta--primary:hover {
+  background-color: var(--cs-cta-hover-background-color);
+  color: var(--cs-cta-hover-color);
+  outline-color: var(--cs-component-outline-color);
+}
+.cs-component-cta:disabled,
+.cs-component-cta--primary:disabled {
+  background-color: var(--cs-cta-disabled-background-color);
+  color: var(--cs-cta-disabled-color);
+  border-color: var(--cs-cta-disabled-border-color);
+  cursor: not-allowed;
+}
+.cs-component-cta .loading,
+.cs-component-cta .loading:before,
+.cs-component-cta .loading:after,
+.cs-component-cta--primary .loading,
+.cs-component-cta--primary .loading:before,
+.cs-component-cta--primary .loading:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+  opacity: 1;
+}
+.cs-component-cta .loading,
+.cs-component-cta--primary .loading {
+  color: white;
+  font-size: 5px;
+  position: absolute;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+  top: 0;
+  left: calc(50% - 6px);
+}
+.cs-component-cta .loading:before,
+.cs-component-cta .loading:after,
+.cs-component-cta--primary .loading:before,
+.cs-component-cta--primary .loading:after {
+  content: "";
+  position: absolute;
+  top: 0;
+}
+.cs-component-cta .loading:before,
+.cs-component-cta--primary .loading:before {
+  left: -5.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.cs-component-cta .loading:after,
+.cs-component-cta--primary .loading:after {
+  left: 5.5em;
+}
+@-webkit-keyframes load7 {
+  0%, 80%, 100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%, 80%, 100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+
+/* Secondary variant (outline button) */
+.cs-component-cta--secondary {
+  background-color: var(--cs-cta-secondary-background-color);
+  color: var(--cs-cta-secondary-color);
+  border-color: var(--cs-cta-secondary-border-color);
+}
+.cs-component-cta--secondary:focus, .cs-component-cta--secondary:hover {
+  background-color: var(--cs-cta-secondary-hover-background-color);
+  color: var(--cs-cta-secondary-hover-color);
+}
+.cs-component-cta--secondary:disabled {
+  background-color: var(--cs-cta-secondary-background-color);
+  color: var(--cs-cta-secondary-disabled-color);
+  border-color: var(--cs-cta-secondary-disabled-border-color);
+}
+
+/* Theme: cs-theme */
+.cs-theme {
+  --cs-cta-padding-vertical: 1em;
+  --cs-cta-padding-horizontal: 1.2em;
+  --cs-cta-border-radius: 4px;
+  --cs-cta-background-color: var(--color-cs-theme-purple);
+  --cs-cta-secondary-color: var(--color-cs-theme-purple);
+}

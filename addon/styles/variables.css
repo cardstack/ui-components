@@ -1,0 +1,66 @@
+/* Global CSS for all ui-components */
+:root {
+  /* Color palette */
+  --color-lighter-gray: #f5f5f5;
+  --color-light-gray-e8: #e8e8e8;
+  --color-light-gray: #c1c1c1;
+  --color-gray: #5d5d5d;
+  --color-dark-gray-rgb: 34, 34, 34;
+  --color-dark-gray: rgb(var(--color-dark-gray-rgb));
+  --color-dark-gray-op10: rgba(var(--color-dark-gray-rgb), 0.1);
+  --color-dark-gray-op20: rgba(var(--color-dark-gray-rgb), 0.2);
+  --color-dark-gray-op30: rgba(var(--color-dark-gray-rgb), 0.3);
+  --color-dark-gray-op40: rgba(var(--color-dark-gray-rgb), 0.4);
+  --color-dark-gray-op50: rgba(var(--color-dark-gray-rgb), 0.5);
+  --color-dark-gray-op60: rgba(var(--color-dark-gray-rgb), 0.6);
+  --color-border-gray: #707070;
+  --color-gray-70: #707070;
+  --color-purple: #6a3ca3;
+  --color-green: #58c949;
+  --color-pink: #ff5c5c;
+  --color-light-blue: rgb(59, 153, 252);
+  /* Theme color palette (cs-theme) */
+  --color-cs-theme-light-gray: #6f6f6f;
+  --color-cs-theme-gray: #4d4d4d;
+  --color-cs-theme-light-purple: #9f98bd;
+  --color-cs-theme-purple: #343356;
+  --color-cs-theme-green: green;
+  --color-cs-theme-red: red;
+  /* Component text */
+  --cs-component-color: var(--color-dark-gray);
+  --cs-component-font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  --cs-component-font-size: 16px;
+  --cs-component-font-weight: 400;
+  --cs-component-letter-spacing: 0;
+  --cs-component-line-height: 1.3;
+  /* Component background */
+  --cs-component-background-color: var(--color-lighter-gray);
+  --cs-component-background-highlight-color: var(--color-light-gray-e8); /* active state (hover, focus, etc.) */
+  /* Sizing */
+  --cs-component-max-width: 100%;
+  --cs-component-height: 60px;
+  /* Spacing */
+  --cs-component-padding-horizontal: 15px;
+  --cs-component-padding-vertical: 20px;
+  /* Borders */
+  --cs-component-border-color: var(--color-border-gray);
+  --cs-component-border-radius: 2px;
+  /* Box-shadow */
+  --cs-component-box-shadow: none;
+  /* Legend */
+  --cs-component-legend-font-size: 20px;
+  /* Labels */
+  --cs-component-label-color: var(--color-gray);
+  --cs-component-label-highlight-color: var(--color-purple); /* active state (hover, focus, etc.) */
+  --cs-component-label-minimized-color: var(--cs-component-label-color); /* input is filled in */
+  /* Selection */
+  --cs-component-selected-color: var(--color-gray-70);
+  /* Disabled state */
+  /* --cs-component-disabled-color: TBD */
+  /* --cs-component-disabled-background-color: TBD */
+  /* Validation */
+  --cs-component-valid: var(--color-green);
+  --cs-component-invalid: var(--color-pink);
+  /* A11y-related */
+  --cs-component-outline-color: var(--color-light-blue);
+}

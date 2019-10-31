@@ -1,21 +1,26 @@
 .cs-component-checkbox {
-  @include cs-component-common-styles;
-
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--cs-component-max-width);
+  font-family: var(--cs-component-font-family);
+  font-size: var(--cs-component-font-size);
+  font-weight: var(--cs-component-font-weight);
+  letter-spacing: var(--cs-component-letter-spacing);
+  line-height: var(--cs-component-line-height);
   --cs-checkbox-label-color: var(--cs-component-label-color);
   --cs-checkbox-validation: var(--cs-component-valid);
-  --cs-checkbox-validation-icon: url('images/check-icon.svg');
+  --cs-checkbox-validation-icon: url("images/check-icon.svg");
   --cs-checkbox-validation-icon-size: 1em;
-
   position: relative;
   margin-bottom: 10px;
 }
 
-.cs-component-checkbox input[type="checkbox"] {
+.cs-component-checkbox input[type=checkbox] {
   opacity: 0;
   position: absolute;
 }
 
-.cs-component-checkbox label::before{
+.cs-component-checkbox label::before {
   content: "";
   display: inline-block;
   height: 16px;
@@ -33,7 +38,6 @@
   width: 9px;
   border-left: 2px solid var(--cs-component-border-color);
   border-bottom: 2px solid var(--cs-component-border-color);
-
   transform: rotate(-45deg);
   left: 4px;
   top: 7px;
@@ -41,7 +45,6 @@
 
 .cs-component-checkbox label {
   --cs-checkbox-label-color: var(--cs-component-color);
-
   display: inline-block;
   position: relative;
   padding-left: 26px;
@@ -55,20 +58,19 @@
   position: absolute;
 }
 
-.cs-component-checkbox input[type="checkbox"] + label::after {
+.cs-component-checkbox input[type=checkbox] + label::after {
   content: none;
 }
 
-.cs-component-checkbox input[type="checkbox"]:checked + label::after {
+.cs-component-checkbox input[type=checkbox]:checked + label::after {
   content: "";
 }
 
-.cs-component-checkbox input[type="checkbox"]:focus + label::before {
+.cs-component-checkbox input[type=checkbox]:focus + label::before {
   outline: var(--cs-component-outline-color) auto 5px;
 }
 
-
-// input validation message
+/* input validation message */
 .cs-component-checkbox--validation {
   visibility: visible;
   position: absolute;
@@ -86,19 +88,16 @@
   text-transform: uppercase;
   overflow: hidden;
   text-overflow: ellipsis;
-
   -webkit-transition: visibility 0.2s ease, background-image 0.2s ease;
   transition: visibility 0.2s ease, background-image 0.2s ease;
-
-  &.invalid {
-    --cs-checkbox-validation: var(--cs-component-invalid);
-    --cs-checkbox-validation-icon: url('images/x-icon.svg');
-
-    visibility: visible;
-  }
-
-  &.hidden {
-    visibility: collapse;
-    background-image: none;
-  }
 }
+.cs-component-checkbox--validation.invalid {
+  --cs-checkbox-validation: var(--cs-component-invalid);
+  --cs-checkbox-validation-icon: url("images/x-icon.svg");
+  visibility: visible;
+}
+.cs-component-checkbox--validation.hidden {
+  visibility: collapse;
+  background-image: none;
+}
+
