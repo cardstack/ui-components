@@ -6,7 +6,7 @@
     class="cs-component-checkbox--input {{if @required "required"}}"
     id={{concat "checkbox-input-" this.elementId}}
     required={{@required}}
-    onchange={{action this.handleInput}}
+    {{on "change" this.handleInput}}
     disabled={{@disabled}}
   >
 

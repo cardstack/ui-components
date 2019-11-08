@@ -2,6 +2,7 @@ import { inject as service } from '@ember/service';
 import { A } from '@ember/array';
 import { computed } from '@ember/object';
 import FreestyleController from 'ember-freestyle/controllers/freestyle';
+import { action } from '@ember/object';
 
 const countries = [
   { name: 'United States', formalName: 'United States of America' },
@@ -120,5 +121,18 @@ export default Ember.Component.extend({
       valid: value === 'cardstack',
       message: 'Password must be "cardstack"'
     };
-  }
+  },
+
+  isChecked: false,
+  // We use `action()` here so that we can use the `this` context.
+  // propertyToSet comes from the arg bound by `{{fn}}` and
+  // val comes from the arg you pass in when calling the action
+
+  // BEGIN-FREESTYLE-USAGE checkbox-action
+  setChecked: action(function(propertyToSet, val) {
+    this.set(propertyToSet, val)
+  })
+
+
+  // END-FREESTYLE-USAGE
 });
