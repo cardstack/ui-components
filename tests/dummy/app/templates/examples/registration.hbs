@@ -12,7 +12,7 @@
       @label="I accept the Cardstack Terms &amp; Conditions"
       @required={{true}}
       @checked={{this.isCheckboxChecked}}
-      @setChecked={{action "setChecked"}} />
+      @setChecked={{fn this.setChecked "isCheckboxChecked"}} />
     <Cta @disabled={{this.isSubmitDisabled}}>Submit</Cta>
   </div>
 </section>
