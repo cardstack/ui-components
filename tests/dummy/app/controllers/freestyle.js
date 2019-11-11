@@ -129,10 +129,16 @@ export default Ember.Component.extend({
   // val comes from the arg you pass in when calling the action
 
   // BEGIN-FREESTYLE-USAGE checkbox-action
+  // Classic Ember:
   setChecked: action(function(propertyToSet, val) {
     this.set(propertyToSet, val)
   })
 
+  // Octane:
+  // @action
+  // setChecked(propertyToSet, val) {
+  //  this[propertyToSet] = val;
+  // }
 
   // END-FREESTYLE-USAGE
 });
