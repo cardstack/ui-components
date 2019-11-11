@@ -54,10 +54,12 @@ yarn install
 npm install
 ```
 
+* Third, create a Personal Access Token for GitHub. This is used when pushing your tags and commits. Go to your User Settings, Developer Settings, Personal Access Tokens to create one. You may delete this token after the release is complete.
+
 * And last (but not least 😁) do your release:
 
 ```
-release-it
+GITHUB_TOKEN="<your token here>" release-it
 ```
 
 [release-it](https://github.com/release-it/release-it/) manages the actual
