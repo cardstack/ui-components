@@ -20,7 +20,7 @@ export default class Checkbox extends BaseComponent {
     let checked = ev.target.checked;
 
     this.value = value;
-    this.args.setChecked(checked)
+    this.args.setChecked(checked);
 
     if (checked && !this.required) {
       this.invalid = false;

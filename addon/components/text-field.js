@@ -41,27 +41,30 @@ export default class TextField extends BaseComponent {
       let [invalid, validationMessage] = this.args.handleInput(value);
       this.invalid = invalid;
       this.validationMessage = validationMessage;
-      return;
-    }
-
-    this.value = value;
-
-    if (this.args.changeAction) {
-      this.args.changeAction(value);
-    }
-
-    if (!value && !this.required) {
-      this.invalid = false;
-      this.validationMessage = '';
-    } else if (!value && this.required) {
-      this.invalid = true;
-      this.validationMessage = 'Please fill out this field.';
-    } else if (validationMessage) {
-      this.invalid = true;
-      this.validationMessage = validationMessage;
     } else {
-      this.invalid = false;
-      this.validationMessage = 'Thank you.';
+      this.value = value;
+
+      if (this.args.changeAction) {
+        this.args.changeAction(value);
+      }
+
+      if (!value && !this.required) {
+        this.invalid = false;
+        this.validationMessage = '';
+      } else if (!value && this.required) {
+        this.invalid = true;
+        this.validationMessage = 'Please fill out this field.';
+      } else if (validationMessage) {
+        this.invalid = true;
+        this.validationMessage = validationMessage;
+      } else {
+        this.invalid = false;
+        this.validationMessage = 'Thank you.';
+      }
+    }
+
+    if (!this.invalid && this.args.setValue) {
+      this.args.setValue(value);
     }
 
     return;
