@@ -123,6 +123,10 @@ export default Ember.Component.extend({
     };
   },
 
+  handleChangeAction(val) {
+    return 'dropdown item selected:' + val.formalName;
+  },
+
   isChecked: false,
   // We use `action()` here so that we can use the `this` context.
   // propertyToSet comes from the arg bound by `{{fn}}` and
