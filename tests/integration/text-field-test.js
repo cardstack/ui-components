@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, fillIn } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | text-field', function(hooks) {
@@ -13,6 +13,22 @@ module('Integration | Component | text-field', function(hooks) {
     assert.dom('[data-test-cs-component-label="text-field"] .optional').hasText("Optional");
     assert.dom('[data-test-cs-component-label="text-field"] .label').hasText("What's the meaning of life?");
     assert.dom('[data-test-cs-component-validation="text-field"]').hasClass("hidden");
+  });
+
+  test('it can set a value', async function (assert) {
+    assert.expect(3);
+
+    this.set('setValue', function(val) {
+      assert.equal(val, 'bar');
+    });
+
+    await render(hbs`<TextField @value="foo" @setValue={{setValue}} />`);
+
+    assert.dom('[data-test-cs-component-input="text-field"]').hasValue('foo');
+
+    await fillIn('[data-test-cs-component-input="text-field"]', 'bar');
+
+    assert.dom('[data-test-cs-component-input="text-field"]').hasValue('bar');
   });
 
   test('it renders required component', async function (assert) {

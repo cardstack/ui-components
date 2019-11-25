@@ -68,6 +68,9 @@ export default class DatePicker extends BaseComponent {
   updatevalue(date) {
     this.value = date;
     this.errorMessage = '';
+    if (this.args.setValue) {
+      this.args.setValue(date);
+    }
   }
 
   @action
@@ -80,27 +83,27 @@ export default class DatePicker extends BaseComponent {
     if (!value && !this.required) {
       this.selected = '';
       this.center = moment();
-      return this.errorMessage = '';
-    }
-
-    if (!value && this.required) {
+      this.errorMessage = '';
+    } else if (!value && this.required) {
       this.selected = '';
       this.center = moment();
-      return this.errorMessage = 'This field is required.';
-    }
-
-    if (this.invalid) {
+      this.errorMessage = 'This field is required.';
+    } else if (this.invalid) {
       this.selected = '';
       this.center = moment();
-      return this.errorMessage = errorMessage;
-    }
-
-    if (this.isValidDate) {
+      this.errorMessage = errorMessage;
+    } else if (this.isValidDate) {
       value = moment(value, 'MM/DD/YYYY');
       this.center = value;
       this.selected = value;
-      return this.errorMessage = '';
+      this.errorMessage = '';
     }
+
+    if (value && !this.errorMessage && this.args.setValue) {
+      this.args.setValue(moment(value).format('MM/DD/YYYY'));
+    }
+
+    return this.errorMessage;
   }
 
   @action

@@ -82,6 +82,40 @@ module('Integration | Component | date picker', function (hooks) {
     assert.dom('.ember-power-calendar-day--selected').hasText('7');
   });
 
+  test('it can set a value using input field', async function (assert) {
+    let value;
+
+    this.set('setValue', function(val) {
+      value = val;
+    });
+
+    await render(hbs`<DatePicker @setValue={{setValue}}/>`);
+    await fillIn('[data-test-cs-component-input="date-picker"]', '12/07/2018');
+
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('12/07/2018');
+    assert.equal(value, '12/07/2018', 'date is correct');
+  });
+
+  test('it can set a value using calendar view', async function (assert) {
+    let value;
+
+    this.set('setValue', function(val) {
+      value = val;
+    });
+
+    await render(hbs`<DatePicker @setValue={{setValue}}/>`);
+    await click('[data-test-cs-component-input="date-picker"]');
+
+    await clickTrigger('[data-test-cs-component-calendar-nav-months]');
+    await click('[data-option-index="3"]');
+    await clickTrigger('[data-test-cs-component-calendar-nav-years]');
+    await click('[data-option-index="70"]');
+    await click('[data-date="1990-04-10"]');
+
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('04/10/1990');
+    assert.equal(value, '04/10/1990', 'date is correct');
+  });
+
   test('it can change selected date', async function (assert) {
     await render(hbs`<DatePicker />`);
     await click('[data-test-cs-component-input="date-picker"]');
