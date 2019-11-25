@@ -24,7 +24,7 @@
           ```
         {{/freestyle-note}}
         {{#freestyle-usage "dropdown" title="Dropdown"}}
-          <Dropdown @options={{this.countries}} @label="Select a country" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <Dropdown @options={{this.countries}} @label="Select a country" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} @handleChange={{this.handleChangeAction}} />
         {{/freestyle-usage}}
         {{#freestyle-usage "dropdown-disabled" title="Disabled"}}
           <Dropdown @options={{this.countries}} @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
