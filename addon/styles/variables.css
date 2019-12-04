@@ -28,7 +28,7 @@
   --color-cs-theme-red: red;
   /* Component text */
   --cs-component-color: var(--color-dark-gray);
-  --cs-component-font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  --cs-component-font-family: var(--cs-font-family);
   --cs-component-font-size: 16px;
   --cs-component-font-weight: 400;
   --cs-component-letter-spacing: 0;
@@ -43,7 +43,7 @@
   --cs-component-padding-horizontal: 15px;
   --cs-component-padding-vertical: 20px;
   /* Borders */
-  --cs-component-border-color: var(--color-border-gray);
+  --cs-component-border-color: var(--cs-dark-op25);
   --cs-component-border-radius: 2px;
   /* Box-shadow */
   --cs-component-box-shadow: none;
@@ -63,4 +63,45 @@
   --cs-component-invalid: var(--color-pink);
   /* A11y-related */
   --cs-component-outline-color: var(--color-light-blue);
+
+
+
+  /* Cardstack CSS vars */
+  --cs-font-family: "Open Sans", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --cs-form-component-width: 260px;
+  --cs-form-component-height: 40px;
+  --cs-transition-time: 250ms;
+
+  /* Cardstack color palette */
+  --cs-navy: #281e78;
+  --cs-blue: #0069f9;
+  --cs-purple: #6638ff;
+  --cs-fuschia: #ac00ff;
+  --cs-lilac: #a66dfa;
+  --cs-cyan: #00ebe5;
+  --cs-darker-cyan: #00b0ad;
+  --cs-green: #37eb77;
+  --cs-yellow: #c3fc33;
+
+  /* Cardstack form components color palette */
+  --cs-default: #2e2d38;                      /* body background, cards background, form components default background  */
+  --cs-hover: #272330;
+  --cs-disabled: #393642;
+  --cs-highlight: var(--cs-cyan);               /* form components focus state, links hover state */
+  --cs-highlight-hover: var(--cs-darker-cyan);
+  --cs-success: var(--cs-green);
+  --cs-dark-background: #41404d;              /* right edge background */
+  --cs-light-background: #e9e9ed;
+  --cs-deep-background: #141428;              /* use sparsely (currently used on homepage, schema view left-edge bg) */
+  --cs-border: #5b596e;                       /* mostly used as form-components border */
+  --cs-foreground: #5a586a;                   /* serves as medium background on dark background. example: used in right-edge dropdown and pill selector */
+  --cs-foreground-hover: #434050;
+  --cs-light: #fff;
+  --cs-dark: #000;
+  --cs-alert: #ff0000;
+  --cs-light-op40: rgba(255, 255, 255, 0.4); /* example: disabled field font color on dark bg */
+  --cs-light-op50: rgba(255, 255, 255, 0.5); /* example: placeholder or inactive label on dark bg */
+  --cs-light-op60: rgba(255, 255, 255, 0.6); /* example: field label on dark bg */
+  --cs-dark-op25: rgba(0, 0, 0, 0.25);       /* example: border color on light bg */
+  --cs-dark-op50: rgba(0, 0, 0, 0.5);        /* example: field label on light bg */
 }

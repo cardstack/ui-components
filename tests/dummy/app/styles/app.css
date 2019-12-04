@@ -1,6 +1,6 @@
 @import 'examples.css';
 
-body {
+.dummy-app {
   font-family: "Open Sans";
   font-size: 16px;
 }
@@ -34,10 +34,19 @@ body {
   border-bottom: solid 1px black;
 }
 
+.FreestyleCollection-variantListItem--active {
+  color: #005a66;
+}
+
 .toggle-view-mode {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 15px;
   box-shadow: 1px 1px 2px #ccc;
+}
+
+.dark-mode {
+  background-color: var(--cs-default);
+  color: var(--cs-light);
 }

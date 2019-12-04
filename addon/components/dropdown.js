@@ -7,12 +7,11 @@ export default class Dropdown extends BaseComponent {
   @tracked label = 'Select an option';
   @tracked searchField = 'name';
   @tracked dataTestName = 'dropdown';
+  @tracked searchEnabled = true;
   fieldType = 'text';
   isFocused = false;
   showLabelInViewMode = false;
-  searchEnabled = true;
-
-  allowClear = true;
+  renderInPlace = true;
 
   @action
   updateSelected(element, [selected]) {
