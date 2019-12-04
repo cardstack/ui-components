@@ -1,7 +1,6 @@
 {{#freestyle-guide title="Ember Freestyle" subtitle="Living Style Guide"}}
   {{!-- DROPDOWN --}}
   {{#freestyle-section name="dropdown"}}
-
     <ViewModeControl
       @name="dropdown"
       @viewMode={{this.viewMode}}
@@ -23,20 +22,58 @@
           ];
           ```
         {{/freestyle-note}}
-        {{#freestyle-usage "dropdown" title="Dropdown"}}
-          <Dropdown @options={{this.countries}} @label="Select a country" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "dropdown" title="Default Dropdown"}}
+          <Dropdown
+            @options={{this.countries}}
+            @label="Select a country"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
+        {{/freestyle-usage}}
+        {{#freestyle-note "dropdown-with-default-selected--notes"}}
+          ```
+          export default Component.extend({
+            // ...
+            selected: { name: "Spain" }
+          });
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-with-default-selected" title="Default Selected"}}
+          <Dropdown
+            @selected={{this.selected}}
+            @options={{this.countries}}
+            @label="Select a country"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
         {{#freestyle-usage "dropdown-disabled" title="Disabled"}}
-          <Dropdown @options={{this.countries}} @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <Dropdown
+            @disabled={{true}}
+            @options={{this.countries}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
-        {{#freestyle-usage "dropdown-search-disabled" title="With No Search Box"}}
-          <Dropdown @options={{this.countries}} @searchEnabled={{false}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-        {{#freestyle-usage "dropdown-clear-button" title="With No Clear Button"}}
-          <Dropdown @options={{this.countries}} @allowClear={{false}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "dropdown-required" title="Required"}}
+          <Dropdown
+            @required={{true}}
+            @options={{this.countries}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="custom-search-field"}}
+      {{#collection.variant key="search-field"}}
+        {{#freestyle-usage "dropdown-with-search" title="Search Disabled"}}
+          <Dropdown
+            @searchEnabled={{false}}
+            @options={{this.countries}}
+            @label="Select a country"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
+        {{/freestyle-usage}}
         {{#freestyle-note "dropdown-custom-search-field--notes"}}
           ```
           countries = [
@@ -50,24 +87,15 @@
           ];
           ```
         {{/freestyle-note}}
-        {{#freestyle-usage "dropdown-custom-search-field" title="Dropdown with custom search field"}}
-          <Dropdown @options={{this.countries}} @label="Select a country" @searchField="formalName" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "dropdown-custom-search-field" title="Custom search field"}}
+          <Dropdown
+            @searchField="formalName"
+            @options={{this.countries}}
+            @label="Select a country"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="with-default-selected"}}
-        {{#freestyle-note "dropdown-with-default-selected--notes"}}
-          ```
-          export default Component.extend({
-            // ...
-            selected: { name: "Spain" }
-          });
-          ```
-        {{/freestyle-note}}
-        {{#freestyle-usage "dropdown-with-default-selected" title="Dropdown with default selected"}}
-          <Dropdown @options={{this.countries}} @label="Select a country" @selected={{this.selected}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="with-custom-search-action"}}
         {{#freestyle-note "dropdown-with-custom-search-action--notes"}}
           ```
           countries = [
@@ -88,16 +116,27 @@
           ```
           `@searchAction` must be an `async` function that returns an array of items.
         {{/freestyle-note}}
-        {{#freestyle-usage "dropdown-with-custom-search-action" title="Dropdown with custom search action"}}
-          <Dropdown @searchAction={{action this.searchByLengthOfCountryName}} @label="Enter number of letters" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "dropdown-with-custom-search-action" title="Custom search action"}}
+          <Dropdown
+            @searchAction={{action this.searchByLengthOfCountryName}}
+            @label="Enter number of letters"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multi-select"}}
-        {{#freestyle-usage "dropdown-multiple" title="Multiple Select Dropdown"}}
-          <Dropdown @options={{this.countries}} @label="Select a country" @multiple={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "dropdown-multiple" title="Multi-Select Dropdown"}}
+          <Dropdown
+            @multiple={{true}}
+            @options={{this.countries}}
+            @label="Select a country"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="with-customized-options"}}
+      {{#collection.variant key="custom-option-component"}}
         {{#freestyle-note "dropdown-with-customized-options--notes"}}
           ```
           const customDropdownOptions = [
@@ -132,9 +171,7 @@
             selectedCrypto: customDropdownOptions[1],
           });
 
-
           // custom-option.hbs
-
           <span><img src={{@option.imageUrl}} alt="card"></span>
           <span class="caps">{{@option.cardType}}</span>
           <span class="lightweight">{{@option.transactionId}}</span>
@@ -142,68 +179,57 @@
           <span class="lightweight">{{@option.fromValue}}</span>
           <span class="lightweight">{{@option.toValue}}</span>
           ```
-
         {{/freestyle-note}}
-        {{#freestyle-usage "dropdown-with-customized-options" title="Dropdown with customized options"}}
-          <Dropdown @options={{this.customDropdownOptions}} @label="Payment method" @optionComponent="custom-option" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "dropdown-with-customized-options" title="Dropdown With Custom option component"}}
+          <Dropdown
+            @optionComponent="custom-option"
+            @options={{this.customDropdownOptions}}
+            @label="Payment method"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="themed"}}
-        {{#freestyle-usage "dropdown-themed" title="Themed"}}
-          <Dropdown @options={{this.countries}} @label="Select a country" @theme="cs-theme" />
+      {{#collection.variant key="dark-theme"}}
+        {{#freestyle-usage "dropdown-dark" class="dark-mode" title="Dropdown Dark"}}
+          <Dropdown
+            @theme="dark"
+            @options={{this.countries}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
-        {{#freestyle-note "dropdown-themed--notes"}}
-          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
-          <p>Available themes: <code>cs-theme</code></p>
-        {{/freestyle-note}}
-        {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component</h2>
-          <ol>
-            <li>Define a new CSS class on your stylesheet.</li>
-            <li>Change the values set to available CSS variables (see list below).</li>
-            <li>Pass the CSS class name to the <code>@theme</code> attribute on your <code>Dropdown</code> component.</li>
-            <li>More specific CSS changes can be made using <code>ember-power-select</code> classes nested inside your theme class.</li>
-          </ol>
-          <h2>Customizable CSS variables</h2>
-          <b>Note: <code>--cs-component</code> prefixed values below are inherited from the root level, but can still be customized with a theme.</b>
-          <pre>
-            <code>
-              .your-theme-name {
-              <b>Sizing</b>
-              --cs-dropdown-max-width                   // --cs-component-max-width
-              --cs-dropdown-height                      // --cs-component-height
-              --cs-dropdown-text-box-height             // 1.75em
-
-              <b>Spacing</b>
-              --cs-dropdown-padding-horizontal          // --cs-component-padding-horizontal
-              --cs-dropdown-padding-vertical            // --cs-component-padding-vertical
-
-              <b>Text</b>
-              --cs-dropdown-color                       // --cs-component-color
-              --cs-dropdown-font-size                   // --cs-component-font-size
-
-              <b>Label</b>
-              --cs-dropdown-label-color                 // --cs-component-label-color
-              --cs-dropdown-label-font-size             // --cs-dropdown-font-size
-              --cs-dropdown-label-font-weight           // --cs-dropdown-font-weight
-              --cs-dropdown-label-highlight-color       // --cs-component-label-highlight-color
-              --cs-dropdown-label-highlight-font-size   // 12px
-              --cs-dropdown-label-minimized-color       // --cs-dropdown-label-color
-
-              <b>Background properties</b>
-              --cs-dropdown-background-color  // --cs-component-background-color
-              --cs-dropdown-background-hover  // --cs-component-background-highlight-color
-
-              <b>Borders</b>
-              --cs-dropdown-border-color      // --cs-component-border-color
-              --cs-dropdown-border-radius     // --cs-component-border-radius
-
-              <b>Options</b>
-              --cs-dropdown-selected-color    // --cs-component-selected-color
-              }
-            </code>
-          </pre>
-        {{/freestyle-annotation}}
+        {{#freestyle-usage "dropdown-dark-disabled" class="dark-mode" title="Disabled"}}
+          <Dropdown
+            @theme="dark"
+            @disabled={{true}}
+            @options={{this.countries}}
+            @label="Select a country"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "dropdown-dark-outer-label" class="dark-mode" title="With Outer Label"}}
+          <Dropdown
+            @theme="dark"
+            @label="Select a country"
+            @outerLabel="Country"
+            @options={{this.countries}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "dropdown-dark-required" class="dark-mode" title="Required"}}
+          <Dropdown
+            @theme="dark"
+            @required={{true}}
+            @label="Select a country"
+            @outerLabel="Country"
+            @options={{this.countries}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
+        {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
@@ -662,19 +688,6 @@
         {{#freestyle-annotation}}
           Selected addresses JSON:
           <pre>{{this.stringifiedAddresses}}</pre>
-        {{/freestyle-annotation}}
-      {{/collection.variant}}
-      {{#collection.variant key="themed"}}
-        {{#freestyle-usage "street-address-themed" title="Themed"}}
-          <StreetAddress @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-        {{#freestyle-note "street-address-themed--notes"}}
-          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
-          <p>Available themes: <code>cs-theme</code></p>
-        {{/freestyle-note}}
-        {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component</h2>
-          <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
         {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}

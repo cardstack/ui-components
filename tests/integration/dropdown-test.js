@@ -106,14 +106,6 @@ module('Integration | Component | dropdown', function(hooks) {
     assert.dom('.ember-power-select-option:nth-of-type(3)').hasText('Brazil');
   });
 
-  test('it renders themed component', async function (assert) {
-    this.options = [];
-    await render(hbs`<Dropdown @options={{options}} @theme="cs-theme" />`);
-
-    assert.dom('[data-test-cs-component="dropdown"].cs-theme').exists();
-    assert.dom('[data-test-cs-component-label="dropdown"].cs-theme').exists();
-  });
-
   test('it calls a custom action when onchange event is triggered', async function(assert) {
     this.countries = [
       { name: 'United States' },
@@ -193,5 +185,41 @@ module('Integration | Component | dropdown', function(hooks) {
 
     this.set('showLabelInViewMode', true);
     assert.dom('[data-test-cs-component-view-label]').hasText('Choose crypto');
+  });
+
+  test('dark theme - it renders themed component', async function(assert) {
+    this.options = [];
+    await render(hbs`<Dropdown @theme="dark" @options={{options}} />`);
+
+    assert.dom('[data-test-cs-component="dropdown"]').exists();
+    assert.dom('[data-test-cs-component="dropdown"]').hasClass('cs-dropdown-group--dark');
+    assert.dom('[data-test-cs-component="dropdown"] .cs-dropdown--dark').exists();
+  });
+
+  test('dark theme - it renders the component with custom labels', async function(assert) {
+    this.options = [];
+    await render(hbs`<Dropdown @theme="dark" @options={{options}} @label="Select a Country" @outerLabel="Country" />`);
+
+    assert.dom('[data-test-cs-component="dropdown"]').exists();
+    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-placeholder').hasText('Select a Country');
+    assert.dom('[data-test-cs-component="dropdown"] .cs-label--dark').hasText('Country');
+  });
+
+  test('dark theme - it renders the required component', async function(assert) {
+    this.options = [];
+    await render(hbs`<Dropdown @theme="dark" @options={{options}} @required={{true}} @outerLabel="Country" />`);
+
+    assert.dom('[data-test-cs-component="dropdown"].required').exists();
+    assert.dom('[data-test-cs-component="dropdown"].required .cs-required--dark').exists();
+  });
+
+  test('dark theme - it renders the disabled component', async function(assert) {
+    this.options = [];
+    await render(hbs`<Dropdown @theme="dark" @options={{options}} @disabled={{true}} />`);
+
+    assert.dom('[data-test-cs-component="dropdown"] .cs-dropdown--dark.disabled').exists();
+
+    await clickTrigger('[data-test-cs-component="dropdown"]');
+    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-option').doesNotExist();
   });
 });

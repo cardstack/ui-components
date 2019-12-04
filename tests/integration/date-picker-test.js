@@ -7,10 +7,6 @@ import { clickTrigger } from 'ember-power-select/test-support/helpers'
 import moment from 'moment';
 
 module('Integration | Component | date picker', function (hooks) {
-  let errorMessage = 'Please enter a valid date in the format MM/DD/YYYY or select one from the calendar.';
-  let month = moment().format('MMMM');
-  let year = moment().format('YYYY');
-
   setupRenderingTest(hooks);
 
   test('it renders default component', async function (assert) {
@@ -49,6 +45,9 @@ module('Integration | Component | date picker', function (hooks) {
   });
 
   test('it displays calendar with current month and year when clicking on date input', async function (assert) {
+    let month = moment().format('MMMM');
+    let year = moment().format('YYYY');
+
     await render(hbs`<DatePicker />`);
     await click('[data-test-cs-component-input="date-picker"]');
 
@@ -142,6 +141,9 @@ module('Integration | Component | date picker', function (hooks) {
   });
 
   test('it can clear selected date and reset calendar', async function (assert) {
+    let month = moment().format('MMMM');
+    let year = moment().format('YYYY');
+
     await render(hbs`<DatePicker @label="Enter date" />`);
     await click('[data-test-cs-component-input="date-picker"]');
 
@@ -190,30 +192,30 @@ module('Integration | Component | date picker', function (hooks) {
 
   test('it can change calendar view using navigation arrows', async function (assert) {
     await render(hbs`<DatePicker />`);
+
+    await fillIn('[data-test-cs-component-input="date-picker"]', '12/03/2019');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasValue('12/03/2019');
+
     await click('[data-test-cs-component-input="date-picker"]');
     assert.dom('.cs-component-calendar').exists();
 
     await click('[data-test-nav-arrow="year-backwards"]');
     await click('[data-test-nav-arrow="year-backwards"]');
-    year = moment(year, 'YYYY').subtract(2, 'y').format('YYYY');
-    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText(month);
-    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText(year);
+    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText('December');
+    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText('2017');
 
     await click('[data-test-nav-arrow="month-forwards"]');
-    month = moment(month, 'MMMM').add(1, 'M').format('MMMM');
-    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText(month);
-    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText(year);
+    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText('January');
+    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText('2018');
 
     await click('[data-test-nav-arrow="year-forwards"]');
-    year = moment(year, 'YYYY').add(1, 'y').format('YYYY');
-    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText(month);
-    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText(year);
+    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText('January');
+    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText('2019');
 
     await click('[data-test-nav-arrow="month-backwards"]');
     await click('[data-test-nav-arrow="month-backwards"]');
-    month = moment(month, 'MMMM').subtract(2, 'M').format('MMMM');
-    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText(month);
-    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText(year);
+    assert.dom('[data-test-cs-component-calendar-nav-months]').hasText('November');
+    assert.dom('[data-test-cs-component-calendar-nav-years]').hasText('2018');
   });
 
   test('it can change calendar view using both dropdown and navigation arrows', async function (assert) {
@@ -246,6 +248,8 @@ module('Integration | Component | date picker', function (hooks) {
   });
 
   test('it displays error message for invalid input', async function (assert) {
+    let errorMessage = 'Please enter a valid date in the format MM/DD/YYYY or select one from the calendar.';
+
     await render(hbs`<DatePicker />`);
 
     await fillIn('[data-test-cs-component-input="date-picker"]', '111');

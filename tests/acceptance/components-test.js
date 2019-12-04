@@ -78,13 +78,13 @@ module('Acceptance | components', function(hooks) {
 
     await click(".FreestyleCollection-variantListItem");
 
-    assert.dom('.cs-component-dropdown--multiple').exists();
-    assert.dom('.cs-component-dropdown--multiple label').hasText('Select a country');
+    assert.dom('.cs-component-dropdown.multiple').exists();
+    assert.dom('[data-test-cs-component-label="dropdown"]').hasText('Select a country');
 
-    await selectChoose('.cs-component-dropdown--multiple', 'Brazil');
+    await selectChoose('.cs-component-dropdown.multiple', 'Brazil');
     assert.dom('.ember-power-select-multiple-option').hasText(/Brazil/);
 
-    await clickTrigger('.cs-component-dropdown--multiple');
+    await clickTrigger('.cs-component-dropdown.multiple');
     await typeInSearch('Lat');
 
     assert.dom('.ember-power-select-option').exists({ count: 1 });
