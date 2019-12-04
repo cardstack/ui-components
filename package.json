@@ -1,6 +1,6 @@
 {
   "name": "@cardstack/ui-components",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Reusable UI elements for Cardstack projects and Ember apps.",
   "keywords": [
     "ember-addon"
