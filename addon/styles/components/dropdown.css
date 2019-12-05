@@ -1,14 +1,14 @@
 .cs-dropdown-group {
-  --cs-dropdown-width: 523px;
-  --cs-dropdown-height: 60px;
-  --cs-dropdown-background-color: #fcfcfc;
-  --cs-dropdown-border-color: #d2d2d2;
+  --cs-dropdown-width: 453px;
+  --cs-dropdown-height: 76px;
+  --cs-dropdown-background-color: var(--cs-light);
+  --cs-dropdown-border-color: var(--cs-dark-op25);
   --cs-dropdown-selected-color: #f2f2f4;
 
   position: relative;
   display: block;
-  width: var(--cs-dropdown-width);
-  max-width: 100%;
+  width: 100%;
+  max-width: var(--cs-dropdown-width);
   height: var(--cs-dropdown-height);
   color: var(--cs-dark);
   font: 400 16px/18px var(--cs-font-family);
@@ -26,7 +26,7 @@
   z-index: 1;
   position: absolute;
   bottom: -1px;
-  top: 25px;
+  top: 30px;
   left: 15px;
   right: 45px;
   /* do not overlap dropdown open box arrow */
@@ -68,8 +68,8 @@
 .cs-component-dropdown .ember-basic-dropdown-trigger--in-place.ember-power-select-trigger[aria-expanded="true"] {
   display: flex;
   align-items: center;
-  width: var(--cs-dropdown-width);
-  max-width: 100%;
+  width: 100%;
+  max-width: var(--cs-dropdown-width);
   height: var(--cs-dropdown-height);
   padding: 25px 45px 0 15px;
   background-color: var(--cs-dropdown-background-color);
@@ -115,7 +115,7 @@
 .cs-component-dropdown .ember-power-select-status-icon {
   right: 15px;
   width: 10px;
-  height: var(--cs-component-height);
+  height: var(--cs-dropdown-height);
   background: url('/assets/images/dropdown-arrows.svg') center/10px no-repeat;
   border: none;
 }
@@ -156,9 +156,9 @@
 .cs-component-dropdown .ember-power-select-dropdown,
 .cs-component-dropdown .ember-power-select-dropdown.ember-basic-dropdown-content--below,
 .cs-component-dropdown .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
-  top: 20px;
-  width: var(--cs-dropdown-width);
-  max-width: 100%;
+  top: 30px;
+  width: 100%;
+  max-width: var(--cs-dropdown-width);
   background: none;
   border-color: var(--cs-dropdown-border-color);
   border-bottom-left-radius: 5px;
@@ -225,7 +225,7 @@
   flex-flow: nowrap row;
   align-items: center;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: 12px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

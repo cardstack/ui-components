@@ -27,30 +27,31 @@
   --color-cs-theme-green: green;
   --color-cs-theme-red: red;
   /* Component text */
-  --cs-component-color: var(--color-dark-gray);
+  --cs-component-color: var(--cs-dark);
   --cs-component-font-family: var(--cs-font-family);
   --cs-component-font-size: 16px;
   --cs-component-font-weight: 400;
   --cs-component-letter-spacing: 0;
   --cs-component-line-height: 1.3;
   /* Component background */
-  --cs-component-background-color: var(--color-lighter-gray);
+  --cs-component-background-color: var(--cs-light);
   --cs-component-background-highlight-color: var(--color-light-gray-e8); /* active state (hover, focus, etc.) */
   /* Sizing */
   --cs-component-max-width: 100%;
+  --cs-component-width: 453px;
   --cs-component-height: 60px;
   /* Spacing */
   --cs-component-padding-horizontal: 15px;
   --cs-component-padding-vertical: 20px;
   /* Borders */
   --cs-component-border-color: var(--cs-dark-op25);
-  --cs-component-border-radius: 2px;
+  --cs-component-border-radius: 5px;
   /* Box-shadow */
   --cs-component-box-shadow: none;
   /* Legend */
   --cs-component-legend-font-size: 20px;
   /* Labels */
-  --cs-component-label-color: var(--color-gray);
+  --cs-component-label-color: var(--cs-dark-op50);
   --cs-component-label-highlight-color: var(--color-purple); /* active state (hover, focus, etc.) */
   --cs-component-label-minimized-color: var(--cs-component-label-color); /* input is filled in */
   /* Selection */
@@ -68,8 +69,6 @@
 
   /* Cardstack CSS vars */
   --cs-font-family: "Open Sans", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --cs-form-component-width: 260px;
-  --cs-form-component-height: 40px;
   --cs-transition-time: 250ms;
 
   /* Cardstack color palette */
@@ -103,5 +102,5 @@
   --cs-light-op50: rgba(255, 255, 255, 0.5); /* example: placeholder or inactive label on dark bg */
   --cs-light-op60: rgba(255, 255, 255, 0.6); /* example: field label on dark bg */
   --cs-dark-op25: rgba(0, 0, 0, 0.25);       /* example: border color on light bg */
-  --cs-dark-op50: rgba(0, 0, 0, 0.5);        /* example: field label on light bg */
+  --cs-dark-op50: rgba(0, 0, 0, 0.55);        /* example: field label on light bg */
 }

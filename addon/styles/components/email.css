@@ -1,10 +1,16 @@
 .cs-component-emails__wrapper {
   position: relative;
+  width: 100%;
+  max-width: var(--cs-component-width);
+}
+
+.cs-component-emails__wrapper + .cs-component-emails__wrapper {
+  margin-top: 10px;
 }
 
 .cs-component-emails__wrapper .cs-component-emails--add {
   position: absolute;
-  top: 20px;
+  top: 25px;
   right: -25px;
   border: none;
   text-indent: -9999px;

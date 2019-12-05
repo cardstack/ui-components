@@ -105,9 +105,8 @@ module('Acceptance | components', function(hooks) {
     assert.equal(currentURL(), '/freestyle?s=Email%20Input');
 
     assert.dom('[data-test-cs-component="email"]').exists();
-    assert.dom('[data-test-cs-component-label="email"] .optional').hasText('Optional');
-    assert.dom('[data-test-cs-component-label="email"] .label').hasText('Email Address');
-    assert.dom('[data-test-cs-component-validation="email"]').hasClass('hidden');
+    assert.dom('[data-test-cs-component-label="email"]').hasText('Email Address');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
   });
 
   test('date picker component', async function(assert) {

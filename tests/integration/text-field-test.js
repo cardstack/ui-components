@@ -6,13 +6,22 @@ import hbs from 'htmlbars-inline-precompile';
 module('Integration | Component | text-field', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders component', async function(assert) {
+  test('it renders the default component', async function(assert) {
     await render(hbs`<TextField @label="What's the meaning of life?" />`);
+
+    assert.dom('[data-test-cs-component="text-field"]').exists();
+    assert.dom('[data-test-cs-component-label="text-field"]').exists();
+    assert.dom('[data-test-cs-component-input="text-field"]').exists();
+    assert.dom('[data-test-cs-component-label="text-field"]').hasText("What's the meaning of life?");
+  });
+
+  test('it renders the component with animated label', async function(assert) {
+    await render(hbs`<TextField @animatedLabel={{true}} @label="What's the meaning of life?" />`);
 
     assert.dom('[data-test-cs-component="text-field"]').exists();
     assert.dom('[data-test-cs-component-label="text-field"] .optional').hasText("Optional");
     assert.dom('[data-test-cs-component-label="text-field"] .label').hasText("What's the meaning of life?");
-    assert.dom('[data-test-cs-component-validation="text-field"]').hasClass("hidden");
+    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('');
   });
 
   test('it can set a value', async function (assert) {
@@ -44,11 +53,11 @@ module('Integration | Component | text-field', function(hooks) {
   });
 
   test('it renders themed component', async function (assert) {
-    await render(hbs`<TextField @label="What's the meaning of life?" @theme="cs-theme" />`);
+    await render(hbs`<TextField @label="What's the meaning of life?" @theme="dark" />`);
 
-    assert.dom('[data-test-cs-component-input="text-field"]').hasClass('cs-theme');
-    assert.dom('[data-test-cs-component-label="text-field"]').hasClass('cs-theme');
-    assert.dom('[data-test-cs-component-validation="text-field"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component="text-field"]').hasClass('cs-input-group--dark');
+    assert.dom('[data-test-cs-component-label="text-field"]').hasClass('cs-label--dark');
+    assert.dom('.cs-input--dark').exists();
   });
 
   test('it renders in view mode', async function (assert) {

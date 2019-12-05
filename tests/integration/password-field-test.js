@@ -10,10 +10,19 @@ module('Integration | Component | password-field', function(hooks) {
     await render(hbs`<PasswordField @label="Enter your passcode" />`);
 
     assert.dom('[data-test-cs-component="password"]').exists();
+    assert.dom('[data-test-cs-component-label="password"]').hasText('Enter your passcode');
+    assert.dom('[data-test-cs-component-input="password"]').hasAttribute('type', 'password');
+    assert.dom('[data-test-cs-component-validation="password"]').hasText('');
+  });
+
+  test('it renders component with animated label', async function(assert) {
+    await render(hbs`<PasswordField @animatedLabel={{true}} @label="Enter your passcode" />`);
+
+    assert.dom('[data-test-cs-component="password"]').exists();
+    assert.dom('[data-test-cs-component-label="password"] .optional').hasText('Optional');
     assert.dom('[data-test-cs-component-label="password"] .label').hasText('Enter your passcode');
     assert.dom('[data-test-cs-component-input="password"]').hasAttribute('type', 'password');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('');
-    assert.dom('[data-test-cs-component-validation="password"]').hasClass('hidden');
   });
 
   test('it toggles visibility', async function (assert) {
@@ -32,13 +41,11 @@ module('Integration | Component | password-field', function(hooks) {
     await fillIn('[data-test-cs-component-input="password"]', 'xyz');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must be at least 10 characters')
 
     await fillIn('[data-test-cs-component-input="password"]', 'xyzabcddeft');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
   });
 
@@ -47,13 +54,11 @@ module('Integration | Component | password-field', function(hooks) {
     await fillIn('[data-test-cs-component-input="password"]', 'xyzsfa');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must include at least one uppercase character')
 
     await fillIn('[data-test-cs-component-input="password"]', 'Zyzsfa');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
   });
 
@@ -62,13 +67,11 @@ module('Integration | Component | password-field', function(hooks) {
     await fillIn('[data-test-cs-component-input="password"]', 'XYZSFA');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must include at least one lowercase character')
 
     await fillIn('[data-test-cs-component-input="password"]', 'ZYZSFa');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
   });
 
@@ -77,13 +80,11 @@ module('Integration | Component | password-field', function(hooks) {
     await fillIn('[data-test-cs-component-input="password"]', 'XYZSFA');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must include at least one number')
 
     await fillIn('[data-test-cs-component-input="password"]', 'ZYZSF4');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
   });
 
@@ -92,13 +93,11 @@ module('Integration | Component | password-field', function(hooks) {
     await fillIn('[data-test-cs-component-input="password"]', 'XYZSFA');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must include at least one special character')
 
     await fillIn('[data-test-cs-component-input="password"]', 'ZYZSFA%');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
   });
 
@@ -113,21 +112,19 @@ module('Integration | Component | password-field', function(hooks) {
     await fillIn('[data-test-cs-component-input="password"]', 'XYZSFA');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must be c4rdst4ck')
 
     await fillIn('[data-test-cs-component-input="password"]', 'c4rdst4ck');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('hidden');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
   });
 
-  test('it renders themed component', async function (assert) {
-    await render(hbs`<PasswordField @label="Enter your passcode" @theme="cs-theme" />`);
+  test('it can render the themed component', async function (assert) {
+    await render(hbs`<PasswordField @label="Enter your passcode" @theme="dark" />`);
 
-    assert.dom('[data-test-cs-component-input="password"]').hasClass('cs-theme');
-    assert.dom('[data-test-cs-component-label="password"]').hasClass('cs-theme');
-    assert.dom('[data-test-cs-component-validation="password"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component-input="password"]').hasClass('cs-input--dark');
+    assert.dom('[data-test-cs-component-label="password"]').hasClass('cs-label--dark');
+    assert.dom('[data-test-cs-component-validation="password"]').hasClass('cs-validation--dark');
   });
 });

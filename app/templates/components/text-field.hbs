@@ -1,7 +1,28 @@
-<div class="cs-component-text-field {{@className}}" data-test-cs-component={{this.dataTestName}} {{did-update this.updateValue @value @validationMessage @required}}>
+<div
+  class="
+    {{if (not (or @theme @animatedLabel)) "cs-input-group"}}
+    {{if @theme (concat "cs-input-group--" @theme)}}
+    {{if @animatedLabel "cs-component-text-field"}}
+    {{if @required "required"}}
+    {{@className}}
+    {{@mode}}
+"
+  data-test-cs-component={{this.dataTestName}}
+  {{did-update this.updateValue @value @validationMessage @required}}
+>
   {{#if (eq @mode "view")}}
     <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{this.value}} />
   {{else}}
+    {{#unless @animatedLabel}}
+      <label
+        for={{this.inputId}}
+        class="cs-input-group--label {{if @theme (concat "cs-label--" @theme)}}"
+        data-test-cs-component-label={{this.dataTestName}}
+      >
+        {{@label}}
+      </label>
+    {{/unless}}
+
     {{#if this.iconComponent}}
       {{component this.iconComponent
         class="cs-component-text-field--icon"
@@ -12,15 +33,19 @@
     {{/if}}
 
     {{#if (eq @inputComponent "phone-number-field/input")}}
-      {{phone-input
-        update=(fn @update (action (mut this.value)) (action (mut this.invalid)) (action (mut this.validationMessage)))
-        class=(concat "cs-component-text-field--input " @theme)
-        required=this.required
-        number=this.value
-        id=this.inputId
-        inputmode=@inputmode
-        data-test-cs-component-input=this.dataTestName
-      }}
+      <PhoneInput
+        @class="
+          {{if (not (or @theme @animatedLabel)) "cs-input"}}
+          {{if @theme (concat "cs-input--" @theme)}}
+          {{if @disabled "disabled"}}
+        "
+        @update={{fn @update (action (mut this.value)) (action (mut this.invalid)) (action (mut this.validationMessage))}}
+        @required={{this.required}}
+        @number={{this.value}}
+        @id={{this.inputId}}
+        @inputmode={{@inputmode}}
+        @data-test-cs-component-input={{this.dataTestName}}
+      />
     {{else if @dateComponent}}
       {{component @dateComponent
         type=this.type
@@ -44,7 +69,13 @@
         @type={{this.type}}
         @name={{this.name}}
         @value={{this.value}}
-        @class={{concat "cs-component-text-field--input " @theme " " @mode}}
+        @class="
+          {{if @animatedLabel "cs-component-text-field--input"}}
+          {{if (not (or @theme @animatedLabel)) "cs-input"}}
+          {{if @theme (concat "cs-input--" @theme)}}
+          {{if @disabled "disabled"}}
+          {{@mode}}
+        "
         @id={{this.inputId}}
         required={{this.required}}
         disabled={{or (eq @mode "schema") this.disabled}}
@@ -60,19 +91,21 @@
       />
     {{/if}}
 
-    <label
-      for={{this.inputId}}
-      class="cs-component-text-field--label {{if this.value "active"}} {{@theme}}"
-      data-test-cs-component-label={{this.dataTestName}}
-    >
-      <span class="label">{{@label}}</span>
-      {{#unless this.required}}
-        <span class="optional">Optional</span>
-      {{/unless}}
-    </label>
+    {{#if @animatedLabel}}
+      <label
+        for={{this.inputId}}
+        class="cs-component-text-field--label {{if this.value "active"}} {{@theme}}"
+        data-test-cs-component-label={{this.dataTestName}}
+      >
+        <span class="label">{{@label}}</span>
+        {{#unless this.required}}
+          <span class="optional">Optional</span>
+        {{/unless}}
+      </label>
+    {{/if}}
 
     <div
-      class="cs-component-text-field--validation {{if (not this.validationMessage) "hidden"}} {{if this.invalid "invalid"}} {{@theme}}"
+      class="cs-input-group--validation {{if this.invalid "invalid"}} {{if @theme (concat "cs-validation--" @theme)}}"
       data-test-cs-component-validation={{this.dataTestName}}
     >
       {{this.validationMessage}}
