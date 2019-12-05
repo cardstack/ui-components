@@ -1,10 +1,16 @@
 .cs-component-street-addresses__wrapper {
   position: relative;
+  width: 100%;
+  max-width: var(--cs-component-width);
+}
+
+.cs-component-street-addresses__wrapper + .cs-component-street-addresses__wrapper {
+  margin-top: 10px;
 }
 
 .cs-component-street-addresses__wrapper .cs-component-street-addresses--add-address {
   position: absolute;
-  top: 20px;
+  top: 25px;
   right: -25px;
   border: none;
   text-indent: -9999px;

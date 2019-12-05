@@ -43,16 +43,16 @@ module('Acceptance | examples', function(hooks) {
     assert.equal(currentURL(), '/examples/configurator');
 
     assert.dom('[data-test-cs-component-input="text-field"]').hasValue('Bill Wagby', 'name is correct');
-    assert.dom('[data-test-cs-component-label="text-field"] .label').hasText('Full Name', 'label is correct');
-    assert.dom('[data-test-cs-component-label="text-field"] .optional').hasText('Optional', 'field is optional');
+    assert.dom('[data-test-cs-component-label="text-field"]').hasText('Full Name', 'label is correct');
+    assert.dom('[data-test-cs-component="text-field"]').doesNotHaveClass('required', 'field is optional');
 
     await fillIn('#option-label', 'Title');
     await fillIn('#option-value', 'Señor Engineer');
     await click('#option-required');
 
     assert.dom('[data-test-cs-component-input="text-field"]').hasValue('Señor Engineer', 'title is correct');
-    assert.dom('[data-test-cs-component-label="text-field"] .label').hasText('Title', 'label is correct');
-    assert.dom('[data-test-cs-component-label="text-field"] .optional').doesNotExist('field is required');
+    assert.dom('[data-test-cs-component-label="text-field"]').hasText('Title', 'label is correct');
+    assert.dom('[data-test-cs-component="text-field"]').hasClass('required', 'field is required');
   });
 
   test('configurator dynamically change modes', async function(assert) {
@@ -69,8 +69,8 @@ module('Acceptance | examples', function(hooks) {
     await click('#option-mode-schema');
 
     assert.dom('[data-test-cs-component-input="text-field"]').isDisabled('input field is disabled');
+    assert.dom('[data-test-cs-component-input="text-field"]').hasValue('Bill Wagby', 'schema is rendered');
     assert.dom('[data-test-cs-component-schema-field-type]').hasText('text', 'field type is present');
-    assert.dom('.cs-component-text-field--input.schema').hasValue('Bill Wagby', 'schema is rendered');
 
     await click('#option-mode-edit');
 

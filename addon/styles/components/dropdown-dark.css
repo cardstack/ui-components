@@ -1,10 +1,13 @@
 /* TODO: multiselect styling */
 
 .cs-dropdown-group--dark {
+  --cs-dropdown-width: 260px;
+  --cs-dropdown-height: 40px;
+
   position: relative;
   display: block;
-  width: min-content;
-  max-width: 100%;
+  width: 100%;
+  max-width: var(--cs-dropdown-width);
   padding-bottom: 15px;
   color: var(--cs-light);
   font: 400 13px/18px var(--cs-font-family);
@@ -50,15 +53,15 @@
   display: flex;
   flex-flow: nowrap row;
   align-items: center;
-  width: var(--cs-form-component-width);
-  max-width: 100%;
-  height: var(--cs-form-component-height);
+  width: 100%;
+  height: var(--cs-dropdown-height);
   padding: 0 45px 0 15px;
   background-color: var(--cs-foreground);
   border: 1px solid var(--cs-default);
   border-radius: 5px;
   overflow-y: hidden;
 }
+
 .cs-dropdown--dark .ember-power-select-selected-item,
 .cs-dropdown--dark .ember-power-select-placeholder {
   display: block;
@@ -93,10 +96,14 @@
   color: var(--cs-light-op40);
 }
 
+.cs-dropdown--dark .ember-power-select-trigger .ember-power-select-clear-btn {
+  display: none;
+}
+
 .cs-dropdown--dark .ember-power-select-status-icon {
   right: 15px;
   width: 10px;
-  height: var(--cs-form-component-height);
+  height: var(--cs-dropdown-height);
   background: url('/assets/images/dropdown-arrows.svg') center/10px no-repeat;
   border: none;
 }

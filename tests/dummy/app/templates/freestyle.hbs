@@ -6,7 +6,6 @@
       @viewMode={{this.viewMode}}
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
-
     {{#freestyle-collection title="dropdown" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-note "dropdown--notes"}}
@@ -287,7 +286,7 @@
           <p>Available themes: <code>cs-theme</code></p>
         {{/freestyle-note}}
         {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component</h2>
+          <h2>How to Create a Theme for This Component (Animated Label)</h2>
           <ol>
             <li>Define a new CSS class on your stylesheet. This will be the theme name.</li>
             <li>Change the values set to available CSS variables (see list below).</li>
@@ -346,74 +345,24 @@
 
   {{!-- TEXT FIELD --}}
   {{#freestyle-section name="TextField"}}
-
     <ViewModeControl
       @name="text-field"
       @viewMode={{this.viewMode}}
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
-
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-field-default" title="Default"}}
           <TextField @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="required"}}
-        {{#freestyle-usage "text-field-required" title="Required"}}
-          <TextField @label="What's your name?" @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+      {{#collection.variant key="animated-label"}}
+        {{#freestyle-usage "text-field-animated-default" title="Animated Label"}}
+          <TextField @label="What's your name?" @animatedLabel={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="disabled"}}
-        {{#freestyle-usage "text-field-disabled" title="Disabled"}}
-          <TextField @label="What's your name?" @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "text-field-animated-required" title="Animated Label (Required)"}}
+          <TextField @label="What's your name?" @animatedLabel={{true}} @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="themed"}}
-        {{#freestyle-usage "text-field-themed" title="Themed"}}
-          <TextField @label="What's your name?" @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-        {{#freestyle-note "text-field-themed--notes"}}
-          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
-          <p>Available themes: <code>cs-theme</code></p>
-        {{/freestyle-note}}
-        {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component</h2>
-          <ol>
-            <li>Define a new CSS class on your stylesheet.</li>
-            <li>Change the values set to available CSS variables (see list below).</li>
-            <li>Pass the CSS class name to the <code>@theme</code> attribute on the component.</li>
-          </ol>
-
-          <h2>Customizable CSS variables</h2>
-          <b>Note: <code>--cs-component</code> prefixed values below are inherited from the root level, but can still be customized with a theme.</b>
-          <pre>
-            <code>
-              <b>CSS custom property:</b>               // <b>Default value:</b>
-              --cs-text-field-max-width                 // --cs-component-max-width
-              --cs-text-field-height                    // --cs-component-height
-              --cs-text-field-padding-horizontal        // --cs-component-padding-horizontal
-              --cs-text-field-padding-vertical          // --cs-component-padding-vertical
-
-              --cs-text-field-color                     // --cs-component-color
-              --cs-text-field-font-size:                // --cs-component-font-size
-              --cs-text-field-background-color          // --cs-component-background-color
-              --cs-text-field-border-color              // --cs-component-border-color
-              --cs-text-field-border-radius             // --cs-component-border-radius
-
-              --cs-text-field-label-color                // --cs-component-label-color
-              --cs-text-field-label-font-size            // --cs-text-field-font-size
-              --cs-text-field-label-font-weight:         // --cs-text-field-font-weight
-              --cs-text-field-label-highlight-color      // --cs-component-label-highlight-color
-              --cs-text-field-label-highlight-font-size  // 12px;
-              --cs-text-field-label-minimized-color      // --cs-component-label-minimized-color
-              --cs-text-field-label-optional             // --cs-text-field-color
-
-              --cs-text-field-valid                      // --cs-component-valid
-              --cs-text-field-invalid                    // --cs-component-invalid
-            </code>
-          </pre>
-        {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
@@ -421,33 +370,20 @@
 
   {{!-- PHONE NUMBER --}}
   {{#freestyle-section name="Phone Number Field"}}
-
     <ViewModeControl
       @name="phone-number"
       @viewMode={{this.viewMode}}
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
-
     {{#freestyle-usage "phone-number-field-default" title="Phone Number Field"}}
       <PhoneNumberField @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-required" title="Phone Number Field (Required)"}}
       <PhoneNumberField @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
-    {{#freestyle-usage "phone-number-field-multi" title="Phone Number Fields"}}
+    {{#freestyle-usage "phone-number-field-multi" title="Phone Number List (Multiple Fields)"}}
       <PhoneNumberFields @values={{this.phoneNumberValues}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
-    {{#freestyle-usage "phone-number-themed" title="Themed"}}
-      <PhoneNumberField @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-    {{/freestyle-usage}}
-    {{#freestyle-note "phone-number-themed--notes"}}
-      <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
-      <p>Available themes: <code>cs-theme</code></p>
-    {{/freestyle-note}}
-    {{#freestyle-annotation}}
-      <h2>How to Create a Theme for This Component</h2>
-      <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
-    {{/freestyle-annotation}}
 
     Phone Numbers JSON:
     <pre>{{this.stringifiedPhoneNumbers}}</pre>
@@ -456,48 +392,21 @@
 
   {{!-- TEXTAREA --}}
   {{#freestyle-section name="Text Area"}}
-
     <ViewModeControl
       @name="text-area"
       @viewMode={{this.viewMode}}
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
-
     {{#freestyle-collection title="TextArea" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-area-default" title="Text Area"}}
-          <TextArea @label="What's on your mind?" @rows={{5}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <TextArea @label="What's on your mind?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="with-max-length"}}
         {{#freestyle-usage "text-area-with-max-length" title="Text Area with Max Length"}}
           <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="themed"}}
-        {{#freestyle-usage "text-area-themed" title="Themed"}}
-          <TextArea @label="What's on your mind?" @rows={{5}} @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-        {{#freestyle-note "text-area-themed--notes"}}
-          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
-          <p>Available themes: <code>cs-theme</code></p>
-        {{/freestyle-note}}
-        {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component</h2>
-          <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
-          <p>However, if you want your <code>Textarea</code> to be styled differently from your <code>TextField</code> component, you can set the following CSS properties:</p>
-          <pre>
-            <code>
-              <b>CSS custom property:</b>         // <b>Default value:</b>
-              --cs-text-area-line-height          // 35px
-              --cs-text-area-max-width            // --cs-text-field-max-width
-              --cs-text-area-background-color     // --cs-text-field-background-color
-              --cs-text-area-border-color         // --cs-text-field-border-color
-              --cs-text-area-border-radius        // --cs-text-field-border-radius
-              --cs-text-area-char-counter-color   // --cs-text-field-label-color
-            </code>
-          </pre>
-        {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
@@ -553,18 +462,10 @@
           <PasswordField @validate={{this.validator}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="themed"}}
-        {{#freestyle-usage "password-field-themed" title="Themed"}}
-          <PasswordField @theme="cs-theme" />
+      {{#collection.variant key="animated-label"}}
+        {{#freestyle-usage "password-field-animated-label" title="Password Field with animated label"}}
+          <PasswordField @animatedLabel={{true}} />
         {{/freestyle-usage}}
-        {{#freestyle-note "password-field-themed--notes"}}
-          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
-          <p>Available themes: <code>cs-theme</code></p>
-        {{/freestyle-note}}
-        {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component</h2>
-          <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
-        {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
@@ -585,7 +486,6 @@
     {{#freestyle-note "text-choose-many--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
-    {{!-- TODO: Themed version --}}
   {{/freestyle-section}}
 
   {{#freestyle-section name="Choose Contact Type"}}
@@ -596,45 +496,42 @@
 
   {{!-- EMAIL --}}
   {{#freestyle-section name="Email Input"}}
-
     <ViewModeControl
       @name="email"
       @viewMode={{this.viewMode}}
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
-
     {{#freestyle-collection title="email" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
-        {{#freestyle-usage "email-input-default" title="Default"}}
-          <Email @label="Email Address" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="required"}}
-        {{#freestyle-usage "email-input-required" title="Required"}}
-          <Email @label="Email Address" @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "email-input-default" title="Email Field (Default)"}}
+          <Email
+            @label="Email Address"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multiple"}}
-        {{#freestyle-usage "email-multiple" title="Multiple"}}
-          <Emails @label="Email Address" @values={{this.emailValues}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "email-multiple" title="Multiple Email Fields"}}
+          <Emails
+            @values={{this.emailValues}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
         {{#freestyle-annotation}}
           Emails JSON:
           <pre>{{this.stringifiedEmails}}</pre>
         {{/freestyle-annotation}}
       {{/collection.variant}}
-      {{#collection.variant key="themed"}}
-        {{#freestyle-usage "email-input-themed" title="Themed"}}
-          <Email @label="Email Address" @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+      {{#collection.variant key="animated-label"}}
+        {{#freestyle-usage "email-input-animated-default" title="Email field with animated label"}}
+          <Email
+            @animatedLabel={{true}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}}
+          />
         {{/freestyle-usage}}
-        {{#freestyle-note "email-input-themed--notes"}}
-          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
-          <p>Available themes: <code>cs-theme</code></p>
-        {{/freestyle-note}}
-        {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component</h2>
-          <p>This component extends the <code>TextField</code> component. See instructions under the <i>Themed</i> tab on that component's page.</p>
-        {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
@@ -658,19 +555,16 @@
     {{#freestyle-usage "checkbox-default-checked" title="Default Checked"}}
       <Checkbox @label="I would like to subscribe to your newsletter" @checked={{true}} @setChecked={{fn this.setChecked "checkedFour"}} />
     {{/freestyle-usage}}
-    {{!-- TODO: Themed version --}}
   {{/freestyle-section}}
 
 
   {{!-- STREET ADDRESS --}}
   {{#freestyle-section name="Street Address"}}
-
     <ViewModeControl
       @name="street-address"
       @viewMode={{this.viewMode}}
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
-
     {{#freestyle-collection title="street-address" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-note "street-address--notes"}}
         Uses the Google Places API to search for addresses. A Google Maps API_KEY must be provided with Google Places API
@@ -693,15 +587,14 @@
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
   {{!-- DATE PICKER --}}
   {{#freestyle-section name="date-picker"}}
-
     <ViewModeControl
       @name="date-picker"
       @viewMode={{this.viewMode}}
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
-
     {{#freestyle-collection title="date picker" defaultKey="default" inline=true as |collection|}}
       {{#freestyle-annotation}}
         <p>Allows user to select a date from calendar view or enter their own input. User can navigate the calendar using arrows or the month and year dropdowns.</p>
@@ -714,17 +607,17 @@
       {{/freestyle-annotation}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "date-picker-optional" title="Default"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker @animatedLabel={{true}} @label="Date (MM/DD/YYYY)" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="disabled"}}
         {{#freestyle-usage "date-picker-disabled" title="Disabled"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker @animatedLabel={{true}} @label="Date (MM/DD/YYYY)" @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "date-picker-required" title="Required"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @required="true" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker @animatedLabel={{true}} @label="Date (MM/DD/YYYY)" @required="true" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="custom-years"}}
@@ -732,35 +625,14 @@
           Using `startYear` and `yearRange` attributes to change the dropdown year range.
         {{/freestyle-note}}
         {{#freestyle-usage "date-picker-custom-years" title="Custom Years"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker @animatedLabel={{true}} @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="themed"}}
-        {{#freestyle-usage "date-picker-themed" title="Themed"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @theme="cs-theme" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-        {{#freestyle-note "date-picker-themed--notes"}}
-          <p>Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.</p>
-          <p>Available themes: <code>cs-theme</code></p>
-        {{/freestyle-note}}
-        {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component</h2>
-          <ol>
-            <li>Define a new CSS class on your stylesheet.</li>
-            <li>Change the values set to available CSS variables (see list below).</li>
-            <li>The input and dropdown fields of this component extend the styles of the <code>TextField</code> and <code>Dropdown</code> component. See the instructions on those components' <i>Themed</i> pages.</li>
-            <li>Pass the CSS class name to the <code>@theme</code> attribute on the component.</li>
-          </ol>
-          <h2>Supported CSS variables</h2>
-          <ul>
-            <li><code>--cs-date-background-color</code></li>
-            <li><code>--cs-date-color</code></li>
-          </ul>
-        {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
+
+  {{!-- FILE UPLOAD DIALOG --}}
   {{#freestyle-section name="File Upload Dialog"}}
     {{#freestyle-annotation}}
       <code>FileUploadDialog</code> can take in a few parameters
@@ -774,74 +646,5 @@
     {{#freestyle-usage "file-upload-dialog-default" title="File Upload Dialog"}}
       <FileUploadDialog @acceptedFormats="jpg, gif, png" />
     {{/freestyle-usage}}
-  {{/freestyle-section}}
-
-  {{!-- CUSTOM ROOT STYLES --}}
-  {{#freestyle-section name="custom styles"}}
-    {{#freestyle-annotation}}
-      <p>To change the default styles across <em>ALL</em> Cardstack <code>ui-components</code>, set your own CSS values to the default root CSS variables below.</p>
-
-      <p>If you're only looking to make changes to specific components, see more info on theming on that component's documentation.</p>
-
-      <pre>
-        <code>
-          <strong>Root-level CSS custom properties with their default values:</strong>
-          <strong>(Common across most ui-components. Exceptions in Cta component.)</strong>
-
-        :root {
-          <b>CSS custom property:</b>                 // <b>Default value:</b>
-
-          <b>Text</b>
-          --cs-component-color                        // dark-gray (#222)
-          --cs-component-font-family                  // 'Open Sans', Arial, Helvetica, sans-serif
-          --cs-component-font-size                    // 16px
-          --cs-component-font-weight                  // 400
-          --cs-component-letter-spacing               // 0
-          --cs-component-line-height                  // 1.3
-
-          <b>Background</b>
-          --cs-component-background-color             // light-gray (#f5f5f5)
-          --cs-component-background-highlight-color   // light-gray (#e8e8e8)
-
-          <b>Sizing</b>
-          --cs-component-max-width                    // 100%
-          --cs-component-height                       // 60px
-
-          <b>Spacing</b>
-          --cs-component-padding-horizontal           // 15px
-          --cs-component-padding-vertical             // 20px
-
-          <b>Borders</b>
-          --cs-component-border-color                 // gray (#707070)
-          --cs-component-border-radius                // 2px
-
-          <b>Box-shadow</b>
-          --cs-component-box-shadow                   // none
-
-          <b>Legend</b>
-          --cs-component-legend-font-size             // 20px
-
-          <b>Labels</b>
-          --cs-component-label-color                  // gray (#5d5d5d)
-          --cs-component-label-highlight-color        // purple (#6a3ca3) (active state, hover, focus, etc.)
-          --cs-component-label-minimized-color        // --cs-component-label-color (filled-in state)
-
-          <b>Selection</b>
-          --cs-component-selected-color               // gray (#707070)
-
-          // Disabled state:
-          // --cs-component-disabled-color: TBD
-          // --cs-component-disabled-background-color: TBD
-
-          <b>Validation</b>
-          --cs-component-valid                        // green (#58c949)
-          --cs-component-invalid                      // pink (#ff5c5c)
-
-          <b>A11y-related</b>
-          --cs-component-outline-color                // light-blue
-        }
-        </code>
-      </pre>
-    {{/freestyle-annotation}}
   {{/freestyle-section}}
 {{/freestyle-guide}}

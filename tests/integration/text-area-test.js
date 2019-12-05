@@ -10,7 +10,7 @@ module('Integration | Component | text-area', function(hooks) {
     await render(hbs`<TextArea @label="What's the meaning of life?" @rows={{2}} />`);
 
     assert.dom('[data-test-cs-component="text-area"]').exists();
-    assert.dom('[data-test-cs-component-text-area-label] .label').hasText("What's the meaning of life?");
+    assert.dom('[data-test-cs-component-text-area-label]').hasText("What's the meaning of life?");
     assert.dom('[data-test-cs-component="text-area"] textarea').hasAttribute('rows', '2');
   });
 
@@ -40,12 +40,13 @@ module('Integration | Component | text-area', function(hooks) {
     assert.dom('[data-test-cs-component-text-area-char-counter]').hasText('10/10');
   });
 
-  test('it renders themed component', async function (assert) {
-    await render(hbs`<TextArea @label="What's the meaning of life?" @rows={{2}} @theme="cs-theme" />`);
+  test('it can render themed component', async function (assert) {
+    await render(hbs`<TextArea @label="What's the meaning of life?" @rows={{2}} @theme="dark" />`);
 
-    assert.dom('[data-test-cs-component="text-area"] textarea').hasClass('cs-theme');
-    assert.dom('[data-test-cs-component-text-area-label]').hasClass('cs-theme');
-    assert.dom('[data-test-cs-component-text-area-validation]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component="text-area"]').hasClass('cs-input-group--dark');
+    assert.dom('[data-test-cs-component-text-area-label]').hasClass('cs-label--dark');
+    assert.dom('[data-test-cs-component-input="text-area"]').hasClass('cs-input--dark');
+    assert.dom('[data-test-cs-component-text-area-validation]').hasClass('cs-validation--dark');
   });
 
   test('it renders in view mode', async function (assert) {

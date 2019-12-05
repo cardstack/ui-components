@@ -1,26 +1,20 @@
-.cs-component-phone-number .intl-tel-input {
-  display: block;
-}
-.cs-component-phone-number .intl-tel-input.allow-dropdown .flag-container {
-  left: 7px;
-  bottom: -10px;
-}
-.cs-component-phone-number input[type=tel] {
-  padding-bottom: 10px;
-}
-.cs-component-phone-number .cs-component-text-field--label > .label {
-  top: 1.5rem;
-  font-size: 12px;
-  font-weight: 600;
+.cs-input-group.cs-component-phone-number {
+  overflow: initial;
 }
 
 .cs-component-phone-number-fields__wrapper {
   position: relative;
+  width: 100%;
+  max-width: var(--cs-component-width);
+}
+
+.cs-component-phone-number-fields__wrapper + .cs-component-phone-number-fields__wrapper {
+  margin-top: 10px;
 }
 
 .cs-component-phone-number-fields__wrapper .cs-component-phone-number-fields--add {
   position: absolute;
-  top: 20px;
+  top: 25px;
   right: -25px;
   border: none;
   text-indent: -9999px;

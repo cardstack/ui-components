@@ -1,53 +1,16 @@
-.cs-component-text-area--container {
-  --cs-text-area-line-height: 35px;
-  --cs-text-area-max-width: var(--cs-text-field-max-width);
-  --cs-text-area-background-color: var(--cs-text-field-background-color);
-  --cs-text-area-border-color: var(--cs-text-field-border-color);
-  --cs-text-area-border-radius: var(--cs-text-field-border-radius);
-  --cs-text-area-char-counter-color: var(--cs-text-field-label-color);
-  max-width: var(--cs-text-area-max-width);
-  padding: 1rem;
-  background-color: var(--cs-text-area-background-color);
-  border: 1px solid var(--cs-text-area-border-color);
-  border-radius: var(--cs-text-area-border-radius);
+.cs-component-text-area.cs-input-group {
+  height: calc(var(--cs-text-field-height) * 2);
 }
 
-.cs-component-text-area--input {
-  --gradient-height: calc(var(--cs-text-area-line-height) - 1px);
-  max-width: 100%;
-  background-image: -webkit-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
-  background-image: -moz-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
-  background-image: -ms-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
-  background-image: -o-linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
-  background-image: linear-gradient(var(--cs-text-area-background-color), var(--cs-text-area-background-color) var(--gradient-height), #ccc var(--gradient-height), #ccc var(--cs-text-area-line-height), var(--cs-text-area-background-color) var(--cs-text-area-line-height));
-  background-size: 100% var(--cs-text-area-line-height);
-  margin-top: 0.2rem;
-  margin-bottom: 0.5rem;
+textarea.cs-input {
+  padding-bottom: 10px;
   resize: none;
-  overflow-y: scroll;
-}
-
-.cs-component-text-area--input.cs-component-text-field--input {
-  width: 100%;
-  height: auto;
-  border: none;
-  padding: 0;
-  line-height: var(--cs-text-area-line-height);
-}
-
-.cs-component-text-area--input:focus {
-  outline: 0;
-}
-
-.cs-component-text-area--label.cs-component-text-field--label > .label {
-  padding-left: 0;
 }
 
 .cs-component-text-area--char-counter {
   position: absolute;
   bottom: -1rem;
   right: 0;
-  color: var(--cs-text-area-char-counter-color);
   font-size: 12px;
 }
 .cs-component-text-area--char-counter.with-validation {
