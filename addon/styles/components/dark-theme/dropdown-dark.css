@@ -104,7 +104,7 @@
   right: 15px;
   width: 10px;
   height: var(--cs-dropdown-height);
-  background: url('/assets/images/dropdown-arrows.svg') center/10px no-repeat;
+  background: url('images/dropdown-arrows.svg') center/10px no-repeat;
   border: none;
 }
 
@@ -135,7 +135,7 @@
 }
 
 .cs-dropdown--dark .ember-power-select-option[aria-selected="true"] {
-  background: url('/assets/images/checkmark.svg') 10px center/10px no-repeat;
+  background: url('images/checkmark.svg') 10px center/10px no-repeat;
   background-color: var(--cs-foreground);
 }
 

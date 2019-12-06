@@ -3,6 +3,7 @@
 }
 
 textarea.cs-input {
+  height: 100%;
   padding-bottom: 10px;
   resize: none;
 }

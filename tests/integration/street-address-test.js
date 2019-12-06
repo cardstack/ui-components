@@ -46,17 +46,17 @@ module('Integration | Component | street address', function(hooks) {
     this.streetAddresses = A([null]);
     await render(hbs`<StreetAddresses @values={{streetAddresses}}/>`);
 
-    assert.dom('.cs-component-street-address').exists({ count: 1 });
+    assert.dom('[data-test-cs-component="street-address"]').exists({ count: 1 });
 
-    await clickTrigger('.cs-component-street-address');
+    await clickTrigger('[data-test-cs-component="street-address"]');
     await fillIn('.ember-power-select-search-input', 'abc');
     await selectChoose('.cs-component-street-address', '12 Grimmauld Place');
 
     assert.deepEqual(this.streetAddresses, [{ description: '12 Grimmauld Place' }]);
 
-    await click('.cs-component-street-addresses--add-address');
+    await click('[data-test-multi-item-list-add-btn]');
 
-    assert.dom('.cs-component-street-address').exists({ count: 2 });
+    assert.dom('[data-test-cs-component="street-address"]').exists({ count: 2 });
   });
 
   test('it renders in view mode', async function (assert) {

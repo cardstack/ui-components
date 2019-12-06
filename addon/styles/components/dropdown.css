@@ -116,7 +116,7 @@
   right: 15px;
   width: 10px;
   height: var(--cs-dropdown-height);
-  background: url('/assets/images/dropdown-arrows.svg') center/10px no-repeat;
+  background: url('images/dropdown-arrows.svg') center/10px no-repeat;
   border: none;
 }
 .cs-component-dropdown.disabled .ember-power-select-status-icon {
@@ -173,7 +173,7 @@
   background-color: var(--cs-dropdown-selected-color);
 }
 .cs-component-dropdown .ember-power-select-option[aria-selected="true"] {
-  background: url('/assets/images/checkmark.svg') 10px center/10px no-repeat;
+  background: url('images/checkmark.svg') 10px center/10px no-repeat;
   background-color: var(--cs-dropdown-selected-color);
   color: var(--ch-dark);
 }
