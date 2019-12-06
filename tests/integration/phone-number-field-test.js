@@ -72,4 +72,11 @@ module('Integration | Component | phone-number-field', function(hooks) {
     this.set('showLabelInViewMode', true);
     assert.dom('[data-test-cs-component-view-label]').hasText("Enter your phone number");
   });
+
+  test('it can use the passed in id', async function(assert) {
+    await render(hbs`<PhoneNumberField @id="crazy-id" @label="Crazy digits" />`);
+
+    assert.dom('[data-test-cs-component-label="phone-number"]').hasAttribute('for', 'crazy-id');
+    assert.dom('[data-test-cs-component="phone-number"] input').hasAttribute('id', 'crazy-id');
+  });
 });

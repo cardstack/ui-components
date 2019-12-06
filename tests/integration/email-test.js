@@ -109,4 +109,11 @@ module('Integration | Component | email', function(hooks) {
     this.set('showLabelInViewMode', true);
     assert.dom('[data-test-cs-component-view-label]').hasText("Enter your email");
   });
+
+  test('it can use the passed in id', async function(assert) {
+    await render(hbs`<Email @id="crazy-email-id" @label="Crazy email" />`);
+
+    assert.dom('[data-test-cs-component-label="email"]').hasAttribute('for', 'crazy-email-id');
+    assert.dom('[data-test-cs-component-input="email"]').hasAttribute('id', 'crazy-email-id');
+  });
 });
