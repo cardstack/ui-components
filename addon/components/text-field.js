@@ -1,5 +1,5 @@
 import BaseComponent from './base-component';
-import { action, computed } from '@ember/object';
+import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 let nonce = 0;
@@ -15,13 +15,12 @@ export default class TextField extends BaseComponent {
   @tracked showLabelInViewMode = false;
   fieldType = 'text';
 
-  @computed('elementId')
   get inputId() {
     if (this.args.inputId) {
       return this.args.inputId;
     }
 
-    return `text-field-input-${this.elementId}`;
+    return `${this.elementId}`;
   }
 
   get elementId() {

@@ -76,4 +76,11 @@ module('Integration | Component | text-field', function(hooks) {
     this.set('showLabelInViewMode', true);
     assert.dom('[data-test-cs-component-view-label]').hasText("What's the meaning of life?");
   });
+
+  test('it can use the passed in id', async function(assert) {
+    await render(hbs`<TextField @id="crazy-id" @label="What's the meaning of life?" />`);
+
+    assert.dom('[data-test-cs-component-label="text-field"]').hasAttribute('for', 'crazy-id');
+    assert.dom('[data-test-cs-component-input="text-field"]').hasAttribute('id', 'crazy-id');
+  });
 });

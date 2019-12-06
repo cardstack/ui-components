@@ -127,4 +127,11 @@ module('Integration | Component | password-field', function(hooks) {
     assert.dom('[data-test-cs-component-label="password"]').hasClass('cs-label--dark');
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('cs-validation--dark');
   });
+
+  test('it can use the passed in id', async function(assert) {
+    await render(hbs`<PasswordField @id="crazy-id" @label="Crazy password" />`);
+
+    assert.dom('[data-test-cs-component-label="password"]').hasAttribute('for', 'crazy-id');
+    assert.dom('[data-test-cs-component-input="password"]').hasAttribute('id', 'crazy-id');
+  });
 });

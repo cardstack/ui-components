@@ -15,7 +15,7 @@
   {{else}}
     {{#unless @animatedLabel}}
       <label
-        for={{this.inputId}}
+        for={{or @id this.inputId}}
         class="cs-input-group--label {{if @theme (concat "cs-label--" @theme)}}"
         data-test-cs-component-label={{this.dataTestName}}
       >
@@ -34,6 +34,7 @@
 
     {{#if (eq @inputComponent "phone-number-field/input")}}
       <PhoneInput
+        @id={{or @id this.inputId}}
         @class="
           {{if (not (or @theme @animatedLabel)) "cs-input"}}
           {{if @theme (concat "cs-input--" @theme)}}
@@ -42,12 +43,12 @@
         @update={{fn @update (action (mut this.value)) (action (mut this.invalid)) (action (mut this.validationMessage))}}
         @required={{this.required}}
         @number={{this.value}}
-        @id={{this.inputId}}
         @inputmode={{@inputmode}}
         @data-test-cs-component-input={{this.dataTestName}}
       />
     {{else if @dateComponent}}
       {{component @dateComponent
+        id=(or @id this.inputId)
         type=this.type
         name=this.name
         class=(concat "cs-component-text-field--input " @theme)
@@ -57,7 +58,6 @@
         onblur=(action @onblur)
         onchange=(action @onchange)
         oninput=(action @oninput)
-        id=this.inputId
         inputmode=@inputmode
         dataTestName=this.dataTestName
       }}
@@ -66,6 +66,7 @@
         <div data-test-cs-component-schema-field-type class="cs-component-text-field--schema--field-type">{{this.fieldType}}</div>
       {{/if}}
       <Input
+        @id={{or @id this.inputId}}
         @type={{this.type}}
         @name={{this.name}}
         @value={{this.value}}
@@ -76,7 +77,6 @@
           {{if @disabled "disabled"}}
           {{@mode}}
         "
-        @id={{this.inputId}}
         required={{this.required}}
         disabled={{or (eq @mode "schema") this.disabled}}
         autocomplete="off"
@@ -88,12 +88,13 @@
         max={{@max}}
         step={{@step}}
         data-test-cs-component-input={{this.dataTestName}}
+        ...attributes
       />
     {{/if}}
 
     {{#if @animatedLabel}}
       <label
-        for={{this.inputId}}
+        for={{or @id this.inputId}}
         class="cs-component-text-field--label {{if this.value "active"}} {{@theme}}"
         data-test-cs-component-label={{this.dataTestName}}
       >

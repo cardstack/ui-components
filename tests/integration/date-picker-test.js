@@ -333,4 +333,11 @@ module('Integration | Component | date picker', function (hooks) {
 
     assert.dom('[data-test-cs-component-view-label]').hasText("When is Judgment Day?");
   });
+
+  test('it can use the passed in id', async function(assert) {
+    await render(hbs`<DatePicker @id="crazy-id" @label="Crazy dates" />`);
+
+    assert.dom('[data-test-cs-component-label="date-picker"]').hasAttribute('for', 'crazy-id');
+    assert.dom('[data-test-cs-component-input="date-picker"]').hasAttribute('id', 'crazy-id');
+  });
 });
