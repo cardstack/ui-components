@@ -1,8 +1,8 @@
 <div class="cs-component-emails">
   {{#each this.values as |value index|}}
-    <div class="cs-component-emails__wrapper">
+    <div class="cs-multi-item-list" data-test-multi-item-list>
       <Email @value={{value}} @changeAction={{action "updateValue" index}} @label={{this.label}} />
-      <button class="cs-component-emails--add" {{action "addComponent"}}>Add</button>
+      <button class="cs-multi-item-list--add" {{action "addComponent"}} data-test-multi-item-list-add-btn>Add</button>
     </div>
   {{/each}}
 </div>
