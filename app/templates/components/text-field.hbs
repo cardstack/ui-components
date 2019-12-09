@@ -44,7 +44,7 @@
         @required={{this.required}}
         @number={{this.value}}
         @inputmode={{@inputmode}}
-        @data-test-cs-component-input={{this.dataTestName}}
+        data-test-cs-component-input={{this.dataTestName}}
       />
     {{else if @dateComponent}}
       {{component @dateComponent
@@ -77,16 +77,17 @@
           {{if @disabled "disabled"}}
           {{@mode}}
         "
-        required={{this.required}}
-        disabled={{or (eq @mode "schema") this.disabled}}
-        autocomplete="off"
         @change={{action this.handleInput}}
-        autofocus={{@autofocus}}
-        inputmode={{@inputmode}}
-        pattern={{@pattern}}
-        min={{@min}}
-        max={{@max}}
-        step={{@step}}
+        @required={{this.required}}
+        @disabled={{or (eq @mode "schema") this.disabled}}
+        @autocomplete={{@autocomplete}}
+        @autofocus={{@autofocus}}
+        @inputmode={{@inputmode}}
+        @pattern={{@pattern}}
+        @min={{@min}}
+        @max={{@max}}
+        @step={{@step}}
+        @placeholder={{@placeholder}}
         data-test-cs-component-input={{this.dataTestName}}
         ...attributes
       />
