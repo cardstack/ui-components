@@ -12,7 +12,7 @@ module('Integration | Component | phone-number-field', function(hooks) {
 
     assert.dom('[data-test-cs-component="phone-number"]').exists();
     assert.dom('[data-test-cs-component-label="phone-number"]').hasText('Enter your phone number');
-    assert.dom('[data-test-cs-component="phone-number"] input').hasAttribute('type', 'tel');
+    assert.dom('[data-test-cs-component-input="phone-number"]').hasAttribute('type', 'tel');
     await waitFor('[data-test-cs-component="phone-number"] [aria-owns="country-listbox"]');
     assert.dom('[data-test-cs-component="phone-number"] [aria-owns="country-listbox"]').hasAttribute('title', 'United States: +1');
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasText('');
@@ -21,12 +21,12 @@ module('Integration | Component | phone-number-field', function(hooks) {
   test('it validates phone numbers', async function(assert) {
     await render(hbs`<PhoneNumberField @label="Enter your phone number" />`);
     await waitFor('[data-test-cs-component="phone-number"] [aria-owns="country-listbox"]');
-    await fillIn('[data-test-cs-component="phone-number"] input', '510-223-232');
+    await fillIn('[data-test-cs-component-input="phone-number"]', '510-223-232');
 
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="phone-number"]').containsText('Please enter a valid phone number')
 
-    await fillIn('[data-test-cs-component="phone-number"] input', '510-223-2322');
+    await fillIn('[data-test-cs-component-input="phone-number"]', '510-223-2322');
 
     assert.dom('[data-test-cs-component-validation="phone-number"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasText('Thank you.');
@@ -36,12 +36,12 @@ module('Integration | Component | phone-number-field', function(hooks) {
     this.values = A([null]);
     await render(hbs`<PhoneNumberFields @values={{values}} />`);
 
-    await fillIn('[data-test-cs-component="phone-number"] input', '510-223-232');
+    await fillIn('[data-test-cs-component-input="phone-number"]', '510-223-232');
 
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="phone-number"]').containsText('Please enter a valid phone number')
 
-    await fillIn('[data-test-cs-component="phone-number"] input', '510-223-2322');
+    await fillIn('[data-test-cs-component-input="phone-number"]', '510-223-2322');
 
     assert.dom('[data-test-cs-component-validation="phone-number"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="phone-number"]').hasText('Thank you.');
@@ -50,7 +50,7 @@ module('Integration | Component | phone-number-field', function(hooks) {
   test('it renders themed component', async function (assert) {
     await render(hbs`<PhoneNumberField @label="Enter your phone number" @theme="dark" />`);
 
-    assert.dom('[data-test-cs-component="phone-number"] input').hasClass('cs-input--dark');
+    assert.dom('[data-test-cs-component-input="phone-number"]').hasClass('cs-input--dark');
   });
 
   test('it renders in view mode', async function (assert) {
@@ -61,7 +61,7 @@ module('Integration | Component | phone-number-field', function(hooks) {
     await render(hbs`<PhoneNumberField @value={{number}} @label="Enter your phone number" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
 
     await waitUntil(() => {
-      return find('[data-test-cs-component="phone-number"] input').value === '(510) 232-2512';
+      return find('[data-test-cs-component-input="phone-number"]').value === '(510) 232-2512';
     });
 
     await this.set('mode', 'view');
@@ -77,6 +77,6 @@ module('Integration | Component | phone-number-field', function(hooks) {
     await render(hbs`<PhoneNumberField @id="crazy-id" @label="Crazy digits" />`);
 
     assert.dom('[data-test-cs-component-label="phone-number"]').hasAttribute('for', 'crazy-id');
-    assert.dom('[data-test-cs-component="phone-number"] input').hasAttribute('id', 'crazy-id');
+    assert.dom('[data-test-cs-component-input="phone-number"]').hasAttribute('id', 'crazy-id');
   });
 });
