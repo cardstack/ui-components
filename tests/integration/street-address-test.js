@@ -35,11 +35,12 @@ module('Integration | Component | street address', function(hooks) {
     assert.dom('.ember-power-select-option').hasText('No results found');
   });
 
-  test('it renders themed component', async function (assert) {
-    await render(hbs`<StreetAddress @label="Enter your address" @theme="cs-theme" />`);
+  test('it renders the themed component', async function (assert) {
+    await render(hbs`<StreetAddress @label="Enter your address" @theme="dark" />`);
 
-    assert.dom('[data-test-cs-component="street-address"]').hasClass('cs-theme');
-    assert.dom('[data-test-cs-component-label="street-address"]').hasClass('cs-theme');
+    assert.dom('[data-test-cs-component="street-address"].cs-dropdown.dark-dropdown').exists();
+    assert.dom('[data-test-cs-component="street-address"] .ember-power-select-trigger').exists();
+    assert.dom('[data-test-cs-component="street-address"] .ember-power-select-placeholder').hasText('Enter your address');
   });
 
   test('can add another street address', async function(assert) {

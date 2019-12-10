@@ -5,13 +5,14 @@
   font-size: 16px;
 }
 
-.FreestyleGuide .hljs-deletion, .FreestyleGuide .hljs-string, .FreestyleGuide .hljs-built_in, .FreestyleGuide .hljs-builtin-name {
+.FreestyleGuide .hljs-deletion, .FreestyleGuide .hljs-string, .FreestyleGuide .hljs-built_in, .FreestyleGuide .hljs-builtin-name, .FreestyleGuide .hljs-meta {
   color: white;
 }
 .FreestyleGuide .hljs-comment {
   color: #bcf2bc;
 }
-.FreestyleGuide .FreestyleMenu-itemLink.active {
+.FreestyleGuide .FreestyleMenu-itemLink.active,
+.FreestyleCollection-variantListItem--active {
   color: #005a66;
 }
 
@@ -32,10 +33,6 @@
 .application-nav ul li a.active {
   background-color: #eee;
   border-bottom: solid 1px black;
-}
-
-.FreestyleCollection-variantListItem--active {
-  color: #005a66;
 }
 
 .toggle-view-mode {

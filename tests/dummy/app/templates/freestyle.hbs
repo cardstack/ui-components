@@ -29,15 +29,33 @@
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
         {{/freestyle-usage}}
-        {{#freestyle-note "dropdown-with-default-selected--notes"}}
+        {{#freestyle-note "dropdown-change-action--notes"}}
           ```
-          export default Component.extend({
+          export default class Dropdown extends Component {
             // ...
-            selected: { name: "Spain" }
-          });
+            @action
+            customDropdownAction(value) {
+              // custom action
+            }
+          }
           ```
         {{/freestyle-note}}
-        {{#freestyle-usage "dropdown-with-default-selected" title="Default Selected"}}
+        {{#freestyle-usage "dropdown-change-action" title="Dropdown With Custom Change Action"}}
+          <Dropdown
+            @changeAction={{action this.customDropdownAction}}
+            @options={{this.countries}}
+            @label="Select a country"
+          />
+        {{/freestyle-usage}}
+        {{#freestyle-note "dropdown-with-default-selected--notes"}}
+          ```
+          export default class Dropdown extends Component {
+            // ...
+            selected = { name: "Spain" };
+          }
+          ```
+        {{/freestyle-note}}
+        {{#freestyle-usage "dropdown-with-default-selected" title="Dropdown with Default Selection"}}
           <Dropdown
             @selected={{this.selected}}
             @options={{this.countries}}
@@ -46,7 +64,7 @@
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
         {{/freestyle-usage}}
-        {{#freestyle-usage "dropdown-disabled" title="Disabled"}}
+        {{#freestyle-usage "dropdown-disabled" title="Disabled Dropdown"}}
           <Dropdown
             @disabled={{true}}
             @options={{this.countries}}
@@ -54,9 +72,11 @@
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
         {{/freestyle-usage}}
-        {{#freestyle-usage "dropdown-required" title="Required"}}
+        {{#freestyle-usage "dropdown-required" title="Required Dropdown"}}
           <Dropdown
             @required={{true}}
+            @label="Select a country"
+            @outerLabel="Country"
             @options={{this.countries}}
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
@@ -135,7 +155,7 @@
           />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="custom-option-component"}}
+      {{#collection.variant key="custom-options"}}
         {{#freestyle-note "dropdown-with-customized-options--notes"}}
           ```
           const customDropdownOptions = [
@@ -187,6 +207,16 @@
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "dropdown-with-block" title="Dropdown With Custom Options"}}
+          <Dropdown
+            @options={{this.customDropdownOptions}}
+            @label="Payment method"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} as |option|
+          >
+            {{option.cardType}} - {{option.transactionId}}
+          </Dropdown>
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="dark-theme"}}
@@ -352,15 +382,15 @@
     />
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
-        {{#freestyle-usage "text-field-default" title="Default"}}
+        {{#freestyle-usage "text-field-default" title="Default TextField"}}
           <TextField @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="animated-label"}}
-        {{#freestyle-usage "text-field-animated-default" title="Animated Label"}}
+        {{#freestyle-usage "text-field-animated-default" title="TextField with Animated Label"}}
           <TextField @label="What's your name?" @animatedLabel={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-        {{#freestyle-usage "text-field-animated-required" title="Animated Label (Required)"}}
+        {{#freestyle-usage "text-field-animated-required" title="Required TextField with Animated Label"}}
           <TextField @label="What's your name?" @animatedLabel={{true}} @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
