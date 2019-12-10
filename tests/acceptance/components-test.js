@@ -59,7 +59,7 @@ module('Acceptance | components', function(hooks) {
     await visit('/freestyle');
 
     assert.dom('[data-test-cs-component="dropdown"]').exists();
-    assert.dom('[data-test-cs-component="dropdown"] label').hasText('Select a country');
+    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-placeholder').hasText('Select a country');
 
     await selectChoose('[data-test-cs-component="dropdown"]', 'Brazil');
     assert.dom('.ember-power-select-selected-item').hasText('Brazil');
@@ -78,11 +78,11 @@ module('Acceptance | components', function(hooks) {
 
     await click(".FreestyleCollection-variantListItem");
 
-    assert.dom('.cs-component-dropdown.multiple').exists();
-    assert.dom('[data-test-cs-component-label="dropdown"]').hasText('Select a country');
+    assert.dom('[data-test-cs-component="dropdown"].multiple').exists();
+    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-placeholder').hasText('Select a country');
 
-    await selectChoose('.cs-component-dropdown.multiple', 'Brazil');
-    assert.dom('.ember-power-select-multiple-option').hasText(/Brazil/);
+    await selectChoose('[data-test-cs-component="dropdown"].multiple', 'Brazil');
+    assert.dom('[data-test-cs-component="dropdown"].multiple .ember-power-select-multiple-option').hasText(/Brazil/);
 
     await clickTrigger('.cs-component-dropdown.multiple');
     await typeInSearch('Lat');

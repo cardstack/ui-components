@@ -12,128 +12,107 @@
   </div>
 {{else}}
   <div
-    class="
-      {{if @theme (concat "cs-dropdown-group--" @theme) "cs-dropdown-group"}}
-      {{if this.isOpen "is-open"}}
+    class="cs-dropdown
+      {{if @theme (concat @theme "-dropdown") "cs-component-dropdown"}}
+      {{if @multiple "multiple"}}
+      {{if @optionComponent "with-customized-options"}}
       {{if @required "required"}}
-      {{@theme}}
+      {{if @disabled "disabled"}}
     "
     data-test-cs-component={{this.dataTestName}}
     {{did-update this.updateSelected @selected}}
+    ...attributes
   >
-    {{#if (eq @theme "dark")}}
-      {{#if @required}}
-        <span class="cs-required--dark">required</span>
+    {{#if @required}}
+      <span class="cs-dropdown--required">required</span>
+    {{/if}}
+    {{#if @outerLabel}}
+      <label class="cs-dropdown--label">{{@outerLabel}}</label>
+    {{/if}}
+    {{#if @searchAction}}
+      {{#if @multiple}}
+        <PowerSelectMultiple
+          @options={{@options}}
+          @onchange={{action this.handleChange}}
+          @selected={{this.selected}}
+          @search={{action @searchAction}}
+          @searchField={{this.searchField}}
+          @renderInPlace={{this.renderInPlace}}
+          @onfocus={{action (mut this.isFocused) true}}
+          @onblur={{action (mut this.isFocused) false}}
+          @onopen={{action (mut this.isOpen) true}}
+          @onclose={{action (mut this.isOpen) false}}
+          @searchEnabled={{this.searchEnabled}}
+          @ariaLabel={{this.label}}
+          @placeholder={{this.label}}
+          @disabled={{@disabled}}
+        as |option|>
+          {{get option this.searchField}}
+        </PowerSelectMultiple>
+      {{else}}
+        <PowerSelect
+          @options={{@options}}
+          @onchange={{action this.handleChange}}
+          @selected={{this.selected}}
+          @search={{action @searchAction}}
+          @searchField={{this.searchField}}
+          @renderInPlace={{this.renderInPlace}}
+          @onfocus={{action (mut this.isFocused) true}}
+          @onblur={{action (mut this.isFocused) false}}
+          @onopen={{action (mut this.isOpen) true}}
+          @onclose={{action (mut this.isOpen) false}}
+          @searchEnabled={{this.searchEnabled}}
+          @ariaLabel={{this.label}}
+          @placeholder={{this.label}}
+          @disabled={{@disabled}}
+        as |option|>
+          {{get option this.searchField}}
+        </PowerSelect>
       {{/if}}
-      {{#if @outerLabel}}
-        <label class="cs-label--dark">{{@outerLabel}}</label>
+    {{else}}
+      {{#if @multiple}}
+        <PowerSelectMultiple
+          @options={{@options}}
+          @onchange={{action this.handleChange}}
+          @selected={{this.selected}}
+          @searchField={{this.searchField}}
+          @renderInPlace={{this.renderInPlace}}
+          @onfocus={{action (mut this.isFocused) true}}
+          @onblur={{action (mut this.isFocused) false}}
+          @onopen={{action (mut this.isOpen) true}}
+          @onclose={{action (mut this.isOpen) false}}
+          @searchEnabled={{this.searchEnabled}}
+          @ariaLabel={{this.label}}
+          @placeholder={{this.label}}
+          @disabled={{@disabled}}
+        as |option|>
+          {{get option this.searchField}}
+        </PowerSelectMultiple>
+      {{else}}
+        <PowerSelect
+          @options={{@options}}
+          @onchange={{action this.handleChange}}
+          @selected={{this.selected}}
+          @searchField={{this.searchField}}
+          @renderInPlace={{this.renderInPlace}}
+          @onfocus={{action (mut this.isFocused) true}}
+          @onblur={{action (mut this.isFocused) false}}
+          @onopen={{action (mut this.isOpen) true}}
+          @onclose={{action (mut this.isOpen) false}}
+          @searchEnabled={{this.searchEnabled}}
+          @ariaLabel={{this.label}}
+          @placeholder={{this.label}}
+          @disabled={{@disabled}}
+        as |option|>
+          {{#if @optionComponent}}
+            {{component @optionComponent option=option}}
+          {{else if (has-block)}}
+            {{yield option}}
+          {{else}}
+            {{get option this.searchField}}
+          {{/if}}
+        </PowerSelect>
       {{/if}}
     {{/if}}
-    <div class="
-      {{if @theme (concat "cs-dropdown--" @theme) "cs-component-dropdown"}}
-      {{if @multiple "multiple"}}
-      {{if @optionComponent "with-customized-options"}}
-      {{if @disabled "disabled"}}
-    ">
-      {{#if @searchAction}}
-        {{#if @multiple}}
-          <PowerSelectMultiple
-            @options={{@options}}
-            @onchange={{or @handleChange (action this.changeAction)}}
-            @selected={{this.selected}}
-            @search={{action @searchAction}}
-            @searchField={{this.searchField}}
-            @renderInPlace={{this.renderInPlace}}
-            @onfocus={{action (mut this.isFocused) true}}
-            @onblur={{action (mut this.isFocused) false}}
-            @onopen={{action (mut this.isOpen) true}}
-            @onclose={{action (mut this.isOpen) false}}
-            @searchEnabled={{this.searchEnabled}}
-            @ariaLabel={{this.label}}
-            @placeholder={{this.label}}
-            @disabled={{@disabled}}
-          as |option|>
-            {{get option this.searchField}}
-          </PowerSelectMultiple>
-        {{else}}
-          <PowerSelect
-            @options={{@options}}
-            @onchange={{or @handleChange (action this.changeAction)}}
-            @selected={{this.selected}}
-            @search={{action @searchAction}}
-            @searchField={{this.searchField}}
-            @renderInPlace={{this.renderInPlace}}
-            @onfocus={{action (mut this.isFocused) true}}
-            @onblur={{action (mut this.isFocused) false}}
-            @onopen={{action (mut this.isOpen) true}}
-            @onclose={{action (mut this.isOpen) false}}
-            @searchEnabled={{this.searchEnabled}}
-            @ariaLabel={{this.label}}
-            @placeholder={{this.label}}
-            @disabled={{@disabled}}
-          as |option|>
-            {{get option this.searchField}}
-          </PowerSelect>
-        {{/if}}
-      {{else}}
-        {{#if @multiple}}
-          <PowerSelectMultiple
-            @options={{@options}}
-            @onchange={{or @handleChange (action this.changeAction)}}
-            @selected={{this.selected}}
-            @searchField={{this.searchField}}
-            @renderInPlace={{this.renderInPlace}}
-            @onfocus={{action (mut this.isFocused) true}}
-            @onblur={{action (mut this.isFocused) false}}
-            @onopen={{action (mut this.isOpen) true}}
-            @onclose={{action (mut this.isOpen) false}}
-            @searchEnabled={{this.searchEnabled}}
-            @ariaLabel={{this.label}}
-            @placeholder={{this.label}}
-            @disabled={{@disabled}}
-          as |option|>
-            {{get option this.searchField}}
-          </PowerSelectMultiple>
-        {{else}}
-          <PowerSelect
-            @options={{@options}}
-            @onchange={{or @handleChange (action this.changeAction)}}
-            @selected={{this.selected}}
-            @searchField={{this.searchField}}
-            @renderInPlace={{this.renderInPlace}}
-            @onfocus={{action (mut this.isFocused) true}}
-            @onblur={{action (mut this.isFocused) false}}
-            @onopen={{action (mut this.isOpen) true}}
-            @onclose={{action (mut this.isOpen) false}}
-            @searchEnabled={{this.searchEnabled}}
-            @ariaLabel={{this.label}}
-            @placeholder={{this.label}}
-            @disabled={{@disabled}}
-          as |option|>
-            {{#if @optionComponent}}
-              {{component @optionComponent option=option}}
-            {{else if (has-block)}}
-              {{yield option}}
-            {{else}}
-              {{get option this.searchField}}
-            {{/if}}
-          </PowerSelect>
-        {{/if}}
-      {{/if}}
-      {{#if (not (eq @theme "dark"))}}
-        <label
-          class="
-            cs-dropdown-group--label
-            {{if this.selected "with-option-selected"}}
-            {{if (or this.isOpen this.isFocused) "is-open"}}
-            {{if @disabled "disabled"}}
-            {{@theme}}
-          "
-          data-test-cs-component-label={{this.dataTestName}}
-        >
-          {{this.label}}
-        </label>
-      {{/if}}
-    </div>
   </div>
 {{/if}}

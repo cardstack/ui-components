@@ -102,5 +102,7 @@
   --cs-light-op50: rgba(255, 255, 255, 0.5); /* example: placeholder or inactive label on dark bg */
   --cs-light-op60: rgba(255, 255, 255, 0.6); /* example: field label on dark bg */
   --cs-dark-op25: rgba(0, 0, 0, 0.25);       /* example: border color on light bg */
-  --cs-dark-op50: rgba(0, 0, 0, 0.55);        /* example: field label on light bg */
+  --cs-dark-op40: rgba(0, 0, 0, 0.4);        /* example: disabled font on light bg */
+  --cs-dark-op50: rgba(0, 0, 0, 0.55);       /* example: placeholder on light bg */
+  --cs-dark-op75: rgba(0, 0, 0, 0.75);        /* example: field label on light bg */
 }

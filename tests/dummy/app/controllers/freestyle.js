@@ -34,6 +34,7 @@ export default FreestyleController.extend({
     return 'edit';
   }),
   isLoading: false,
+  customDropdownAction: () => {},
 
   /* BEGIN-FREESTYLE-USAGE fp--notes
 ### A few notes regarding freestyle-palette

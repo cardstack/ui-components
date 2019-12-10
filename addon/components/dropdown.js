@@ -18,7 +18,12 @@ export default class Dropdown extends BaseComponent {
     this.selected = selected;
   }
 
-  changeAction(item) {
-    this.selected = item;
+  @action
+  handleChange(value) {
+    this.selected = value;
+
+    if (this.args.changeAction) {
+      this.args.changeAction(value);
+    }
   }
 }

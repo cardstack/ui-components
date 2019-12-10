@@ -16,6 +16,8 @@
   font: 400 16px/22px var(--cs-font-family);
   letter-spacing: 0;
   overflow: hidden;
+
+  transition: border-color var(--cs-transition-time);
 }
 .cs-input-group.view {
   border: none;
@@ -24,13 +26,15 @@
 .cs-input-group--label {
   display: block;
   padding-bottom: 13px;
-  color: var(--cs-dark-op50);
+  color: var(--cs-dark-op75);
   font: 400 11px/15px var(--cs-font-family);
   letter-spacing: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: capitalize;
+
+  transition: color var(--cs-transition-time);
 }
 
 .cs-input-group.required > .cs-input-group--label::after {
@@ -65,11 +69,15 @@ input.cs-input {
   border-color: var(--cs-highlight);
 }
 
+.cs-input-group:focus-within .cs-input-group--label {
+  color: var(--cs-dark);
+}
+
 .cs-input-group--validation {
   visibility: collapse;
   height: 15px;
   display: block;
-  color: var(--cs-dark-op50);
+  color: var(--cs-dark-op75);
   font: 400 11px/15px var(--cs-font-family);
   letter-spacing: 0.035em;
   text-transform: initial;
@@ -121,7 +129,7 @@ input.cs-input {
   top: 0;
   left: 0;
   width: 100%;
-  color: var(--cs-dark-op50);
+  color: var(--cs-dark-op75);
   font-size: 12px;
   letter-spacing: 1px;
   text-align: right;
@@ -131,7 +139,7 @@ input.cs-input {
   position: absolute;
   top: 3rem;
   padding-left: var(--cs-text-field-padding-horizontal);
-  color: var(--cs-dark-op50);
+  color: var(--cs-dark-op75);
   font-size: 16px;
   /* no line-wrap. truncate with ellipsis. */
   overflow: hidden;
