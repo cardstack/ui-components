@@ -46,6 +46,34 @@ module('Integration | Component | text-field', function(hooks) {
     assert.dom('[data-test-cs-component-input="text-field"]').hasAttribute('required');
   });
 
+  test('it can validate text input', async function(assert) {
+    await render(hbs`<TextField @pattern="[0-9]+" />`);
+
+    assert.dom('[data-test-cs-component="text-field"]').exists();
+
+    await fillIn('[data-test-cs-component-input="text-field"]', 'foo');
+
+    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('Please match the requested format.');
+
+    await fillIn('[data-test-cs-component-input="text-field"]', '1234');
+
+    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('Thank you.');
+  });
+
+  test('it can override the default validation message', async function(assert) {
+    await render(hbs`<TextField @pattern="[0-9]+" @title="Only numbers please!"/>`);
+
+    assert.dom('[data-test-cs-component="text-field"]').exists();
+
+    await fillIn('[data-test-cs-component-input="text-field"]', 'foo');
+
+    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('Only numbers please!');
+
+    await fillIn('[data-test-cs-component-input="text-field"]', '1234');
+
+    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('Thank you.');
+  });
+
   test('it renders disabled component', async function (assert) {
     await render(hbs`<TextField @label="What's the meaning of life?" @disabled="true" />`);
 

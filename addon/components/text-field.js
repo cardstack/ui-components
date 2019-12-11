@@ -35,7 +35,7 @@ export default class TextField extends BaseComponent {
   }
 
   @action
-  handleInput({ target: { value, validationMessage }}) {
+  handleInput({ target: { value, validationMessage, title }}) {
     if (this.args.handleInput) {
       let [invalid, validationMessage] = this.args.handleInput(value);
       this.invalid = invalid;
@@ -55,7 +55,7 @@ export default class TextField extends BaseComponent {
         this.validationMessage = 'Please fill out this field.';
       } else if (validationMessage) {
         this.invalid = true;
-        this.validationMessage = validationMessage;
+        this.validationMessage = title || validationMessage;
       } else {
         this.invalid = false;
         this.validationMessage = 'Thank you.';
