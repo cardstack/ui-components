@@ -1,8 +1,6 @@
 <div
-  class="
-    {{if (not (or @theme @animatedLabel)) "cs-input-group"}}
-    {{if @theme (concat "cs-input-group--" @theme)}}
-    {{if @animatedLabel "cs-component-text-field"}}
+  class="cs-input-group
+    {{if @theme (concat @theme "-input-group") "cs-component-input-group"}}
     {{if @required "required"}}
     {{@className}}
     {{@mode}}
@@ -13,15 +11,17 @@
   {{#if (eq @mode "view")}}
     <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{this.value}} />
   {{else}}
-    {{#unless @animatedLabel}}
-      <label
-        for={{or @id this.inputId}}
-        class="cs-input-group--label {{if @theme (concat "cs-label--" @theme)}}"
-        data-test-cs-component-label={{this.dataTestName}}
-      >
-        {{@label}}
-      </label>
-    {{/unless}}
+    <label
+      for={{or @id this.inputId}}
+      class="cs-input-group--label"
+      data-test-cs-component-label={{this.dataTestName}}
+    >
+      {{@label}}
+    </label>
+    {{#if @required}}
+      <span class="cs-input-group--required">required</span>
+    {{/if}}
+
 
     {{#if this.iconComponent}}
       {{component this.iconComponent
@@ -35,9 +35,8 @@
     {{#if (eq @inputComponent "phone-number-field/input")}}
       <PhoneInput
         @id={{or @id this.inputId}}
-        @class="
-          {{if (not (or @theme @animatedLabel)) "cs-input"}}
-          {{if @theme (concat "cs-input--" @theme)}}
+        @class="cs-input
+          {{if @theme (concat @theme "-input") "cs-component-input"}}
           {{if @disabled "disabled"}}
         "
         @update={{fn @update (action (mut this.value)) (action (mut this.invalid)) (action (mut this.validationMessage))}}
@@ -51,7 +50,7 @@
         id=(or @id this.inputId)
         type=this.type
         name=this.name
-        class=(concat "cs-component-text-field--input " @theme)
+        class=(concat "cs-input " (if @theme (concat @theme "-input")) "cs-component-input")
         required=this.required
         disabled=this.disabled
         value=this.value
@@ -71,10 +70,8 @@
         @name={{this.name}}
         @value={{this.value}}
         @title={{@title}}
-        @class="
-          {{if @animatedLabel "cs-component-text-field--input"}}
-          {{if (not (or @theme @animatedLabel)) "cs-input"}}
-          {{if @theme (concat "cs-input--" @theme)}}
+        @class="cs-input
+          {{if @theme (concat @theme "-input") "cs-component-input"}}
           {{if @disabled "disabled"}}
           {{@mode}}
         "
@@ -94,21 +91,8 @@
       />
     {{/if}}
 
-    {{#if @animatedLabel}}
-      <label
-        for={{or @id this.inputId}}
-        class="cs-component-text-field--label {{if this.value "active"}} {{@theme}}"
-        data-test-cs-component-label={{this.dataTestName}}
-      >
-        <span class="label">{{@label}}</span>
-        {{#unless this.required}}
-          <span class="optional">Optional</span>
-        {{/unless}}
-      </label>
-    {{/if}}
-
     <div
-      class="cs-input-group--validation {{if this.invalid "invalid"}} {{if @theme (concat "cs-validation--" @theme)}}"
+      class="cs-input-group--validation {{if this.invalid "invalid"}}"
       data-test-cs-component-validation={{this.dataTestName}}
     >
       {{this.validationMessage}}

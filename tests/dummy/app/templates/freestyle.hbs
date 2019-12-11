@@ -381,17 +381,20 @@
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="dark"}}
+        {{#freestyle-usage "text-field-dark" title="TextField (Dark Theme)"}}
+          <TextField @theme="dark" @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-field-dark-required" title="Required TextField (Dark Theme)"}}
+          <TextField @theme="dark" @required={{true}} @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-field-default" title="Default TextField"}}
           <TextField @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="animated-label"}}
-        {{#freestyle-usage "text-field-animated-default" title="TextField with Animated Label"}}
-          <TextField @label="What's your name?" @animatedLabel={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-        {{#freestyle-usage "text-field-animated-required" title="Required TextField with Animated Label"}}
-          <TextField @label="What's your name?" @animatedLabel={{true}} @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "text-field-required" title="Required TextField"}}
+          <TextField @label="What's your name?" @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="validation"}}
