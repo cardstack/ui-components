@@ -1,13 +1,32 @@
 .cs-input-group {}
 
-.cs-input-group.required > .cs-input-group--label {}
+.cs-input-group.view {
+  border: none;
+}
+
+.cs-input-group.view input {
+  border: none;
+}
+
+.cs-input-group.required > .cs-input-group--label::after {
+  content: "*";
+  display: inline-block;
+  vertical-align: text-top;
+  margin-left: 2px;
+}
 
 .cs-input-group--label {}
 
 .cs-input-group--required {}
 
+.cs-input-group--helper-text {}
+
+.cs-input-group--helper-text.invalid {}
+
 .cs-input {}
 
-.cs-input-group--validation {}
-
-.cs-input-group--validation.invalid {}
+input.cs-input {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

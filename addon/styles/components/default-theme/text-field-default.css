@@ -18,9 +18,6 @@
 
   transition: border-color var(--cs-transition-time);
 }
-.cs-component-input-group.view {
-  border: none;
-}
 
 .cs-component-input-group > .cs-input-group--label {
   display: block;
@@ -36,12 +33,6 @@
   transition: color var(--cs-transition-time);
 }
 
-.cs-component-input-group.required > .cs-input-group--label::after {
-  content: "*";
-  display: inline-block;
-  vertical-align: text-top;
-}
-
 .cs-component-input-group > .cs-input-group--required {
   position: absolute;
   right: 13px;
@@ -51,6 +42,24 @@
   font: 400 11px/15px var(--cs-font-family);
   letter-spacing: 0;
   text-transform: lowercase;
+}
+
+.cs-component-input-group > .cs-input-group--helper-text {
+  visibility: collapse;
+  height: 15px;
+  display: block;
+  color: var(--cs-dark-op75);
+  font: 400 11px/15px var(--cs-font-family);
+  letter-spacing: 0.035em;
+  text-transform: initial;
+
+  transition: visibility 0.5s,
+              color var(--cs-transition-time);
+}
+
+.cs-component-input-group > .cs-input-group--helper-text.error {
+  visibility: visible;
+  color: var(--cs-alert);
 }
 
 .cs-component-input {
@@ -65,12 +74,6 @@
   letter-spacing: 0;
 }
 
-input.cs-component-input {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .cs-component-input:focus {
   outline: 0;
 }
@@ -81,22 +84,4 @@ input.cs-component-input {
 
 .cs-component-input-group:focus-within .cs-input-group--label {
   color: var(--cs-dark);
-}
-
-.cs-component-input-group > .cs-input-group--validation {
-  visibility: collapse;
-  height: 15px;
-  display: block;
-  color: var(--cs-dark-op75);
-  font: 400 11px/15px var(--cs-font-family);
-  letter-spacing: 0.035em;
-  text-transform: initial;
-
-  transition: visibility 0.5s,
-              color var(--cs-transition-time);
-}
-
-.cs-component-input-group > .cs-input-group--validation.invalid {
-  visibility: visible;
-  color: var(--cs-alert);
 }

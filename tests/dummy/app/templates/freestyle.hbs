@@ -382,11 +382,37 @@
     />
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="dark"}}
-        {{#freestyle-usage "text-field-dark" title="TextField (Dark Theme)"}}
-          <TextField @theme="dark" @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "text-field-dark" title="TextField (Dark Theme)" class="dark-background"}}
+          <TextField
+            @theme="cs-dark"
+            @label="What's your name?"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-        {{#freestyle-usage "text-field-dark-required" title="Required TextField (Dark Theme)"}}
-          <TextField @theme="dark" @required={{true}} @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{#freestyle-usage "text-field-dark-disabled" title="Disabled TextField (Dark Theme)" class="dark-background"}}
+          <TextField
+            @theme="cs-dark"
+            @disabled={{true}}
+            @label="What's your name?"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-field-dark-required" title="Required TextField with helper text (Dark Theme)" class="dark-background"}}
+          <TextField
+            @theme="cs-dark"
+            @required={{true}}
+            @helperText="Please enter your name in last name, first name format."
+            @label="What's your name?"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-field-dark-placeholder" title="TextField with placeholder (Dark Theme)" class="dark-background"}}
+          <TextField
+            @theme="cs-dark"
+            @placeholder="Please enter"
+            @label="What's your name?"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="default"}}

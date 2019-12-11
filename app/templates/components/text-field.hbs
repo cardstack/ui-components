@@ -22,7 +22,6 @@
       <span class="cs-input-group--required">required</span>
     {{/if}}
 
-
     {{#if this.iconComponent}}
       {{component this.iconComponent
         class="cs-component-text-field--icon"
@@ -37,6 +36,7 @@
         @id={{or @id this.inputId}}
         @class="cs-input
           {{if @theme (concat @theme "-input") "cs-component-input"}}
+          {{if this.invalid "error"}}
           {{if @disabled "disabled"}}
         "
         @update={{fn @update (action (mut this.value)) (action (mut this.invalid)) (action (mut this.validationMessage))}}
@@ -72,6 +72,7 @@
         @title={{@title}}
         @class="cs-input
           {{if @theme (concat @theme "-input") "cs-component-input"}}
+          {{if this.invalid "error"}}
           {{if @disabled "disabled"}}
           {{@mode}}
         "
@@ -92,10 +93,10 @@
     {{/if}}
 
     <div
-      class="cs-input-group--validation {{if this.invalid "invalid"}}"
+      class="cs-input-group--helper-text {{if this.invalid "error"}}"
       data-test-cs-component-validation={{this.dataTestName}}
     >
-      {{this.validationMessage}}
+      {{or this.validationMessage @helperText}}
     </div>
   {{/if}}
 </div>
