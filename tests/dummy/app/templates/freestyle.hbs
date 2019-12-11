@@ -394,6 +394,14 @@
           <TextField @label="What's your name?" @animatedLabel={{true}} @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="validation"}}
+        {{#freestyle-usage "text-field-validation" title="TextField with Validation"}}
+          <TextField @label="Enter a number" @pattern="[0-9]+" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-field-validation-custom-message" title="TextField with Custom Validation Message"}}
+          <TextField @label="Enter a number" @pattern="[0-9]+" @title="Enter a number please!" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
