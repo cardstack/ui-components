@@ -413,6 +413,9 @@
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
+        {{#freestyle-usage "text-field-validation-debounce" title="TextField with Validation and Debounce"}}
+          <TextField @label="Enter a number" @pattern="[0-9]+" @debounceMs="1000" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}

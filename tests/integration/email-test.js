@@ -1,8 +1,9 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, fillIn, click } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { A } from '@ember/array';
 import hbs from 'htmlbars-inline-precompile';
+import fillInKeyUp from '../helpers/fill-in-key-up';
 
 module('Integration | Component | email', function(hooks) {
   setupRenderingTest(hooks);
@@ -30,7 +31,7 @@ module('Integration | Component | email', function(hooks) {
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
 
-    await fillIn('[data-test-cs-component-input="email"]', ' username ');
+    await fillInKeyUp('[data-test-cs-component-input="email"]', ' username ');
 
     assert.dom('[data-test-cs-component-validation="email"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="email"]').containsText('@');
@@ -42,7 +43,7 @@ module('Integration | Component | email', function(hooks) {
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
 
-    await fillIn('[data-test-cs-component-input="email"]', 'username@cardstack.com');
+    await fillInKeyUp('[data-test-cs-component-input="email"]', 'username@cardstack.com');
 
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
@@ -50,15 +51,15 @@ module('Integration | Component | email', function(hooks) {
 
   test('it only displays message for required field if it is left blank', async function (assert) {
     await render(hbs`<Email />`);
-    await fillIn('[data-test-cs-component-input="email"]', 'username@cardstack.com');
-    await fillIn('[data-test-cs-component-input="email"]', '');
+    await fillInKeyUp('[data-test-cs-component-input="email"]', 'username@cardstack.com');
+    await fillInKeyUp('[data-test-cs-component-input="email"]', '');
 
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
 
     await render(hbs`<Email @required=true />`);
-    await fillIn('[data-test-cs-component-input="email"]', 'username');
-    await fillIn('[data-test-cs-component-input="email"]', '');
+    await fillInKeyUp('[data-test-cs-component-input="email"]', 'username');
+    await fillInKeyUp('[data-test-cs-component-input="email"]', '');
 
     assert.dom('[data-test-cs-component-validation="email"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="email"]').hasText('This is a required field');
@@ -67,13 +68,13 @@ module('Integration | Component | email', function(hooks) {
   test('can add more email address fields', async function (assert) {
     this.emailValues = A([null]);
     await render(hbs`<Emails @values={{emailValues}} />`);
-    await fillIn('[data-test-cs-component-input="email"]', 'username@cardstack.com');
+    await fillInKeyUp('[data-test-cs-component-input="email"]', 'username@cardstack.com');
 
     await click('[data-test-multi-item-list-add-btn]');
 
     assert.dom('[data-test-cs-component-input="email"]').exists({ count: 2 })
 
-    await fillIn('[data-test-multi-item-list]:nth-of-type(2) [data-test-cs-component-input="email"]', 'cooldude@cardstack.com');
+    await fillInKeyUp('[data-test-multi-item-list]:nth-of-type(2) [data-test-cs-component-input="email"]', 'cooldude@cardstack.com');
 
     assert.deepEqual(this.emailValues, ['username@cardstack.com', 'cooldude@cardstack.com']);
   });

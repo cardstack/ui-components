@@ -1,7 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, fillIn, click } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import fillInKeyUp from '../helpers/fill-in-key-up';
 
 module('Integration | Component | password-field', function(hooks) {
   setupRenderingTest(hooks);
@@ -17,7 +18,7 @@ module('Integration | Component | password-field', function(hooks) {
 
   test('it toggles visibility', async function (assert) {
     await render(hbs`<PasswordField />`);
-    await fillIn('[data-test-cs-component-input="password"]', 'xyzfda');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'xyzfda');
 
     assert.dom('[data-test-cs-component-input="password"]').hasAttribute('type', 'password');
     assert.dom('[data-test-cs-component-password-field-visibility-toggle]').doesNotHaveClass('hide');
@@ -28,12 +29,12 @@ module('Integration | Component | password-field', function(hooks) {
 
   test('it enforces a minimum length', async function (assert) {
     await render(hbs`<PasswordField @minLength=10 />`);
-    await fillIn('[data-test-cs-component-input="password"]', 'xyz');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'xyz');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must be at least 10 characters')
 
-    await fillIn('[data-test-cs-component-input="password"]', 'xyzabcddeft');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'xyzabcddeft');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
@@ -41,12 +42,12 @@ module('Integration | Component | password-field', function(hooks) {
 
   test('it enforces at least one uppercase character', async function (assert) {
     await render(hbs`<PasswordField @mustIncludeUppercase=true />`);
-    await fillIn('[data-test-cs-component-input="password"]', 'xyzsfa');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'xyzsfa');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must include at least one uppercase character')
 
-    await fillIn('[data-test-cs-component-input="password"]', 'Zyzsfa');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'Zyzsfa');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
@@ -54,12 +55,12 @@ module('Integration | Component | password-field', function(hooks) {
 
   test('it enforces at least one lowercase character', async function (assert) {
     await render(hbs`<PasswordField @mustIncludeLowercase=true />`);
-    await fillIn('[data-test-cs-component-input="password"]', 'XYZSFA');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'XYZSFA');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must include at least one lowercase character')
 
-    await fillIn('[data-test-cs-component-input="password"]', 'ZYZSFa');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'ZYZSFa');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
@@ -67,12 +68,12 @@ module('Integration | Component | password-field', function(hooks) {
 
   test('it enforces at least one numerical character', async function (assert) {
     await render(hbs`<PasswordField @mustIncludeNumber=true />`);
-    await fillIn('[data-test-cs-component-input="password"]', 'XYZSFA');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'XYZSFA');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must include at least one number')
 
-    await fillIn('[data-test-cs-component-input="password"]', 'ZYZSF4');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'ZYZSF4');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
@@ -80,12 +81,12 @@ module('Integration | Component | password-field', function(hooks) {
 
   test('it enforces at least one special character', async function (assert) {
     await render(hbs`<PasswordField @mustIncludeSpecialCharacter=true />`);
-    await fillIn('[data-test-cs-component-input="password"]', 'XYZSFA');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'XYZSFA');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must include at least one special character')
 
-    await fillIn('[data-test-cs-component-input="password"]', 'ZYZSFA%');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'ZYZSFA%');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
@@ -99,12 +100,12 @@ module('Integration | Component | password-field', function(hooks) {
       };
     });
     await render(hbs`<PasswordField @validate={{validate}} />`);
-    await fillIn('[data-test-cs-component-input="password"]', 'XYZSFA');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'XYZSFA');
 
     assert.dom('[data-test-cs-component-validation="password"]').hasClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').containsText('must be c4rdst4ck')
 
-    await fillIn('[data-test-cs-component-input="password"]', 'c4rdst4ck');
+    await fillInKeyUp('[data-test-cs-component-input="password"]', 'c4rdst4ck');
 
     assert.dom('[data-test-cs-component-validation="password"]').doesNotHaveClass('invalid');
     assert.dom('[data-test-cs-component-validation="password"]').hasText('Thank you.');
