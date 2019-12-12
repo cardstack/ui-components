@@ -7,7 +7,8 @@
       @selected={{this.selected}}
       @onSelect={{action (mut this.selected) value="date"}}
       @center={{this.center}}
-      @onCenterChange={{action (mut this.center) value="date"}} as |calendar|>
+      @onCenterChange={{action (mut this.center) value="date"}}
+      @disabled={{@disabled}} as |calendar|>
       {{#calendar.trigger tabindex="-1"}}
         {{!-- User can pick a date from the calendar view or type it in. --}}
         <TextField
@@ -28,7 +29,6 @@
           @inputmode="numeric"
           @dataTestName="date-picker"
           @theme={{@theme}}
-          @animatedLabel={{@animatedLabel}}
         />
       {{/calendar.trigger}}
 

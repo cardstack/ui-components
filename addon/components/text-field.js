@@ -47,18 +47,15 @@ export default class TextField extends BaseComponent {
         this.args.changeAction(value);
       }
 
-      if (!value && !this.required) {
-        this.invalid = false;
-        this.validationMessage = '';
-      } else if (!value && this.required) {
+      if (!value && this.required) {
         this.invalid = true;
-        this.validationMessage = 'Please fill out this field.';
+        this.validationMessage = 'This field is required.';
       } else if (validationMessage) {
         this.invalid = true;
         this.validationMessage = title || validationMessage;
       } else {
         this.invalid = false;
-        this.validationMessage = 'Thank you.';
+        this.validationMessage = '';
       }
     }
 

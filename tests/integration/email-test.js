@@ -12,16 +12,7 @@ module('Integration | Component | email', function(hooks) {
 
     assert.dom('[data-test-cs-component="email"]').exists();
     assert.dom('[data-test-cs-component-label="email"]').hasText('Enter Email');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
-  });
-
-  test('it renders the component with animated label', async function(assert) {
-    await render(hbs`<Email @animatedLabel={{true}} @label="Enter Email" />`);
-
-    assert.dom('[data-test-cs-component="email"]').exists();
-    assert.dom('[data-test-cs-component-label="email"] .optional').hasText('Optional');
-    assert.dom('[data-test-cs-component-label="email"] .label').hasText('Enter Email');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
   });
 
   test('it renders required component', async function (assert) {
@@ -30,14 +21,14 @@ module('Integration | Component | email', function(hooks) {
     assert.dom('[data-test-cs-component="email"]').exists();
     assert.dom('[data-test-cs-component-input="email"]').hasAttribute('required');
     assert.dom('[data-test-cs-component-label="email"]').hasText('Enter Email');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
   });
 
   test('it displays error message for invalid input', async function (assert) {
     await render(hbs`<Email />`);
 
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
 
     await fillIn('[data-test-cs-component-input="email"]', ' username ');
 
@@ -49,12 +40,12 @@ module('Integration | Component | email', function(hooks) {
     await render(hbs`<Email />`);
 
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
 
     await fillIn('[data-test-cs-component-input="email"]', 'username@cardstack.com');
 
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('Thank you.');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
   });
 
   test('it only displays message for required field if it is left blank', async function (assert) {
@@ -63,14 +54,14 @@ module('Integration | Component | email', function(hooks) {
     await fillIn('[data-test-cs-component-input="email"]', '');
 
     assert.dom('[data-test-cs-component-validation="email"]').doesNotHaveClass('invalid');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('');
+    assert.dom('[data-test-cs-component-validation="email"]').doesNotContainText();
 
     await render(hbs`<Email @required=true />`);
     await fillIn('[data-test-cs-component-input="email"]', 'username');
     await fillIn('[data-test-cs-component-input="email"]', '');
 
     assert.dom('[data-test-cs-component-validation="email"]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('Please fill out this field.');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('This field is required.');
   });
 
   test('can add more email address fields', async function (assert) {
@@ -88,9 +79,10 @@ module('Integration | Component | email', function(hooks) {
   });
 
   test('it can render the themed component', async function (assert) {
-    await render(hbs`<Email @theme="dark" />`);
+    await render(hbs`<Email @theme="cs-dark" />`);
 
-    assert.dom('[data-test-cs-component-input="email"]').hasClass('cs-input--dark');
+    assert.dom('[data-test-cs-component="email"].cs-input-group').hasClass('cs-dark-input-group');
+    assert.dom('[data-test-cs-component-input="email"].cs-input').hasClass('cs-dark-input');
   });
 
   test('it renders in view mode', async function (assert) {

@@ -1,58 +1,65 @@
 <div
   class="
-    cs-component-text-area
-    {{if @theme (concat "cs-input-group--" @theme) "cs-input-group"}}
+    cs-input-group cs-textarea
+    {{if @theme (concat @theme "-input-group") "cs-component-input-group"}}
     {{if @required "required"}}
+    {{@className}}
+    {{@mode}}
   "
   data-test-cs-component={{this.dataTestName}}
 >
   {{#if (eq @mode "view")}}
     <TextView @showLabelInViewMode={{@showLabelInViewMode}} @label={{@label}} @value={{@value}} />
   {{else}}
-    {{#unless @animatedLabel}}
-      <label
-        for={{this.inputId}}
-        class="cs-input-group--label {{if @theme (concat "cs-label--" @theme)}}"
-        data-test-cs-component-text-area-label
-      >
-        {{@label}}
-      </label>
-    {{/unless}}
+    <label
+      for={{or @id this.inputId}}
+      class="cs-input-group--label"
+      data-test-cs-component-label={{this.dataTestName}}
+    >
+      {{@label}}
+    </label>
+    {{#if @required}}
+      <span class="cs-input-group--required">required</span>
+    {{/if}}
 
     <Textarea
+      @id={{or @id this.inputId}}
       @rows={{this.rows}}
       @name={{@name}}
       @value={{this.value}}
-      @class="
-        {{if @theme (concat "cs-input--" @theme) "cs-input"}}
+      @title={{@title}}
+      @class="cs-input
+        {{if @theme (concat @theme "-input") "cs-component-input"}}
+        {{if this.invalid "invalid"}}
         {{if @disabled "disabled"}}
         {{@mode}}
       "
-      @id={{this.inputId}}
-      @required={{this.required}}
-      @disabled={{this.disabled}}
-      @maxlength={{@characterLimit}}
-      @readonly={{@readonly}}
-      @autofocus={{@autofocus}}
-      @focusOut={{action "handleInput"}}
       @change={{action "handleInput"}}
-      data-test-cs-component-input="text-area"
+      @focusOut={{action "handleInput"}}
+      @required={{this.required}}
+      @disabled={{or (eq @mode "schema") this.disabled}}
+      @autofocus={{@autofocus}}
+      @maxlength={{@characterLimit}}
+      @placeholder={{@placeholder}}
+      @readonly={{@readonly}}
+      data-test-cs-component-input={{this.dataTestName}}
+      ...attributes
     />
 
     {{#if @characterLimit}}
-      <span class="cs-component-text-area--char-counter {{if this.validationMessage "with-validation"}}" data-test-cs-component-text-area-char-counter>
+      <span
+        class="cs-textarea--char-counter {{if this.validationMessage "with-validation"}}"
+        data-test-cs-textarea-char-counter
+      >
         {{this.value.length}}/{{@characterLimit}}
       </span>
     {{/if}}
 
     <div
-      class="
-        {{if @theme (concat "cs-validation--" @theme) "cs-input-group--validation"}}
-        {{if this.invalid "invalid"}}
-      "
-      data-test-cs-component-text-area-validation
+      class="cs-input-group--helper-text {{if this.invalid "invalid"}}"
+      data-test-cs-component-validation={{this.dataTestName}}
     >
-      {{this.validationMessage}}
+      {{or this.validationMessage @helperText}}
     </div>
   {{/if}}
 </div>

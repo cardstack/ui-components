@@ -1,59 +1,29 @@
-/* TODO: Disabled & Required styles */
-.cs-input-group {
-  --cs-text-field-width: 453px;
-  --cs-text-field-height: 76px;
+.cs-input-group {}
 
-  box-sizing: border-box;
-  position: relative;
-  width: 100%;
-  max-width: var(--cs-text-field-width);
-  height: var(--cs-text-field-height);
-  padding: 8px 13px 18px;
-  background-color: var(--cs-light);
-  border: 1px solid var(--cs-dark-op25);
-  border-radius: 5px;
-  color: var(--cs-dark);
-  font: 400 16px/22px var(--cs-font-family);
-  letter-spacing: 0;
-  overflow: hidden;
-
-  transition: border-color var(--cs-transition-time);
-}
 .cs-input-group.view {
   border: none;
 }
 
-.cs-input-group--label {
-  display: block;
-  padding-bottom: 13px;
-  color: var(--cs-dark-op75);
-  font: 400 11px/15px var(--cs-font-family);
-  letter-spacing: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-transform: capitalize;
-
-  transition: color var(--cs-transition-time);
+.cs-input-group.view input {
+  border: none;
 }
 
 .cs-input-group.required > .cs-input-group--label::after {
   content: "*";
   display: inline-block;
   vertical-align: text-top;
+  margin-left: 2px;
 }
 
-.cs-input {
-  display: block;
-  width: 100%;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-  color: var(--cs-dark);
-  font: 400 16px/22px var(--cs-font-family);
-  letter-spacing: 0;
-}
+.cs-input-group--label {}
+
+.cs-input-group--required {}
+
+.cs-input-group--helper-text {}
+
+.cs-input-group--helper-text.invalid {}
+
+.cs-input {}
 
 input.cs-input {
   white-space: nowrap;
@@ -61,98 +31,8 @@ input.cs-input {
   text-overflow: ellipsis;
 }
 
-.cs-input:focus {
-  outline: 0;
-}
-
-.cs-input-group:focus-within {
-  border-color: var(--cs-highlight);
-}
-
-.cs-input-group:focus-within .cs-input-group--label {
-  color: var(--cs-dark);
-}
-
-.cs-input-group--validation {
-  visibility: collapse;
-  height: 15px;
-  display: block;
-  color: var(--cs-dark-op75);
-  font: 400 11px/15px var(--cs-font-family);
-  letter-spacing: 0.035em;
-  text-transform: initial;
-
-  transition: visibility 0.5s,
-              color var(--cs-transition-time);
-}
-
-.cs-input-group--validation.invalid {
-  visibility: visible;
-  color: var(--cs-alert);
-}
-
-
-/* Animated Label */
-.cs-component-text-field {
-  --cs-text-field-width: 523px;
-  --cs-text-field-height: 60px;
-  --cs-text-field-padding-horizontal: var(--cs-component-padding-horizontal);
-  --cs-text-field-padding-vertical: var(--cs-component-padding-vertical);
-
-  position: relative;
-  width: 100%;
-  max-width: var(--cs-text-field-width);
-  padding-top: 1rem;
-}
-.cs-component-text-field--input {
-  box-sizing: border-box;
-  width: 100%;
-  height: var(--cs-text-field-height);
-  padding-left: var(--cs-text-field-padding-horizontal);
-  padding-top: var(--cs-text-field-padding-vertical);
-  border: 1px solid var(--cs-dark-op25);
-  border-radius: 5px;
-  background-color: var(--cs-light);
-  color: var(--cs-dark);
-  font: 400 16px/22px var(--cs-font-family);
-  overflow-x: hidden;
-  /* Hack to make "rows" attribute apply in Firefox. */
-  -webkit-transition: padding-top 0.2s ease, margin-top 0.2s ease;
-  transition: padding-top 0.2s ease, margin-top 0.2s ease;
-}
-.cs-component-text-field--label {
-  display: block;
-  width: 100%;
-}
-.cs-component-text-field--label > .optional {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  color: var(--cs-dark-op75);
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-align: right;
-  text-transform: uppercase;
-}
-.cs-component-text-field--label > .label {
-  position: absolute;
-  top: 3rem;
-  padding-left: var(--cs-text-field-padding-horizontal);
-  color: var(--cs-dark-op75);
-  font-size: 16px;
-  /* no line-wrap. truncate with ellipsis. */
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  -webkit-transition: top 0.2s ease, font-size 0.2s ease;
-  transition: top 0.2s ease, font-size 0.2s ease;
-}
-.cs-component-text-field--input:focus {
-  outline: 0;
-}
-.cs-component-text-field:focus-within .cs-component-text-field--label > .label,
-.cs-component-text-field--label.active > .label {
-  top: 1.5rem;
-  font-size: 12px;
+textarea.cs-input {
+  height: 100%;
+  padding-bottom: 10px;
+  resize: none;
 }
