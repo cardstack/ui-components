@@ -1,3 +1,5 @@
+Must provide GITHUB_AUTH
+
 * Merge pull request #139 from cardstack/use-title-attr-for-validation-message (ce892d3)
 * Override default text-field validation message (db7f937)
 
