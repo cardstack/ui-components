@@ -15,16 +15,6 @@ module('Integration | Component | password-field', function(hooks) {
     assert.dom('[data-test-cs-component-validation="password"]').hasText('');
   });
 
-  test('it renders component with animated label', async function(assert) {
-    await render(hbs`<PasswordField @animatedLabel={{true}} @label="Enter your passcode" />`);
-
-    assert.dom('[data-test-cs-component="password"]').exists();
-    assert.dom('[data-test-cs-component-label="password"] .optional').hasText('Optional');
-    assert.dom('[data-test-cs-component-label="password"] .label').hasText('Enter your passcode');
-    assert.dom('[data-test-cs-component-input="password"]').hasAttribute('type', 'password');
-    assert.dom('[data-test-cs-component-validation="password"]').hasText('');
-  });
-
   test('it toggles visibility', async function (assert) {
     await render(hbs`<PasswordField />`);
     await fillIn('[data-test-cs-component-input="password"]', 'xyzfda');
@@ -121,11 +111,10 @@ module('Integration | Component | password-field', function(hooks) {
   });
 
   test('it can render the themed component', async function (assert) {
-    await render(hbs`<PasswordField @label="Enter your passcode" @theme="dark" />`);
+    await render(hbs`<PasswordField @label="Enter your passcode" @theme="cs-dark" />`);
 
-    assert.dom('[data-test-cs-component-input="password"]').hasClass('cs-input--dark');
-    assert.dom('[data-test-cs-component-label="password"]').hasClass('cs-label--dark');
-    assert.dom('[data-test-cs-component-validation="password"]').hasClass('cs-validation--dark');
+    assert.dom('[data-test-cs-component="password"].cs-input-group').hasClass('cs-dark-input-group');
+    assert.dom('[data-test-cs-component-input="password"].cs-input').hasClass('cs-dark-input');
   });
 
   test('it can use the passed in id', async function(assert) {

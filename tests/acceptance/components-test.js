@@ -117,8 +117,7 @@ module('Acceptance | components', function(hooks) {
     assert.equal(currentURL(), '/freestyle?s=date-picker');
 
     assert.dom('[data-test-cs-component="date-picker"]').exists();
-    assert.dom('[data-test-cs-component-label="date-picker"] > .label').hasText('Date (MM/DD/YYYY)');
-    assert.dom('[data-test-cs-component-label="date-picker"] > .optional').hasText('Optional');
+    assert.dom('[data-test-cs-component-label="date-picker"]').hasText('Date (MM/DD/YYYY)');
     assert.dom('.cs-component-calendar').doesNotExist();
 
     await click('[data-test-cs-component="date-picker"] > input');

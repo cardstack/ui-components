@@ -69,9 +69,3 @@
 .cs-component-calendar--nav-dropdown .ember-power-select-trigger {
   border: none;
 }
-
-/* Themes */
-.cs-theme {
-  --cs-date-background-color: white;
-  --cs-date-color: var(--color-cs-theme-light-gray);
-}

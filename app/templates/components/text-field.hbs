@@ -36,7 +36,7 @@
         @id={{or @id this.inputId}}
         @class="cs-input
           {{if @theme (concat @theme "-input") "cs-component-input"}}
-          {{if this.invalid "error"}}
+          {{if this.invalid "invalid"}}
           {{if @disabled "disabled"}}
         "
         @update={{fn @update (action (mut this.value)) (action (mut this.invalid)) (action (mut this.validationMessage))}}
@@ -50,7 +50,10 @@
         id=(or @id this.inputId)
         type=this.type
         name=this.name
-        class=(concat "cs-input " (if @theme (concat @theme "-input")) "cs-component-input")
+        class=(concat "cs-input @mode "
+          (if @theme (concat @theme "-input ") "cs-component-input ")
+          (if this.invalid "invalid ")
+          (if @disabled "disabled "))
         required=this.required
         disabled=this.disabled
         value=this.value
@@ -72,7 +75,7 @@
         @title={{@title}}
         @class="cs-input
           {{if @theme (concat @theme "-input") "cs-component-input"}}
-          {{if this.invalid "error"}}
+          {{if this.invalid "invalid"}}
           {{if @disabled "disabled"}}
           {{@mode}}
         "
@@ -87,13 +90,14 @@
         @max={{@max}}
         @step={{@step}}
         @placeholder={{@placeholder}}
+        @readonly={{@readonly}}
         data-test-cs-component-input={{this.dataTestName}}
         ...attributes
       />
     {{/if}}
 
     <div
-      class="cs-input-group--helper-text {{if this.invalid "error"}}"
+      class="cs-input-group--helper-text {{if this.invalid "invalid"}}"
       data-test-cs-component-validation={{this.dataTestName}}
     >
       {{or this.validationMessage @helperText}}

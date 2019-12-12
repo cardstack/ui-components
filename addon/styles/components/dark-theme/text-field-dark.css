@@ -46,7 +46,7 @@
   transition: color var(--cs-transition-time);
 }
 
-.cs-dark-input-group > .cs-input-group--helper-text.error {
+.cs-dark-input-group > .cs-input-group--helper-text.invalid {
   color: var(--cs-alert);
 }
 

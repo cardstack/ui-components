@@ -13,8 +13,8 @@ module('Integration | Component | dropdown', function(hooks) {
 
     assert.dom('[data-test-cs-component="dropdown"]').exists();
     assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-placeholder').hasText('Select an option');
-    assert.dom('[data-test-cs-component="dropdown"]').hasClass('cs-dropdown');
-    assert.dom('[data-test-cs-component="dropdown"]').hasClass('cs-component-dropdown');
+    assert.dom('[data-test-cs-component="dropdown"]').exists();
+    assert.dom('[data-test-cs-component="dropdown"].cs-dropdown').hasClass('cs-component-dropdown');
 
     await clickTrigger('.cs-component-dropdown');
 

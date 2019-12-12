@@ -316,7 +316,7 @@
           <p>Available themes: <code>cs-theme</code></p>
         {{/freestyle-note}}
         {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component (Animated Label)</h2>
+          <h2>How to Create a Theme for This Component</h2>
           <ol>
             <li>Define a new CSS class on your stylesheet. This will be the theme name.</li>
             <li>Change the values set to available CSS variables (see list below).</li>
@@ -381,7 +381,23 @@
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
-      {{#collection.variant key="dark"}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "text-field-default" title="Default TextField"}}
+          <TextField @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-field-required" title="Required TextField"}}
+          <TextField @label="What's your name?" @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="validation"}}
+        {{#freestyle-usage "text-field-validation" title="TextField with Validation"}}
+          <TextField @label="Enter a number" @pattern="[0-9]+" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-field-validation-custom-message" title="TextField with Custom Validation Message"}}
+          <TextField @label="Enter a number" @pattern="[0-9]+" @title="Enter a number please!" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="dark-theme"}}
         {{#freestyle-usage "text-field-dark" title="TextField (Dark Theme)" class="dark-background"}}
           <TextField
             @theme="cs-dark"
@@ -415,22 +431,6 @@
             @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="default"}}
-        {{#freestyle-usage "text-field-default" title="Default TextField"}}
-          <TextField @label="What's your name?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-        {{#freestyle-usage "text-field-required" title="Required TextField"}}
-          <TextField @label="What's your name?" @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="validation"}}
-        {{#freestyle-usage "text-field-validation" title="TextField with Validation"}}
-          <TextField @label="Enter a number" @pattern="[0-9]+" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-        {{#freestyle-usage "text-field-validation-custom-message" title="TextField with Custom Validation Message"}}
-          <TextField @label="Enter a number" @pattern="[0-9]+" @title="Enter a number please!" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 
@@ -447,6 +447,12 @@
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-required" title="Phone Number Field (Required)"}}
       <PhoneNumberField @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+    {{/freestyle-usage}}
+    {{#freestyle-usage "phone-number-field-dark" title="Phone Number Field (Dark Theme)" class="dark-background"}}
+      <PhoneNumberField
+        @theme="cs-dark"
+        @mode={{this.mode}}
+        @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-multi" title="Phone Number List (Multiple Fields)"}}
       <PhoneNumberFields @values={{this.phoneNumberValues}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
@@ -473,6 +479,31 @@
       {{#collection.variant key="with-max-length"}}
         {{#freestyle-usage "text-area-with-max-length" title="Text Area with Max Length"}}
           <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="dark-theme"}}
+        {{#freestyle-usage "text-area-dark" title="Text Area (Dark Theme)" class="dark-background"}}
+          <TextArea @theme="cs-dark" @label="What's on your mind?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-area-dark-required" title="Required Text Area (Dark Theme)" class="dark-background"}}
+          <TextArea
+            @theme="cs-dark"
+            @required={{true}}
+            @label="What's on your mind?" />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-area-dark-disabled" title="Disabled Text Area (Dark Theme)" class="dark-background"}}
+          <TextArea
+            @theme="cs-dark"
+            @disabled={{true}}
+            @label="What's on your mind?" />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-area-dark-options" title="Text Area With Placeholder and Helper Text (Dark Theme)" class="dark-background"}}
+          <TextArea
+            @theme="cs-dark"
+            @required={{true}}
+            @placeholder="Write here"
+            @helperText="Please explain in detail."
+            @label="What's on your mind?" />
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
@@ -529,9 +560,9 @@
           <PasswordField @validate={{this.validator}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="animated-label"}}
-        {{#freestyle-usage "password-field-animated-label" title="Password Field with animated label"}}
-          <PasswordField @animatedLabel={{true}} />
+      {{#collection.variant key="dark-theme"}}
+        {{#freestyle-usage "password-field-dark" title="Password Field (Dark Theme)" class="dark-background"}}
+          <PasswordField @theme="cs-dark" />
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
@@ -591,10 +622,11 @@
           <pre>{{this.stringifiedEmails}}</pre>
         {{/freestyle-annotation}}
       {{/collection.variant}}
-      {{#collection.variant key="animated-label"}}
-        {{#freestyle-usage "email-input-animated-default" title="Email field with animated label"}}
+      {{#collection.variant key="dark-theme"}}
+        {{#freestyle-usage "email-input-dark" title="Email Field (Dark Theme)" class="dark-background"}}
           <Email
-            @animatedLabel={{true}}
+            @theme="cs-dark"
+            @label="Email Address"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -674,17 +706,17 @@
       {{/freestyle-annotation}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "date-picker-optional" title="Default"}}
-          <DatePicker @animatedLabel={{true}} @label="Date (MM/DD/YYYY)" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="disabled"}}
         {{#freestyle-usage "date-picker-disabled" title="Disabled"}}
-          <DatePicker @animatedLabel={{true}} @label="Date (MM/DD/YYYY)" @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "date-picker-required" title="Required"}}
-          <DatePicker @animatedLabel={{true}} @label="Date (MM/DD/YYYY)" @required="true" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @required="true" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="custom-years"}}
@@ -692,7 +724,7 @@
           Using `startYear` and `yearRange` attributes to change the dropdown year range.
         {{/freestyle-note}}
         {{#freestyle-usage "date-picker-custom-years" title="Custom Years"}}
-          <DatePicker @animatedLabel={{true}} @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}

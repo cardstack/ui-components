@@ -1,19 +1,17 @@
-.cs-component-text-area.cs-input-group {
+/* Common styles in text-field.css */
+/* Default theme styles in text-field-default.css */
+
+.cs-textarea.cs-component-input-group {
   height: calc(var(--cs-text-field-height) * 2);
 }
 
-textarea.cs-input {
-  height: 100%;
-  padding-bottom: 10px;
-  resize: none;
-}
-
-.cs-component-text-area--char-counter {
+.cs-textarea--char-counter {
   position: absolute;
-  bottom: -1rem;
-  right: 0;
+  bottom: 0;
+  right: 6px;
   font-size: 12px;
 }
-.cs-component-text-area--char-counter.with-validation {
+
+.cs-textarea--char-counter.with-validation {
   bottom: 0;
 }

@@ -45,7 +45,6 @@
 }
 
 .cs-component-input-group > .cs-input-group--helper-text {
-  visibility: collapse;
   height: 15px;
   display: block;
   color: var(--cs-dark-op75);
@@ -53,12 +52,10 @@
   letter-spacing: 0.035em;
   text-transform: initial;
 
-  transition: visibility 0.5s,
-              color var(--cs-transition-time);
+  transition: color var(--cs-transition-time);
 }
 
-.cs-component-input-group > .cs-input-group--helper-text.error {
-  visibility: visible;
+.cs-component-input-group > .cs-input-group--helper-text.invalid {
   color: var(--cs-alert);
 }
 

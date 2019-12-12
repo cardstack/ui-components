@@ -15,15 +15,6 @@ module('Integration | Component | text-field', function(hooks) {
     assert.dom('[data-test-cs-component-label="text-field"]').hasText("What's the meaning of life?");
   });
 
-  test('it renders the component with animated label', async function(assert) {
-    await render(hbs`<TextField @animatedLabel={{true}} @label="What's the meaning of life?" />`);
-
-    assert.dom('[data-test-cs-component="text-field"]').exists();
-    assert.dom('[data-test-cs-component-label="text-field"] .optional').hasText("Optional");
-    assert.dom('[data-test-cs-component-label="text-field"] .label').hasText("What's the meaning of life?");
-    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('');
-  });
-
   test('it can set a value', async function (assert) {
     assert.expect(3);
 
@@ -44,6 +35,24 @@ module('Integration | Component | text-field', function(hooks) {
     await render(hbs`<TextField @label="What's the meaning of life?" @required="true" />`);
 
     assert.dom('[data-test-cs-component-input="text-field"]').hasAttribute('required');
+    assert.dom('[data-test-cs-component="text-field"]').hasClass('required');
+    assert.dom('[data-test-cs-component="text-field"] .cs-input-group--required').hasText('required');
+  });
+
+  test('it renders the component with helper text', async function (assert) {
+    await render(hbs`<TextField @helperText="I am helping." @label="What's the meaning of life?" />`);
+
+    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('I am helping.');
+  });
+
+  test('it does not display the helper text when there is an error message', async function (assert) {
+    await render(hbs`<TextField @required={{true}} @helperText="I am helping." @label="What's the meaning of life?" />`);
+
+    await fillIn('[data-test-cs-component-input="text-field"]', '');
+    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('This field is required.');
+
+    await fillIn('[data-test-cs-component-input="text-field"]', 'Bla bla bla');
+    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('I am helping.');
   });
 
   test('it can validate text input', async function(assert) {
@@ -57,7 +66,7 @@ module('Integration | Component | text-field', function(hooks) {
 
     await fillIn('[data-test-cs-component-input="text-field"]', '1234');
 
-    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('Thank you.');
+    assert.dom('[data-test-cs-component-validation="text-field"]').doesNotContainText();
   });
 
   test('it can override the default validation message', async function(assert) {
@@ -71,21 +80,23 @@ module('Integration | Component | text-field', function(hooks) {
 
     await fillIn('[data-test-cs-component-input="text-field"]', '1234');
 
-    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('Thank you.');
+    assert.dom('[data-test-cs-component-validation="text-field"]').doesNotContainText();
   });
 
   test('it renders disabled component', async function (assert) {
     await render(hbs`<TextField @label="What's the meaning of life?" @disabled="true" />`);
 
     assert.dom('[data-test-cs-component-input="text-field"]').hasAttribute('disabled');
+    assert.dom('[data-test-cs-component-input="text-field"]').hasClass('disabled');
   });
 
   test('it renders themed component', async function (assert) {
-    await render(hbs`<TextField @label="What's the meaning of life?" @theme="dark" />`);
+    await render(hbs`<TextField @label="What's the meaning of life?" @theme="cs-dark" />`);
 
-    assert.dom('[data-test-cs-component="text-field"]').hasClass('cs-input-group--dark');
-    assert.dom('[data-test-cs-component-label="text-field"]').hasClass('cs-label--dark');
-    assert.dom('.cs-input--dark').exists();
+    assert.dom('[data-test-cs-component="text-field"].cs-input-group').hasClass('cs-dark-input-group');
+    assert.dom('[data-test-cs-component-input="text-field"].cs-input').hasClass('cs-dark-input');
+    assert.dom('[data-test-cs-component="text-field"].cs-input-group').doesNotHaveClass('cs-component-input-group');
+    assert.dom('[data-test-cs-component-input="text-field"].cs-input').doesNotHaveClass('cs-component-input');
   });
 
   test('it renders in view mode', async function (assert) {
