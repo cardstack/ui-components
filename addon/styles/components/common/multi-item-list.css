@@ -1,7 +1,6 @@
 .cs-multi-item-list {
   position: relative;
   width: 100%;
-  max-width: var(--cs-component-width);
 }
 
 .cs-multi-item-list + .cs-multi-item-list {

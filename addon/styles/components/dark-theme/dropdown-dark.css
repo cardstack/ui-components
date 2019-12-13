@@ -1,7 +1,6 @@
 .cs-dark-dropdown {
   --cs-dropdown-height: 40px;
   --cs-dropdown-background-color: var(--cs-foreground);
-  --cs-dropdown-border-color: var(--cs-default);
 
   padding-bottom: 15px;
   color: var(--cs-light);

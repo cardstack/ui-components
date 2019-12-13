@@ -1,22 +1,21 @@
 .cs-component-dropdown {
   --cs-dropdown-height: 40px;
   --cs-dropdown-background-color: var(--cs-light);
-  --cs-dropdown-border-color: var(--cs-dark-op25);
   --cs-dropdown-selected-color: #f2f2f4;
 
   width: 100%;
-  color: var(--cs-dark);
+  color: var(--cs-field-text);
   font: 400 16px/22px var(--cs-font-family);
   letter-spacing: 0;
 }
 .cs-component-dropdown > .cs-dropdown--label {
-  color: var(--cs-dark-op75);
+  color: var(--cs-field-label);
   font: 400 13px/18px var(--cs-font-family);
   letter-spacing: 0.035em;
   text-transform: capitalize;
 }
 .cs-component-dropdown > .cs-dropdown--required {
-  color: var(--cs-dark-op75);
+  color: var(--cs-field-label);
   font: 400 13px/18px var(--cs-font-family);
   letter-spacing: 0.035em;
   text-transform: lowercase;
@@ -35,26 +34,26 @@
   height: var(--cs-dropdown-height);
   padding: 0 45px 0 15px;
   background-color: var(--cs-dropdown-background-color);
-  border: 1px solid var(--cs-dropdown-border-color);
+  border: 1px solid var(--cs-field-border);
   border-radius: 5px;
 }
 .cs--component-dropdown .ember-power-select-selected-item,
 .cs--component-dropdown .ember-power-select-placeholder {
-  color: var(--cs-dark);
+  color: var(--cs-field-text);
   font: 400 16px/22px var(--cs-font-family);
   letter-spacing: 0;
 }
 .cs-component-dropdown .ember-power-select-placeholder {
-  color: var(--cs-dark-op50);
+  color: var(--cs-field-disabled);
 }
 .cs-component-dropdown:not(.disabled) .ember-power-select-trigger:focus,
 .cs-component-dropdown:not(.disabled) .ember-power-select-trigger--active {
-  border: 1px solid var(--cs-dropdown-border-color);
+  border: 1px solid var(--cs-field-border);
   outline: 0;
 }
 .cs-component-dropdown.disabled .ember-power-select-selected-item,
 .cs-component-dropdown.disabled .ember-power-select-placeholder {
-  color: var(--cs-dark-op25);
+  color: var(--cs-field-disabled);
 }
 .cs-component-dropdown .ember-power-select-status-icon {
   right: 15px;
@@ -74,12 +73,12 @@
 .cs-component-dropdown .ember-power-select-dropdown,
 .cs-component-dropdown .ember-power-select-dropdown.ember-basic-dropdown-content--below,
 .cs-component-dropdown .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
-  border: 1px solid var(--cs-dropdown-border-color);
+  border: 1px solid var(--cs-field-border);
   border-radius: 5px;
 }
 .cs-component-dropdown .ember-power-select-option {
   padding: 10px 15px 10px 30px;
-  color: var(--cs-dark);
+  color: var(--cs-field-text);
   font: 400 16px/22px var(--cs-font-family);
   letter-spacing: 0;
 }
@@ -89,12 +88,12 @@
 .cs-component-dropdown .ember-power-select-option[aria-selected="true"] {
   background: url('images/checkmark.svg') 10px center/10px no-repeat;
   background-color: var(--cs-dropdown-selected-color);
-  color: var(--cs-dark);
+  color: var(--cs-field-text);
 }
 
 /* Search */
 .cs-component-dropdown .ember-power-select-search .ember-power-select-search-input:focus {
-  border-bottom: 1px solid var(--cs-dropdown-border-color);
+  border-bottom: 1px solid var(--cs-field-border);
   outline: 0;
 }
 
@@ -105,7 +104,7 @@
 .cs-component-dropdown.multiple .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
   top: auto;
   background-color: var(--cs-dropdown-background-color);
-  border: 1px solid var(--cs-dropdown-border-color);
+  border: 1px solid var(--cs-field-border);
   border-radius: 5px;
 }
 .cs-component-dropdown.multiple .ember-power-select-trigger-multiple-input {
@@ -124,9 +123,9 @@
 }
 .cs-component-dropdown .ember-power-select-multiple-option {
   padding: 0 10px;
-  color: var(--cs-dark-op75);
+  color: var(--cs-field-label);
   background-color: var(--cs-light);
-  border: 1px solid var(--cs-dropdown-border-color);
+  border: 1px solid var(--cs-field-border);
   border-radius: 20px;
   font: 400 16px/22px var(--cs-font-family);
   letter-spacing: 0;

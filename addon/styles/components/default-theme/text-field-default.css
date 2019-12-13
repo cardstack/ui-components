@@ -7,9 +7,9 @@
   height: var(--cs-text-field-height);
   padding: 8px 13px 18px;
   background-color: var(--cs-light);
-  border: 1px solid var(--cs-dark-op25);
+  border: 1px solid var(--cs-field-border);
   border-radius: 5px;
-  color: var(--cs-dark);
+  color: var(--cs-field-text);
   font: 400 16px/22px var(--cs-font-family);
   letter-spacing: 0;
   overflow: hidden;
@@ -20,7 +20,7 @@
 .cs-component-input-group > .cs-input-group--label {
   display: block;
   padding-bottom: 13px;
-  color: var(--cs-dark-op75);
+  color: var(--cs-field-label);
   font: 400 11px/15px var(--cs-font-family);
   letter-spacing: 0;
   white-space: nowrap;
@@ -36,7 +36,7 @@
   right: 13px;
   top: 8px;
   display: block;
-  color: var(--cs-dark-op75);
+  color: var(--cs-field-label);
   font: 400 11px/15px var(--cs-font-family);
   letter-spacing: 0;
   text-transform: lowercase;
@@ -45,7 +45,7 @@
 .cs-component-input-group > .cs-input-group--helper-text {
   height: 15px;
   display: block;
-  color: var(--cs-dark-op75);
+  color: var(--cs-field-label);
   font: 400 11px/15px var(--cs-font-family);
   letter-spacing: 0.035em;
   text-transform: initial;
@@ -64,7 +64,7 @@
   background: none;
   border: none;
   border-radius: 0;
-  color: var(--cs-dark);
+  color: var(--cs-field-text);
   font: 400 16px/22px var(--cs-font-family);
   letter-spacing: 0;
 }
@@ -78,5 +78,5 @@
 }
 
 .cs-component-input-group:focus-within .cs-input-group--label {
-  color: var(--cs-dark);
+  color: var(--cs-field-text);
 }
