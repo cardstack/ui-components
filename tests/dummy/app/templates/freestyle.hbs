@@ -391,7 +391,7 @@
       The width of the `TextField` component is set to 100% and will take the entire width of its container.
       To restrict this, you can set a `max-width`, use a wrapping container, or override the `width` and `height` properties using CSS.
 
-      Here, we're using `max-width: 460px;` for aesthetic reasons.
+      Here, `max-width` is set to `260px`.
     {{/freestyle-note}}
     <ViewModeControl
       @name="text-field"
@@ -400,16 +400,26 @@
     />
     {{#freestyle-collection title="TextField" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
-        {{#freestyle-usage "text-field-default" title="Default TextField"}}
+        {{#freestyle-usage "text-field-default" title="Default Field"}}
           <TextField
             @label="What's your name?"
+            @placeholder="Enter text"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-        {{#freestyle-usage "text-field-required" title="Required TextField"}}
+        {{#freestyle-usage "text-field-disabled" title="Disabled Field"}}
+          <TextField
+            @label="What's your name?"
+            @disabled={{true}}
+            @placeholder="Disabled"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "text-field-required" title="Required Field with helper text"}}
           <TextField
             @label="What's your name?"
             @required={{true}}
+            @helperText="Helper text is displayed here"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
@@ -435,35 +445,29 @@
         {{#freestyle-note "text-field-dark--notes"}}
           Use `@theme="cs-dark"` for this color scheme.
         {{/freestyle-note}}
-        {{#freestyle-usage "text-field-dark" title="TextField (Dark Theme)" class="dark-background"}}
+        {{#freestyle-usage "text-field-dark" title="TextField (Dark Background)" class="dark-background"}}
           <TextField
             @theme="cs-dark"
             @label="What's your name?"
+            @placeholder="Enter text"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-        {{#freestyle-usage "text-field-dark-disabled" title="Disabled TextField (Dark Theme)" class="dark-background"}}
+        {{#freestyle-usage "text-field-dark-disabled" title="Disabled Field" class="dark-background"}}
           <TextField
             @theme="cs-dark"
+            @label="What's your name?"
             @disabled={{true}}
-            @label="What's your name?"
+            @placeholder="Disabled"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
-        {{#freestyle-usage "text-field-dark-required" title="Required TextField with helper text (Dark Theme)" class="dark-background"}}
+        {{#freestyle-usage "text-field-dark-required" title="Required Field with helper text (Dark Theme)" class="dark-background"}}
           <TextField
             @theme="cs-dark"
+            @label="What's your name?"
             @required={{true}}
-            @helperText="Please enter your name in last name, first name format."
-            @label="What's your name?"
-            @mode={{this.mode}}
-            @showLabelInViewMode={{this.showLabelInViewMode}} />
-        {{/freestyle-usage}}
-        {{#freestyle-usage "text-field-dark-placeholder" title="TextField with placeholder (Dark Theme)" class="dark-background"}}
-          <TextField
-            @theme="cs-dark"
-            @placeholder="Please enter"
-            @label="What's your name?"
+            @helperText="Helper text is displayed here"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}

@@ -49,7 +49,7 @@ export default class TextField extends BaseComponent {
 
       if (!value && this.required) {
         this.invalid = true;
-        this.validationMessage = 'This field is required.';
+        this.validationMessage = 'This is a required field';
       } else if (validationMessage) {
         this.invalid = true;
         this.validationMessage = title || validationMessage;

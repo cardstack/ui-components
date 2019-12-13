@@ -4,7 +4,7 @@
 
   padding-bottom: 15px;
   color: var(--cs-light);
-  font: 400 13px/18px var(--cs-font-family);
+  font: var(--cs-font);
   letter-spacing: 0.015em;
 }
 .cs-dark-dropdown.required > .cs-dropdown--label::after {
@@ -15,9 +15,9 @@
 .cs-dark-dropdown > .cs-dropdown--label {
   display: block;
   padding-bottom: 7px;
-  color: var(--cs-light-op60);
-  font: 400 13px/18px var(--cs-font-family);
-  letter-spacing: 0.035em;
+  color: var(--cs-dark-field-label);
+  font: var(--cs-font);
+  letter-spacing: var(--cs-letter-spacing);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -28,9 +28,9 @@
   right: 0;
   top: 0;
   display: block;
-  color: var(--cs-light-op60);
-  font: 400 13px/18px var(--cs-font-family);
-  letter-spacing: 0.035em;
+  color: var(--cs-dark-field-label);
+  font: var(--cs-font);
+  letter-spacing: var(--cs-letter-spacing);
   text-transform: lowercase;
 }
 
@@ -47,7 +47,7 @@
 .cs-dark-dropdown .ember-power-select-selected-item,
 .cs-dark-dropdown .ember-power-select-placeholder {
   color: var(--cs-light);
-  font: 400 13px/18px var(--cs-font-family);
+  font: var(--cs-font);
   letter-spacing: 0.015em;
 }
 .cs-dark-dropdown:not(.disabled) .ember-power-select-trigger:focus,
@@ -59,11 +59,11 @@
   background-color: var(--cs-foreground-hover);
 }
 .cs-dropdown.cs-dark-dropdown.disabled .ember-power-select-trigger {
-  background-color: var(--cs-disabled);
+  background-color: var(--cs-dark-field-disabled);
 }
 .cs-dropdown.cs-dark-dropdown.disabled .ember-power-select-selected-item,
 .cs-dropdown.cs-dark-dropdown.disabled .ember-power-select-placeholder {
-  color: var(--cs-light-op40);
+  color: var(--cs-dark-field-text-disabled);
 }
 .cs-dropdown.cs-dark-dropdown .ember-power-select-trigger .ember-power-select-clear-btn {
   display: none;
@@ -93,7 +93,7 @@
 .cs-dark-dropdown .ember-power-select-option {
   padding: 10px 15px 10px 30px;
   color: var(--cs-light);
-  font: 400 13px/18px var(--cs-font-family);
+  font: var(--cs-font);
   letter-spacing: 0.015em;
 }
 .cs-dark-dropdown .ember-power-select-option[aria-current="true"] {

@@ -2,9 +2,13 @@
   /* Root CSS custom properties */
   --cs-font-family: "Open Sans", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --cs-font: 400 13px/18px var(--cs-font-family);
+  --cs-small-font: 400 11px/15px var(--cs-font-family);
   --cs-letter-spacing: 0.035em;
+  --cs-small-spacing: 0.015em;
   --cs-transition-time: 250ms;
   --cs-field-radius: 5px;
+  --cs-field-height: 40px;
+  --cs-textarea-height: 80px;
 
   /* Cardstack color palette */
   --cs-navy: #281e78;
@@ -17,42 +21,43 @@
   --cs-green: #37eb77;
   --cs-yellow: #c3fc33;
 
-  /* Uncategorized */
-  --cs-light: #fff;
-  --cs-dark: #000;
+  /* Common */
+  --cs-highlight: var(--cs-cyan);
+  --cs-highlight-hover: var(--cs-darker-cyan);
+  --cs-error: #ff0000;
+  --cs-success: var(--cs-green);
 
-  /* Light Background */
-  --cs-field-default: #fff;
-  --cs-field-text: #000;
-  --cs-field-label: #404040;
-  --cs-field-placeholder: #7f7f7f;
-  --cs-field-hover: #f7f7f7;
-  --cs-field-disabled: #afafb7;
-  --cs-field-border: #afafb7;
-  --cs-field-disabled-border: #e3e3e3;
-  --cs-field-error: #ff0000;
-  --cs-field-highlight: var(--cs-cyan);
+  /* Light Mode */
+  --cs-field-default: #fff;                  /* Default background */
+  --cs-field-hover: #f7f7f7;                 /* Focus and hover background */
+  --cs-field-text: #000;                     /* Input text */
+  --cs-field-label: #404040;                 /* Label, required label, helper text */
+  --cs-field-placeholder: #7f7f7f;           /* Placeholder text */
+  --cs-field-disabled-text: #afafb7;         /* Disabled text */
+  --cs-field-border: #afafb7;                /* Field border */
+  --cs-field-disabled-border: #e3e3e3;       /* Disabled field border */
 
-  /* Dark Background */
-  --cs-default: #2e2d38;                      /* body background, cards background, form components default background  */
-  --cs-text: #fff;
-  --cs-label: ;
-  --cs-placeholder: ;
-  --cs-hover: #272330;
-  --cs-disabled: #393642;
+  /* Dark Mode */
+  --cs-dark-field-default: #2e2d38;           /* Default background */
+  --cs-dark-field-hover: #272330;             /* Hover background */
+  --cs-dark-field-disabled: #393642;          /* Disabled background */
+  --cs-dark-field-text: #fff;                 /* Input text */
+  --cs-dark-field-label: #cfcfd2;             /* Label, required label, helper text */
+  --cs-dark-field-placeholder: #97969c;       /* Placeholder text */
+  --cs-dark-field-disabled-text: #afafb7;     /* Disabled text */
+  --cs-dark-field-error: #ff5757;             /* Error text */
+
+  /* Dropdowns and Buttons */
   --cs-dark-background: #41404d;              /* right edge background */
   --cs-light-background: #e9e9ed;
-  --cs-deep-background: #141428;              /* use sparsely (currently used on homepage, schema view left-edge bg) */
   --cs-border: #5b596e;                       /* mostly used as form-components border */
   --cs-foreground: #5a586a;                   /* serves as medium background on dark background. example: used in right-edge dropdown and pill selector */
   --cs-foreground-hover: #434050;
-  --cs-light-op40: rgba(255, 255, 255, 0.4); /* example: disabled field font color on dark bg */
-  --cs-light-op50: rgba(255, 255, 255, 0.5); /* example: placeholder or inactive label on dark bg */
-  --cs-light-op60: rgba(255, 255, 255, 0.6); /* example: field label on dark bg */
-  --cs-success: var(--cs-green);
-  --cs-alert: #ff5757;
-  --cs-highlight: var(--cs-cyan);               /* form components focus state, links hover state */
-  --cs-highlight-hover: var(--cs-darker-cyan);
+
+  /* TBD */
+  --cs-light: #fff;
+  --cs-dark: #000;
+  --cs-deep-background: #141428;              /* use sparsely (currently used on homepage, schema view left-edge bg) */
 
   /* Buttons */
   --cs-button-radius: 100px;
