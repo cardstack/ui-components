@@ -36,7 +36,7 @@ module('Integration | Component | street address', function(hooks) {
   });
 
   test('it renders the themed component', async function (assert) {
-    await render(hbs`<StreetAddress @label="Enter your address" @theme="dark" />`);
+    await render(hbs`<StreetAddress @label="Enter your address" @theme="cs-dark" />`);
 
     assert.dom('[data-test-cs-component="street-address"].cs-dropdown.dark-dropdown').exists();
     assert.dom('[data-test-cs-component="street-address"] .ember-power-select-trigger').exists();

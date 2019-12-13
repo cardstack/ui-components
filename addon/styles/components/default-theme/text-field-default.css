@@ -1,11 +1,9 @@
 .cs-component-input-group {
-  --cs-text-field-width: 453px;
   --cs-text-field-height: 76px;
 
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  max-width: var(--cs-text-field-width);
   height: var(--cs-text-field-height);
   padding: 8px 13px 18px;
   background-color: var(--cs-light);

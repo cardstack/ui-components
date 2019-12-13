@@ -1,0 +1,3 @@
+.cs-textarea .cs-dark-input.cs-input {
+  min-height: calc(var(--cs-text-field-height) * 2);
+}
