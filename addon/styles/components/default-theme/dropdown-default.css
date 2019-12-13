@@ -1,11 +1,10 @@
 .cs-component-dropdown {
-  --cs-dropdown-width: 453px;
   --cs-dropdown-height: 40px;
   --cs-dropdown-background-color: var(--cs-light);
   --cs-dropdown-border-color: var(--cs-dark-op25);
   --cs-dropdown-selected-color: #f2f2f4;
 
-  max-width: var(--cs-dropdown-width);
+  width: 100%;
   color: var(--cs-dark);
   font: 400 16px/22px var(--cs-font-family);
   letter-spacing: 0;

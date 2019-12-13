@@ -12,7 +12,6 @@
   content: "*";
   display: inline-block;
   vertical-align: text-top;
-  margin-left: 2px;
 }
 
 .cs-input-group--label {}

@@ -1,8 +1,13 @@
 @import 'examples.css';
 
-.dummy-app {
-  font-family: "Open Sans";
-  font-size: 16px;
+.FreestyleGuide {
+  font: 400 16px/22px var(--cs-font-family);
+}
+
+.dummy-app .application-nav,
+.dummy-app .examples,
+.dummy-app .FreestyleGuide {
+  font-family: var(--cs-font-family);
 }
 
 .FreestyleGuide .hljs-deletion, .FreestyleGuide .hljs-string, .FreestyleGuide .hljs-built_in, .FreestyleGuide .hljs-builtin-name, .FreestyleGuide .hljs-meta {
@@ -16,11 +21,13 @@
   color: #005a66;
 }
 
-.FreestyleGuide pre {
+.dummy-app pre,
+.FreestyleGuide pre,
+.FreestyleGuide code {
   font-family: Menlo, Monaco, "Courier New", monospace;
   font-weight: normal;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 22px;
   letter-spacing: 0px;
 }
 
@@ -59,4 +66,13 @@
 .darkest-background {
   background-color: var(--cs-default);
   color: var(--cs-light);
+}
+
+
+.FreestyleUsage-rendered > .cs-input-group {
+  max-width: 460px;
+}
+
+.FreestyleUsage-snippet p {
+  font: 400 16px/22px var(--cs-font-family);
 }

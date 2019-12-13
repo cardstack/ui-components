@@ -1,11 +1,9 @@
 .cs-dark-input-group {
-  --cs-text-field-width: 260px;
   --cs-text-field-height: 40px;
 
   position: relative;
   display: block;
   width: 100%;
-  max-width: var(--cs-text-field-width);
 }
 
 .cs-dark-input-group > .cs-input-group--label {
@@ -37,7 +35,7 @@
   height: 18px;
   display: block;
   padding-left: 10px;
-  padding-top: 7px;
+  padding-top: 5px;
   color: var(--cs-light-op60);
   font: 400 11px/15px var(--cs-font-family);
   letter-spacing: 0.035em;
@@ -66,7 +64,7 @@
               background-color var(--cs-transition-time);
 }
 
-.cs-dark-input.error {
+.cs-dark-input.invalid {
   border-color: var(--cs-alert);
 }
 

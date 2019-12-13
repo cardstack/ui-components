@@ -210,9 +210,9 @@ module('Integration | Component | dropdown', function(hooks) {
 
   test('it renders the themed component', async function(assert) {
     this.options = [];
-    await render(hbs`<Dropdown @theme="dark" @options={{options}} />`);
+    await render(hbs`<Dropdown @theme="cs-dark" @options={{options}} />`);
 
-    assert.dom('[data-test-cs-component="dropdown"].cs-dropdown.dark-dropdown').exists();
+    assert.dom('[data-test-cs-component="dropdown"].cs-dropdown.cs-dark-dropdown').exists();
     assert.dom('[data-test-cs-component="dropdown"]').doesNotHaveClass('cs-component-dropdown');
     assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-trigger').exists();
   });
