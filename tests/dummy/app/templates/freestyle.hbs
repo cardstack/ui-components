@@ -480,10 +480,15 @@
       @showLabelInViewMode={{this.showLabelInViewMode}}
     />
     {{#freestyle-usage "phone-number-field-default" title="Phone Number Field"}}
-      <PhoneNumberField @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+      <PhoneNumberField
+        @mode={{this.mode}}
+        @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-required" title="Phone Number Field (Required)"}}
-      <PhoneNumberField @required={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+      <PhoneNumberField
+        @required={{true}}
+        @mode={{this.mode}}
+        @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-dark" title="Phone Number Field (Dark Theme)" class="dark-background"}}
       <PhoneNumberField
@@ -492,7 +497,10 @@
         @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "phone-number-field-multi" title="Phone Number List (Multiple Fields)"}}
-      <PhoneNumberFields @values={{this.phoneNumberValues}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+      <PhoneNumberFields
+        @values={{this.phoneNumberValues}}
+        @mode={{this.mode}}
+        @showLabelInViewMode={{this.showLabelInViewMode}} />
     {{/freestyle-usage}}
 
     Phone Numbers JSON:
@@ -510,17 +518,29 @@
     {{#freestyle-collection title="TextArea" defaultKey="default" inline=true as |collection|}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "text-area-default" title="Text Area"}}
-          <TextArea @label="What's on your mind?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <TextArea
+            @label="What's on your mind?"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="with-max-length"}}
         {{#freestyle-usage "text-area-with-max-length" title="Text Area with Max Length"}}
-          <TextArea @label="What's on your mind?" @rows={{5}} @characterLimit={{20}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <TextArea
+            @label="What's on your mind?"
+            @rows={{5}}
+            @characterLimit={{20}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="dark-theme"}}
         {{#freestyle-usage "text-area-dark" title="Text Area (Dark Theme)" class="dark-background"}}
-          <TextArea @theme="cs-dark" @label="What's on your mind?" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <TextArea
+            @theme="cs-dark"
+            @label="What's on your mind?"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-usage "text-area-dark-required" title="Required Text Area (Dark Theme)" class="dark-background"}}
           <TextArea
@@ -609,14 +629,20 @@
   {{!-- CHOOSE ITEMS --}}
   {{#freestyle-section name="Choose Items"}}
     {{#freestyle-usage "text-choose-one" title="Choose One (Text)"}}
-      <ChooseOne @legend="What is your Favorite Color?" @choices={{this.selectItemOptions}} @selectionChanged={{action this.doSomething}} />
+      <ChooseOne
+        @legend="What is your Favorite Color?"
+        @choices={{this.selectItemOptions}}
+        @selectionChanged={{action this.doSomething}} />
     {{/freestyle-usage}}
     {{#freestyle-note "text-choose-one--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
     {{/freestyle-note}}
 
     {{#freestyle-usage "text-choose-many" title="Choose Many (Text)"}}
-      <ChooseMany @legend="What combination makes Purple?" @choices={{this.selectItemOptions}} @selectionChanged={{action this.doSomething}} />
+      <ChooseMany
+        @legend="What combination makes Purple?"
+        @choices={{this.selectItemOptions}}
+        @selectionChanged={{action this.doSomething}} />
     {{/freestyle-usage}}
     {{#freestyle-note "text-choose-many--notes"}}
       Takes an array of primitives or objects, an optional `label`, and an optional action to be called when selecting an item.
@@ -680,16 +706,30 @@
     {{/freestyle-annotation}}
     {{freestyle-usage "checkbox-action" title="Example Action"}}
     {{#freestyle-usage "checkbox-default" title="Default (Optional)"}}
-      <Checkbox @label="Include a free gift in my order" @setChecked={{fn this.setChecked "checkedOne"}} @checked={{false}} />
+      <Checkbox
+        @label="Include a free gift in my order"
+        @setChecked={{fn this.setChecked "checkedOne"}}
+        @checked={{false}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "checkbox-required" title="Required"}}
-      <Checkbox @label="I accept the Cardstack Terms of Service" @required={{true}} @setChecked={{fn this.setChecked "checkedTwo"}} @checked={{false}} />
+      <Checkbox
+        @label="I accept the Cardstack Terms of Service"
+        @required={{true}}
+        @setChecked={{fn this.setChecked "checkedTwo"}}
+        @checked={{false}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "checkbox-disabled" title="Disabled"}}
-      <Checkbox @label="Enable Dark Mode" @disabled={{true}} @setChecked={{fn this.setChecked "checkedThree"}} @checked={{this.isChecked}} />
+      <Checkbox
+        @label="Enable Dark Mode"
+        @disabled={{true}}
+        @setChecked={{fn this.setChecked "checkedThree"}}
+        @checked={{this.isChecked}} />
     {{/freestyle-usage}}
     {{#freestyle-usage "checkbox-default-checked" title="Default Checked"}}
-      <Checkbox @label="I would like to subscribe to your newsletter" @checked={{true}} @setChecked={{fn this.setChecked "checkedFour"}} />
+      <Checkbox
+        @label="I would like to subscribe to your newsletter"
+        @checked={{true}}
+        @setChecked={{fn this.setChecked "checkedFour"}} />
     {{/freestyle-usage}}
   {{/freestyle-section}}
 
@@ -708,12 +748,18 @@
       {{/freestyle-note}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "street-address" title="Street Address"}}
-          <StreetAddress @label="Enter your address" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <StreetAddress
+            @label="Enter your address"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="multiple"}}
         {{#freestyle-usage "street-address-multiple" title="Street Address Multiple"}}
-          <StreetAddresses @selections={{this.streetAddresses}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <StreetAddresses
+            @selections={{this.streetAddresses}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
         {{#freestyle-annotation}}
           Selected addresses JSON:
@@ -743,17 +789,28 @@
       {{/freestyle-annotation}}
       {{#collection.variant key="default"}}
         {{#freestyle-usage "date-picker-optional" title="Default"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker
+            @label="Date (MM/DD/YYYY)"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="disabled"}}
         {{#freestyle-usage "date-picker-disabled" title="Disabled"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @disabled={{true}} @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker
+            @label="Date (MM/DD/YYYY)"
+            @disabled={{true}}
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="required"}}
         {{#freestyle-usage "date-picker-required" title="Required"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @required="true" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker
+            @label="Date (MM/DD/YYYY)"
+            @required="true"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="custom-years"}}
@@ -761,7 +818,12 @@
           Using `startYear` and `yearRange` attributes to change the dropdown year range.
         {{/freestyle-note}}
         {{#freestyle-usage "date-picker-custom-years" title="Custom Years"}}
-          <DatePicker @label="Date (MM/DD/YYYY)" @startYear="1980" @yearRange="50" @mode={{this.mode}} @showLabelInViewMode={{this.showLabelInViewMode}} />
+          <DatePicker
+            @label="Date (MM/DD/YYYY)"
+            @startYear="1980"
+            @yearRange="50"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
