@@ -1,75 +1,14 @@
-/* Global CSS for all ui-components */
 :root {
-  /* Color palette */
-  --color-lighter-gray: #f5f5f5;
-  --color-light-gray-e8: #e8e8e8;
-  --color-light-gray: #c1c1c1;
-  --color-gray: #5d5d5d;
-  --color-dark-gray-rgb: 34, 34, 34;
-  --color-dark-gray: rgb(var(--color-dark-gray-rgb));
-  --color-dark-gray-op10: rgba(var(--color-dark-gray-rgb), 0.1);
-  --color-dark-gray-op20: rgba(var(--color-dark-gray-rgb), 0.2);
-  --color-dark-gray-op30: rgba(var(--color-dark-gray-rgb), 0.3);
-  --color-dark-gray-op40: rgba(var(--color-dark-gray-rgb), 0.4);
-  --color-dark-gray-op50: rgba(var(--color-dark-gray-rgb), 0.5);
-  --color-dark-gray-op60: rgba(var(--color-dark-gray-rgb), 0.6);
-  --color-border-gray: #707070;
-  --color-gray-70: #707070;
-  --color-purple: #6a3ca3;
-  --color-green: #58c949;
-  --color-pink: #ff5c5c;
-  --color-light-blue: rgb(59, 153, 252);
-  /* Theme color palette (cs-theme) */
-  --color-cs-theme-light-gray: #6f6f6f;
-  --color-cs-theme-gray: #4d4d4d;
-  --color-cs-theme-light-purple: #9f98bd;
-  --color-cs-theme-purple: #343356;
-  --color-cs-theme-green: green;
-  --color-cs-theme-red: red;
-  /* Component text */
-  --cs-component-color: var(--cs-dark);
-  --cs-component-font-family: var(--cs-font-family);
-  --cs-component-font-size: 16px;
-  --cs-component-font-weight: 400;
-  --cs-component-letter-spacing: 0;
-  --cs-component-line-height: 1.3;
-  /* Component background */
-  --cs-component-background-color: var(--cs-light);
-  --cs-component-background-highlight-color: var(--color-light-gray-e8); /* active state (hover, focus, etc.) */
-  /* Sizing */
-  --cs-component-max-width: 100%;
-  --cs-component-width: 453px;
-  --cs-component-height: 60px;
-  /* Spacing */
-  --cs-component-padding-horizontal: 15px;
-  --cs-component-padding-vertical: 20px;
-  /* Borders */
-  --cs-component-border-color: var(--cs-dark-op25);
-  --cs-component-border-radius: 5px;
-  /* Box-shadow */
-  --cs-component-box-shadow: none;
-  /* Legend */
-  --cs-component-legend-font-size: 20px;
-  /* Labels */
-  --cs-component-label-color: var(--cs-dark-op50);
-  --cs-component-label-highlight-color: var(--color-purple); /* active state (hover, focus, etc.) */
-  --cs-component-label-minimized-color: var(--cs-component-label-color); /* input is filled in */
-  /* Selection */
-  --cs-component-selected-color: var(--color-gray-70);
-  /* Disabled state */
-  /* --cs-component-disabled-color: TBD */
-  /* --cs-component-disabled-background-color: TBD */
-  /* Validation */
-  --cs-component-valid: var(--color-green);
-  --cs-component-invalid: var(--color-pink);
-  /* A11y-related */
-  --cs-component-outline-color: var(--color-light-blue);
-
-
-
-  /* Cardstack CSS vars */
+  /* Root CSS custom properties */
   --cs-font-family: "Open Sans", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --cs-font: 400 13px/18px var(--cs-font-family);
+  --cs-small-font: 400 11px/15px var(--cs-font-family);
+  --cs-letter-spacing: 0.035em;
+  --cs-small-spacing: 0.015em;
   --cs-transition-time: 250ms;
+  --cs-field-radius: 5px;
+  --cs-field-height: 40px;
+  --cs-textarea-height: 80px;
 
   /* Cardstack color palette */
   --cs-navy: #281e78;
@@ -82,27 +21,55 @@
   --cs-green: #37eb77;
   --cs-yellow: #c3fc33;
 
-  /* Cardstack form components color palette */
-  --cs-default: #2e2d38;                      /* body background, cards background, form components default background  */
-  --cs-hover: #272330;
-  --cs-disabled: #393642;
-  --cs-highlight: var(--cs-cyan);               /* form components focus state, links hover state */
+  /* Common */
+  --cs-highlight: var(--cs-cyan);
   --cs-highlight-hover: var(--cs-darker-cyan);
+  --cs-error: #ff0000;
   --cs-success: var(--cs-green);
-  --cs-dark-background: #41404d;              /* right edge background */
-  --cs-light-background: #e9e9ed;
-  --cs-deep-background: #141428;              /* use sparsely (currently used on homepage, schema view left-edge bg) */
-  --cs-border: #5b596e;                       /* mostly used as form-components border */
-  --cs-foreground: #5a586a;                   /* serves as medium background on dark background. example: used in right-edge dropdown and pill selector */
-  --cs-foreground-hover: #434050;
-  --cs-light: #fff;
-  --cs-dark: #000;
-  --cs-alert: #ff5757;
-  --cs-light-op40: rgba(255, 255, 255, 0.4); /* example: disabled field font color on dark bg */
-  --cs-light-op50: rgba(255, 255, 255, 0.5); /* example: placeholder or inactive label on dark bg */
-  --cs-light-op60: rgba(255, 255, 255, 0.6); /* example: field label on dark bg */
-  --cs-dark-op25: rgba(0, 0, 0, 0.25);       /* example: border color on light bg */
-  --cs-dark-op40: rgba(0, 0, 0, 0.4);        /* example: disabled font on light bg */
-  --cs-dark-op50: rgba(0, 0, 0, 0.55);       /* example: placeholder on light bg */
-  --cs-dark-op75: rgba(0, 0, 0, 0.75);        /* example: field label on light bg */
+
+  /* Light Mode */
+  --cs-field-default: #fff;                  /* Default background */
+  --cs-field-hover: #f7f7f7;                 /* Focus and hover background */
+  --cs-field-text: #000;                     /* Input text */
+  --cs-field-label: #404040;                 /* Label, required label, helper text */
+  --cs-field-placeholder: #757575;           /* Placeholder text */
+  --cs-field-disabled-text: #afafb7;         /* Disabled text */
+  --cs-field-border: #afafb7;                /* Field border */
+  --cs-field-disabled-border: #e3e3e3;       /* Disabled field border */
+
+  /* Dark Mode */
+  --cs-dark-field-default: #2e2d38;           /* Default background */
+  --cs-dark-field-hover: #272330;             /* Hover background */
+  --cs-dark-field-disabled: #393642;          /* Disabled background */
+  --cs-dark-field-text: #fff;                 /* Input text */
+  --cs-dark-field-label: #cfcfd2;             /* Label, required label, helper text */
+  --cs-dark-field-placeholder: #97969c;       /* Placeholder text */
+  --cs-dark-field-disabled-text: #afafb7;     /* Disabled text */
+  --cs-dark-field-error: #ff5757;             /* Error text */
+
+  /* Dropdown */
+  --cs-dark-dropdown: #5a586a;                 /* Dark mode dropdown background */
+  --cs-dark-dropdown-hover: #434050;           /* Dark mode dropdown hover background */
+  --cs-dark-dropdown-border: var(--cs-dark-field-default);
+  --cs-dark-dropdown-placeholder: rgba(255, 255, 255, 0.6); /* Make this solid color */
+
+  /* Buttons */
+  --cs-button-radius: 100px;
+  --cs-button-sm-width: 125px;
+  --cs-button-sm-height: 32px;
+
+  /* Light Background */
+  --cs-button-default: var(--cs-default);
+  --cs-button-text: #fff;
+  --cs-button-border: transparent;
+  --cs-button-hover: #000;
+  --cs-secondary-button-default: transparent;
+  --cs-secondary-button-text: #000;
+  --cs-secondary-button-border: var(--cs-field-border);
+  --cs-secondary-button-hover: #000;
+
+  /* Dark Background */
+  --cs-secondary-button-text: #fff;
+  --cs-secondary-button-hover: #fff;
+  --cs-secondary-button-border: rgba(255, 255, 255, 0.25);
 }

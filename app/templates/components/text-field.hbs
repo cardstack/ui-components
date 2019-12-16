@@ -1,10 +1,9 @@
 <div
   class="cs-input-group
-    {{if @theme (concat @theme "-input-group") "cs-component-input-group"}}
+    {{if @theme (concat @theme "-input-group")}}
     {{if @required "required"}}
     {{@className}}
-    {{@mode}}
-"
+    {{@mode}}"
   data-test-cs-component={{this.dataTestName}}
   {{did-update this.updateValue @value @validationMessage @required}}
 >
@@ -24,7 +23,6 @@
 
     {{#if this.iconComponent}}
       {{component this.iconComponent
-        class="cs-component-text-field--icon"
         type=this.type
         changeType=(action (mut this.type))
         data-test-cs-component-input=this.dataTestName
@@ -35,7 +33,7 @@
       <PhoneInput
         @id={{or @id this.inputId}}
         @class="cs-input
-          {{if @theme (concat @theme "-input") "cs-component-input"}}
+          {{if @theme (concat @theme "-input")}}
           {{if this.invalid "invalid"}}
           {{if @disabled "disabled"}}
         "
@@ -50,10 +48,11 @@
         id=(or @id this.inputId)
         type=this.type
         name=this.name
-        class=(concat "cs-input @mode "
-          (if @theme (concat @theme "-input ") "cs-component-input ")
+        class=(concat "cs-input "
+          (if @theme (concat @theme "-input "))
           (if this.invalid "invalid ")
-          (if @disabled "disabled "))
+          (if @disabled "disabled ")
+          @mode)
         required=this.required
         disabled=this.disabled
         value=this.value
@@ -74,7 +73,7 @@
         @value={{this.value}}
         @title={{@title}}
         @class="cs-input
-          {{if @theme (concat @theme "-input") "cs-component-input"}}
+          {{if @theme (concat @theme "-input")}}
           {{if this.invalid "invalid"}}
           {{if @disabled "disabled"}}
           {{@mode}}

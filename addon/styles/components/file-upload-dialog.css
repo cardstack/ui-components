@@ -1,16 +1,12 @@
 .cs-component-file-upload-dialog {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: var(--cs-component-max-width);
-  font-family: var(--cs-component-font-family);
-  font-size: var(--cs-component-font-size);
-  font-weight: var(--cs-component-font-weight);
-  letter-spacing: var(--cs-component-letter-spacing);
-  line-height: var(--cs-component-line-height);
   --cs-component-file-upload-dialog-icon: url("images/file-regular.svg");
+
+  width: 100%;
+  font: var(--cs-font);
+  letter-spacing: var(--cs-letter-spacing);
 }
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--prompt {
-  background: var(--color-light-gray-e8);
+  background: var(--cs-field-default);
   padding: 20px;
   position: relative;
 }
@@ -20,7 +16,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  background: #eee;
+  background: var(--cs-field-hover);
   opacity: 0.9;
 }
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--dropzone h4 {
@@ -53,11 +49,11 @@
 }
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--file {
   padding: 10px 0;
-  border-bottom: 1px solid var(--color-light-gray);
+  border-bottom: 1px solid var(--cs-field-border);
   position: relative;
 }
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--file:first-child {
-  border-top: 1px solid var(--color-light-gray);
+  border-top: 1px solid var(--cs-field-border);
 }
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--view-file {
   position: absolute;
@@ -68,12 +64,12 @@
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 600;
-  color: var(--color-green);
+  color: var(--cs-success);
 }
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--view-file .cs-component-file-upload-dialog--view-file-icon {
   -webkit-mask: url("images/eye-solid.svg") no-repeat 2px 2px;
   mask: url("images/eye-solid.svg") no-repeat 2px 2px;
-  background-color: var(--color-green);
+  background-color: var(--cs-success);
   height: 14px;
   width: 20px;
   display: inline-block;
@@ -85,12 +81,12 @@
   display: block;
   text-decoration: underline;
   font-size: 13px;
-  color: var(--color-pink);
+  color: var(--cs-field-error);
   cursor: pointer;
 }
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--file-thumbnail {
   display: inline-block;
-  border: 1px solid var(--color-light-gray);
+  border: 1px solid var(--cs-field-border);
   border-radius: 5px;
   width: 100px;
   height: 70px;
@@ -103,10 +99,10 @@
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--file-details h4 {
   margin: 0;
   font-size: 14px;
-  color: var(--color-gray);
+  color: var(--cs-field-label);
 }
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--file-uploaded {
-  color: var(--color-dark-gray-op60);
+  color: var(--cs-field-text);
   text-transform: uppercase;
   font-size: 11px;
   font-weight: bold;
@@ -115,7 +111,7 @@
 .cs-component-file-upload-dialog .cs-component-file-upload-dialog--save {
   font-size: 11px;
   text-decoration: underline;
-  color: var(--color-gray);
+  color: var(--cs-field-text);
 }
 .cs-component-file-upload-dialog .cs-component-cta {
   margin-top: 20px;

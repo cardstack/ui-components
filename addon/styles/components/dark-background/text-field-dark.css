@@ -1,0 +1,32 @@
+.cs-dark-input.cs-input {
+  background-color: var(--cs-dark-field-default);
+  color: var(--cs-dark-field-text);
+  border-color: var(--cs-dark-field-default);
+}
+
+.cs-dark-input.cs-input:not(.disabled):hover,
+.cs-dark-input.cs-input:not(:disabled):hover {
+  background-color: var(--cs-dark-field-hover);
+}
+
+.cs-dark-input.cs-input:not(.disabled):focus,
+.cs-dark-input.cs-input:not(:disabled):focus {
+  background-color: var(--cs-dark-field-hover);
+  border-color: var(--cs-highlight);
+}
+
+input.cs-dark-input.cs-input::placeholder {
+  color: var(--cs-dark-field-placeholder);
+}
+
+.cs-dark-input.cs-input:disabled,
+.cs-dark-input.cs-input.disabled {
+  background-color: var(--cs-dark-field-disabled);
+  color: var(--cs-dark-field-disabled-text);
+  border-color: var(--cs-dark-field-disabled);
+}
+
+input.cs-dark-input.cs-input:disabled::placeholder,
+input.cs-dark-input.cs-input.disabled::placeholder {
+  color: var(--cs-dark-field-disabled-text);
+}

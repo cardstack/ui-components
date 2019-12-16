@@ -12,7 +12,7 @@ module('Integration | Component | date picker', function (hooks) {
   test('it renders default component', async function (assert) {
     await render(hbs`<DatePicker @label="Pick a date" />`);
 
-    assert.dom('[data-test-cs-component-input="date-picker"].cs-input.cs-component-input').exists();
+    assert.dom('[data-test-cs-component-input="date-picker"].cs-input').exists();
     assert.dom('[data-test-cs-component-label="date-picker"]').hasText('Pick a date');
     assert.dom('.cs-component-calendar').doesNotExist();
     assert.dom('[data-test-cs-component-validation="date-picker"]').doesNotContainText();
@@ -260,7 +260,7 @@ module('Integration | Component | date picker', function (hooks) {
   });
 
   test('it displays error message for required field left blank', async function (assert) {
-    let requiredErrorMessage = 'This field is required.';
+    let requiredErrorMessage = 'This is a required field';
 
     await render(hbs`<DatePicker @required={{true}} />`);
 

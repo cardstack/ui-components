@@ -1,0 +1,65 @@
+.cs-input {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: var(--cs-field-default);
+  color: var(--cs-field-text);
+  border: 1px solid var(--cs-field-border);
+  border-radius: var(--cs-field-radius);
+  font: var(--cs-font);
+  letter-spacing: var(--cs-small-spacing);
+
+  transition: background-color var(--cs-transition-time),
+              border-color var(--cs-transition-time);
+}
+
+input.cs-input {
+  height: var(--cs-field-height);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cs-input:not(.disabled):hover,
+.cs-input:not(:disabled):hover {
+  background-color: var(--cs-field-hover);
+}
+
+.cs-input:not(.disabled):focus,
+.cs-input:not(:disabled):focus {
+  background-color: var(--cs-field-hover);
+  border-color: var(--cs-highlight);
+  outline: 0;
+}
+
+input.cs-input::placeholder {
+  color: var(--cs-field-placeholder);
+}
+
+.cs-input:disabled,
+.cs-input.disabled {
+  color: var(--cs-field-disabled-text);
+  border-color: var(--cs-field-disabled-border);
+  pointer-events: none;
+}
+
+input.cs-input:disabled::placeholder,
+input.cs-input.disabled::placeholder {
+  color: var(--cs-field-disabled-text);
+}
+
+/* Error State */
+.cs-input-group--helper-text.invalid {
+  color: var(--cs-error);
+  font-weight: 600;
+}
+
+.cs-input.invalid,
+.cs-input.invalid:focus {
+  border-color: var(--cs-error);
+}
+
+/* View Mode */
+.cs-input.view {
+  border: none;
+}

@@ -1,12 +1,7 @@
 .cs-component-choose-contact-type {
-  box-sizing: border-box;
   width: 100%;
-  max-width: var(--cs-component-max-width);
-  font-family: var(--cs-component-font-family);
-  font-size: var(--cs-component-font-size);
-  font-weight: var(--cs-component-font-weight);
-  letter-spacing: var(--cs-component-letter-spacing);
-  line-height: var(--cs-component-line-height);
+  font: var(--cs-font);
+  letter-spacing: var(--cs-letter-spacing);
 }
 .cs-component-choose-contact-type .cs-component-choose-one__container {
   border: none;
@@ -14,7 +9,7 @@
 }
 .cs-component-choose-contact-type .cs-component-choose-one--label {
   background: none;
-  color: var(--color-gray);
+  color: var(--cs-field-label);
   width: auto;
   padding: 0;
   padding-right: 10px;
@@ -25,11 +20,13 @@
   font-weight: 600;
   padding-top: 3px;
 }
-.cs-component-choose-contact-type .cs-component-choose-one--name:hover, .cs-component-choose-contact-type .cs-component-choose-one--name:active, .cs-component-choose-contact-type .cs-component-choose-one--name:focus {
-  border-top: 2px solid var(--color-light-gray);
+.cs-component-choose-contact-type .cs-component-choose-one--name:hover,
+.cs-component-choose-contact-type .cs-component-choose-one--name:active,
+.cs-component-choose-contact-type .cs-component-choose-one--name:focus {
+  border-top: 2px solid var(--cs-field-highlight);
 }
 .cs-component-choose-contact-type .cs-component-choose-one--label.checked .cs-component-choose-one--name {
-  border-top: 2px solid var(--color-green);
+  border-top: 2px solid var(--cs-success);
 }
 .cs-component-choose-contact-type .cs-component-choose-one--label.checked .cs-component-choose-one--name:after {
   background: none;

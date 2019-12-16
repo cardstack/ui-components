@@ -9,14 +9,14 @@ module('Integration | Component | dropdown', function(hooks) {
 
   test('it renders the component with no options', async function(assert) {
     this.options = [];
-    await render(hbs`<Dropdown @options={{options}} />`);
+    await render(hbs`<Dropdown @label="Please select an option" @options={{options}} />`);
 
     assert.dom('[data-test-cs-component="dropdown"]').exists();
-    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-placeholder').hasText('Select an option');
-    assert.dom('[data-test-cs-component="dropdown"]').exists();
-    assert.dom('[data-test-cs-component="dropdown"].cs-dropdown').hasClass('cs-component-dropdown');
+    assert.dom('[data-test-cs-component-label="dropdown"]').hasText('Please select an option');
+    assert.dom('[data-test-cs-component-input="dropdown"]').exists();
+    assert.dom('[data-test-cs-component-input="dropdown"] .ember-power-select-placeholder').hasText('Please select');
 
-    await clickTrigger('.cs-component-dropdown');
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
 
     assert.dom('.ember-power-select-option').exists({ count: 1 });
     assert.dom('.ember-power-select-option').hasText('No results found');
@@ -24,11 +24,12 @@ module('Integration | Component | dropdown', function(hooks) {
 
   test('it renders the component with custom labels', async function(assert) {
     this.options = [];
-    await render(hbs`<Dropdown @options={{options}} @label="Select a Country" @outerLabel="Country" />`);
+    await render(hbs`<Dropdown @options={{options}} @label="Country" @placeholder="Select a country" />`);
 
     assert.dom('[data-test-cs-component="dropdown"]').exists();
-    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-placeholder').hasText('Select a Country');
-    assert.dom('[data-test-cs-component="dropdown"] label').hasText('Country');
+    assert.dom('[data-test-cs-component-input="dropdown"]').exists();
+    assert.dom('[data-test-cs-component-label="dropdown"]').hasText('Country');
+    assert.dom('[data-test-cs-component-input="dropdown"] .ember-power-select-placeholder').hasText('Select a country');
   });
 
   test('it renders the component with options', async function(assert) {
@@ -42,12 +43,12 @@ module('Integration | Component | dropdown', function(hooks) {
       { name: 'United Kingdom' }
     ];
     await render(hbs`<Dropdown @options={{countries}} />`);
-    await clickTrigger('.cs-component-dropdown');
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
 
     assert.dom('.ember-power-select-option').exists({ count: 7 });
 
     await typeInSearch('Lat');
-    assert.dom('.ember-power-select-option').exists({ count: 1 });
+    assert.dom('[data-test-cs-component-input="dropdown"] .ember-power-select-option').exists({ count: 1 });
     assert.dom('.ember-power-select-option').hasText('Latvia');
   });
 
@@ -63,7 +64,7 @@ module('Integration | Component | dropdown', function(hooks) {
     ];
     this.spain = this.countries[1];
     await render(hbs`<Dropdown @options={{countries}} @selected={{spain}} />`);
-    assert.dom('.ember-power-select-selected-item').hasText('Spain');
+    assert.dom('[data-test-cs-component-input="dropdown"] .ember-power-select-selected-item').hasText('Spain');
   });
 
   test('it renders the component with custom search field', async function(assert) {
@@ -77,7 +78,7 @@ module('Integration | Component | dropdown', function(hooks) {
       { formalName: 'United Kingdom of Great Britain and Northern Ireland' }
     ];
     await render(hbs`<Dropdown @options={{countries}} @searchField="formalName" />`);
-    await clickTrigger('.cs-component-dropdown');
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
 
     assert.dom('.ember-power-select-option').exists({ count: 7 });
 
@@ -100,7 +101,7 @@ module('Integration | Component | dropdown', function(hooks) {
     ];
     this.searchByLengthOfCountryName = async searchTerm => Promise.resolve(countries.filter(item => item.name.length === parseInt(searchTerm)));
     await render(hbs`<Dropdown @searchAction={{action searchByLengthOfCountryName}} />`);
-    await clickTrigger('.cs-component-dropdown');
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
 
     await typeInSearch('6');
     assert.dom('.ember-power-select-option').exists({ count: 3 });
@@ -124,8 +125,8 @@ module('Integration | Component | dropdown', function(hooks) {
       selected.push(selectedObject);
     }
     await render(hbs`<Dropdown @options={{countries}} @changeAction={{action updateAction}} />`);
-    await clickTrigger('.cs-component-dropdown');
-    await selectChoose('.cs-component-dropdown', 'Brazil');
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
+    await selectChoose('[data-test-cs-component-input="dropdown"]', 'Brazil');
 
     assert.deepEqual(selected, [{ name: 'Brazil' }]);
   });
@@ -143,7 +144,7 @@ module('Integration | Component | dropdown', function(hooks) {
         <span>{{option.country}}</span>
       </Dropdown>
     `);
-    await clickTrigger('.cs-component-dropdown');
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
     assert.dom('.ember-power-select-option').exists({ count: 3 });
     assert.dom('.ember-power-select-option:nth-of-type(1)').hasText('Chase $1234.36 US');
     assert.dom('.ember-power-select-option:nth-of-type(2)').hasText('Banco Bradesco Financiamentos $123534.36 BR');
@@ -159,8 +160,8 @@ module('Integration | Component | dropdown', function(hooks) {
     ];
 
     await render(hbs`<Dropdown @options={{fruits}} @mode={{mode}}/>`);
-    await clickTrigger('.cs-component-dropdown');
-    await selectChoose('.cs-component-dropdown', 'Banana');
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
+    await selectChoose('[data-test-cs-component-input="dropdown"]', 'Banana');
 
     this.set('mode', 'view');
 
@@ -177,8 +178,8 @@ module('Integration | Component | dropdown', function(hooks) {
     ]
 
     await render(hbs`<Dropdown @options={{coins}} @label='Choose crypto' @showLabelInViewMode={{showLabelInViewMode}} @mode={{mode}} @optionComponent='custom-option' />`);
-    await clickTrigger('.cs-component-dropdown');
-    await selectChoose('.cs-component-dropdown', 'Litecoin');
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
+    await selectChoose('[data-test-cs-component-input="dropdown"]', 'Litecoin');
 
     assert.dom('.ember-power-select-selected-item').includesText('Litecoin');
     this.set('mode', 'view');
@@ -192,28 +193,29 @@ module('Integration | Component | dropdown', function(hooks) {
 
   test('it renders the required component', async function(assert) {
     this.options = [];
-    await render(hbs`<Dropdown @options={{options}} @required={{true}} @outerLabel="Country" />`);
+    await render(hbs`<Dropdown @options={{options}} @required={{true}} @label="Country" />`);
 
     assert.dom('[data-test-cs-component="dropdown"]').hasClass('required');
-    assert.dom('[data-test-cs-component="dropdown"] .cs-dropdown--required').hasText('required');
+    assert.dom('[data-test-cs-component-input="dropdown"]').hasClass('required');
+    assert.dom('[data-test-cs-component="dropdown"] .cs-input-group--required').hasText('required');
   });
 
   test('it renders the disabled component', async function(assert) {
     this.options = [];
     await render(hbs`<Dropdown @options={{options}} @disabled={{true}} />`);
 
-    assert.dom('[data-test-cs-component="dropdown"]').hasClass('disabled');
+    assert.dom('[data-test-cs-component-input="dropdown"]').hasClass('disabled');
 
-    await clickTrigger('[data-test-cs-component="dropdown"]');
-    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-option').doesNotExist();
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
+    assert.dom('.ember-power-select-option').doesNotExist();
   });
 
   test('it renders the themed component', async function(assert) {
     this.options = [];
     await render(hbs`<Dropdown @theme="cs-dark" @options={{options}} />`);
 
-    assert.dom('[data-test-cs-component="dropdown"].cs-dropdown.cs-dark-dropdown').exists();
-    assert.dom('[data-test-cs-component="dropdown"]').doesNotHaveClass('cs-component-dropdown');
-    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-trigger').exists();
+    assert.dom('[data-test-cs-component="dropdown"]').hasClass('cs-dark-input-group');
+    assert.dom('[data-test-cs-component-input="dropdown"]').hasClass('cs-dark-dropdown');
+    assert.dom('[data-test-cs-component-input="dropdown"] .ember-power-select-trigger').exists();
   });
 });

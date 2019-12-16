@@ -10,8 +10,8 @@ module('Integration | Component | phone-number-field', function(hooks) {
   test('it renders component', async function(assert) {
     await render(hbs`<PhoneNumberField @label="Enter your phone number" />`);
 
-    assert.dom('[data-test-cs-component="phone-number"].cs-input-group.cs-component-input-group').exists();
-    assert.dom('[data-test-cs-component-input="phone-number"].cs-input.cs-component-input').exists();
+    assert.dom('[data-test-cs-component="phone-number"].cs-input-group').exists();
+    assert.dom('[data-test-cs-component-input="phone-number"].cs-input').exists();
     assert.dom('[data-test-cs-component-label="phone-number"]').hasText('Enter your phone number');
     assert.dom('[data-test-cs-component-input="phone-number"]').hasAttribute('type', 'tel');
     await waitFor('[data-test-cs-component="phone-number"] [aria-owns="country-listbox"]');
@@ -51,8 +51,8 @@ module('Integration | Component | phone-number-field', function(hooks) {
   test('it renders themed component', async function (assert) {
     await render(hbs`<PhoneNumberField @label="Enter your phone number" @theme="cs-dark" />`);
 
-    assert.dom('[data-test-cs-component="phone-number"].cs-input-group.cs-dark-input-group').exists();
-    assert.dom('[data-test-cs-component-input="phone-number"].cs-input.cs-dark-input').exists();
+    assert.dom('[data-test-cs-component="phone-number"]').hasClass('cs-dark-input-group');
+    assert.dom('[data-test-cs-component-input="phone-number"]').hasClass('cs-dark-input');
   });
 
   test('it renders in view mode', async function (assert) {

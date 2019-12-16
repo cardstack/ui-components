@@ -1,8 +1,17 @@
-<div class="cs-component-street-addresses">
+<ul class="cs-component-street-addresses cs-input-list">
   {{#each this.values as |value index|}}
-    <div class="cs-multi-item-list" data-test-multi-item-list>
-      <StreetAddress @selected={{value}} @changeAction={{action "updateValue" index}} @mode={{@mode}} @showLabelInViewMode={{@showLabelInViewMode}} />
-      <button class="cs-multi-item-list--add" {{action "addComponent"}} data-test-multi-item-list-add-btn>Add</button>
-    </div>
+    <li class="cs-input-list--item" data-test-multi-item-list>
+      <StreetAddress
+        @selected={{value}}
+        @changeAction={{action "updateValue" index}}
+        @mode={{@mode}}
+        @showLabelInViewMode={{@showLabelInViewMode}} />
+      <button
+        {{on "click" this.addComponent}}
+        class="cs-input-list--add"
+        data-test-multi-item-list-add-btn>
+        Add
+      </button>
+    </li>
   {{/each}}
-</div>
+</ul>

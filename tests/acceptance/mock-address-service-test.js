@@ -14,19 +14,18 @@ module('Acceptance | Street address component', function(hooks) {
 
   test('street address component shows dropdown of address when searching', async function(assert) {
     await visit('/freestyle?s=Street%20Address');
-    await clickTrigger('[data-test-cs-component="street-address"]');
-    await fillIn('[data-test-cs-component="street-address"] .ember-power-select-search-input', 'abc');
+    await clickTrigger('[data-test-cs-component-input="street-address"]');
+    await fillIn('.ember-power-select-search-input', 'abc');
 
-    assert.dom('[data-test-cs-component="street-address"] .ember-power-select-option').exists({ count: 3 });
+    assert.dom('.ember-power-select-option').exists({ count: 3 });
 
-    await selectChoose('.cs-component-street-address', '12 Grimmauld Place');
-
-    assert.dom('[data-test-cs-component="street-address"] .ember-power-select-selected-item').hasText('12 Grimmauld Place');
+    await selectChoose('[data-test-cs-component-input="street-address"]', '12 Grimmauld Place');
+    assert.dom('[data-test-cs-component-input="street-address"] .ember-power-select-selected-item').hasText('12 Grimmauld Place');
   });
 
   test('street address component shows no results if no results', async function(assert) {
     await visit('/freestyle?s=Street%20Address');
-    await clickTrigger('[data-test-cs-component="street-address"]');
+    await clickTrigger('[data-test-cs-component-input="street-address"]');
     await fillIn('.ember-power-select-search-input', 'xyz');
 
     assert.dom('.ember-power-select-option').exists({ count: 1 });

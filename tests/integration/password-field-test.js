@@ -20,9 +20,9 @@ module('Integration | Component | password-field', function(hooks) {
     await fillIn('[data-test-cs-component-input="password"]', 'xyzfda');
 
     assert.dom('[data-test-cs-component-input="password"]').hasAttribute('type', 'password');
-    assert.dom('.cs-component-text-field--icon.hide').doesNotExist();
+    assert.dom('[data-test-cs-component-password-field-visibility-toggle]').doesNotHaveClass('hide');
     await click('[data-test-cs-component-password-field-visibility-toggle]');
-    assert.dom('.cs-component-text-field--icon.hide').exists();
+    assert.dom('[data-test-cs-component-password-field-visibility-toggle]').hasClass('hide');
     assert.dom('[data-test-cs-component-input="password"]').hasAttribute('type', 'text');
   });
 

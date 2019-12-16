@@ -59,12 +59,14 @@ module('Acceptance | components', function(hooks) {
     await visit('/freestyle');
 
     assert.dom('[data-test-cs-component="dropdown"]').exists();
-    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-placeholder').hasText('Select a country');
+    assert.dom('[data-test-cs-component-label="dropdown"]').hasText('Country');
+    assert.dom('[data-test-cs-component-input="dropdown"]').exists();
+    assert.dom('[data-test-cs-component-input="dropdown"] .ember-power-select-placeholder').hasText('Please select');
 
-    await selectChoose('[data-test-cs-component="dropdown"]', 'Brazil');
+    await selectChoose('[data-test-cs-component-input="dropdown"]', 'Brazil');
     assert.dom('.ember-power-select-selected-item').hasText('Brazil');
 
-    await clickTrigger('[data-test-cs-component="dropdown"]');
+    await clickTrigger('[data-test-cs-component-input="dropdown"]');
     await typeInSearch('Lat');
 
     assert.dom('.ember-power-select-option').exists({ count: 1 });
@@ -79,12 +81,13 @@ module('Acceptance | components', function(hooks) {
     await click(".FreestyleCollection-variantListItem");
 
     assert.dom('[data-test-cs-component="dropdown"].multiple').exists();
-    assert.dom('[data-test-cs-component="dropdown"] .ember-power-select-placeholder').hasText('Select a country');
+    assert.dom('[data-test-cs-component-input="dropdown"].multiple').exists();
+    assert.dom('[data-test-cs-component-label="dropdown"]').hasText("Country");
 
-    await selectChoose('[data-test-cs-component="dropdown"].multiple', 'Brazil');
-    assert.dom('[data-test-cs-component="dropdown"].multiple .ember-power-select-multiple-option').hasText(/Brazil/);
+    await selectChoose('[data-test-cs-component-input="dropdown"].multiple', 'Brazil');
+    assert.dom('.ember-power-select-multiple-option').hasText(/Brazil/);
 
-    await clickTrigger('.cs-component-dropdown.multiple');
+    await clickTrigger('[data-test-cs-component-input="dropdown"].multiple');
     await typeInSearch('Lat');
 
     assert.dom('.ember-power-select-option').exists({ count: 1 });

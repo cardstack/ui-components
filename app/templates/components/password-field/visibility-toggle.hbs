@@ -1,8 +1,7 @@
-<div
-  class="cs-component-text-field--icon {{if this.textVisible "hide"}}"
-  data-test-cs-component-password-field-visibility-toggle
+<button
   {{on "click" this.toggleVisibility}}
-  role="button"
+  class="{{@class}} visibility-toggle {{if this.textVisible "hide"}}"
+  data-test-cs-component-password-field-visibility-toggle
 >
   Toggle
-</div>
+</button>

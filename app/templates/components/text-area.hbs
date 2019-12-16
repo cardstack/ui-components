@@ -1,7 +1,7 @@
 <div
   class="
-    cs-input-group cs-textarea
-    {{if @theme (concat @theme "-input-group") "cs-component-input-group"}}
+    cs-input-group cs-textarea-group
+    {{if @theme (concat @theme "-input-group")}}
     {{if @required "required"}}
     {{@className}}
     {{@mode}}
@@ -29,7 +29,7 @@
       @value={{this.value}}
       @title={{@title}}
       @class="cs-input
-        {{if @theme (concat @theme "-input") "cs-component-input"}}
+        {{if @theme (concat @theme "-input")}}
         {{if this.invalid "invalid"}}
         {{if @disabled "disabled"}}
         {{@mode}}
@@ -47,7 +47,7 @@
 
     {{#if @characterLimit}}
       <span
-        class="cs-textarea--char-counter {{if this.validationMessage "with-validation"}}"
+        class="cs-textarea-group--char-counter {{if this.validationMessage "with-validation"}}"
         data-test-cs-textarea-char-counter
       >
         {{this.value.length}}/{{@characterLimit}}

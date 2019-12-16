@@ -1,8 +1,13 @@
-<div class="cs-component-emails">
+<ul class="cs-component-emails cs-input-list">
   {{#each this.values as |value index|}}
-    <div class="cs-multi-item-list" data-test-multi-item-list>
+    <li class="cs-input-list--item" data-test-multi-item-list>
       <Email @value={{value}} @changeAction={{action "updateValue" index}} @label={{this.label}} />
-      <button class="cs-multi-item-list--add" {{action "addComponent"}} data-test-multi-item-list-add-btn>Add</button>
-    </div>
+      <button
+        {{on "click" this.addComponent}}
+        class="cs-input-list--add"
+        data-test-multi-item-list-add-btn>
+        Add
+      </button>
+    </li>
   {{/each}}
-</div>
+</ul>
