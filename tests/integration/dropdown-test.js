@@ -22,14 +22,15 @@ module('Integration | Component | dropdown', function(hooks) {
     assert.dom('.ember-power-select-option').hasText('No results found');
   });
 
-  test('it renders the component with custom labels', async function(assert) {
+  test('it renders the component with label, placeholder, and helper text', async function(assert) {
     this.options = [];
-    await render(hbs`<Dropdown @options={{options}} @label="Country" @placeholder="Select a country" />`);
+    await render(hbs`<Dropdown @options={{options}} @label="Country" @placeholder="Select a country" @helperText="Please select one" />`);
 
     assert.dom('[data-test-cs-component="dropdown"]').exists();
     assert.dom('[data-test-cs-component-input="dropdown"]').exists();
     assert.dom('[data-test-cs-component-label="dropdown"]').hasText('Country');
     assert.dom('[data-test-cs-component-input="dropdown"] .ember-power-select-placeholder').hasText('Select a country');
+    assert.dom('[data-test-cs-component-validation="dropdown"]').hasText('Please select one');
   });
 
   test('it renders the component with options', async function(assert) {

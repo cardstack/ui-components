@@ -1,0 +1,50 @@
+/* Dropdown trigger */
+.cs-dark-dropdown.cs-dropdown .ember-power-select-trigger {
+  background-color: var(--cs-dark-dropdown);
+  border: 1px solid var(--cs-dark-dropdown-border);
+}
+.cs-dark-dropdown.cs-dropdown .ember-power-select-selected-item,
+.cs-dark-dropdown.cs-dropdown .ember-power-select-placeholder {
+  color: var(--cs-dark-field-text);
+}
+.cs-dark-dropdown.cs-dropdown:not(.disabled) .ember-power-select-trigger:focus,
+.cs-dark-dropdown.cs-dropdown:not(.disabled) .ember-power-select-trigger--active {
+  border: 1px solid var(--cs-dark-dropdown-border);
+}
+.cs-dark-dropdown.cs-dropdown:not(.disabled) .ember-power-select-trigger:hover {
+  background-color: var(--cs-dark-dropdown-hover);
+}
+.cs-dark-dropdown.cs-dropdown.disabled .ember-power-select-trigger {
+  background-color: var(--cs-dark-field-disabled);
+  border-color: var(--cs-dark-field-disabled);
+}
+.cs-dark-dropdown.cs-dropdown.disabled .ember-power-select-selected-item,
+.cs-dark-dropdown.cs-dropdown.disabled .ember-power-select-placeholder {
+  color: var(--cs-dark-field-disabled-text);
+}
+
+/* Dropdown menu and options */
+.cs-dark-dropdown.cs-dropdown .ember-power-select-trigger[aria-expanded="true"],
+.cs-dark-dropdown.cs-dropdown .ember-basic-dropdown-trigger--below.ember-power-select-trigger[aria-expanded="true"],
+.cs-dark-dropdown.cs-dropdown .ember-basic-dropdown-trigger--in-place.ember-power-select-trigger[aria-expanded="true"],
+.cs-dark-dropdown.cs-dropdown .ember-power-select-dropdown,
+.cs-dark-dropdown.cs-dropdown .ember-power-select-dropdown.ember-basic-dropdown-content--below,
+.cs-dark-dropdown.cs-dropdown .ember-power-select-dropdown.ember-basic-dropdown-content--in-place {
+  background-color: var(--cs-dark-dropdown-hover);
+  border: 1px solid var(--cs-dark-dropdown-border);
+}
+.cs-dark-dropdown.cs-dropdown .ember-power-select-option {
+  color: var(--cs-dark-field-text);
+}
+.cs-dark-dropdown.cs-dropdown .ember-power-select-option[aria-current="true"] {
+  background-color: var(--cs-dark-dropdown);
+}
+.cs-dark-dropdown.cs-dropdown .ember-power-select-option[aria-selected="true"] {
+  background-color: var(--cs-dark-dropdown);
+  color: var(--cs-dark-field-text);
+}
+
+/* Search */
+.cs-dark-dropdown.cs-dropdown .ember-power-select-search .ember-power-select-search-input:focus {
+  border-bottom: 1px solid var(--cs-dark-dropdown-border);
+}

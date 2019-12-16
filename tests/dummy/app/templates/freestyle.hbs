@@ -34,6 +34,7 @@
           <Dropdown
             @options={{this.countries}}
             @label="Country"
+            @placeholder="Select a country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -54,6 +55,7 @@
             @changeAction={{action this.customDropdownAction}}
             @options={{this.countries}}
             @label="Country"
+            @placeholder="Select a country"
           />
         {{/freestyle-usage}}
         {{#freestyle-note "dropdown-with-default-selected--notes"}}
@@ -69,6 +71,7 @@
             @selected={{this.selected}}
             @options={{this.countries}}
             @label="Country"
+            @placeholder="Select a country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -78,15 +81,18 @@
             @disabled={{true}}
             @options={{this.countries}}
             @label="Country"
+            @placeholder="Select a country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
         {{/freestyle-usage}}
-        {{#freestyle-usage "dropdown-required" title="Required Dropdown"}}
+        {{#freestyle-usage "dropdown-required" title="Required Dropdown with helper text"}}
           <Dropdown
             @required={{true}}
             @label="Country"
             @options={{this.countries}}
+            @placeholder="Select a country"
+            @helperText="Please make a selection"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -98,6 +104,7 @@
             @searchEnabled={{false}}
             @options={{this.countries}}
             @label="Country"
+            @placeholder="Select a country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -120,6 +127,7 @@
             @searchField="formalName"
             @options={{this.countries}}
             @label="Country"
+            @placeholder="Select a country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -232,32 +240,36 @@
         {{#freestyle-note "dropdown-dark--notes"}}
           Use `@theme="cs-dark"` for this color scheme.
         {{/freestyle-note}}
-        {{#freestyle-usage "dropdown-dark" class="dark-background" title="Dropdown Dark"}}
+        {{#freestyle-usage "dropdown-dark" class="dark-background" title="Dropdown (Dark Theme)"}}
           <Dropdown
             @theme="cs-dark"
             @options={{this.countries}}
             @label="Country"
+            @placeholder="Select a country"
+            @searchEnabled={{false}}
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
         {{/freestyle-usage}}
-        {{#freestyle-usage "dropdown-dark-disabled" class="dark-background" title="Disabled"}}
+        {{#freestyle-usage "dropdown-dark-disabled" class="dark-background" title="Disabled Dropdown (Dark Theme)"}}
           <Dropdown
             @theme="cs-dark"
             @disabled={{true}}
             @options={{this.countries}}
             @label="Country"
+            @placeholder="Select a country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
         {{/freestyle-usage}}
-        {{#freestyle-usage "dropdown-dark-required" class="dark-background" title="Required"}}
+        {{#freestyle-usage "dropdown-dark-required" class="dark-background" title="Required Dropdown with helper text (Dark Theme)"}}
           <Dropdown
             @theme="cs-dark"
             @required={{true}}
             @label="Country"
             @options={{this.countries}}
             @placeholder="Select a country"
+            @helperText="Please make a selection"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
