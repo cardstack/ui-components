@@ -44,14 +44,13 @@
   --cs-dark-field-text: #fff;                 /* Input text */
   --cs-dark-field-label: #cfcfd2;             /* Label, required label, helper text */
   --cs-dark-field-placeholder: #97969c;       /* Placeholder text */
-  --cs-dark-field-disabled-text: #afafb7;     /* Disabled text */
+  --cs-dark-field-disabled-text: #6b6971;     /* Disabled text */
   --cs-dark-field-error: #ff5757;             /* Error text */
 
   /* Dropdown */
   --cs-dark-dropdown: #5a586a;                 /* Dark mode dropdown background */
   --cs-dark-dropdown-hover: #434050;           /* Dark mode dropdown hover background */
   --cs-dark-dropdown-border: var(--cs-dark-field-default);
-  --cs-dark-dropdown-placeholder: rgba(255, 255, 255, 0.6); /* Make this solid color */
 
   /* Buttons */
   --cs-button-radius: 100px;

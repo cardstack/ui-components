@@ -61,7 +61,7 @@ module('Acceptance | components', function(hooks) {
     assert.dom('[data-test-cs-component="dropdown"]').exists();
     assert.dom('[data-test-cs-component-label="dropdown"]').hasText('Country');
     assert.dom('[data-test-cs-component-input="dropdown"]').exists();
-    assert.dom('[data-test-cs-component-input="dropdown"] .ember-power-select-placeholder').hasText('Please select');
+    assert.dom('[data-test-cs-component-input="dropdown"] .ember-power-select-placeholder').hasText('Select a country');
 
     await selectChoose('[data-test-cs-component-input="dropdown"]', 'Brazil');
     assert.dom('.ember-power-select-selected-item').hasText('Brazil');
