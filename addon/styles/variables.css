@@ -32,7 +32,7 @@
   --cs-field-hover: #f7f7f7;                 /* Focus and hover background */
   --cs-field-text: #000;                     /* Input text */
   --cs-field-label: #404040;                 /* Label, required label, helper text */
-  --cs-field-placeholder: #7f7f7f;           /* Placeholder text */
+  --cs-field-placeholder: #757575;           /* Placeholder text */
   --cs-field-disabled-text: #afafb7;         /* Disabled text */
   --cs-field-border: #afafb7;                /* Field border */
   --cs-field-disabled-border: #e3e3e3;       /* Disabled field border */
@@ -47,17 +47,11 @@
   --cs-dark-field-disabled-text: #afafb7;     /* Disabled text */
   --cs-dark-field-error: #ff5757;             /* Error text */
 
-  /* Dropdowns and Buttons */
-  --cs-dark-background: #41404d;              /* right edge background */
-  --cs-light-background: #e9e9ed;
-  --cs-border: #5b596e;                       /* mostly used as form-components border */
-  --cs-foreground: #5a586a;                   /* serves as medium background on dark background. example: used in right-edge dropdown and pill selector */
-  --cs-foreground-hover: #434050;
-
-  /* TBD */
-  --cs-light: #fff;
-  --cs-dark: #000;
-  --cs-deep-background: #141428;              /* use sparsely (currently used on homepage, schema view left-edge bg) */
+  /* Dropdown */
+  --cs-dark-dropdown: #5a586a;                 /* Dark mode dropdown background */
+  --cs-dark-dropdown-hover: #434050;           /* Dark mode dropdown hover background */
+  --cs-dark-dropdown-border: var(--cs-dark-field-default);
+  --cs-dark-dropdown-placeholder: rgba(255, 255, 255, 0.6); /* Make this solid color */
 
   /* Buttons */
   --cs-button-radius: 100px;

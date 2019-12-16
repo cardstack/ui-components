@@ -61,7 +61,7 @@ module('Integration | Component | email', function(hooks) {
     await fillIn('[data-test-cs-component-input="email"]', '');
 
     assert.dom('[data-test-cs-component-validation="email"]').hasClass('invalid');
-    assert.dom('[data-test-cs-component-validation="email"]').hasText('This field is required.');
+    assert.dom('[data-test-cs-component-validation="email"]').hasText('This is a required field');
   });
 
   test('can add more email address fields', async function (assert) {

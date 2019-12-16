@@ -16,12 +16,12 @@ module('Integration | Component | street address', function(hooks) {
 
   test('street address component shows dropdown of address when searching', async function(assert) {
     await render(hbs`<StreetAddress @label="Enter your address" />`);
-    await clickTrigger('[data-test-cs-component="street-address"]');
+    await clickTrigger('[data-test-cs-component-input="street-address"]');
     await fillIn('.ember-power-select-search-input', 'abc');
 
     assert.dom('.ember-power-select-option').exists({ count: 3 });
 
-    await selectChoose('.cs-component-street-address', '12 Grimmauld Place');
+    await selectChoose('[data-test-cs-component-input="street-address"]', '12 Grimmauld Place');
 
     assert.dom('.ember-power-select-selected-item').hasText('12 Grimmauld Place');
   });
@@ -35,29 +35,30 @@ module('Integration | Component | street address', function(hooks) {
     assert.dom('.ember-power-select-option').hasText('No results found');
   });
 
-  test('it renders the themed component', async function (assert) {
-    await render(hbs`<StreetAddress @label="Enter your address" @theme="cs-dark" />`);
-
-    assert.dom('[data-test-cs-component="street-address"].cs-dropdown.cs-dark-dropdown').exists();
-    assert.dom('[data-test-cs-component="street-address"] .ember-power-select-trigger').exists();
-    assert.dom('[data-test-cs-component="street-address"] .ember-power-select-placeholder').hasText('Enter your address');
-  });
-
   test('can add another street address', async function(assert) {
     this.streetAddresses = A([null]);
     await render(hbs`<StreetAddresses @values={{streetAddresses}}/>`);
 
     assert.dom('[data-test-cs-component="street-address"]').exists({ count: 1 });
 
-    await clickTrigger('[data-test-cs-component="street-address"]');
+    await clickTrigger('[data-test-cs-component-input="street-address"]');
     await fillIn('.ember-power-select-search-input', 'abc');
-    await selectChoose('.cs-component-street-address', '12 Grimmauld Place');
+    await selectChoose('[data-test-cs-component-input="street-address"]', '12 Grimmauld Place');
 
     assert.deepEqual(this.streetAddresses, [{ description: '12 Grimmauld Place' }]);
 
     await click('[data-test-multi-item-list-add-btn]');
 
     assert.dom('[data-test-cs-component="street-address"]').exists({ count: 2 });
+  });
+
+  test('it renders the themed component', async function (assert) {
+    await render(hbs`<StreetAddress @label="Enter your address" @theme="cs-dark" />`);
+
+    assert.dom('[data-test-cs-component="street-address"]').hasClass('cs-dark-input-group');
+    assert.dom('[data-test-cs-component-input="street-address"]').hasClass('cs-dark-dropdown');
+    assert.dom('[data-test-cs-component-label="street-address"]').hasText('Enter your address');
+    assert.dom('[data-test-cs-component="street-address"] .ember-power-select-trigger').exists();
   });
 
   test('it renders in view mode', async function (assert) {

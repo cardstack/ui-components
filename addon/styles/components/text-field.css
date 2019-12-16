@@ -1,76 +1,3 @@
-/* Input field only */
-input.cs-input {
-  height: var(--cs-field-height);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Textarea field only */
-textarea.cs-input {
-  height: var(--cs-textarea-height);
-  resize: none;
-}
-
-.cs-textarea--char-counter {
-  position: absolute;
-  bottom: 0;
-  right: 6px;
-  color: var(--cs-field-label);
-  font: var(--cs-small-font);
-  letter-spacing: var(--cs-letter-spacing);
-}
-
-/* Shared styles */
-.cs-input-group {
-  position: relative;
-  display: block;
-  width: 100%;
-}
-
-.cs-input-group--label {
-  display: block;
-  padding-bottom: 7px;
-  color: var(--cs-field-label);
-  font: var(--cs-font);
-  letter-spacing: var(--cs-letter-spacing);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  transition: color var(--cs-transition-time);
-}
-
-.cs-input-group.required > .cs-input-group--label::after {
-  content: "*";
-  display: inline-block;
-  vertical-align: text-top;
-}
-
-.cs-input-group--required {
-  position: absolute;
-  right: 0;
-  top: 3px;
-  display: block;
-  color: var(--cs-field-label);
-  font: var(--cs-small-font);
-  letter-spacing: var(--cs-letter-spacing);
-  text-transform: lowercase;
-}
-
-.cs-input-group--helper-text {
-  height: 18px;
-  display: block;
-  padding-left: 10px;
-  padding-top: 5px;
-  color: var(--cs-field-label);
-  font: var(--cs-small-font);
-  letter-spacing: var(--cs-letter-spacing);
-  text-transform: initial;
-
-  transition: color var(--cs-transition-time);
-}
-
 .cs-input {
   display: block;
   width: 100%;
@@ -82,9 +9,15 @@ textarea.cs-input {
   font: var(--cs-font);
   letter-spacing: var(--cs-small-spacing);
 
-  transition: color var(--cs-transition-time),
-              border-color var(--cs-transition-time),
-              background-color var(--cs-transition-time);
+  transition: background-color var(--cs-transition-time),
+              border-color var(--cs-transition-time);
+}
+
+input.cs-input {
+  height: var(--cs-field-height);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cs-input:not(.disabled):hover,
@@ -127,6 +60,6 @@ input.cs-input.disabled::placeholder {
 }
 
 /* View Mode */
-.cs-input-group.view input {
+.cs-input.view {
   border: none;
 }

@@ -1,9 +1,8 @@
-textarea.cs-input {
-  height: 80px;
+.cs-textarea-group textarea.cs-input {
+  height: var(--cs-textarea-height);
   resize: none;
 }
-
-.cs-textarea--char-counter {
+.cs-textarea-group--char-counter {
   position: absolute;
   bottom: 0;
   right: 6px;

@@ -87,7 +87,7 @@ export default class DatePicker extends BaseComponent {
     } else if (!value && this.required) {
       this.selected = '';
       this.center = moment();
-      this.errorMessage = 'This field is required.';
+      this.errorMessage = 'This is a required field';
     } else if (this.invalid) {
       this.selected = '';
       this.center = moment();

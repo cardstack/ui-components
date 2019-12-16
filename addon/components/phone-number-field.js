@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 
 export default class PhoneNumberField extends BaseComponent {
   @service phoneInput;
-  @tracked label = 'Phone Number';
+  @tracked label = 'Phone number';
   @tracked inputComponent = '';
 
   className = 'cs-component-phone-number';
@@ -32,7 +32,7 @@ export default class PhoneNumberField extends BaseComponent {
     let isValid = meta.isValidNumber;
     this.invalid = !isValid;
     updateInvalid(this.invalid);
-    let validationMessage = isValid ? 'Thank you.' : 'Please enter a valid phone number.';
+    let validationMessage = isValid ? '' : 'Please enter a valid phone number.';
     updateValidationMessage(validationMessage);
   }
 }

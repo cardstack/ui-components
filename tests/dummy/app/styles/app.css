@@ -1,13 +1,18 @@
 @import 'examples.css';
 
-.FreestyleGuide {
-  font: 400 16px/22px var(--cs-font-family);
-}
-
 .dummy-app .application-nav,
 .dummy-app .examples,
 .dummy-app .FreestyleGuide {
   font-family: var(--cs-font-family);
+}
+
+.dummy-app .dark-background {
+  background-color: #141428;
+  color: white;
+}
+
+.FreestyleGuide {
+  font: 400 16px/22px var(--cs-font-family);
 }
 
 .FreestyleGuide .hljs-deletion, .FreestyleGuide .hljs-string, .FreestyleGuide .hljs-built_in, .FreestyleGuide .hljs-builtin-name, .FreestyleGuide .hljs-meta {
@@ -29,6 +34,10 @@
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0px;
+}
+
+.FreestyleUsage-snippet p {
+  font: 400 16px/22px var(--cs-font-family);
 }
 
 .application-nav ul {
@@ -58,21 +67,12 @@
   box-shadow: 1px 1px 2px #ccc;
 }
 
-.dark-background {
-  background-color: var(--cs-dark-background);
-  color: var(--cs-light);
-}
 
-.darkest-background {
-  background-color: var(--cs-default);
-  color: var(--cs-light);
-}
-
-
-.FreestyleUsage-rendered > .cs-input-group {
+.FreestyleUsage-rendered > .cs-input-group,
+.FreestyleUsage-rendered > .cs-input-list {
   max-width: 260px;
 }
 
-.FreestyleUsage-snippet p {
-  font: 400 16px/22px var(--cs-font-family);
+.FreestyleUsage-rendered > .cs-dropdown-group.cs-input-group.with-customized-options {
+  max-width: 500px;
 }

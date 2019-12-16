@@ -1,0 +1,15 @@
+.cs-dark-input-group.cs-input-group > .cs-input-group--label {
+  color: var(--cs-dark-field-label);
+}
+
+.cs-dark-input-group.cs-input-group > .cs-input-group--required {
+  color: var(--cs-dark-field-label);
+}
+
+.cs-dark-input-group.cs-input-group > .cs-input-group--helper-text {
+  color: var(--cs-dark-field-label);
+}
+
+.cs-dark-input-group.cs-input-group > .cs-input-group--helper-text.invalid {
+  color: var(--cs-dark-field-error);
+}

@@ -1,0 +1,26 @@
+.cs-input-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cs-input-list--item {
+  display: flex;
+  align-items: center;
+}
+
+.cs-input-list--item + .cs-input-list--item {
+  margin-top: 10px;
+}
+
+.cs-input-list--add {
+  width: 22px;
+  height: 22px;
+  margin-left: 10px;
+  padding: 0;
+  background: url(images/icon-plus.svg) no-repeat center center;
+  border: none;
+  cursor: pointer;
+  outline: 0;
+  text-indent: -9999px;
+}

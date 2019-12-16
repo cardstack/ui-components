@@ -1,3 +1,7 @@
 .cs-component-phone-number.cs-input-group {
   overflow: initial;
 }
+
+.cs-component-phone-number .intl-tel-input {
+  display: block;
+}

@@ -1,15 +1,3 @@
-.cs-dark-input-group.cs-input-group > .cs-input-group--label {
-  color: var(--cs-dark-field-label);
-}
-
-.cs-dark-input-group.cs-input-group > .cs-input-group--required {
-  color: var(--cs-dark-field-label);
-}
-
-.cs-dark-input-group.cs-input-group > .cs-input-group--helper-text {
-  color: var(--cs-dark-field-label);
-}
-
 .cs-dark-input.cs-input {
   background-color: var(--cs-dark-field-default);
   color: var(--cs-dark-field-text);
@@ -41,9 +29,4 @@ input.cs-dark-input.cs-input::placeholder {
 input.cs-dark-input.cs-input:disabled::placeholder,
 input.cs-dark-input.cs-input.disabled::placeholder {
   color: var(--cs-dark-field-disabled-text);
-}
-
-/* Error state */
-.cs-dark-input-group.cs-input-group > .cs-input-group--helper-text.invalid {
-  color: var(--cs-dark-field-error);
 }

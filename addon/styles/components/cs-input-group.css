@@ -1,0 +1,53 @@
+.cs-input-group {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.cs-input-group--label {
+  display: block;
+  padding-bottom: 7px;
+  color: var(--cs-field-label);
+  font: var(--cs-font);
+  letter-spacing: var(--cs-letter-spacing);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: color var(--cs-transition-time);
+}
+
+.cs-input-group.required > .cs-input-group--label::after {
+  content: "*";
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.cs-input-group--required {
+  position: absolute;
+  right: 0;
+  top: 3px;
+  display: block;
+  color: var(--cs-field-label);
+  font: var(--cs-small-font);
+  letter-spacing: var(--cs-letter-spacing);
+  text-transform: lowercase;
+}
+
+.cs-input-group--helper-text {
+  height: 18px;
+  display: block;
+  padding-left: 10px;
+  padding-top: 5px;
+  color: var(--cs-field-label);
+  font: var(--cs-small-font);
+  letter-spacing: var(--cs-letter-spacing);
+  text-transform: initial;
+
+  transition: color var(--cs-transition-time);
+}
+
+.cs-input-group--helper-text.invalid {
+  color: var(--cs-error);
+  font-weight: 600;
+}

@@ -15,7 +15,7 @@
           To restrict this, you can set a `max-width`, use a wrapping container,
           or override the `width` and `height` properties using CSS.
 
-          Here, we're using `max-width: 460px;` for aesthetic reasons.
+          Here, `max-width` is set to `260px`.
 
           ```
           // Options array
@@ -33,7 +33,7 @@
         {{#freestyle-usage "dropdown" title="Default Dropdown"}}
           <Dropdown
             @options={{this.countries}}
-            @label="Select a country"
+            @label="Country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -53,7 +53,7 @@
           <Dropdown
             @changeAction={{action this.customDropdownAction}}
             @options={{this.countries}}
-            @label="Select a country"
+            @label="Country"
           />
         {{/freestyle-usage}}
         {{#freestyle-note "dropdown-with-default-selected--notes"}}
@@ -68,7 +68,7 @@
           <Dropdown
             @selected={{this.selected}}
             @options={{this.countries}}
-            @label="Select a country"
+            @label="Country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -77,6 +77,7 @@
           <Dropdown
             @disabled={{true}}
             @options={{this.countries}}
+            @label="Country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -84,8 +85,7 @@
         {{#freestyle-usage "dropdown-required" title="Required Dropdown"}}
           <Dropdown
             @required={{true}}
-            @label="Select a country"
-            @outerLabel="Country"
+            @label="Country"
             @options={{this.countries}}
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
@@ -97,7 +97,7 @@
           <Dropdown
             @searchEnabled={{false}}
             @options={{this.countries}}
-            @label="Select a country"
+            @label="Country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -119,7 +119,7 @@
           <Dropdown
             @searchField="formalName"
             @options={{this.countries}}
-            @label="Select a country"
+            @label="Country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -158,7 +158,7 @@
           <Dropdown
             @multiple={{true}}
             @options={{this.countries}}
-            @label="Select a country"
+            @label="Country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -236,6 +236,7 @@
           <Dropdown
             @theme="cs-dark"
             @options={{this.countries}}
+            @label="Country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -245,17 +246,7 @@
             @theme="cs-dark"
             @disabled={{true}}
             @options={{this.countries}}
-            @label="Select a country"
-            @mode={{this.mode}}
-            @showLabelInViewMode={{this.showLabelInViewMode}}
-          />
-        {{/freestyle-usage}}
-        {{#freestyle-usage "dropdown-dark-outer-label" class="dark-background" title="With Outer Label"}}
-          <Dropdown
-            @theme="cs-dark"
-            @label="Select a country"
-            @outerLabel="Country"
-            @options={{this.countries}}
+            @label="Country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -264,9 +255,9 @@
           <Dropdown
             @theme="cs-dark"
             @required={{true}}
-            @label="Select a country"
-            @outerLabel="Country"
+            @label="Country"
             @options={{this.countries}}
+            @placeholder="Select a country"
             @mode={{this.mode}}
             @showLabelInViewMode={{this.showLabelInViewMode}}
           />
@@ -319,67 +310,6 @@
         {{#freestyle-usage "secondary-cta-themed" title="Themed Secondary CTA" inline=true}}
           <Cta @variant="secondary" @theme="cs-theme">Button</Cta>
         {{/freestyle-usage}}
-        {{#freestyle-note "primary-cta-themed--notes"}}
-          <p>
-            Pass a pre-defined theme name to the <code>@theme</code> attribute on your component.
-            Themes affect all variants of a button.
-          </p>
-          <p>Available variants: <code>primary</code> (solid background button); <code>secondary</code> (outline button with transparent background)</p>
-          <p>Available themes: <code>cs-theme</code></p>
-        {{/freestyle-note}}
-        {{#freestyle-annotation}}
-          <h2>How to Create a Theme for This Component</h2>
-          <ol>
-            <li>Define a new CSS class on your stylesheet. This will be the theme name.</li>
-            <li>Change the values set to available CSS variables (see list below).</li>
-            <li>Pass the theme name to the <code>@theme</code> attribute on the component.</li>
-          </ol>
-          <h2>Customizable CSS variables</h2>
-          <b>Note: <code>--cs-component</code> prefixed values below are inherited from the root level, but can still be customized with a theme.</b>
-          <pre>
-            <code>
-              .your-theme-name {
-              <b>Common</b>
-              --cs-cta-width                // auto
-              --cs-cta-height               // auto
-              --cs-cta-padding-horizontal   // 20px
-              --cs-cta-padding-vertical     // 12px
-              --cs-cta-font-size            // 14px
-              --cs-cta-font-weight          // 600
-              --cs-cta-line-height          // 1
-              --cs-cta-border-radius        // <b>--cs-component-border-radius</b>
-              --cs-cta-box-shadow           // <b>--cs-component-box-shadow</b>
-
-              <b>Primary-variant only</b>
-              --cs-cta-color                      // white
-              --cs-cta-background-color           // gray (#5d5d5d)
-              --cs-cta-border-color               // --cs-cta-background-color
-
-              <b>Primary-variant: Hover state</b>
-              --cs-cta-hover-color                // white
-              --cs-cta-hover-background-color     // dark-gray (#222)
-
-              <b>Primary-variant: Disabled state</b>
-              --cs-cta-disabled-color             // dark-gray with opacity 0.4
-              --cs-cta-disabled-background-color  // dark-gray with opacity 0.2
-              --cs-cta-disabled-border-color      // --cs-cta-disabled-background-color
-
-              <b>Secondary-variant only</b>
-              --cs-cta-secondary-color            // dark-gray
-              --cs-cta-secondary-background-color // transparent
-              --cs-cta-secondary-border-color     // --cs-cta-secondary-color
-
-              <b>Secondary-variant: Hover state</b>
-              --cs-cta-secondary-hover-color              // --cs-cta-hover-color
-              --cs-cta-secondary-hover-background-color   // --cs-cta-hover-background-color
-
-              <b>Secondary-variant: Disabled state</b>
-              --cs-cta-secondary-disabled-color           // --cs-cta-disabled-color
-              --cs-cta-secondary-disabled-border-color    // --cs-cta-disabled-border-color
-              }
-            </code>
-          </pre>
-        {{/freestyle-annotation}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
@@ -769,6 +699,15 @@
           Selected addresses JSON:
           <pre>{{this.stringifiedAddresses}}</pre>
         {{/freestyle-annotation}}
+      {{/collection.variant}}
+      {{#collection.variant key="dark-theme"}}
+        {{#freestyle-usage "street-address-dark" title="Street Address (Dark Theme)"}}
+          <StreetAddress
+            @theme="cs-dark"
+            @label="Enter your address"
+            @mode={{this.mode}}
+            @showLabelInViewMode={{this.showLabelInViewMode}} />
+        {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}

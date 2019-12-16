@@ -49,7 +49,7 @@ module('Integration | Component | text-field', function(hooks) {
     await render(hbs`<TextField @required={{true}} @helperText="I am helping." @label="What's the meaning of life?" />`);
 
     await fillIn('[data-test-cs-component-input="text-field"]', '');
-    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('This field is required.');
+    assert.dom('[data-test-cs-component-validation="text-field"]').hasText('This is a required field');
 
     await fillIn('[data-test-cs-component-input="text-field"]', 'Bla bla bla');
     assert.dom('[data-test-cs-component-validation="text-field"]').hasText('I am helping.');
@@ -93,10 +93,8 @@ module('Integration | Component | text-field', function(hooks) {
   test('it renders themed component', async function (assert) {
     await render(hbs`<TextField @label="What's the meaning of life?" @theme="cs-dark" />`);
 
-    assert.dom('[data-test-cs-component="text-field"].cs-input-group').hasClass('cs-dark-input-group');
-    assert.dom('[data-test-cs-component-input="text-field"].cs-input').hasClass('cs-dark-input');
-    assert.dom('[data-test-cs-component="text-field"].cs-input-group').doesNotHaveClass('cs-component-input-group');
-    assert.dom('[data-test-cs-component-input="text-field"].cs-input').doesNotHaveClass('cs-component-input');
+    assert.dom('[data-test-cs-component="text-field"]').hasClass('cs-dark-input-group');
+    assert.dom('[data-test-cs-component-input="text-field"]').hasClass('cs-dark-input');
   });
 
   test('it renders in view mode', async function (assert) {

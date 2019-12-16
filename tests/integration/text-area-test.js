@@ -9,7 +9,7 @@ module('Integration | Component | text-area', function(hooks) {
   test('it renders component', async function(assert) {
     await render(hbs`<TextArea @label="What's the meaning of life?" @rows={{2}} />`);
 
-    assert.dom('[data-test-cs-component="text-area"].cs-textarea.cs-input-group.cs-component-input-group').exists();
+    assert.dom('[data-test-cs-component="text-area"].cs-textarea-group.cs-input-group').exists();
     assert.dom('[data-test-cs-component-label="text-area"]').hasText("What's the meaning of life?");
     assert.dom('[data-test-cs-component-input="text-area"]').hasAttribute('rows', '2');
   });
@@ -39,7 +39,7 @@ module('Integration | Component | text-area', function(hooks) {
     await render(hbs`<TextArea @required={{true}} @helperText="I am helping." @label="What's the meaning of life?" />`);
 
     await fillIn('[data-test-cs-component-input="text-area"]', '');
-    assert.dom('[data-test-cs-component-validation="text-area"]').hasText('This field is required.');
+    assert.dom('[data-test-cs-component-validation="text-area"]').hasText('This is a required field');
 
     await fillIn('[data-test-cs-component-input="text-area"]', 'Bla bla bla');
     assert.dom('[data-test-cs-component-validation="text-area"]').hasText('I am helping.');
@@ -62,10 +62,8 @@ module('Integration | Component | text-area', function(hooks) {
   test('it can render themed component', async function (assert) {
     await render(hbs`<TextArea @label="What's the meaning of life?" @rows={{2}} @theme="cs-dark" />`);
 
-    assert.dom('[data-test-cs-component="text-area"].cs-textarea.cs-input-group').hasClass('cs-dark-input-group');
+    assert.dom('[data-test-cs-component="text-area"]').hasClass('cs-dark-input-group');
     assert.dom('[data-test-cs-component-input="text-area"]').hasClass('cs-dark-input');
-    assert.dom('[data-test-cs-component="text-area"]').doesNotHaveClass('cs-component-input-group');
-    assert.dom('[data-test-cs-component-input="text-area"]').doesNotHaveClass('cs-component-input');
   });
 
   test('it renders in view mode', async function (assert) {
