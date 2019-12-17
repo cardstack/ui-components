@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, fillIn } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import fillInKeyUp from '../helpers/fill-in-key-up';
 
@@ -23,7 +23,7 @@ module('Integration | Component | text-field', function(hooks) {
       assert.equal(val, 'bar');
     });
 
-    await render(hbs`<TextField @value="foo" @setValue={{setValue}} />`);
+    await render(hbs`<TextField @value="foo" @setValue={{setValue}} @debounceMs={{0}} />`);
 
     assert.dom('[data-test-cs-component-input="text-field"]').hasValue('foo');
 
@@ -57,7 +57,7 @@ module('Integration | Component | text-field', function(hooks) {
   });
 
   test('it can validate text input', async function(assert) {
-    await render(hbs`<TextField @pattern="[0-9]+" />`);
+    await render(hbs`<TextField @pattern="[0-9]+" @debounceMs={{0}}/>`);
 
     assert.dom('[data-test-cs-component="text-field"]').exists();
 
@@ -71,12 +71,11 @@ module('Integration | Component | text-field', function(hooks) {
   });
 
   test('it can override the default validation message', async function(assert) {
-    await render(hbs`<TextField @pattern="[0-9]+" @title="Only numbers please!"/>`);
+    await render(hbs`<TextField @pattern="[0-9]+" @title="Only numbers please!" @debounceMs={{0}}/>`);
 
     assert.dom('[data-test-cs-component="text-field"]').exists();
 
     await fillInKeyUp('[data-test-cs-component-input="text-field"]', 'foo');
-    // await triggerEvent('[data-test-cs-component-input="text-field"]', 'keyup');
 
     assert.dom('[data-test-cs-component-validation="text-field"]').hasText('Only numbers please!');
 
@@ -86,7 +85,7 @@ module('Integration | Component | text-field', function(hooks) {
   });
 
   test('it renders disabled component', async function (assert) {
-    await render(hbs`<TextField @label="What's the meaning of life?" @disabled="true" />`);
+    await render(hbs`<TextField @label="What's the meaning of life?" @disabled="true"  />`);
 
     assert.dom('[data-test-cs-component-input="text-field"]').hasAttribute('disabled');
     assert.dom('[data-test-cs-component-input="text-field"]').hasClass('disabled');
@@ -103,7 +102,7 @@ module('Integration | Component | text-field', function(hooks) {
     this.showLabelInViewMode = false;
     this.mode = 'edit';
 
-    await render(hbs`<TextField @value="Hello world" @label="What's the meaning of life?" @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}} />`);
+    await render(hbs`<TextField @value="Hello world" @label="What's the meaning of life?" @theme="cs-theme" @mode={{mode}} @showLabelInViewMode={{showLabelInViewMode}}  />`);
 
     assert.dom('[data-test-cs-component-input="text-field"]').hasValue('Hello world');
 
@@ -117,7 +116,7 @@ module('Integration | Component | text-field', function(hooks) {
   });
 
   test('it can use the passed in id', async function(assert) {
-    await render(hbs`<TextField @id="crazy-id" @label="What's the meaning of life?" />`);
+    await render(hbs`<TextField @id="crazy-id" @label="What's the meaning of life?"  />`);
 
     assert.dom('[data-test-cs-component-label="text-field"]').hasAttribute('for', 'crazy-id');
     assert.dom('[data-test-cs-component-input="text-field"]').hasAttribute('id', 'crazy-id');

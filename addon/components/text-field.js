@@ -16,6 +16,7 @@ export default class TextField extends BaseComponent {
   @tracked required = false;
   @tracked attributesToCopy = ['type', 'label', 'value', 'required', 'disabled', 'invalid', 'validationMessage', 'dataTestName', 'iconComponent', 'rows'];
   @tracked showLabelInViewMode = false;
+  @tracked debounceMs = this.args.debounceMs || 500;
   fieldType = 'text';
   environment = getOwner(this).resolveRegistration('config:environment');
 
@@ -31,12 +32,6 @@ export default class TextField extends BaseComponent {
     return nonce++;
   }
 
-  get debounceMs() {
-    let ms = this.args.debounceMs;
-    return ms !== undefined ? this.args.debounceMs : 500;
-  }
-
-
   @action
   updateValue(element, [value, validationMessage, required]) {
     this.value = value;
@@ -46,7 +41,7 @@ export default class TextField extends BaseComponent {
 
   @action
   keyUp(value, evt) {
-    if (this.environment === 'test') {
+    if (this.debounceMs === 0) {
       this.handleInput(evt);
     } else {
       this.debouncedHandleInput.perform(evt);

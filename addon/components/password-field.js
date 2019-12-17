@@ -7,7 +7,7 @@ const LOWERCASE_REGEX = /[a-z]/;
 const SPECIAL_CHARACTER_REGEX = /\W|_/;
 
 export default class PasswordField extends BaseComponent {
-  @tracked value;
+  @tracked value = this.args.value;
   @tracked invalid = false;
   @tracked validationMessage = '';
   @tracked label = 'Enter your password';
@@ -23,12 +23,6 @@ export default class PasswordField extends BaseComponent {
   successMessage = 'Thank you.';
   className = 'cs-component-password-field';
   attributesToCopy = [ 'minLength', 'mustIncludeUppercase', 'mustIncludeLowercase', 'mustIncludeNumber', 'mustIncludeSpecialCharacter', 'successMessage'];
-
-  constructor(...args) {
-    super(...args);
-
-    this.value = this.args.value;
-  }
 
   @action
   handleInput(value) {
