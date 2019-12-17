@@ -40,7 +40,7 @@ export default class TextField extends BaseComponent {
   }
 
   @action
-  keyUp(evt) {
+  inputEvent(evt) {
     if (this.debounceMs === 0) {
       this.handleInput(evt);
     } else {

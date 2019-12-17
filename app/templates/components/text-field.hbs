@@ -78,7 +78,7 @@
           {{if @disabled "disabled"}}
           {{@mode}}
         "
-        @input={{action this.keyUp}}
+        @input={{action this.inputEvent}}
         @required={{this.required}}
         @disabled={{or (eq @mode "schema") this.disabled}}
         @autocomplete={{@autocomplete}}
