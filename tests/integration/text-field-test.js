@@ -2,7 +2,6 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, fillIn } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import fillInKeyUp from '../helpers/fill-in-key-up';
 
 module('Integration | Component | text-field', function(hooks) {
   setupRenderingTest(hooks);
@@ -27,7 +26,7 @@ module('Integration | Component | text-field', function(hooks) {
 
     assert.dom('[data-test-cs-component-input="text-field"]').hasValue('foo');
 
-    await fillInKeyUp('[data-test-cs-component-input="text-field"]', 'bar');
+    await fillIn('[data-test-cs-component-input="text-field"]', 'bar');
 
     assert.dom('[data-test-cs-component-input="text-field"]').hasValue('bar');
   });
@@ -61,11 +60,11 @@ module('Integration | Component | text-field', function(hooks) {
 
     assert.dom('[data-test-cs-component="text-field"]').exists();
 
-    await fillInKeyUp('[data-test-cs-component-input="text-field"]', 'foo');
+    await fillIn('[data-test-cs-component-input="text-field"]', 'foo');
 
     assert.dom('[data-test-cs-component-validation="text-field"]').hasText('Please match the requested format.');
 
-    await fillInKeyUp('[data-test-cs-component-input="text-field"]', '1234');
+    await fillIn('[data-test-cs-component-input="text-field"]', '1234');
 
     assert.dom('[data-test-cs-component-validation="text-field"]').doesNotContainText();
   });
@@ -75,11 +74,11 @@ module('Integration | Component | text-field', function(hooks) {
 
     assert.dom('[data-test-cs-component="text-field"]').exists();
 
-    await fillInKeyUp('[data-test-cs-component-input="text-field"]', 'foo');
+    await fillIn('[data-test-cs-component-input="text-field"]', 'foo');
 
     assert.dom('[data-test-cs-component-validation="text-field"]').hasText('Only numbers please!');
 
-    await fillInKeyUp('[data-test-cs-component-input="text-field"]', '1234');
+    await fillIn('[data-test-cs-component-input="text-field"]', '1234');
 
     assert.dom('[data-test-cs-component-validation="text-field"]').doesNotContainText();
   });
