@@ -91,7 +91,7 @@
   background-color: var(--cs-field-hover);
 }
 .cs-dropdown .ember-power-select-option[aria-selected="true"] {
-  background: url('images/checkmark.svg') 10px center/10px no-repeat;
+  background: url('images/dropdown-checkmark.svg') 10px center/10px no-repeat;
   background-color: var(--cs-field-hover);
   color: var(--cs-field-text);
 }

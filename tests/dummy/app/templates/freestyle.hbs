@@ -651,32 +651,83 @@
       <p>All Checkboxes require passing in a <code>setChecked</code> function that fires when the checkbox is clicked. The function receives two params, the name of the property to set, and the value (true or false).</p>
     {{/freestyle-annotation}}
     {{freestyle-usage "checkbox-action" title="Example Action"}}
-    {{#freestyle-usage "checkbox-default" title="Default (Optional)"}}
-      <Checkbox
-        @label="Include a free gift in my order"
-        @setChecked={{fn this.setChecked "checkedOne"}}
-        @checked={{false}} />
-    {{/freestyle-usage}}
-    {{#freestyle-usage "checkbox-required" title="Required"}}
-      <Checkbox
-        @label="I accept the Cardstack Terms of Service"
-        @required={{true}}
-        @setChecked={{fn this.setChecked "checkedTwo"}}
-        @checked={{false}} />
-    {{/freestyle-usage}}
-    {{#freestyle-usage "checkbox-disabled" title="Disabled"}}
-      <Checkbox
-        @label="Enable Dark Mode"
-        @disabled={{true}}
-        @setChecked={{fn this.setChecked "checkedThree"}}
-        @checked={{this.isChecked}} />
-    {{/freestyle-usage}}
-    {{#freestyle-usage "checkbox-default-checked" title="Default Checked"}}
-      <Checkbox
-        @label="I would like to subscribe to your newsletter"
-        @checked={{true}}
-        @setChecked={{fn this.setChecked "checkedFour"}} />
-    {{/freestyle-usage}}
+    {{#freestyle-collection title="checkbox" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "checkbox-default" title="Default Checkbox"}}
+          <Checkbox
+            @label="Include a free gift in my order"
+            @checked={{this.checkboxOne}}
+            @setChecked={{fn this.setChecked "checkboxOne"}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "checkbox-required" title="Required Checkbox With Helper Text"}}
+          <Checkbox
+            @label="I accept the Cardstack Terms of Service"
+            @required={{true}}
+            @helperText="Please read the terms"
+            @checked={{this.checkboxTwo}}
+            @setChecked={{fn this.setChecked "checkboxTwo"}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "checkbox-default-checked" title="Pre-Checked Checkbox"}}
+          <Checkbox
+            @label="I would like to subscribe to your newsletter"
+            @checked={{this.checkboxThree}}
+            @setChecked={{fn this.setChecked "checkboxThree"}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "checkbox-disabled" title="Disabled"}}
+          <Checkbox
+            @label="Disabled checkbox"
+            @disabled={{true}}
+            @checked={{this.checkboxFour}}
+            @setChecked={{fn this.setChecked "checkboxFour"}} />
+
+          <Checkbox
+            @label="Disabled checkbox (pre-checked)"
+            @disabled={{true}}
+            @checked={{this.checkboxFive}}
+            @setChecked={{fn this.setChecked "checkboxFive"}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+      {{#collection.variant key="dark-theme" class="dark-background"}}
+        {{#freestyle-usage "checkbox-dark" title="Default Checkbox (Dark Theme)"}}
+          <Checkbox
+            @theme="cs-dark"
+            @label="Include a free gift in my order"
+            @checked={{this.checkboxDarkOne}}
+            @setChecked={{fn this.setChecked "checkboxDarkOne"}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "checkbox-dark-required" title="Required Checkbox With Helper Text (Dark Theme)"}}
+          <Checkbox
+            @theme="cs-dark"
+            @label="I accept the Cardstack Terms of Service"
+            @required={{true}}
+            @helperText="Please read the terms"
+            @checked={{this.checkboxDarkTwo}}
+            @setChecked={{fn this.setChecked "checkboxDarkTwo"}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "checkbox-dark-default-checked" title="Pre-Checked Checkbox (Dark Theme)"}}
+          <Checkbox
+            @theme="cs-dark"
+            @label="I would like to subscribe to your newsletter"
+            @checked={{this.checkboxDarkThree}}
+            @setChecked={{fn this.setChecked "checkboxDarkThree"}} />
+        {{/freestyle-usage}}
+        {{#freestyle-usage "checkbox-dark-disabled" title="Disabled (Dark Theme)"}}
+          <Checkbox
+            @theme="cs-dark"
+            @label="Disabled checkbox"
+            @disabled={{true}}
+            @checked={{this.checkboxDarkFour}}
+            @setChecked={{fn this.setChecked "checkboxDarkFour"}} />
+
+          <Checkbox
+            @theme="cs-dark"
+            @label="Disabled checkbox (pre-checked)"
+            @disabled={{true}}
+            @checked={{this.checkboxDarkFive}}
+            @setChecked={{fn this.setChecked "checkboxDarkFive"}} />
+        {{/freestyle-usage}}
+      {{/collection.variant}}
+    {{/freestyle-collection}}
   {{/freestyle-section}}
 
 
