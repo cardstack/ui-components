@@ -125,6 +125,10 @@ export default Ember.Component.extend({
   },
 
   isChecked: false,
+  checkboxThree: true,
+  checkboxFive: true,
+  checkboxDarkThree: true,
+  checkboxDarkFive: true,
   // We use `action()` here so that we can use the `this` context.
   // propertyToSet comes from the arg bound by `{{fn}}` and
   // val comes from the arg you pass in when calling the action

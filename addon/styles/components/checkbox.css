@@ -1,98 +1,96 @@
-.cs-component-checkbox {
-  --cs-checkbox-validation-icon: url("images/check-icon.svg");
-  --cs-checkbox-validation-icon-size: 1em;
-
+.cs-checkbox-group {
   position: relative;
+  display: block;
   width: 100%;
-  margin-bottom: 10px;
+  color: var(--cs-field-text);
   font: var(--cs-font);
   letter-spacing: var(--cs-letter-spacing);
+
+  transition: color var(--cs-transition-time);
 }
 
-.cs-component-checkbox input[type=checkbox] {
+.cs-checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 0;
+  height: 0;
   opacity: 0;
-  position: absolute;
 }
 
-.cs-component-checkbox label::before {
-  content: "";
+.cs-checkbox-group--checkmark {
   display: inline-block;
-  height: 16px;
-  width: 16px;
-  border: 2px solid var(--cs-field-border);
-  border-radius: 2px;
-  left: 0px;
-  top: 3px;
+  vertical-align: text-bottom;
+  height: 18px;
+  width: 18px;
+  margin-right: 7px;
+  background-color: var(--cs-field-default);
+  border: 1px solid var(--cs-field-border);
+  border-radius: 3px;
+  text-align: center;
+
+  transition: background-color var(--cs-transition-time),
+              border-color var(--cs-transition-time);
 }
 
-.cs-component-checkbox label::after {
-  content: "";
-  display: inline-block;
-  height: 6px;
-  width: 9px;
-  border-left: 2px solid var(--cs-field-border);
-  border-bottom: 2px solid var(--cs-field-border);
-  transform: rotate(-45deg);
-  left: 4px;
-  top: 7px;
-}
-
-.cs-component-checkbox label {
-  display: inline-block;
-  position: relative;
-  padding-left: 26px;
-  padding-top: 3px;
-  line-height: 20px;
+.cs-checkbox-group--helper-text {
+  display: block;
+  height: 18px;
+  padding-top: 5px;
   color: var(--cs-field-label);
+  font: var(--cs-small-font);
+  letter-spacing: var(--cs-letter-spacing);
+  text-transform: initial;
+
+  transition: color var(--cs-transition-time);
 }
 
-.cs-component-checkbox label::before,
-.cs-component-checkbox label::after {
-  position: absolute;
+/* hover */
+.cs-checkbox:hover + label {
+  cursor: pointer;
+}
+.cs-checkbox:hover + label > .cs-checkbox-group--checkmark {
+  background-color: var(--cs-field-hover);
 }
 
-.cs-component-checkbox input[type=checkbox] + label::after {
-  content: none;
-}
-
-.cs-component-checkbox input[type=checkbox]:checked + label::after {
-  content: "";
-}
-
-.cs-component-checkbox input[type=checkbox]:focus + label::before {
-  outline: 0;
+/* focus */
+.cs-checkbox:focus + label > .cs-checkbox-group--checkmark {
+  background-color: var(--cs-field-hover);
   border-color: var(--cs-highlight);
 }
 
-/* input validation message */
-.cs-component-checkbox--validation {
-  visibility: visible;
-  position: absolute;
-  max-width: 100%;
-  padding-left: calc(var(--cs-checkbox-validation-icon-size) + 0.5em);
-  margin-top: 5px;
-  background: var(--cs-checkbox-validation-icon) no-repeat;
-  background-position: center left;
-  background-size: var(--cs-checkbox-validation-icon-size);
-  color: var(--cs-success);
-  font-size: 10px;
+/* checked */
+.cs-checkbox.checked + label > .cs-checkbox-group--checkmark {
+  background: url('images/checkmark.svg') center/12px no-repeat;
+}
+
+/* checked hover, focus */
+.cs-checkbox.checked:hover + label > .cs-checkbox-group--checkmark {
+  background-color: var(--cs-field-hover);
+}
+.cs-checkbox.checked:focus + label > .cs-checkbox-group--checkmark {
+  background-color: var(--cs-field-hover);
+  border-color: var(--cs-highlight);
+}
+
+/* error */
+.cs-checkbox.invalid + label > .cs-checkbox-group--checkmark,
+.cs-checkbox.invalid:hover + label > .cs-checkbox-group--checkmark,
+.cs-checkbox.invalid:focus + label > .cs-checkbox-group--checkmark {
+  border-color: var(--cs-error);
+}
+.cs-checkbox-group--helper-text.invalid {
+  color: var(--cs-error);
   font-weight: 600;
-  letter-spacing: 1px;
-  line-height: 14px;
-  text-transform: uppercase;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-transition: visibility 0.2s ease, background-image 0.2s ease;
-  transition: visibility 0.2s ease, background-image 0.2s ease;
-}
-.cs-component-checkbox--validation.invalid {
-  --cs-checkbox-validation-icon: url("images/x-icon.svg");
-
-  visibility: visible;
-  color: var(--cs-field-error);
-}
-.cs-component-checkbox--validation.hidden {
-  visibility: collapse;
-  background-image: none;
 }
 
+/* disabled */
+.cs-checkbox.disabled + label {
+  color: var(--cs-field-disabled-text);
+  pointer-events: none;
+}
+.cs-checkbox.disabled + label > .cs-checkbox-group--checkmark {
+  background-color: var(--cs-field-default);
+  border-color: var(--cs-field-disabled-border);
+}

@@ -1,0 +1,39 @@
+.cs-dark-checkbox-group.cs-checkbox-group {
+  color: var(--cs-dark-field-text);
+}
+.cs-dark-checkbox-group .cs-checkbox-group--checkmark {
+  background-color: var(--cs-dark-checkbox);
+  border: 1px solid var(--cs-dark-checkbox-border);
+}
+.cs-dark-checkbox-group .cs-checkbox-group--helper-text {
+  color: var(--cs-dark-field-label);
+}
+.cs-dark-checkbox-group .cs-checkbox-group--helper-text.invalid {
+  color: var(--cs-dark-field-error);
+}
+
+/* focus & hover */
+.cs-dark-checkbox:hover + label > .cs-checkbox-group--checkmark,
+.cs-dark-checkbox:focus + label > .cs-checkbox-group--checkmark {
+  background-color: var(--cs-dark-checkbox-hover);
+}
+
+/* checked */
+.cs-dark-checkbox.checked + label > .cs-checkbox-group--checkmark {
+  background-color: var(--cs-highlight);
+}
+
+/* checked hover & focus */
+.cs-dark-checkbox.checked:hover + label > .cs-checkbox-group--checkmark,
+.cs-dark-checkbox.checked:focus + label > .cs-checkbox-group--checkmark {
+  background-color: var(--cs-highlight-hover);
+}
+
+/* disabled */
+.cs-dark-checkbox.disabled + label {
+  color: var(--cs-dark-field-disabled-text);
+}
+.cs-dark-checkbox.disabled + label > .cs-checkbox-group--checkmark {
+  background-color: var(--cs-dark-field-disabled);
+  border-color: var(--cs-dark-field-disabled);
+}

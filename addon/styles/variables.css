@@ -27,7 +27,7 @@
   --cs-error: #ff0000;
   --cs-success: var(--cs-green);
 
-  /* Light Mode */
+  /* UI Components on Light Background */
   --cs-field-default: #fff;                  /* Default background */
   --cs-field-hover: #f7f7f7;                 /* Focus and hover background */
   --cs-field-text: #000;                     /* Input text */
@@ -37,7 +37,7 @@
   --cs-field-border: #afafb7;                /* Field border */
   --cs-field-disabled-border: #e3e3e3;       /* Disabled field border */
 
-  /* Dark Mode */
+  /* UI Components on Dark Background */
   --cs-dark-field-default: #2e2d38;           /* Default background */
   --cs-dark-field-hover: #272330;             /* Hover background */
   --cs-dark-field-disabled: #393642;          /* Disabled background */
@@ -47,17 +47,22 @@
   --cs-dark-field-disabled-text: #6b6971;     /* Disabled text */
   --cs-dark-field-error: #ff5757;             /* Error text */
 
-  /* Dropdown */
+  /* Dropdown Component on Dark Background */
   --cs-dark-dropdown: #5a586a;                 /* Dark mode dropdown background */
   --cs-dark-dropdown-hover: #434050;           /* Dark mode dropdown hover background */
   --cs-dark-dropdown-border: var(--cs-dark-field-default);
+
+  /* Checkbox Component on Dark Background */
+  --cs-dark-checkbox: #5a586a;                 /* Dark mode checkbox background */
+  --cs-dark-checkbox-hover: #434050;           /* Dark mode checkbox hover background */
+  --cs-dark-checkbox-border: var(--cs-dark-field-default);
 
   /* Buttons */
   --cs-button-radius: 100px;
   --cs-button-sm-width: 125px;
   --cs-button-sm-height: 32px;
 
-  /* Light Background */
+  /* Button Component on Light Background */
   --cs-button-default: var(--cs-default);
   --cs-button-text: #fff;
   --cs-button-border: transparent;

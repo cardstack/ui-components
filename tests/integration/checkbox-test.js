@@ -6,95 +6,177 @@ import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | checkbox', function(hooks) {
   setupRenderingTest(hooks);
-  
-  
-  test('component can be checked', async function(assert) {
-    assert.expect(3)
-    this.set('setChecked', function(val) {
-      assert.equal(val, true)
-    });
-    
-    await render(hbs`<Checkbox @label="By clicking Submit you agree to the Cardstack Terms and Conditions™" @setChecked={{fn this.setChecked}} />`);
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isNotChecked();
+  test('it can render the component', async function(assert) {
+    this.set('setChecked', function() {});
 
-    await click('.cs-component-checkbox--label');
+    await render(hbs`<Checkbox @label="I would like to sign up for your newsletter" @checked={{this.isChecked}} @setChecked={{fn this.setChecked}} />`);
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotDisabled();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotRequired();
+    assert.dom('[data-test-cs-component-validation="checkbox"]').doesNotContainText();
+    assert.dom('[data-test-cs-component-validation="checkbox"]').doesNotHaveClass('invalid');
+    assert.dom('[data-test-cs-component-input="checkbox"]').doesNotHaveClass('checked');
+    assert.dom('[data-test-cs-component-input="checkbox"]').doesNotHaveClass('disabled');
+    assert.dom('[data-test-cs-component-input="checkbox"]').doesNotHaveClass('invalid');
   });
 
-  test('component can be disabled', async function(assert) {
-    assert.expect(2)
+  test('component can be checked', async function(assert) {
+    assert.expect(5)
 
-    this.set('setChecked', function(val) {
-      // this should not run, which is why we expect(2)
-      assert.equal(val, undefined)
-    });
+    let obj = { isChecked: false };
+    this.isChecked = obj.isChecked;
 
-    await render(hbs`<Checkbox @label="You cannot click me" @disabled={{true}} @setChecked={{fn this.setChecked "checked"}} />`);
+    this.setChecked = function(prop, val) {
+      assert.equal(obj[prop], false);
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isNotChecked();
+      obj[prop] = val;
+      assert.equal(obj[prop], true);
+    };
 
-    await click('.cs-component-checkbox--label');
+    await render(hbs`<Checkbox @label="By clicking Submit you agree to the Cardstack Terms and Conditions™" @checked={{this.isChecked}} @setChecked={{fn this.setChecked "isChecked"}} />`);
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isNotChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotChecked();
+
+    await click('[data-test-cs-component-label="checkbox"]');
+
+    assert.dom('[data-test-cs-component-input="checkbox"]').isChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('checked');
   });
 
   test('component can default to checked', async function(assert) {
-    assert.expect(3)
+    assert.expect(6)
 
-    this.set('setChecked', function(val) {
-      assert.equal(val, false)
-    });
+    let obj = { isChecked: true };
+    this.isChecked = obj.isChecked;
 
-    await render(hbs`<Checkbox @label="Yes I would like to receive your newsletter" @checked={{true}} @setChecked={{fn this.setChecked}} />`);
+    this.setChecked = function(prop, val) {
+      assert.equal(obj[prop], true);
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isChecked();
+      obj[prop] = val;
+      assert.equal(obj[prop], false);
+    };
 
-    await click('.cs-component-checkbox--label');
+    await render(hbs`<Checkbox @label="Yes I would like to receive your newsletter" @checked={{this.isChecked}} @setChecked={{fn this.setChecked "isChecked"}} />`);
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isNotChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('checked');
+
+    await click('[data-test-cs-component-label="checkbox"]');
+
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').doesNotHaveClass('checked');
   });
 
-  test('component can set value', async function(assert) {
+  test('it can render the required component', async function(assert) {
     this.set('setChecked', function() {});
 
-    this.value = 'foo';
-    await render(hbs`<Checkbox @label="Click here" @value={{value}} @setChecked={{fn this.setChecked}} />`);
+    await render(hbs`<Checkbox @label="By clicking Submit you agree to the Cardstack Terms and Conditions™" @required={{true}} @checked={{this.isChecked}} @setChecked={{fn this.setChecked}} />`);
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isNotChecked();
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').hasValue('foo');
+    assert.dom('[data-test-cs-component-input="checkbox"]').isRequired();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotDisabled();
+    assert.dom('[data-test-cs-component-validation="checkbox"]').doesNotContainText();
   });
 
-  test('component can be required', async function(assert) {
+  test('it can display error message if required component is not checked', async function(assert) {
     this.set('setChecked', function() {});
 
     await render(hbs`<Checkbox @label="By clicking Submit you agree to the Cardstack Terms and Conditions™" @required={{true}} @setChecked={{fn this.setChecked}} />`);
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isNotChecked();
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').hasClass('required');
+    assert.dom('[data-test-cs-component-input="checkbox"]').isRequired();
+    assert.dom('[data-test-cs-component-validation="checkbox"]').doesNotContainText();
 
-    await click('.cs-component-checkbox--label');
+    await click('[data-test-cs-component-input="checkbox"]');
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isChecked();
-    assert.dom('[data-test-cs-component-checkbox-validation]').hasText('Thank you.');
+    assert.dom('[data-test-cs-component-input="checkbox"]').isChecked();
+    assert.dom('[data-test-cs-component-validation="checkbox"]').doesNotContainText();
 
-    await click('.cs-component-checkbox--label');
+    await click('[data-test-cs-component-input="checkbox"]');
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isNotChecked();
-    assert.dom('[data-test-cs-component-checkbox-validation]').hasText('You must check this box!');
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('invalid');
+    assert.dom('[data-test-cs-component-validation="checkbox"]').hasClass('invalid');
+    assert.dom('[data-test-cs-component-validation="checkbox"]').hasText('This field is required');
   });
 
-  test('component can be disabled', async function(assert) {
+  test('it can clear error message when required component is checked', async function(assert) {
     this.set('setChecked', function() {});
 
-    await render(hbs`<Checkbox @label="I would like to sign up for your newsletter" @checked={{true}} @disabled={{true}} @setChecked={{fn this.setChecked}} />`);
+    await render(hbs`<Checkbox @label="By clicking Submit you agree to the Cardstack Terms and Conditions™" @required={{true}} @checked={{true}} @setChecked={{fn this.setChecked}} />`);
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isChecked();
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').hasAttribute('disabled');
+    assert.dom('[data-test-cs-component-input="checkbox"]').isRequired();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isChecked();
+    assert.dom('[data-test-cs-component-validation="checkbox"]').doesNotContainText();
 
-    await click('.cs-component-checkbox--label');
+    await click('[data-test-cs-component-input="checkbox"]');
 
-    assert.dom('.cs-component-checkbox input[type="checkbox"]').isChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('invalid');
+    assert.dom('[data-test-cs-component-validation="checkbox"]').hasClass('invalid');
+    assert.dom('[data-test-cs-component-validation="checkbox"]').hasText('This field is required');
+
+    await click('[data-test-cs-component-input="checkbox"]');
+
+    assert.dom('[data-test-cs-component-input="checkbox"]').isRequired();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isChecked();
+    assert.dom('[data-test-cs-component-validation="checkbox"]').doesNotContainText();
+  });
+
+  test('unchecked component can be disabled', async function(assert) {
+    assert.expect(8)
+
+    this.set('setChecked', function(val) {
+      // this should not run, which is why we expect(8)
+      assert.equal(val, undefined)
+    });
+
+    await render(hbs`<Checkbox @label="You cannot click me" @disabled={{true}} @setValue={{fn this.setChecked "checked"}} />`);
+
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isDisabled();
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('disabled');
+    assert.dom('[data-test-cs-component-input="checkbox"]').doesNotHaveClass('checked');
+
+    await click('[data-test-cs-component-input="checkbox"]');
+
+    assert.dom('[data-test-cs-component-input="checkbox"]').isNotChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isDisabled();
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('disabled');
+    assert.dom('[data-test-cs-component-input="checkbox"]').doesNotHaveClass('checked');
+  });
+
+  test('checked component can be disabled', async function(assert) {
+    assert.expect(8)
+
+    this.set('setChecked', function(val) {
+      // this should not run, which is why we expect(8)
+      assert.equal(val, undefined)
+    });
+
+    await render(hbs`<Checkbox @label="I would like to sign up for your newsletter" @checked={{true}} @disabled={{true}} @setValue={{fn this.setChecked}} />`);
+
+    assert.dom('[data-test-cs-component-input="checkbox"]').isChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isDisabled();
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('disabled');
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('checked');
+
+    await click('[data-test-cs-component-input="checkbox"]');
+
+    assert.dom('[data-test-cs-component-input="checkbox"]').isChecked();
+    assert.dom('[data-test-cs-component-input="checkbox"]').isDisabled();
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('disabled');
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('checked');
+  });
+
+  test('it can render the themed component', async function(assert) {
+    this.set('setChecked', function() {});
+
+    await render(hbs`<Checkbox @theme="cs-dark" @label="I would like to sign up for your newsletter" @setChecked={{fn this.setChecked}} />`);
+
+    assert.dom('[data-test-cs-component="checkbox"]').hasClass('cs-dark-checkbox-group');
+    assert.dom('[data-test-cs-component-input="checkbox"]').hasClass('cs-dark-checkbox');
   });
 });
+
