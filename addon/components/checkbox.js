@@ -21,7 +21,7 @@ export default class Checkbox extends BaseComponent {
     }
 
     if (!this.validationMessage && this.args.setChecked) {
-      return this.args.setChecked(checked);
+      return this.args.setChecked(checked, ev);
     }
 
     return;
