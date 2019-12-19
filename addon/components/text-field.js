@@ -18,7 +18,6 @@ export default class TextField extends BaseComponent {
   @tracked showLabelInViewMode = false;
   @tracked debounceMs = this.args.debounceMs || 500;
   fieldType = 'text';
-  environment = getOwner(this).resolveRegistration('config:environment');
 
   get inputId() {
     if (this.args.inputId) {
