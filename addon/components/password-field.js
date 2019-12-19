@@ -7,6 +7,7 @@ const LOWERCASE_REGEX = /[a-z]/;
 const SPECIAL_CHARACTER_REGEX = /\W|_/;
 
 export default class PasswordField extends BaseComponent {
+  @tracked value = this.args.value;
   @tracked invalid = false;
   @tracked validationMessage = '';
   @tracked label = 'Enter your password';

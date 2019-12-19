@@ -1,6 +1,9 @@
 import BaseComponent from './base-component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { restartableTask } from 'ember-concurrency-decorators';
+import { timeout } from 'ember-concurrency';
+import { getOwner } from '@ember/application';
 
 let nonce = 0;
 
@@ -13,6 +16,7 @@ export default class TextField extends BaseComponent {
   @tracked required = false;
   @tracked attributesToCopy = ['type', 'label', 'value', 'required', 'disabled', 'invalid', 'validationMessage', 'dataTestName', 'iconComponent', 'rows'];
   @tracked showLabelInViewMode = false;
+  @tracked debounceMs = this.args.debounceMs || 500;
   fieldType = 'text';
 
   get inputId() {
@@ -32,6 +36,21 @@ export default class TextField extends BaseComponent {
     this.value = value;
     this.validationMessage = validationMessage;
     this.required = required;
+  }
+
+  @action
+  inputEvent(evt) {
+    if (this.debounceMs === 0) {
+      this.handleInput(evt);
+    } else {
+      this.debouncedHandleInput.perform(evt);
+    }
+  }
+
+  @restartableTask
+  *debouncedHandleInput(evt) {
+    yield timeout(this.debounceMs);
+    this.handleInput(evt);
   }
 
   @action
