@@ -3,6 +3,7 @@
     {{if @theme (concat @theme "-input-group")}}
     {{if @required "required"}}
     {{@className}}
+    {{@class}}
     {{@mode}}"
   data-test-cs-component={{this.dataTestName}}
   {{did-update this.updateValue @value @validationMessage @required}}
