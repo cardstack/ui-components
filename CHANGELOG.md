@@ -1,3 +1,11 @@
+* Merge pull request #150 from cardstack/ember-concurrency-dependency (5cc0c99)
+* Make ember-concurrency a dependency (f7066fa)
+* Merge pull request #149 from cardstack/percy-snapshots (3a8c5af)
+* fix excluded scenarios (3ff1b79)
+* Skip percy tests for ember-try scenarios (0de6e42)
+* turn off percy snapshots for non-PRs (0dfbbdf)
+* turn off percy snapshots for non-PRs (d805bc2)
+
 Must provide GITHUB_AUTH
 
 Must provide GITHUB_AUTH
