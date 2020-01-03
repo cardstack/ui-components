@@ -1,32 +1,37 @@
-/* Small button */
+/* Cta */
 .cs-component-cta {
-  position: relative;
-  width: 100%;
-  max-width: var(--cs-button-sm-width);
-  height: var(--cs-button-sm-height);
+  /* position: relative; */
+  display: inline-block;
+  min-width: var(--cs-button-width);
+  max-width: 100%;
+  min-height: var(--cs-button-height);
+  padding: 5px 10px;
   background-color: var(--cs-button-default);
   color: var(--cs-button-text);
   border: 1px solid var(--cs-button-border);
   border-radius: var(--cs-button-radius);
-  font: 600 13px/18px var(--cs-font-family);
-  letter-spacing: 0.015em;
+  font: var(--cs-font-semibold);
+  letter-spacing: var(--cs-small-spacing);
   text-align: center;
 }
-.cs-component-cta:not(.disabled):focus,
-.cs-component-cta:not(:disabled):focus {
+.cs-component-cta:not(.disabled):focus {
   background-color: var(--cs-button-hover);
   outline: 0;
 }
-.cs-component-cta:not(.disabled):hover,
-.cs-component-cta:not(:disabled):hover {
+.cs-component-cta:not(.disabled):hover {
   background-color: var(--cs-button-hover);
   color: var(--cs-button-text);
   cursor: pointer;
 }
-.cs-component-cta.disabled,
-.cs-component-cta:disabled {
+.cs-component-cta.disabled {
   /* TBD */
   pointer-events: none;
+}
+
+
+/* Full-width button */
+.cs-component-cta.responsive {
+  width: 100%;
 }
 
 
@@ -37,28 +42,53 @@
   border-color: var(--cs-secondary-button-border);
 }
 .cs-component-cta.secondary:not(.disabled):focus,
-.cs-component-cta.secondary:not(:disabled):focus {
-  outline: 0;
-  border-color: var(--cs-secondary-button-hover);
-}
-.cs-component-cta.secondary:not(.disabled):hover,
-.cs-component-cta.secondary:not(:disabled):hover {
+.cs-component-cta.secondary:not(.disabled):hover {
+  background-color: var(--cs-secondary-button-default);
   border-color: var(--cs-secondary-button-hover);
   color: var(--cs-secondary-button-text);
+  outline: 0;
 }
-.cs-component-cta.secondary.disabled,
-.cs-component-cta.secondary:disabled {
+.cs-component-cta.secondary.disabled {
   /* TBD */
   pointer-events: none;
+}
+
+
+/* Primary button */
+.cs-component-cta.primary {
+  min-height: var(--cs-button-primary-height);
+  min-width: var(--cs-button-primary-width);
+  padding: 10px 15px;
+  background-color: var(--cs-primary-button-default);
+  color: var(--cs-primary-button-text);
+  letter-spacing: var(--cs-letter-spacing);
+}
+.cs-component-cta.primary:not(.disabled):focus,
+.cs-component-cta.primary:not(.disabled):hover {
+  background-color: var(--cs-primary-button-hover);
+  color: var(--cs-primary-button-text);
+}
+
+/* Secondary Primary button (Secondary outline button) */
+.cs-component-cta.primary.secondary {
+  background-color: var(--cs-secondary-primary-default);
+  color: var(--cs-secondary-primary-text);
+  border-color: var(--cs-secondary-primary-border);
+}
+.cs-component-cta.primary.secondary:not(.disabled):focus,
+.cs-component-cta.primary.secondary:not(.disabled):hover {
+  background-color: var(--cs-secondary-primary-hover);
+  color: var(--cs-secondary-primary-text);
+  border-color: var(--cs-secondary-primary-border);
 }
 
 
 /* TODO:
   100% width button
   Dark theme
-  Icon button
   Disabled states
-  CTA button (Save, Open, etc)
+  Icon button
+  Primary icon button
   Loading state update
 */
 

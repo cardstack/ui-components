@@ -281,18 +281,25 @@
 
   {{!-- CTA --}}
   {{#freestyle-section name="cta"}}
-    {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
-      {{#collection.variant key="primary"}}
-        {{#freestyle-usage "primary-cta" title="Primary CTA"}}
-          <Cta>Primary Call to Action</Cta>
+    {{#freestyle-collection title="CTA" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "default-cta" title="Default button"}}
+          <Cta>Default</Cta>
+          <Cta>Default Call to Action</Cta>
         {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#freestyle-note "primary-cta--notes"}}
-        By default, `Cta` will render a primary type
-      {{/freestyle-note}}
-      {{#collection.variant key="secondary"}}
-        {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
+        {{#freestyle-usage "secondary-cta" title="Secondary button"}}
+          <Cta @variant="secondary">Secondary</Cta>
           <Cta @variant="secondary">Secondary Call to Action</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "primary-cta" title="Primary button"}}
+          <Cta @variant="primary">Primary</Cta>
+          <Cta @variant="primary">Primary Call to Action</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "secondary-primary-cta" title="Secondary Primary button"}}
+          <Cta @variant="primary secondary">Secondary Primary</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "responsive-cta" title="Full-width button"}}
+          <Cta @variant="responsive">Full-width button</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="without-block"}}

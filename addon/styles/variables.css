@@ -2,6 +2,7 @@
   /* Root CSS custom properties */
   --cs-font-family: "Open Sans", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   --cs-font: 400 13px/18px var(--cs-font-family);
+  --cs-font-semibold: 600 13px/18px var(--cs-font-family);
   --cs-small-font: 400 11px/15px var(--cs-font-family);
   --cs-letter-spacing: 0.035em;
   --cs-small-spacing: 0.015em;
@@ -59,21 +60,35 @@
 
   /* Buttons */
   --cs-button-radius: 100px;
-  --cs-button-sm-width: 125px;
-  --cs-button-sm-height: 32px;
+  --cs-button-width: 125px;
+  --cs-button-height: 32px;
+  --cs-button-primary-width: 140px;
+  --cs-button-primary-height: 40px;
 
   /* Button Component on Light Background */
-  --cs-button-default: var(--cs-default);
+  --cs-button-default: #2e2d38;
   --cs-button-text: #fff;
   --cs-button-border: transparent;
   --cs-button-hover: #000;
+  /* Secondary Button */
   --cs-secondary-button-default: transparent;
   --cs-secondary-button-text: #000;
   --cs-secondary-button-border: var(--cs-field-border);
   --cs-secondary-button-hover: #000;
 
   /* Dark Background */
-  --cs-secondary-button-text: #fff;
-  --cs-secondary-button-hover: #fff;
-  --cs-secondary-button-border: rgba(255, 255, 255, 0.25);
+  --cs-dark-secondary-button-text: #fff;
+  --cs-dark-secondary-button-hover: #fff;
+  --cs-dark-secondary-button-border: rgba(255, 255, 255, 0.25);
+
+  /* Primary Button */
+  --cs-primary-button-default: var(--cs-cyan);
+  --cs-primary-button-text: #000;
+  --cs-primary-button-hover: var(--cs-darker-cyan);
+
+  /* Secondary Primary Button */
+  --cs-secondary-primary-default: var(--cs-button-default);
+  --cs-secondary-primary-text: var(--cs-cyan);
+  --cs-secondary-primary-border: #5b596e;
+  --cs-secondary-primary-hover: #272330;
 }

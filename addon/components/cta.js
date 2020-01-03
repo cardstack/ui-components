@@ -1,9 +1,9 @@
 import BaseComponent from './base-component';
-import { tracked } from '@glimmer/tracking';
+// import { tracked } from '@glimmer/tracking';
 
 export default class Cta extends BaseComponent {
-  @tracked variant = 'primary';
-  @tracked disabled = false;
-  
+  // @tracked variant;
+  // @tracked disabled = false;
+
   handleClick() {}
 }
