@@ -6,7 +6,6 @@
 /* Cta */
 /* Same on dark background */
 .cs-component-cta {
-  /* position: relative; */
   display: inline-block;
   min-width: var(--cs-button-width);
   max-width: 100%;
@@ -67,7 +66,7 @@
   --cs-secondary-button-text: var(--cs-dark-secondary-button-text);
   --cs-secondary-button-hover: var(--cs-dark-secondary-button-hover);
   --cs-secondary-button-border: var(--cs-dark-secondary-button-border);
-}`
+}
 
 
 /* Primary button */
