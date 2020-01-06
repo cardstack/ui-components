@@ -19,16 +19,19 @@
   letter-spacing: var(--cs-small-spacing);
   text-align: center;
 }
-.cs-component-cta:not(.disabled):focus {
+.cs-component-cta:not(.disabled):focus,
+.cs-component-cta:not(:disabled):focus {
   background-color: var(--cs-button-hover);
   outline: 0;
 }
-.cs-component-cta:not(.disabled):hover {
+.cs-component-cta:not(.disabled):hover,
+.cs-component-cta:not(:disabled):hover {
   background-color: var(--cs-button-hover);
   color: var(--cs-button-text);
   cursor: pointer;
 }
-.cs-component-cta.disabled {
+.cs-component-cta.disabled,
+.cs-component-cta:disabled {
   cursor: not-allowed;
   background-color: var(--cs-button-disabled);
   color: var(--cs-button-disabled-text);
@@ -48,13 +51,16 @@
   border-color: var(--cs-secondary-button-border);
 }
 .cs-component-cta.secondary:not(.disabled):focus,
-.cs-component-cta.secondary:not(.disabled):hover {
+.cs-component-cta.secondary:not(:disabled):focus,
+.cs-component-cta.secondary:not(.disabled):hover,
+.cs-component-cta.secondary:not(:disabled):hover {
   background-color: var(--cs-secondary-button-default);
   border-color: var(--cs-secondary-button-hover);
   color: var(--cs-secondary-button-text);
   outline: 0;
 }
-.cs-component-cta.secondary.disabled {
+.cs-component-cta.secondary.disabled,
+.cs-component-cta.secondary:disabled {
   color: var(--cs-secondary-button-disabled-text);
   border-color: var(--cs-secondary-button-disabled-border);
 }
@@ -66,7 +72,8 @@
   --cs-secondary-button-hover: var(--cs-dark-secondary-button-hover);
   --cs-secondary-button-border: var(--cs-dark-secondary-button-border);
 }
-.cs-component-cta.secondary.cs-dark-cta.disabled {
+.cs-component-cta.secondary.cs-dark-cta.disabled,
+.cs-component-cta.secondary.cs-dark-cta:disabled {
   --cs-secondary-button-disabled-text: var(--cs-button-disabled-text);
   --cs-secondary-button-disabled-border: var(--cs-secondary-primary-border);
 }
@@ -82,11 +89,14 @@
   letter-spacing: var(--cs-letter-spacing);
 }
 .cs-component-cta.primary:not(.disabled):focus,
-.cs-component-cta.primary:not(.disabled):hover {
+.cs-component-cta.primary:not(:disabled):focus,
+.cs-component-cta.primary:not(.disabled):hover,
+.cs-component-cta.primary:not(:disabled):hover {
   background-color: var(--cs-primary-button-hover);
   color: var(--cs-primary-button-text);
 }
-.cs-component-cta.primary.disabled {
+.cs-component-cta.primary.disabled,
+.cs-component-cta.primary:disabled {
   background-color: var(--cs-primary-button-hover);
   color: rgba(0, 0, 0, 0.5);
 }
@@ -99,12 +109,15 @@
   border-color: var(--cs-secondary-primary-border);
 }
 .cs-component-cta.primary.secondary:not(.disabled):focus,
-.cs-component-cta.primary.secondary:not(.disabled):hover {
+.cs-component-cta.primary.secondary:not(:disabled):focus,
+.cs-component-cta.primary.secondary:not(.disabled):hover,
+.cs-component-cta.primary.secondary:not(:disabled):hover {
   background-color: var(--cs-secondary-primary-hover);
   color: var(--cs-secondary-primary-text);
   border-color: var(--cs-secondary-primary-border);
 }
-.cs-component-cta.primary.secondary.disabled {
+.cs-component-cta.primary.secondary.disabled,
+.cs-component-cta.primary.secondary:disabled {
   background-color: var(--cs-button-disabled);
   color: var(--cs-button-disabled-text);
 }
