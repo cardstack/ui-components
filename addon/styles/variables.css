@@ -66,15 +66,19 @@
   --cs-button-primary-height: 40px;
 
   /* Button Component on Light Background */
-  --cs-button-default: #2e2d38;
-  --cs-button-text: #fff;
+  --cs-button-default: var(--cs-dark-field-default);
+  --cs-button-text: var(--cs-dark-field-text);
   --cs-button-border: transparent;
   --cs-button-hover: #000;
+  --cs-button-disabled: var(--cs-dark-field-disabled);
+  --cs-button-disabled-text: var(--cs-dark-field-disabled-text);
   /* Secondary Button */
   --cs-secondary-button-default: transparent;
   --cs-secondary-button-text: #000;
   --cs-secondary-button-border: var(--cs-field-border);
   --cs-secondary-button-hover: #000;
+  --cs-secondary-button-disabled-text: var(--cs-field-disabled-text);
+  --cs-secondary-button-disabled-border: var(--cs-field-disabled-border);
 
   /* Dark Background */
   --cs-dark-secondary-button-text: #fff;
@@ -90,5 +94,5 @@
   --cs-secondary-primary-default: var(--cs-button-default);
   --cs-secondary-primary-text: var(--cs-cyan);
   --cs-secondary-primary-border: #5b596e;
-  --cs-secondary-primary-hover: #272330;
+  --cs-secondary-primary-hover: var(--cs-dark-field-hover);
 }

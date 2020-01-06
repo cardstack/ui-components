@@ -24,8 +24,9 @@
   cursor: pointer;
 }
 .cs-component-cta.disabled {
-  /* TBD */
-  pointer-events: none;
+  cursor: not-allowed;
+  background-color: var(--cs-button-disabled);
+  color: var(--cs-button-disabled-text);
 }
 
 
@@ -49,8 +50,9 @@
   outline: 0;
 }
 .cs-component-cta.secondary.disabled {
-  /* TBD */
-  pointer-events: none;
+  cursor: not-allowed;
+  color: var(--cs-secondary-button-disabled-text);
+  border-color: var(--cs-secondary-button-disabled-border);
 }
 
 
@@ -68,6 +70,10 @@
   background-color: var(--cs-primary-button-hover);
   color: var(--cs-primary-button-text);
 }
+.cs-component-cta.primary.disabled {
+  background-color: var(--cs-primary-button-hover);
+  color: rgba(0, 0, 0, 0.5);
+}
 
 /* Secondary Primary button (Secondary outline button) */
 .cs-component-cta.primary.secondary {
@@ -81,12 +87,14 @@
   color: var(--cs-secondary-primary-text);
   border-color: var(--cs-secondary-primary-border);
 }
+.cs-component-cta.primary.secondary.disabled {
+  background-color: var(--cs-button-disabled);
+  color: var(--cs-button-disabled-text);
+}
 
 
 /* TODO:
-  100% width button
   Dark theme
-  Disabled states
   Icon button
   Primary icon button
   Loading state update

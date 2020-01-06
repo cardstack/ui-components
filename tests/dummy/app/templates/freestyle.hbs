@@ -302,32 +302,28 @@
           <Cta @variant="responsive">Full-width button</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="disabled"}}
+        {{#freestyle-usage "disabled-cta" title="Default Disabled button" inline=true}}
+          <Cta @disabled={{true}}>Disabled</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "secondary-disabled-cta" title="Secondary Disabled button" inline=true}}
+          <Cta @variant="secondary" @disabled={{true}}>Secondary Disabled</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "disabled-cta" title="Disabled Primary button" inline=true}}
+          <Cta @variant="primary" @disabled={{true}}>Disabled</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "secondary-primary-cta" title="Secondary Primary button"}}
+          <Cta @variant="primary secondary" @disabled={{true}}>Secondary Primary</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
       {{#collection.variant key="without-block"}}
         {{#freestyle-usage "cta" title="Primary CTA without block"}}
           <Cta @label="Hello" />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="disabled"}}
-        {{#freestyle-usage "disabled-cta" title="Disabled CTA" inline=true}}
-          <Cta @disabled="true">Disabled</Cta>
-        {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="secondary-disabled"}}
-        {{#freestyle-usage "secondary-disabled-cta" title="Secondary Disabled CTA" inline=true}}
-          <Cta @variant="secondary" @disabled="true">Secondary Disabled</Cta>
-        {{/freestyle-usage}}
-      {{/collection.variant}}
       {{#collection.variant key="loading"}}
         {{#freestyle-usage "loading-cta" title="Loading CTA" inline=true}}
           <Cta @isLoading={{this.isLoading}} @handleClick={{action this.showLoadingState}}>Click to load</Cta>
-        {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="themed"}}
-        {{#freestyle-usage "primary-cta-themed" title="Themed Primary CTA" inline=true}}
-          <Cta @variant="primary" @theme="cs-theme">Button</Cta>
-        {{/freestyle-usage}}
-        {{#freestyle-usage "secondary-cta-themed" title="Themed Secondary CTA" inline=true}}
-          <Cta @variant="secondary" @theme="cs-theme">Button</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}
