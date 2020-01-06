@@ -1,13 +1,10 @@
 <button
-  class="cs-component-cta {{@variant}} {{if @theme (concat @theme "-cta")}} {{if @disabled "disabled"}} {{if @isLoading "loading"}}"
+  class="cs-component-cta {{@variant}} {{if @theme (concat @theme "-cta")}} {{if @disabled "disabled"}}"
   disabled={{@disabled}}
   onclick={{action this.handleClick}}
   data-test-cs-component-cta={{@variant}}
   ...attributes
 >
-  {{#if @isLoading}}
-    <div class="loading">Loading...</div>
-  {{/if}}
   <span class="button-text">
     {{#if @label}}
       {{@label}}

@@ -1,3 +1,8 @@
+/* TODO:
+- Button with spinner
+- Icon button
+*/
+
 /* Cta */
 /* Same on dark background */
 .cs-component-cta {
@@ -62,7 +67,7 @@
   --cs-secondary-button-text: var(--cs-dark-secondary-button-text);
   --cs-secondary-button-hover: var(--cs-dark-secondary-button-hover);
   --cs-secondary-button-border: var(--cs-dark-secondary-button-border);
-}
+}`
 
 
 /* Primary button */
@@ -100,75 +105,4 @@
 .cs-component-cta.primary.secondary.disabled {
   background-color: var(--cs-button-disabled);
   color: var(--cs-button-disabled-text);
-}
-
-
-/* TODO:
-  Icon button
-  Primary icon button
-  Loading state update
-*/
-
-.cs-component-cta .loading,
-.cs-component-cta .loading:before,
-.cs-component-cta .loading:after,
-.cs-component-cta--primary .loading,
-.cs-component-cta--primary .loading:before,
-.cs-component-cta--primary .loading:after {
-  border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation: load7 1.8s infinite ease-in-out;
-  animation: load7 1.8s infinite ease-in-out;
-  opacity: 1;
-}
-.cs-component-cta .loading,
-.cs-component-cta--primary .loading {
-  color: white;
-  font-size: 5px;
-  position: absolute;
-  text-indent: -9999em;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-  top: 0;
-  left: calc(50% - 6px);
-}
-.cs-component-cta .loading:before,
-.cs-component-cta .loading:after,
-.cs-component-cta--primary .loading:before,
-.cs-component-cta--primary .loading:after {
-  content: "";
-  position: absolute;
-  top: 0;
-}
-.cs-component-cta .loading:before,
-.cs-component-cta--primary .loading:before {
-  left: -5.5em;
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
-}
-.cs-component-cta .loading:after,
-.cs-component-cta--primary .loading:after {
-  left: 5.5em;
-}
-@-webkit-keyframes load7 {
-  0%, 80%, 100% {
-    box-shadow: 0 2.5em 0 -1.3em;
-  }
-  40% {
-    box-shadow: 0 2.5em 0 0;
-  }
-}
-@keyframes load7 {
-  0%, 80%, 100% {
-    box-shadow: 0 2.5em 0 -1.3em;
-  }
-  40% {
-    box-shadow: 0 2.5em 0 0;
-  }
 }
