@@ -1,7 +1,7 @@
 <button
+  {{on "click" this.handleClick}}
   class="cs-component-cta {{@variant}} {{if @theme (concat @theme "-cta")}} {{if @disabled "disabled"}}"
   disabled={{@disabled}}
-  onclick={{action this.handleClick}}
   data-test-cs-component-cta={{@variant}}
   ...attributes
 >
