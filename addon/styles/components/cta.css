@@ -55,7 +55,6 @@
   outline: 0;
 }
 .cs-component-cta.secondary.disabled {
-  cursor: not-allowed;
   color: var(--cs-secondary-button-disabled-text);
   border-color: var(--cs-secondary-button-disabled-border);
 }
@@ -66,6 +65,10 @@
   --cs-secondary-button-text: var(--cs-dark-secondary-button-text);
   --cs-secondary-button-hover: var(--cs-dark-secondary-button-hover);
   --cs-secondary-button-border: var(--cs-dark-secondary-button-border);
+}
+.cs-component-cta.secondary.cs-dark-cta.disabled {
+  --cs-secondary-button-disabled-text: var(--cs-button-disabled-text);
+  --cs-secondary-button-disabled-border: var(--cs-secondary-primary-border);
 }
 
 
