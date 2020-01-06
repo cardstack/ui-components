@@ -326,6 +326,14 @@
           <Cta @isLoading={{this.isLoading}} @handleClick={{action this.showLoadingState}}>Click to load</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
+      {{#collection.variant key="dark-theme"}}
+        {{#freestyle-usage "default-dark-cta" class="dark-background" title="Default button (Dark theme)" inline=true}}
+          <Cta @theme="cs-dark">Default</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "default-dark-secondary-cta" class="dark-background" title="Secondary button (Dark theme)" inline=true}}
+          <Cta @theme="cs-dark" @variant="secondary">Secondary</Cta>
+        {{/freestyle-usage}}
+      {{/collection.variant}}
     {{/freestyle-collection}}
   {{/freestyle-section}}
 

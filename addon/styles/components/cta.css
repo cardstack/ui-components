@@ -1,4 +1,5 @@
 /* Cta */
+/* Same on dark background */
 .cs-component-cta {
   /* position: relative; */
   display: inline-block;
@@ -56,6 +57,14 @@
 }
 
 
+/* Secondary button on dark background */
+.cs-component-cta.secondary.cs-dark-cta {
+  --cs-secondary-button-text: var(--cs-dark-secondary-button-text);
+  --cs-secondary-button-hover: var(--cs-dark-secondary-button-hover);
+  --cs-secondary-button-border: var(--cs-dark-secondary-button-border);
+}
+
+
 /* Primary button */
 .cs-component-cta.primary {
   min-height: var(--cs-button-primary-height);
@@ -74,6 +83,7 @@
   background-color: var(--cs-primary-button-hover);
   color: rgba(0, 0, 0, 0.5);
 }
+
 
 /* Secondary Primary button (Secondary outline button) */
 .cs-component-cta.primary.secondary {
@@ -94,7 +104,6 @@
 
 
 /* TODO:
-  Dark theme
   Icon button
   Primary icon button
   Loading state update
