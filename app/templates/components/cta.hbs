@@ -1,8 +1,8 @@
 <button
   {{on "click" this.handleClick}}
-  class="cs-component-cta {{@variant}} {{if @theme (concat @theme "-cta")}} {{if @disabled "disabled"}}"
-  disabled={{@disabled}}
-  data-test-cs-component-cta={{or @variant "default"}}
+  class="cs-component-cta {{@variant}} {{if @theme (concat @theme "-cta")}} {{if this.disabled "disabled"}} {{if @isLoading "loading"}}"
+  disabled={{this.disabled}}
+  data-test-cs-component-cta={{this.variant}}
   ...attributes
 >
   {{#if @label}}

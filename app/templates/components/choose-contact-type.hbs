@@ -9,6 +9,6 @@
   {{#if this.addNewTypeVisible}}
     <hr>
     <TextField @label="Phone Number Name" @required={{true}} @value={{this.newContactType}} @changeAction={{action (mut this.newContactType)}} />
-    <Cta onclick={{action this.addContactType}} @label="Add" @disabled={{not this.newContactType}} />
+    <Cta {{on "click" this.addContactType}} @label="Add" @disabled={{not this.newContactType}} />
   {{/if}}
 </div>

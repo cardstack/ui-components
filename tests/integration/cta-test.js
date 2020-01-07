@@ -1,4 +1,4 @@
-import { module, test, skip } from 'qunit';
+import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
@@ -44,7 +44,7 @@ module('Integration | Component | cta', function(hooks) {
     assert.dom('[data-test-cs-component-cta="secondary"]').hasClass('disabled');
   });
 
-  skip('it can show loading state', async function (assert) {
+  test('it can show loading state', async function (assert) {
     await render(hbs`
       <Cta @isLoading={{true}}>Loading...</Cta>
       <Cta @isLoading={{false}} @variant="secondary">not loading</Cta>
