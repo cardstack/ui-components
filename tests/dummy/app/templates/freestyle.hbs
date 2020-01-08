@@ -281,18 +281,39 @@
 
   {{!-- CTA --}}
   {{#freestyle-section name="cta"}}
-    {{#freestyle-collection title="CTA" defaultKey="primary" inline=true as |collection|}}
-      {{#collection.variant key="primary"}}
-        {{#freestyle-usage "primary-cta" title="Primary CTA"}}
-          <Cta>Primary Call to Action</Cta>
+    {{#freestyle-collection title="CTA" defaultKey="default" inline=true as |collection|}}
+      {{#collection.variant key="default"}}
+        {{#freestyle-usage "default-cta" title="Default button"}}
+          <Cta>Default</Cta>
+          <Cta>Default Call to Action</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "secondary-cta" title="Secondary button"}}
+          <Cta @variant="secondary">Secondary</Cta>
+          <Cta @variant="secondary">Secondary Call to Action</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "primary-cta" title="Primary button"}}
+          <Cta @variant="primary">Primary</Cta>
+          <Cta @variant="primary">Primary Call to Action</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "secondary-primary-cta" title="Secondary Primary button"}}
+          <Cta @variant="primary secondary">Secondary Primary</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "responsive-cta" title="Full-width button"}}
+          <Cta @variant="responsive">Full-width button</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#freestyle-note "primary-cta--notes"}}
-        By default, `Cta` will render a primary type
-      {{/freestyle-note}}
-      {{#collection.variant key="secondary"}}
-        {{#freestyle-usage "secondary-cta" title="Secondary CTA"}}
-          <Cta @variant="secondary">Secondary Call to Action</Cta>
+      {{#collection.variant key="disabled"}}
+        {{#freestyle-usage "disabled-cta" title="Default Disabled button" inline=true}}
+          <Cta @disabled={{true}}>Disabled</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "secondary-disabled-cta" title="Secondary Disabled button" inline=true}}
+          <Cta @variant="secondary" @disabled={{true}}>Secondary Disabled</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "disabled-cta" title="Disabled Primary button" inline=true}}
+          <Cta @variant="primary" @disabled={{true}}>Disabled</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "secondary-primary-cta" title="Secondary Primary button"}}
+          <Cta @variant="primary secondary" @disabled={{true}}>Secondary Primary</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
       {{#collection.variant key="without-block"}}
@@ -300,27 +321,23 @@
           <Cta @label="Hello" />
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="disabled"}}
-        {{#freestyle-usage "disabled-cta" title="Disabled CTA" inline=true}}
-          <Cta @disabled="true">Disabled</Cta>
-        {{/freestyle-usage}}
-      {{/collection.variant}}
-      {{#collection.variant key="secondary-disabled"}}
-        {{#freestyle-usage "secondary-disabled-cta" title="Secondary Disabled CTA" inline=true}}
-          <Cta @variant="secondary" @disabled="true">Secondary Disabled</Cta>
-        {{/freestyle-usage}}
-      {{/collection.variant}}
       {{#collection.variant key="loading"}}
         {{#freestyle-usage "loading-cta" title="Loading CTA" inline=true}}
           <Cta @isLoading={{this.isLoading}} @handleClick={{action this.showLoadingState}}>Click to load</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
-      {{#collection.variant key="themed"}}
-        {{#freestyle-usage "primary-cta-themed" title="Themed Primary CTA" inline=true}}
-          <Cta @variant="primary" @theme="cs-theme">Button</Cta>
+      {{#collection.variant key="dark-theme"}}
+        {{#freestyle-usage "default-dark-cta" class="dark-background" title="Default button (Dark theme)" inline=true}}
+          <Cta @theme="cs-dark">Default</Cta>
         {{/freestyle-usage}}
-        {{#freestyle-usage "secondary-cta-themed" title="Themed Secondary CTA" inline=true}}
-          <Cta @variant="secondary" @theme="cs-theme">Button</Cta>
+        {{#freestyle-usage "default-dark-cta-disabled" class="dark-background" title="Disabled default button (Dark theme)" inline=true}}
+          <Cta @theme="cs-dark" @disabled={{true}}>Default</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "default-dark-secondary-cta" class="dark-background" title="Secondary button (Dark theme)" inline=true}}
+          <Cta @theme="cs-dark" @variant="secondary">Secondary</Cta>
+        {{/freestyle-usage}}
+        {{#freestyle-usage "default-dark-secondary-cta-disabled" class="dark-background" title="Disabled secondary button (Dark theme)" inline=true}}
+          <Cta @theme="cs-dark" @variant="secondary" @disabled={{true}}>Secondary</Cta>
         {{/freestyle-usage}}
       {{/collection.variant}}
     {{/freestyle-collection}}

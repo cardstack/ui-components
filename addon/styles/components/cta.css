@@ -1,15 +1,22 @@
-/* Small button */
+/* TODO:
+- Button with spinner
+- Icon button
+*/
+
+/* Cta */
+/* Same on dark background */
 .cs-component-cta {
-  position: relative;
-  width: 100%;
-  max-width: var(--cs-button-sm-width);
-  height: var(--cs-button-sm-height);
+  display: inline-block;
+  min-width: var(--cs-button-width);
+  max-width: 100%;
+  min-height: var(--cs-button-height);
+  padding: 5px 10px;
   background-color: var(--cs-button-default);
   color: var(--cs-button-text);
   border: 1px solid var(--cs-button-border);
   border-radius: var(--cs-button-radius);
-  font: 600 13px/18px var(--cs-font-family);
-  letter-spacing: 0.015em;
+  font: var(--cs-font-semibold);
+  letter-spacing: var(--cs-small-spacing);
   text-align: center;
 }
 .cs-component-cta:not(.disabled):focus,
@@ -25,8 +32,15 @@
 }
 .cs-component-cta.disabled,
 .cs-component-cta:disabled {
-  /* TBD */
-  pointer-events: none;
+  cursor: not-allowed;
+  background-color: var(--cs-button-disabled);
+  color: var(--cs-button-disabled-text);
+}
+
+
+/* Full-width button */
+.cs-component-cta.responsive {
+  width: 100%;
 }
 
 
@@ -37,91 +51,73 @@
   border-color: var(--cs-secondary-button-border);
 }
 .cs-component-cta.secondary:not(.disabled):focus,
-.cs-component-cta.secondary:not(:disabled):focus {
-  outline: 0;
-  border-color: var(--cs-secondary-button-hover);
-}
+.cs-component-cta.secondary:not(:disabled):focus,
 .cs-component-cta.secondary:not(.disabled):hover,
 .cs-component-cta.secondary:not(:disabled):hover {
+  background-color: var(--cs-secondary-button-default);
   border-color: var(--cs-secondary-button-hover);
   color: var(--cs-secondary-button-text);
+  outline: 0;
 }
 .cs-component-cta.secondary.disabled,
 .cs-component-cta.secondary:disabled {
-  /* TBD */
-  pointer-events: none;
+  color: var(--cs-secondary-button-disabled-text);
+  border-color: var(--cs-secondary-button-disabled-border);
 }
 
 
-/* TODO:
-  100% width button
-  Dark theme
-  Icon button
-  Disabled states
-  CTA button (Save, Open, etc)
-  Loading state update
-*/
+/* Secondary button on dark background */
+.cs-component-cta.secondary.cs-dark-cta {
+  --cs-secondary-button-text: var(--cs-dark-secondary-button-text);
+  --cs-secondary-button-hover: var(--cs-dark-secondary-button-hover);
+  --cs-secondary-button-border: var(--cs-dark-secondary-button-border);
+}
+.cs-component-cta.secondary.cs-dark-cta.disabled,
+.cs-component-cta.secondary.cs-dark-cta:disabled {
+  --cs-secondary-button-disabled-text: var(--cs-button-disabled-text);
+  --cs-secondary-button-disabled-border: var(--cs-secondary-primary-border);
+}
 
-.cs-component-cta .loading,
-.cs-component-cta .loading:before,
-.cs-component-cta .loading:after,
-.cs-component-cta--primary .loading,
-.cs-component-cta--primary .loading:before,
-.cs-component-cta--primary .loading:after {
-  border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation: load7 1.8s infinite ease-in-out;
-  animation: load7 1.8s infinite ease-in-out;
-  opacity: 1;
+
+/* Primary button */
+.cs-component-cta.primary {
+  min-height: var(--cs-button-primary-height);
+  min-width: var(--cs-button-primary-width);
+  padding: 10px 15px;
+  background-color: var(--cs-primary-button-default);
+  color: var(--cs-primary-button-text);
+  letter-spacing: var(--cs-letter-spacing);
 }
-.cs-component-cta .loading,
-.cs-component-cta--primary .loading {
-  color: white;
-  font-size: 5px;
-  position: absolute;
-  text-indent: -9999em;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
-  top: 0;
-  left: calc(50% - 6px);
+.cs-component-cta.primary:not(.disabled):focus,
+.cs-component-cta.primary:not(:disabled):focus,
+.cs-component-cta.primary:not(.disabled):hover,
+.cs-component-cta.primary:not(:disabled):hover {
+  background-color: var(--cs-primary-button-hover);
+  color: var(--cs-primary-button-text);
 }
-.cs-component-cta .loading:before,
-.cs-component-cta .loading:after,
-.cs-component-cta--primary .loading:before,
-.cs-component-cta--primary .loading:after {
-  content: "";
-  position: absolute;
-  top: 0;
+.cs-component-cta.primary.disabled,
+.cs-component-cta.primary:disabled {
+  background-color: var(--cs-primary-button-hover);
+  color: rgba(0, 0, 0, 0.5);
 }
-.cs-component-cta .loading:before,
-.cs-component-cta--primary .loading:before {
-  left: -5.5em;
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+
+
+/* Secondary Primary button (Secondary outline button) */
+.cs-component-cta.primary.secondary {
+  background-color: var(--cs-secondary-primary-default);
+  color: var(--cs-secondary-primary-text);
+  border-color: var(--cs-secondary-primary-border);
 }
-.cs-component-cta .loading:after,
-.cs-component-cta--primary .loading:after {
-  left: 5.5em;
+.cs-component-cta.primary.secondary:not(.disabled):focus,
+.cs-component-cta.primary.secondary:not(:disabled):focus,
+.cs-component-cta.primary.secondary:not(.disabled):hover,
+.cs-component-cta.primary.secondary:not(:disabled):hover {
+  background-color: var(--cs-secondary-primary-hover);
+  color: var(--cs-secondary-primary-text);
+  border-color: var(--cs-secondary-primary-border);
 }
-@-webkit-keyframes load7 {
-  0%, 80%, 100% {
-    box-shadow: 0 2.5em 0 -1.3em;
-  }
-  40% {
-    box-shadow: 0 2.5em 0 0;
-  }
-}
-@keyframes load7 {
-  0%, 80%, 100% {
-    box-shadow: 0 2.5em 0 -1.3em;
-  }
-  40% {
-    box-shadow: 0 2.5em 0 0;
-  }
+.cs-component-cta.primary.secondary.disabled,
+.cs-component-cta.primary.secondary:disabled {
+  background-color: var(--cs-button-disabled);
+  color: var(--cs-button-disabled-text);
 }

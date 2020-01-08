@@ -25,7 +25,7 @@ module('Integration | Component | choose-contact-type', function(hooks) {
     await click('[data-test-choice-value="_add"]')
     await fillIn('[data-test-cs-component="text-field"] input', 'cell2');
     await triggerKeyEvent('[data-test-cs-component="text-field"] input', 'keyup', 'Enter');
-    await click('[data-test-cs-component-cta="primary"]');
+    await click('[data-test-cs-component-cta]');
     let values = findAll('[data-test-choice-value]').map(elem => elem.getAttribute('data-test-choice-value'));
     assert.deepEqual(values, ['cell', 'home', 'work', 'cell2', '_add']);
     assert.dom('.cs-component-choose-one--label.checked').hasText('cell2');
