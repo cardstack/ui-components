@@ -3,6 +3,9 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { restartableTask } from 'ember-concurrency-decorators';
 import { timeout } from 'ember-concurrency';
+import { getOwner } from '@ember/application';
+
+const debounceMs = 250;
 
 let nonce = 0;
 
@@ -15,8 +18,15 @@ export default class TextField extends BaseComponent {
   @tracked required = false;
   @tracked attributesToCopy = ['type', 'label', 'value', 'required', 'disabled', 'invalid', 'validationMessage', 'dataTestName', 'iconComponent', 'rows'];
   @tracked showLabelInViewMode = false;
-  @tracked debounceMs = this.args.debounceMs || 500;
+  @tracked environment;
+  @tracked debounceMs = this.args.debounceMs || this.environment.debounceSpeed || debounceMs;
   fieldType = 'text';
+
+  constructor(...args) {
+    super(...args);
+
+    this.environment = getOwner(this).resolveRegistration('config:environment');
+  }
 
   get inputId() {
     if (this.args.inputId) {
