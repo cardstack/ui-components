@@ -30,5 +30,9 @@ module.exports = function(environment/*, appConfig */) {
     ENV.phoneInput.hasPrepend = true;
   }
 
+  if (environment === 'test') {
+    ENV.debounceSpeed = 10;
+  }
+  
   return ENV;
 };
