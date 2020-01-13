@@ -25,7 +25,7 @@ export default class TextField extends BaseComponent {
   constructor(...args) {
     super(...args);
 
-    this.environment = getOwner(this).resolveRegistration('config:environment');
+    this.environment = getOwner(this).resolveRegistration('config:environment')['@cardstack/ui-components'];
   }
 
   get inputId() {

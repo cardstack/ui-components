@@ -31,8 +31,10 @@ module.exports = function(environment/*, appConfig */) {
   }
 
   if (environment === 'test') {
-    ENV.debounceSpeed = 10;
+    ENV['@cardstack/ui-components'] = {
+      debounceSpeed: 10
+    }
   }
-  
+
   return ENV;
 };
