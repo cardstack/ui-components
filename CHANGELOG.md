@@ -2,6 +2,8 @@ Must provide GITHUB_AUTH
 
 Must provide GITHUB_AUTH
 
+Must provide GITHUB_AUTH
+
 * Merge pull request #150 from cardstack/ember-concurrency-dependency (5cc0c99)
 * Make ember-concurrency a dependency (f7066fa)
 * Merge pull request #149 from cardstack/percy-snapshots (3a8c5af)
