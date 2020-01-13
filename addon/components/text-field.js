@@ -19,7 +19,7 @@ export default class TextField extends BaseComponent {
   @tracked attributesToCopy = ['type', 'label', 'value', 'required', 'disabled', 'invalid', 'validationMessage', 'dataTestName', 'iconComponent', 'rows'];
   @tracked showLabelInViewMode = false;
   @tracked environment;
-  @tracked debounceMs = this.args.debounceMs || this.environment.debounceSpeed || debounceMs;
+  @tracked debounceMs = this.args.debounceMs || (this.environment && this.environment.debounceSpeed) || debounceMs;
   fieldType = 'text';
 
   constructor(...args) {
