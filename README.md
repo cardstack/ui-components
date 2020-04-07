@@ -56,6 +56,23 @@ or scss:
 @import '@cardstack/some-css-file'
 ```
 
+Configuring `debounceSpeed`
+------------------------------------------------------------------------------
+By default, all keyboard input components (`text-field`, `text-area`, etc) have a 500ms debounce for handling the input to avoid excessive server calls while the user is typing (for automated tests it's 10ms). There are a couple of different ways to override the default:
+
+1. Pass a `debounceMs` argument to the component, i.e. `<TextField @debounceMs=100 />` (affects only that specific component)
+2. Set an environment variable in your app's `config/environment.js` (affects *all* components):
+```javascript
+module.exports = function(environment/*, appConfig */) {
+  //...
+  if (environment === 'development' || environment === 'production') {
+    ENV['@cardstack/ui-components'] = {
+      debounceSpeed: 100
+    }
+  }
+}
+```
+
 Contributing
 ------------------------------------------------------------------------------
 
