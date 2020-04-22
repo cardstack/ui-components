@@ -2,6 +2,7 @@ import BaseComponent from './base-component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { task } from 'ember-concurrency';
 
 export default class PhoneNumberField extends BaseComponent {
   @service phoneInput;
@@ -16,10 +17,14 @@ export default class PhoneNumberField extends BaseComponent {
 
   constructor(...args) {
     super(...args);
-    this.phoneInput.load().then(() => {
-      this.inputComponent = 'phone-number-field/input';
-    });
+    this.loadPhoneInput.perform();
   }
+
+  @task(function*() {
+    yield this.phoneInput.load();
+    this.inputComponent = 'phone-number-field/input';
+  })
+  loadPhoneInput;
 
   @action
   update(updateValue, updateInvalid, updateValidationMessage, internationalPhoneNumber, meta) {

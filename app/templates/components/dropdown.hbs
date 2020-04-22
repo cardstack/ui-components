@@ -49,7 +49,7 @@
         {{#if @multiple}}
           <PowerSelectMultiple
             @options={{@options}}
-            @onchange={{action this.handleChange}}
+            @onChange={{action this.handleChange}}
             @selected={{this.selected}}
             @search={{action @searchAction}}
             @searchField={{this.searchField}}
@@ -68,7 +68,7 @@
         {{else}}
           <PowerSelect
             @options={{@options}}
-            @onchange={{action this.handleChange}}
+            @onChange={{action this.handleChange}}
             @selected={{this.selected}}
             @search={{action @searchAction}}
             @searchField={{this.searchField}}
@@ -89,7 +89,7 @@
         {{#if @multiple}}
           <PowerSelectMultiple
             @options={{@options}}
-            @onchange={{action this.handleChange}}
+            @onChange={{action this.handleChange}}
             @selected={{this.selected}}
             @searchField={{this.searchField}}
             @renderInPlace={{this.renderInPlace}}
@@ -107,7 +107,7 @@
         {{else}}
           <PowerSelect
             @options={{@options}}
-            @onchange={{action this.handleChange}}
+            @onChange={{action this.handleChange}}
             @selected={{this.selected}}
             @searchField={{this.searchField}}
             @renderInPlace={{this.renderInPlace}}
